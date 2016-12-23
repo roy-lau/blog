@@ -1,6 +1,6 @@
 ﻿#————————————————————————————————下面是使用git的一些心得笔记—————————————————————————-——————————————
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
-###*使用git diff查看各个区之间的差异
+###使用git diff查看各个区之间的差异
     git diff 和 git diff –cached容易混淆
     git diff 比较的是工作区和暂存区的差别
     git diff –cached 比较的是暂存区和版本库的差别
@@ -12,7 +12,7 @@
     git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
 
-###*分支类
+###分支类
 1. 查看分支图：git log --graph
 2. 查看分支：git branch
 3. 创建分支：git branch <name>
@@ -21,7 +21,7 @@
 6. 合并某分支到当前分支：git merge <name>
 7. 删除分支：git branch -d <name>
 
-###*配置类
+###配置类
     git config -l 查看git配置
 
     "git reflog"这个命令。"git log"只是包括了当前分支中的commit记录，而"git reflog"中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新。
@@ -30,14 +30,14 @@
     这只上面这个命令后，使用git lg命令可以查看分支日志等！
 
 
-    *设置git可提交最到bit
+    *设置git可提交最大bit
 
     问题原因是http.postBuffer默认上限为1M所致。在git的配置里将http.postBuffer变量改大一些即可，比如将上限设为500M：
     git config --global http.postBuffer 524288000
 
     git sparse clone 路径  可以克隆git仓库下的某个目录
 
-###* github的SSH配置如下：
+###github的SSH配置如下：
 
 1. 设置Git的user name和email：
 
@@ -75,3 +75,7 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
     Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.
     ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
     Connection to github.com closed.
+###设置git push请求时间
+*每多少秒向主机请求链接    
+    ```Host *  
+    ServerAliveInterval 120 ```
