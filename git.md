@@ -77,34 +77,32 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
     ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
     Connection to github.com closed.
 ###设置git push请求时间
-*每多少秒向主机请求链接    
+每多少秒向主机请求链接    
     ```Host *  
     ServerAliveInterval 120 ```
 
 ###bug记录！
 
-*bug1： ```工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】```
-
-解决步骤如下：
-
-```Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-$ git add -A                                //重点在这里，以前都是用git add .或git add --all
-
-Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-$ git commit -m "error"
-[master ef2b048] error
- 3 files changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 git.png
- create mode 100644 git_help.png
- create mode 100644 "git\351\200\237\347\216\207.png"
-
-Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-$ git push
-Counting objects: 5, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 680.94 KiB | 0 bytes/s, done.
-Total 5 (delta 0), reused 0 (delta 0)
-To git@github.com:a-qiang/README.git
-   792f815..ef2b048  master -> master```
+*bug1：```工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】```
+解决步骤如下：<br>
+    1.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
+   ``` $ git add -A                                //重点在这里，以前都是用git add .或git add --all```
+    
+    2.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
+    ```$ git commit -m "error" ```
+    [master ef2b048] error
+     3 files changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 git.png
+     create mode 100644 git_help.png
+     create mode 100644 "git\351\200\237\347\216\207.png"
+    
+    3.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
+    ```$ git push```
+    Counting objects: 5, done.
+    Delta compression using up to 4 threads.
+    Compressing objects: 100% (5/5), done.
+    Writing objects: 100% (5/5), 680.94 KiB | 0 bytes/s, done.
+    Total 5 (delta 0), reused 0 (delta 0)
+    To git@github.com:a-qiang/README.git
+       792f815..ef2b048  master -> master
 
