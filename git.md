@@ -24,9 +24,10 @@
 
 ###配置类
     1. git config -l 查看git配置
-    2. git config -–add user.name=a-qiang 添加一个配置项命令参数
-    2. git config --get user.name 获取一个配置项命令参数
-    4. git congig --unset user.name=a-qiang 删除一个配置项命令参数
+    1. git config -e vim下修改配置
+    3. git config -–add user.name=a-qiang 添加一个配置项命令参数
+    4. git config --get user.name 获取一个配置项命令参数
+    5. git congig --unset user.name=a-qiang 删除一个配置项命令参数
 
     "git reflog"这个命令。"git log"只是包括了当前分支中的commit记录，而"git reflog"中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新。
 
