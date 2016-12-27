@@ -86,10 +86,10 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 *bug1：```工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】```
 解决步骤如下：<br>
     1.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-   ``` $ git add -A                                //重点在这里，以前都是用git add .或git add --all```
+    $ git add -A                                //重点在这里，以前都是用git add .或git add --all
     
     2.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-    ```$ git commit -m "error" ```
+    $ git commit -m "error" 
     [master ef2b048] error
      3 files changed, 0 insertions(+), 0 deletions(-)
      create mode 100644 git.png
@@ -97,7 +97,7 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
      create mode 100644 "git\351\200\237\347\216\207.png"
     
     3.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-    ```$ git push```
+    $ git push
     Counting objects: 5, done.
     Delta compression using up to 4 threads.
     Compressing objects: 100% (5/5), done.
@@ -108,5 +108,5 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 
 ###小技巧
 1.  git add -A   保存所有的修改
-2.  git add .     保存新的添加和修改，但是不包括删除
+2.  git add .    保存新的添加和修改，但是不包括删除
 3.  git add -u   保存修改和删除，但是不包括新建文件。
