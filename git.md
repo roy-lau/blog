@@ -84,8 +84,9 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 ###bug记录！
 
 *bug1：```工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】```
+解决步骤如下：
 ```Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-$ git add -A
+$ git add -A                                //重点在这里，以前都是用git add .或git add --all
 
 Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
 $ git commit -m "error"
