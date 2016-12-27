@@ -106,3 +106,7 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
     To git@github.com:a-qiang/README.git
        792f815..ef2b048  master -> master
 
+###小技巧
+1.  git add -A   保存所有的修改
+2.  git add .     保存新的添加和修改，但是不包括删除
+3.  git add -u   保存修改和删除，但是不包括新建文件。
