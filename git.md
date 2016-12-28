@@ -12,7 +12,7 @@
     git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
 
-###分支类
+###分支类（master）
 1. 查看分支图：git log --graph
 2. 查看分支：git branch
 3. 创建分支：git branch <name>
@@ -21,6 +21,24 @@
 6. 合并某分支到当前分支：git merge <name>
 7. 删除分支：git branch -d <name>
 
+###远程主机（origin）
+1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
+    $ git remote
+    origin
+2. 使用```-v```选项可以查看远程主机的网址
+    $ git remote -v
+    origin git@github.com:a-qiang/python.git(fetch)
+    origin git@github.com:a-qiang/python.git(push)
+3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
+    $ git clone -o qiang https://github.com/a-qiang/python.git
+    $ git remote
+    qiang
+    上面命令表示，克隆的时候，指定远程主机叫qiang
+4. git remote show <主机名> 可以查看该主机的详细信息。
+5. git remote add <主机名> <网址> 添加远程主机。
+6. git remote rm <主机名> 删除远程主机
+7. git remote rename <源主机名> <新主机名> 更改远程主机名。
+End. git push <主机名> <分支名>
 
 ###配置类
     1. git config -l 查看git配置
