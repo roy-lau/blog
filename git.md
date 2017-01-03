@@ -1,4 +1,4 @@
-﻿#————————————————————————————————下面是使用git的一些心得笔记—————————————————————————-——————————————
+﻿#————————————————————————————————下面是使用git的一些心得笔记—————————————————————————-———————————
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
 ###使用git diff查看各个区之间的差异
     git diff 和 git diff –-cached容易混淆
@@ -25,15 +25,18 @@
 1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
     $ git remote
     origin
+
 2. 使用```-v```选项可以查看远程主机的网址
     $ git remote -v
     origin git@github.com:a-qiang/python.git(fetch)
     origin git@github.com:a-qiang/python.git(push)
+
 3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
     $ git clone -o qiang https://github.com/a-qiang/python.git
     $ git remote
     qiang
     上面命令表示，克隆的时候，指定远程主机叫qiang
+    
 4. git remote show <主机名> 可以查看该主机的详细信息。
 5. git remote add <主机名> <网址> 添加远程主机。
 6. git remote rm <主机名> 删除远程主机
