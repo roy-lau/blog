@@ -11,6 +11,7 @@
     git rm --cached 文件名 ，可以从缓存区移除文件，使该文件变为未跟踪的状态，
     git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
+    git reset --hard fe5731b8a32bfe06c170e95eeabbc7c21fe3cbdc 返回到某个版本
 
 ###分支类（master）
 1. 查看分支图：git log --graph
