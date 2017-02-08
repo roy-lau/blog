@@ -29,11 +29,11 @@
 
 2. 使用```-v```选项可以查看远程主机的网址
     $ git remote -v
-    origin git@github.com:a-qiang/python.git(fetch)
-    origin git@github.com:a-qiang/python.git(push)
+    origin git@github.com:roy-lau/python.git(fetch)
+    origin git@github.com:roy-lau/python.git(push)
 
 3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
-    $ git clone -o qiang https://github.com/a-qiang/python.git
+    $ git clone -o qiang https://github.com/roy-lau/python.git
     $ git remote
     qiang
     上面命令表示，克隆的时候，指定远程主机叫qiang
@@ -47,9 +47,9 @@ End. git push <主机名> <分支名>
 ###配置类
     1. git config -l 查看git配置
     1. git config -e vim下修改配置
-    3. git config -–add user.name=a-qiang 添加一个配置项命令参数
+    3. git config -–add user.name=roy-lau 添加一个配置项命令参数
     4. git config --get user.name 获取一个配置项命令参数
-    5. git congig --unset user.name=a-qiang 删除一个配置项命令参数
+    5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
 
     "git reflog"这个命令。"git log"只是包括了当前分支中的commit记录，而"git reflog"中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新。
 
@@ -68,15 +68,15 @@ End. git push <主机名> <分支名>
 
 1. 设置Git的user name和email：
 
-    ```$ git config --global user.name "a-qiang"
-    $ git config --global user.email "a-qiang.vip@163.com"```
+    ```$ git config --global user.name "roy-lau"
+    $ git config --global user.email "roy-lau.vip@163.com"```
 
 
 2. 生成SSH密钥过程：
     1.查看是否已经有了ssh密钥：cd ~/.ssh
         如果没有密钥则不会有此文件夹，有则备份删除
     2.生存密钥：
-    ```$ ssh-keygen -t rsa -C “a-qiang.vip@163.com”```
+    ```$ ssh-keygen -t rsa -C “roy-lau.vip@163.com”```
     按3个回车，密码为空。
 
     Your identification has been saved in /home/tekkub/.ssh/id_rsa.
@@ -92,7 +92,7 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 
 4. 在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
 
-    打开https://github.com/ ，登陆a-qiang，然后添加ssh。
+    打开https://github.com/ ，登陆roy-lau，然后添加ssh。
 
 5. 测试：ssh git@github.com
 
@@ -130,7 +130,7 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
     Compressing objects: 100% (5/5), done.
     Writing objects: 100% (5/5), 680.94 KiB | 0 bytes/s, done.
     Total 5 (delta 0), reused 0 (delta 0)
-    To git@github.com:a-qiang/README.git
+    To git@github.com:roy-lau/README.git
        792f815..ef2b048  master -> master
 
 ###小技巧
