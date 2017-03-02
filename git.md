@@ -12,6 +12,8 @@
     git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
     git reset --hard fe5731b8a32bfe06c170e95eeabbc7c21fe3cbdc 返回到某个版本
+    git rm -r --cached . 删除tag
+
 
 ###分支类（master）
 1. 查看分支图：git log --graph
@@ -37,7 +39,7 @@
     $ git remote
     qiang
     上面命令表示，克隆的时候，指定远程主机叫qiang
-    
+
 4. git remote show <主机名> 可以查看该主机的详细信息。
 5. git remote add <主机名> <网址> 添加远程主机。
 6. git remote rm <主机名> 删除远程主机
@@ -103,8 +105,8 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
     ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
     Connection to github.com closed.
 ###设置git push请求时间
-每多少秒向主机请求链接    
-    ```Host *  
+每多少秒向主机请求链接
+    ```Host *
     ServerAliveInterval 120 ```
 
 ###bug记录！
@@ -114,15 +116,15 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 
     1.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
     $ git add -A                                //重点在这里，以前都是用git add .或git add --all
-    
+
     2.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-    $ git commit -m "error" 
+    $ git commit -m "error"
     [master ef2b048] error
      3 files changed, 0 insertions(+), 0 deletions(-)
      create mode 100644 git.png
      create mode 100644 git_help.png
      create mode 100644 "git\351\200\237\347\216\207.png"
-    
+
     3.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
     $ git push
     Counting objects: 5, done.
