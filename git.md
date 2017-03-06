@@ -35,16 +35,16 @@
     origin git@github.com:roy-lau/python.git(push)
 
 3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
-    $ git clone -o qiang https://github.com/roy-lau/python.git
+    $ git clone -o roy-lau https://github.com/roy-lau/python.git
     $ git remote
-    qiang
-    上面命令表示，克隆的时候，指定远程主机叫qiang
+    roy-lau
+    上面命令表示，克隆的时候，指定远程主机叫roy-lau
 
 4. git remote show <主机名> 可以查看该主机的详细信息。
 5. git remote add <主机名> <网址> 添加远程主机。
 6. git remote rm <主机名> 删除远程主机
 7. git remote rename <源主机名> <新主机名> 更改远程主机名。
-End. git push <主机名> <分支名>
+End. git push -u <主机名> <分支名>
 
 ###配置类
     1. git config -l 查看git配置
@@ -114,10 +114,10 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 *bug1：```工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】```<br>
 解决步骤如下：
 
-    1.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
+    1.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git add -A                                //重点在这里，以前都是用git add .或git add --all
 
-    2.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
+    2.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git commit -m "error"
     [master ef2b048] error
      3 files changed, 0 insertions(+), 0 deletions(-)
@@ -125,8 +125,8 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
      create mode 100644 git_help.png
      create mode 100644 "git\351\200\237\347\216\207.png"
 
-    3.Administrator@liuqiang MINGW32 /d/git_rpo/README (master)
-    $ git push
+    3.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
+    $ git push -u origin master
     Counting objects: 5, done.
     Delta compression using up to 4 threads.
     Compressing objects: 100% (5/5), done.
