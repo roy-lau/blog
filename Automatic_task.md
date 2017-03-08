@@ -1,8 +1,43 @@
 # 					windows自动运行命令解析
 
-### 计划命令每24小时运行一次
+### 计划命令每24小时运行一次（目录 D:\git_rpo\web_project\gitpush.sh 是git上传的脚本）
     schtasks /create /sc hourly /st 00:24:00 /tn "Automatic git push" /tr D:\git_rpo\web_project\gitpush.sh
 
+### C:\Users\Administrator>schtasks /?
+
+__SCHTASKS /parameter [arguments]
+
+__描述:
+    允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任
+    务。
+
+__参数列表:
+    /Create         创建新计划任务。
+
+    /Delete         删除计划任务。(schtasks /delete /tn 任务名)
+
+    /Query          显示所有计划任务。
+
+    /Change         更改计划任务属性。
+
+    /Run            按需运行计划任务。
+
+    /End            中止当前正在运行的计划任务。
+
+    /ShowSid        显示与计划的任务名称相应的安全标识符。
+
+    /?              显示此帮助消息。
+
+__Examples:
+    SCHTASKS
+    SCHTASKS /?
+    SCHTASKS /Run /?
+    SCHTASKS /End /?
+    SCHTASKS /Create /?
+    SCHTASKS /Delete /?
+    SCHTASKS /Query  /?
+    SCHTASKS /Change /?
+    SCHTASKS /ShowSid /?
 
 
 ## Schtasks
