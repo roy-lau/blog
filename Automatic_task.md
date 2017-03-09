@@ -5,13 +5,14 @@
 
 ### C:\Users\Administrator>schtasks /?
 
-__SCHTASKS /parameter [arguments]
+__SCHTASKS /parameter [arguments]__
 
-__描述:
-    允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任
-    务。
+__描述:__
 
-__参数列表:
+    允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任务。
+
+__参数列表:__
+
     /Create         创建新计划任务。
 
     /Delete         删除计划任务。(schtasks /delete /tn 任务名)
@@ -28,7 +29,8 @@ __参数列表:
 
     /?              显示此帮助消息。
 
-__Examples:
+__Examples:__
+
     SCHTASKS
     SCHTASKS /?
     SCHTASKS /Run /?
