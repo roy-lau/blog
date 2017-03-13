@@ -17,7 +17,7 @@ __参数列表:__
 
     /Delete         删除计划任务。(schtasks /delete /tn 任务名)
 
-    /Query          显示所有计划任务。
+    /Query          显示所有计划任务。(chcp:查看编码，936为中文GBK 437为美国 ，chcp 437 切换为美国编码才能查询)
 
     /Change         更改计划任务属性。
 
@@ -151,7 +151,7 @@ __作为响应，SchTasks.exe 显示一条消息来说明任务会以当前用�
 __然后 SchTasks.exe 显示一条消息表明已计划该任务：
 成功：计划任务 "Security Script" 已成功创建。
 
-#### 查询显示命令计划的任务：
+#### 查询显示命令计划的任务：SCHTASKS /query /tn taskname
 
     TaskName                  Next Run Time            Status ========================= ======================== ============== Security Script           10:50:00 AM , 4/4/2001     
 
