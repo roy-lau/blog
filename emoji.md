@@ -2,7 +2,7 @@ Emoji表情
 ======
 鼠标悬停在表情上，即可显示emoji表情的符号码,将对应符号码输入你的markdown文本即可显示emoji表情。如`:blush:`，显示:blush:
 
-##人物
+## 人物
  :bowtie:
  :smile:
  :laughing:
@@ -198,7 +198,7 @@ Emoji表情
  :suspect:
  :trollface:
 
-##自然
+## 自然
 
  :sunny:
  :umbrella:
@@ -316,7 +316,7 @@ Emoji表情
  :octocat:
  :squirrel:
 
-##物体
+## 物体
 
  :bamboo:
  :gift_heart:
@@ -578,7 +578,7 @@ Emoji表情
  :tomato:
  :corn:
 
-##地点
+## 地点
 
  :house:
  :house_with_garden:
@@ -687,7 +687,7 @@ Emoji表情
  :uk:
  :de:
 
-##符号
+## 符号
 
  :one:
  :two:
