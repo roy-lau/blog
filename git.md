@@ -60,8 +60,13 @@ End. git push -u <主机名> <分支名>
     5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
 
    __"git reflog"这个命令。"git log"只是包括了当前分支中的commit记录，而"git reflog"中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新。__
-   
+
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+   __git add 的时候，中文会显示成"“\344\270\255\346\226\207.txt"，使用如下命令进行配置：__
+
+    git config --global core.quotepath false
+   
     
 __这只上面这个命令后，使用git lg命令可以查看分支日志等！__
 
