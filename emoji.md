@@ -39,8 +39,8 @@ Emoji表情
  :disappointed_relieved:
  :weary:
  :pensive:
- :disappointed:
  :confounded:
+ :disappointed:
  :fearful:
  :cold_sweat:
  :persevere:
