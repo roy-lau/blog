@@ -1,6 +1,36 @@
 #[sublime text Download](http://www.sublimetext.com/dev)
 <img src="http://images.cnitblog.com/blog/100150/201212/30105834-adb210004ed5468b9f67e5384225a46d.png" alt="">
 		改版过的[Monokai](http://pan.baidu.com/s/1qWr9v56) 密码: siem 代码着色，及相关资源。
+## 两步实现在Git Bash中用Sublime打开文件
+每次都要用鼠标点来点去才能用sublime打开文件！太不科学！今天来配置一下在Git bash中用sublime打开文件:
+设置方法：
+
+    新建一个文件命名为你想要的命令，比如 sblm（注意不能有后缀名），内容：
+
+    #!/bin/sh
+    "C:\Program Files\Sublime Text 3\sublime_text.exe" $1 &
+
+    第一行是说这是个 shell 脚本
+    第二行的字符串是sublime 的安装目录注意这里要输入你自己的目录
+    第二行的$1 是取的命令之后输入的参数
+    第二行的&是此命令在后台打开，这样sublime打开之后，就不会阻塞你的git bash
+
+保存到 C:\Program Files (x86)\Git\mingW32\bin 目录下(你的git目录可能与我的不一样，注意改成你自己的)
+
+大功告成~
+
+使用方法：
+
+	sblm xxx
+
+如果xxx已存在，则打开已存在的文件，如果不存在则打开新文件命名为xxx。
+
+__扩展：__
+
+不光是sublime，感觉用这种方法我们就可以设置更多了，比如用chrome打开.html文件等等。 
+
+转自： http://blog.csdn.net/weixin_35955795/article/details/54880336
+
 ## Video
 
 - 大城小胖 [视频介绍](http://v.youku.com/v_show/id_XMzU5NzQ5ODgw.html)
