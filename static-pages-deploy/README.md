@@ -9,10 +9,10 @@
 	npm -v 					# 查看npm版本|是否安装成功
 
 	npm install pm2 -g --save 		# 安装pm2(进程守护) -g 全局安装 --save 安装稳定版
-	pm2 -v 							# 查看pm2版本|是否安装成功
+	pm2 -v 					# 查看pm2版本|是否安装成功
 
-	npm install http-server -g --save			# 安装http-server(可启动http服务) 参数同上
-	hs --help									# 查看http-server帮助(http-server可以简写为hs)
+	npm install http-server -g --save	# 安装http-server(可启动http服务) 参数同上
+	hs --help				# 查看http-server帮助(http-server可以简写为hs)
 
 注：
 	node 用法及帮助请点此查看
@@ -41,5 +41,6 @@
 注：http-server会一直开启进程，占用端口。所以我们用npm安装了pm2（守护进程，后台监听端口）
 
 四、发布
-   pm2 start "http-server所在目录" -x -- "项目所在的路径" 参数(-p 9090)
-   pm2 list 查看进程
+
+  	pm2 start "http-server所在目录" -x -- "项目所在的路径" 参数(-p 9090)
+   	pm2 list 查看进程
