@@ -17,8 +17,8 @@
 注：
 	node 用法及帮助请点此查看
 	npm 用法及帮助请点此查看
-	pm2 用法及帮助请点此查看
-	http-server 用法及帮助请点此查看
+	pm2 用法及帮助请点此查看<a href="https://github.com/roy-lau/log/edit/master/static-pages-deploy/pm2.md" />
+	http-server 用法及帮助请点此查看<a href="https://github.com/roy-lau/log/edit/master/static-pages-deploy/hs.md" />
 	
 二、上传项目
 	
