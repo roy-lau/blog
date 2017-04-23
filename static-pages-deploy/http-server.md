@@ -2,9 +2,9 @@
 
 $ hs --help
 
-__usage: http-server [path] [options]
+usage: http-server [path] [options]<br>
 
-__options:
+options:<br>
 
   	-p           Port to use [8080]
   	-a           Address to use [0.0.0.0]
@@ -30,9 +30,10 @@ __options:
   	-h --help    Print this list and exit.
 
 
-用法：
-hs 是http-server的简写
-usage: http-server [path] [options] 		# path要启动项目的路径，options参数，如-p 1024
+__用法：
+
+hs 是http-server的简写<br>
+usage: http-server [path] [options] 		# path要启动项目的路径，options参数，如-p 1024 <br>
  
 	$ hs					# 直接运行hs，默认启动当前目录，监听8080端口
  	Starting up http-server, serving ./
