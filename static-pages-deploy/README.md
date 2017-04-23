@@ -15,11 +15,11 @@
 	hs --help				# 查看http-server帮助(http-server可以简写为hs)
 
 注：
-	node 用法及帮助请点此查看
-	npm 用法及帮助请点此查看
-	pm2 用法及帮助请点此查看<a href="https://github.com/roy-lau/log/edit/master/static-pages-deploy/pm2.md" />
-	http-server 用法及帮助请点此查看<a href="https://github.com/roy-lau/log/edit/master/static-pages-deploy/hs.md" />
-	
+    node 用法及帮助请点此查看<br>
+    npm 用法及帮助请点此查看<br>
+    [pm2 用法及帮助请点此查看](https://github.com/roy-lau/log/edit/master/static-pages-deploy/pm2.md)
+    [http-server 用法及帮助请点此查看](https://github.com/roy-lau/log/edit/master/static-pages-deploy/http-server.md).
+    
 二、上传项目
 	
 	通过ftp工具上传项目到某目录
