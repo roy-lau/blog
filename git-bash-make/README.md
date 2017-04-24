@@ -153,3 +153,10 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 1.  git add -A   保存所有的修改
 2.  git add .    保存新的添加和修改，但是不包括删除
 3.  git add -u   保存修改和删除，但是不包括新建文件。
+4.  工作的时候经常需要在各个目录之间跳转，可以通过环境变量对目录进行缩写，方便地在多个目录直接切换。
+在 ~/.bashrc 添加：
+
+export wd="/d/Projects/MyProject/git"
+export doc="/d/Projects/documents/"
+
+以后只需要用 cd $wd, cd $doc 即可进入对应目录。
