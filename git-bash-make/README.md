@@ -29,6 +29,7 @@
 
 ### 远程主机（origin）
 1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
+
     $ git remote
     origin
 
@@ -59,16 +60,17 @@ End. git push -u <主机名> <分支名>
     4. git config --get user.name 获取一个配置项命令参数
     5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
 
-   __"git reflog"这个命令。"git log"只是包括了当前分支中的commit记录，而"git reflog"中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新。__
+   ```git reflog'''这个命令。``` git logi ```只是包括了当前分支中的commit记录，而```git reflog```中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
 
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-   __git add 的时候，中文会显示成"“\344\270\255\346\226\207.txt"，使用如下命令进行配置：__
+   这只上面这个命令后，使用git lg命令可以查看分支日志等！
+
+   git add 的时候，中文会显示成``` \344\270\255\346\226\207.txt ```，使用如下命令进行配置：
 
     git config --global core.quotepath false
    
     
-__这只上面这个命令后，使用git lg命令可以查看分支日志等！__
 
 __*设置git可提交最大bit
 问题原因是http.postBuffer默认上限为1M所致。在git的配置里将http.postBuffer变量改大一些即可，比如将上限设为500M：__
@@ -79,17 +81,22 @@ __*设置git可提交最大bit
 
 ### github的SSH配置如下：
 
-1.设置Git的user name和email：
+1. 设置Git的user name和email：
 
     $ git config --global user.name "roy-lau"
     $ git config --global user.email "roy-lau.vip@163.com
 
 
 2. 生成SSH密钥过程：
-    1.查看是否已经有了ssh密钥：cd ~/.ssh
-      如果没有密钥则不会有此文件夹，有则备份删除
-    2.生存密钥：
-      $ ssh-keygen -t rsa -C “roy-lau.vip@163.com”
+
+    1. 查看是否已经有了ssh密钥：cd ~/.ssh
+
+	如果没有密钥则不会有此文件夹，有则备份删除
+
+    2. 生存密钥：
+
+	$ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
+
     按3个回车，密码为空。
 
     Your identification has been saved in /home/tekkub/.ssh/id_rsa.
@@ -101,11 +108,11 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
 
 3. 添加密钥到ssh：ssh-add 文件名
 
-    需要之前输入密码。
+	需要之前输入密码。
 
-4. 在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
+4. 在github上添加ssh密钥，这要添加的是```id_rsa.pub```里面的公钥。
     
-    打开https://github.com/ ，登陆roy-lau，然后添加ssh。
+	打开https://github.com/ ，登陆roy-lau，然后添加ssh。
 
 5. 测试：ssh git@github.com
 
