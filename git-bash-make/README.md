@@ -30,27 +30,27 @@
 ### 远程主机（origin）
 1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
 
-    $ git remote
-    origin
+	$ git remote
+	origin
 
 2. 使用```-v```选项可以查看远程主机的网址
 
-    $ git remote -v
-    origin git@github.com:roy-lau/python.git(fetch)
-    origin git@github.com:roy-lau/python.git(push)
+    	$ git remote -v
+    	origin git@github.com:roy-lau/python.git(fetch)
+    	origin git@github.com:roy-lau/python.git(push)
 
 3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
 
-    $ git clone -o roy-lau https://github.com/roy-lau/python.git
-    $ git remote
-    roy-lau
+    	$ git clone -o roy-lau https://github.com/roy-lau/python.git
+    	$ git remote roy-lau
+
     上面命令表示，克隆的时候，指定远程主机叫roy-lau
 
-4. git remote show <主机名> 可以查看该主机的详细信息。
-5. git remote add <主机名> <网址> 添加远程主机。
-6. git remote rm <主机名> 删除远程主机
-7. git remote rename <源主机名> <新主机名> 更改远程主机名。
-End. git push -u <主机名> <分支名>
+4. ```git remote show <主机名>``` 可以查看该主机的详细信息。
+5. ```git remote add <主机名>``` <网址> 添加远程主机。
+6. ```git remote rm <主机名>``` 删除远程主机
+7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。
+End. ```git push -u <主机名> <分支名>```
 
 ### 配置类
 
@@ -60,7 +60,7 @@ End. git push -u <主机名> <分支名>
     4. git config --get user.name 获取一个配置项命令参数
     5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
 
-   ```git reflog'''这个命令。``` git logi ```只是包括了当前分支中的commit记录，而```git reflog```中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
+   ```git reflog'''这个命令。``` git log```只是包括了当前分支中的commit记录，而```git reflog```中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
 
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
@@ -82,9 +82,9 @@ __*设置git可提交最大bit
 ### github的SSH配置如下：
 
 1. 设置Git的user name和email：
-
-    $ git config --global user.name "roy-lau"
-    $ git config --global user.email "roy-lau.vip@163.com
+	
+	$ git config --global user.name "roy-lau"
+	$ git config --global user.email "roy-lau.vip@163.com
 
 
 2. 生成SSH密钥过程：
