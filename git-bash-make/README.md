@@ -14,8 +14,18 @@
     git rm --cached 文件名 ，可以从缓存区移除文件，使该文件变为未跟踪的状态，
     git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
-    git reset --hard fe5731b8a32bfe06c170e95eeabbc7c21fe3cbdc 返回到某个版本
     git rm -r --cached .  删除tag
+
+### 版本回退
+    
+    git reset --hard HEADE~1  回滚到上一版本
+    git reset --hard commit_id(版本号，版本ID，commit_id) 回滚到某个版本
+    git reflog 查看命令历史的commit_id,可以获取回退之前的commit_id
+    
+    HEAD 表示当前版本
+    HEAD^ ^是上一个版本
+    HEAD^ ^^是上上一个版本
+    HEAD~100    ~100表示100个版本,100个版本写100个^比较容易数不过来。
 
 #### git commit
 
