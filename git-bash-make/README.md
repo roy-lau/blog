@@ -20,7 +20,8 @@
     
     git reset --hard HEADE~1  回滚到上一版本
     git reset --hard commit_id(版本号，版本ID，commit_id) 回滚到某个版本
-    git reflog 查看命令历史的commit_id,可以获取回退之前的commit_id
+    git reflog 	查看命令历史的commit_id,可以获取回退之前的commit_id,
+    git reflog	记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
     
     HEAD 表示当前版本
     HEAD^ ^是上一个版本
@@ -34,6 +35,7 @@
 	git rebase --continue 如果修改错了要返回原来的git commit，可以使用这个命令
 
 ### 分支类（master）
+
 1. 查看分支图：git log --graph
 2. 查看分支：git branch
 3. 创建分支：git branch (name)
@@ -43,10 +45,11 @@
 7. 删除分支：git branch -d (name)
 
 ### 远程主机（origin）
+
 1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
 
-	$ git remote
-	origin
+		$ git remote
+		origin
 
 2. 使用```-v```选项可以查看远程主机的网址
 
@@ -62,9 +65,9 @@
     上面命令表示，克隆的时候，指定远程主机叫roy-lau
 
 4. ```git remote show <主机名>``` 可以查看该主机的详细信息。
-5. ```git remote add <主机名>``` <网址> 添加远程主机。
+5. ```git remote add <主机名><网址>```  添加远程主机。
 6. ```git remote rm <主机名>``` 删除远程主机
-7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。
+7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。<br>
 End. ```git push -u <主机名> <分支名>```
 
 ### 配置类
@@ -75,20 +78,17 @@ End. ```git push -u <主机名> <分支名>```
     4. git config --get user.name 获取一个配置项命令参数
     5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
 
-   ```git reflog'''这个命令。``` git log```只是包括了当前分支中的commit记录，而```git reflog```中会记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
+#### 设置 `git lg` （设置个命令后，使用git lg命令可以查看分支日志等！）
 
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-   这只上面这个命令后，使用git lg命令可以查看分支日志等！
-
-   git add 的时候，中文会显示成``` \344\270\255\346\226\207.txt ```，使用如下命令进行配置：
+git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
 
     git config --global core.quotepath false
-   
-    
 
-__*设置git可提交最大bit
-问题原因是http.postBuffer默认上限为1M所致。在git的配置里将http.postBuffer变量改大一些即可，比如将上限设为500M：__
+__*设置git可提交最大bit__
+
+问题原因是`http.postBuffer`默认上限为`1M`所致。在git的配置里将`http.postBuffer`变量改大一些即可，比如将上限设为`500M`：
     
     git config --global http.postBuffer 524288000
 
@@ -98,19 +98,20 @@ __*设置git可提交最大bit
 
 1. 设置Git的user name和email：
 	
-	$ git config --global user.name "roy-lau"
-	$ git config --global user.email "roy-lau.vip@163.com
+		$ git config --global user.name "roy-lau"
+		$ git config --global user.email "roy-lau.vip@163.com
 
 
 2. 生成SSH密钥过程：
 
-    1. 查看是否已经有了ssh密钥：cd ~/.ssh
-
+    1. 查看是否已经有了ssh密钥：
+    
+			cd ~/.ssh
 	如果没有密钥则不会有此文件夹，有则备份删除
 
     2. 生存密钥：
-
-	$ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
+	
+			$ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
 
     按3个回车，密码为空。
 
@@ -119,9 +120,9 @@ __*设置git可提交最大bit
     The key fingerprint is:
     ………………
 
-__最后得到了两个文件：id_rsa和id_rsa.pub__
+__最后得到了两个文件：`id_rsa`和`id_rsa.pub`__
 
-3. 添加密钥到ssh：ssh-add 文件名
+3. 添加密钥到 `ssh：ssh-add 文件名`
 
 	需要之前输入密码。
 
@@ -139,6 +140,7 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
     Connection to github.com closed.
     
 ### 设置git push请求时间
+
 每多少秒向主机请求链接
 
     Host *
@@ -172,13 +174,15 @@ __最后得到了两个文件：id_rsa和id_rsa.pub__
        792f815..ef2b048  master -> master
 
 ### 小技巧
-1.  git add -A   保存所有的修改
-2.  git add .    保存新的添加和修改，但是不包括删除
-3.  git add -u   保存修改和删除，但是不包括新建文件。
-4.  工作的时候经常需要在各个目录之间跳转，可以通过环境变量对目录进行缩写，方便地在多个目录直接切换。
+
+1. ``` git add -A ```   保存所有的修改
+2. ``` git add . ```    保存新的添加和修改，但是不包括删除
+3. ``` git add -u ```   保存修改和删除，但是不包括新建文件。
+4. 工作的时候经常需要在各个目录之间跳转，可以通过环境变量对目录进行缩写，方便地在多个目录直接切换。
+
 在 ~/.bashrc 添加：
 
-export wd="/d/Projects/MyProject/git"
-export doc="/d/Projects/documents/"
+	export wd="/d/Projects/MyProject/git"
+	export doc="/d/Projects/documents/"
 
-以后只需要用 cd $wd, cd $doc 即可进入对应目录。
+以后只需要用 `cd $wd, cd $doc` 即可进入对应目录。
