@@ -15,8 +15,13 @@
     git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
     git reset --hard fe5731b8a32bfe06c170e95eeabbc7c21fe3cbdc 返回到某个版本
-    git rm -r --cached . 删除tag
+    git rm -r --cached .  删除tag
 
+#### git commit
+
+	git commit --amend  修改最近一次的git commit(git push过的不能修改) 
+	git rebase -i HEAD~3  修改倒数第几次的git commit
+	git rebase --continue 如果修改错了要返回原来的git commit，可以使用这个命令
 
 ### 分支类（master）
 1. 查看分支图：git log --graph
