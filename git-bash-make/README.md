@@ -120,7 +120,7 @@ __*设置git可提交最大bit__
     The key fingerprint is:
     ………………
 
-__最后得到了两个文件：`id_rsa`和`id_rsa.pub`__
+_最后得到了两个文件：`id_rsa`和`id_rsa.pub`
 
 3. 添加密钥到 `ssh：ssh-add 文件名`
 
