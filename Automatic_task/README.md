@@ -3,6 +3,9 @@
 ### 计划命令每24小时运行一次（目录 D:\git_rpo\web_project\gitpush.sh 是git上传的脚本）
     schtasks /create /sc hourly /st 00:24:00 /tn "Automatic git push" /tr D:\git_rpo\web_project\gitpush.sh
 
+如果出现`错误：无法加载列资源`，需修改`chcp`
+<img src="schtask_ERR.png" alt="schtasks错误注释图">
+
 ### C:\Users\Administrator>schtasks /?
 
 __SCHTASKS /parameter [arguments]__
