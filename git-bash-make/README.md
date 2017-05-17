@@ -31,12 +31,8 @@
 #### git commit
 
 	git commit --amend  修改最近一次的git commit(git push过的不能修改) 
-<<<<<<< HEAD
     git rebase -i HEAD~3  修改倒数第几次的git commit
 	git rebase -i commit_id(版本号，版本ID，commit_id)  可以修改或删除某个commit
-=======
-	git rebase -i HEAD~3  修改倒数第几次的git commit
->>>>>>> b6f80c44879bb8975cded9b7a35c46d2727ece1c
 	git rebase --continue 如果修改错了要返回原来的git commit，可以使用这个命令
 
 ### 分支类（master）
