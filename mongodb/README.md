@@ -56,3 +56,11 @@ node连接mongodb
 7.断开连接
 
     db.close();
+
+
+### mongo 命令
+
+use movie   // 进入名为movie的数据库
+db.movie.find({})   // 查找movie下的所有数据
+db.movie.find({}).count()  // 查看数据库内的数据条数
+db.movie.remove()   // 删除 movie下的所有数据
