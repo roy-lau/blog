@@ -1,8 +1,8 @@
 ﻿#!/bin/bash
 pwd && cd /d/git_rpo/
-var=":clock1::clock2::clock3::zap:定时任务,每天自动上传项目:zap::clock4::clock5::clock6:"
-Date=`date "+%Y/%m/%d-%H:%M:%S"`
-total="${var}""${Date}"
+var=":clock1::clock3::zap:定时任务,每天自动上传项目:zap::clock5::clock6:"
+Date=`date "+%Y/%m/%d-%H:%M:%S"`	# 获取当前时间赋给Date
+total="${var}""---""${Date}"	# 变量汇总
 echo "-------------------- web_project dir and file 上传中 …………………………………………………"
 cd web_project/ && git add . && git commit -m "${total}" && git push &&
 echo "-------------------- log dir and file 上传中 …………………………………………………"
