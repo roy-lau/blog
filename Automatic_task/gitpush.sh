@@ -1,20 +1,21 @@
 ﻿#!/bin/bash
 pwd && cd /d/git_rpo/
-var=":clock1::clock2::clock3::zap:定时任务,每天自动上传项目:zap::clock4::clock5::clock6:" `date "+%Y/%m/%d %H:%M:%S"`
+var=":clock1::clock2::clock3::zap:定时任务,每天自动上传项目:zap::clock4::clock5::clock6:"
+Date=`date "+%Y/%m/%d-%H:%M:%S"`
+total="${var}""${Date}"
 echo "-------------------- web_project dir and file 上传中 …………………………………………………"
-cd web_project/ && git add . && git commit -m ${var} && git push &&
+cd web_project/ && git add . && git commit -m "${total}" && git push &&
 echo "-------------------- log dir and file 上传中 …………………………………………………"
-cd ../log/ && git add . && git commit -m ${var} && git push &&
+cd ../log/ && git add . && git commit -m ${total} && git push &&
 echo "-------------------- nodejs dir and file 上传中 …………………………………………………"
-cd ../nodejs/ && git add . && git commit -m ${var} && git push &&
+cd ../nodejs/ && git add . && git commit -m ${total} && git push &&
 echo "-------------------- vue dir and file 上传中 …………………………………………………"
-cd ../vue/ && git add . && git commit -m ${var} && git push &&
+cd ../vue/ && git add . && git commit -m ${total} && git push &&
 # echo ""-------------------- web_list dir and file 上传中 …………………………………………………"
-# cd ../web_list/ && git add . && git commit -m ${var} && git push
+# cd ../web_list/ && git add . && git commit -m ${total} && git push
 # echo "-------------------- web_stu dir and file 上传中 …………………………………………………"
-# cd ../web_stu/ && git add . && git commit -m ${var} && git push
-# echo ""-------------------- app dir and file 上传中 …………………………………………………"
-# cd ../app/ && git add . && git commit -m ${var} && git push
+# cd ../web_stu/ && git add . && git commit -m ${total} && git push
+
 
 echo "上传完毕！"
 
