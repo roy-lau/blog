@@ -79,13 +79,18 @@ End. ```git push -u <主机名> <分支名>```
     4. git config --get user.name 获取一个配置项命令参数
     5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
 
+git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
+
+    git config --global core.quotepath false
+
+Git使用https方式进行连接时，默认每次推送时都要输入用户名和密码。进行如下设置后，只要在推送一次，以后就不需要用户名和密码了
+
+	git config credential.helper store
+
 #### 设置 `git lg` （设置个命令后，使用git lg命令可以查看分支日志等！）
 
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
-
-    git config --global core.quotepath false
 
 __*设置git可提交最大bit__
 
