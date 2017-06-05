@@ -179,6 +179,10 @@ _最后得到了两个文件：`id_rsa`和`id_rsa.pub`
     To git@github.com:roy-lau/README.git
        792f815..ef2b048  master -> master
 
+### git常用命令
+
+<img src="git-Common-commands.jpg" alt="">
+
 ### 小技巧
 
 1. ``` git add -A ```   保存所有的修改
