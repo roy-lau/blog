@@ -19,6 +19,27 @@
     	"tab_size": 2,
     	"translate_tabs_to_spaces": true
     }
+#### 安装的插件
+
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Emmet",   // 快速编辑HTML，css插件
+		"HTML-CSS-JS Prettify",   // HTML-CSS-JS格式化 
+		"Jade",
+		"Jade Build",
+		"LESS",
+		"Less2Css",
+		"OmniMarkupPreviewer",   // markdown文本实时预览插件
+		"Package Control",
+		"Vuejs Complete Package"
+	]
+}
+
 
 这行加在底部，可以让浏览器不停的刷新
 `<meta http-equiv="refresh" content="0.1">`
