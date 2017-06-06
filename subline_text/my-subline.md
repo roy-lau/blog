@@ -34,7 +34,7 @@
 			"Jade Build",
 			"LESS",
 			"Less2Css",
-			"OmniMarkupPreviewer",   // markdown文本实时预览插件
+			"OmniMarkupPreviewer",   // markdown文本实时预览插件(用法：Ctrl+Alt+o )
 			"Package Control",
 			"Vuejs Complete Package"
 		]
