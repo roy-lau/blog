@@ -388,3 +388,9 @@
     "ignored_packages":[""],        // 为空字符串时，可以启动vi模式
     "save_on_focus_lost": true      // 切换到其它文件标签或点击其它非本软件区域，文件自动保存
 }
+
+#### 打开jade文件 --> preerences --> setting-Syntax
+{
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true
+}
