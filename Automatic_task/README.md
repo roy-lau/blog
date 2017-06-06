@@ -152,7 +152,7 @@ __作为响应，SchTasks.exe 显示一条消息来说明任务会以当前用�
 
     The task will be created under current logged-in user name. Please enter the password ************
 
-__然后 SchTasks.exe 显示一条消息表明已计划该任务：
+- 然后 SchTasks.exe 显示一条消息表明已计划该任务：
 成功：计划任务 "Security Script" 已成功创建。
 
 #### 查询显示命令计划的任务：SCHTASKS /query /tn taskname
@@ -160,7 +160,7 @@ __然后 SchTasks.exe 显示一条消息表明已计划该任务：
     TaskName                  Next Run Time            Status ========================= ======================== ============== Security Script           10:50:00 AM , 4/4/2001     
 
 ### schtasks create hourly
-_语法
+_ 语法
 
     schtasks /create /tn TaskName /tr TaskRun /sc hourly [/mo {1 - 365}] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru {[Domain\]User | "System"} [/rp Password]]
 
