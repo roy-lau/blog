@@ -24,17 +24,17 @@
     git reflog 	查看命令历史的commit_id,可以获取回退之前的commit_id,
     git reflog	记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
     
-    HEAD 表示当前版本
-    HEAD^ ^是上一个版本
-    HEAD^ ^^是上上一个版本
+    HEAD        表示当前版本
+    HEAD^       ^是上一个版本
+    HEAD^       ^^是上上一个版本
     HEAD~100    ~100表示100个版本,100个版本写100个^比较容易数不过来。
 
 #### git commit
 
-	git commit --amend  修改最近一次的git commit(git push过的不能修改) 
-    git rebase -i HEAD~3  修改倒数第几次的git commit
+	git commit --amend         修改最近一次的git commit(git push过的不能修改) 
+    git rebase -i HEAD~3       修改倒数第几次的git commit
 	git rebase -i commit_id(版本号，版本ID，commit_id)  可以修改或删除某个commit
-	git rebase --continue 如果修改错了要返回原来的git commit，可以使用这个命令
+	git rebase --continue      如果修改错了要返回原来的git commit，可以使用这个命令
 
 ### 分支类（master）
 
@@ -50,10 +50,12 @@
 ### 标签（tag）
 	
 * 创建标签
+
  - git tag -a 'tagName' -m "注释"		创建附注标签(常用)
  - git tag  tagName-light  				创建轻量标签
 
 * 上传标签
+
  - git push origin tag tagName  		将 tagName 标签提交到git服务器
  - git push origin -–tags 				将本地所有标签一次性提交到git服务器
 
@@ -89,6 +91,19 @@
 7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。<br>
 End. ```git push -u <主机名> <分支名>```
 
+### git clone 慢？
+
+* 两步解决
+
+> 1. 开始 clone，如果觉得仓库太大，可以在 git clone 中加入参数 --depth=1，只拉取最近的一个 revision。  
+    git clone --depth=1  git clone --depth=1 git@github.com:roy-lau/web_project.git
+
+> 2. 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
+    
+    git fetch --unshallow  获取除当前分支外的所有分支
+
+    git fetch <远程主机名> <分支名> 获取分支
+    git fetch  获取全部分支
 ### 配置类
 
     1. git config -l 查看git配置
