@@ -50,20 +50,18 @@
 ### 标签（tag）
 	
 * 创建标签
-
- - git tag -a 'tagName' -m "注释"		创建附注标签(常用)
- - git tag  tagName-light  				创建轻量标签
+    - git tag -a `tagName` -m "注释"		创建附注标签(常用)
+    - git tag  tagName-light  				创建轻量标签
 
 * 上传标签
+    - git push origin tag `tagName`  		将 tagName 标签提交到git服务器
+    - git push origin -–tags 				将本地所有标签一次性提交到git服务器
 
- - git push origin tag tagName  		将 tagName 标签提交到git服务器
- - git push origin -–tags 				将本地所有标签一次性提交到git服务器
-
-* git tag   							查看当前分支下的标签
-* git tag -d tagName 					删除本地标签
-* git push origin :refs/tags/tagName  	删除远程标签
-* git checkout tagName 					切换标签
-* git tag -m oldTagName newTagName 		修改tag名
+* git tag   							    查看当前分支下的标签
+* git tag -d   `tagName` 					删除本地标签
+* git push origin `:refs/tags/tagName`  	删除远程标签
+* git checkout `tagName` 					切换标签
+* git tag -m oldTagName `newTagName` 		修改tag名
 
 ### 远程主机（origin）
 
@@ -95,10 +93,11 @@ End. ```git push -u <主机名> <分支名>```
 
 * 两步解决
 
-> 1. 开始 clone，如果觉得仓库太大，可以在 git clone 中加入参数 --depth=1，只拉取最近的一个 revision。  
+> 1、 开始 clone，如果觉得仓库太大，可以在 git clone 中加入参数 --depth=1，只拉取最近的一个 revision。 
+
     git clone --depth=1  git clone --depth=1 git@github.com:roy-lau/web_project.git
 
-> 2. 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
+> 2、 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
     
     git fetch --unshallow  获取除当前分支外的所有分支
 
@@ -106,51 +105,57 @@ End. ```git push -u <主机名> <分支名>```
     git fetch  获取全部分支
 ### 配置类
 
-    1. git config -l 查看git配置
-    1. git config -e vim下修改配置
-    3. git config -–add user.name=roy-lau 添加一个配置项命令参数
-    4. git config --get user.name 获取一个配置项命令参数
-    5. git congig --unset user.name=roy-lau 删除一个配置项命令参数
+1. git config -l                            查看git配置  
+1. git config -e                            vim下修改配置  
+3. git config -–add user.name=roy-lau       添加一个配置项命令参数  
+4. git config --get user.name               获取一个配置项命令参数  
+5. git congig --unset user.name=roy-lau     删除一个配置项命令参数  
 
-git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
+* git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
 
-    git config --global core.quotepath false
+        git config --global core.quotepath false
 
-Git使用https方式进行连接时，默认每次推送时都要输入用户名和密码。进行如下设置后，只要在推送一次，以后就不需要用户名和密码了
+* Git使用https方式进行连接时，默认每次推送时都要输入用户名和密码。进行如下设置后，只要在推送一次，以后就不需要用户名和密码了
 
-	git config credential.helper store
+    	git config credential.helper store
 
-#### 设置 `git lg` （设置个命令后，使用git lg命令可以查看分支日志等！）
-
+* 设置 `git lg` （设置个命令后，使用git lg命令可以查看分支日志等！）
+```bash
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
 
+* 设置git可提交最大bit
 
-__*设置git可提交最大bit__
+> 问题原因是`http.postBuffer`默认上限为`1M`所致。在git的配置里将`http.postBuffer`变量改大一些即可，比如将上限设为`500M`：
 
-问题原因是`http.postBuffer`默认上限为`1M`所致。在git的配置里将`http.postBuffer`变量改大一些即可，比如将上限设为`500M`：
-    
-    git config --global http.postBuffer 524288000
+        git config --global http.postBuffer 524288000
+        git sparse clone 路径  可以克隆git仓库下的某个目录
 
-    git sparse clone 路径  可以克隆git仓库下的某个目录
+* 设置git push请求时间
+
+> 每多少秒向主机请求链接
+
+    Host *
+    ServerAliveInterval 120 
 
 ### github的SSH配置如下：
 
-1. 设置Git的user name和email：
-	
-		$ git config --global user.name "roy-lau"
-		$ git config --global user.email "roy-lau.vip@163.com
-
-
-2. 生成SSH密钥过程：
-
-    1. 查看是否已经有了ssh密钥：
+__1. 设置Git的user name和email：__
     
-			cd ~/.ssh
-	如果没有密钥则不会有此文件夹，有则备份删除
+        $ git config --global user.name "roy-lau"
+        $ git config --global user.email "roy-lau.vip@163.com
 
-    2. 生存密钥：
-	
-			$ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
+
+__2. 生成SSH密钥过程：__
+
+1. 查看是否已经有了ssh密钥：
+
+        cd ~/.ssh
+    > 如果没有密钥则不会有此文件夹，有则备份删除
+
+2. 生存密钥：
+
+        $ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
 
     按3个回车，密码为空。
 
@@ -159,15 +164,15 @@ __*设置git可提交最大bit__
     The key fingerprint is:
     ………………
 
-_最后得到了两个文件：`id_rsa`和`id_rsa.pub`
+    > 最后得到了两个文件：`id_rsa`和`id_rsa.pub`
 
 3. 添加密钥到 `ssh：ssh-add 文件名`
 
-	需要之前输入密码。
+    需要之前输入密码。
 
 4. 在github上添加ssh密钥，这要添加的是```id_rsa.pub```里面的公钥。
     
-	打开https://github.com/ ，登陆roy-lau，然后添加ssh。
+    打开https://github.com/ ，登陆roy-lau，然后添加ssh。
 
 5. 测试：ssh git@github.com
 
@@ -178,18 +183,12 @@ _最后得到了两个文件：`id_rsa`和`id_rsa.pub`
     ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
     Connection to github.com closed.
     
-### 设置git push请求时间
-
-每多少秒向主机请求链接
-
-    Host *
-    ServerAliveInterval 120 
 
 ### bug记录！
 
-*bug1：```工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】```<br>
+* bug1：`工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】`
 
-解决步骤如下：
+>解决步骤如下：
 
     1.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git add -A                                //重点在这里，以前都是用git add .或git add --all
