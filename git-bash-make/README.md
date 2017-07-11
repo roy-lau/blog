@@ -4,6 +4,7 @@
 
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
 ### 使用git diff查看各个区之间的差异
+
     git diff 和 git diff –-cached容易混淆
     git diff 比较的是工作区和暂存区的差别
     git diff –-cached 比较的是暂存区和版本库的差别
@@ -12,9 +13,9 @@
 
     git rm --cached "文件路径"，不删除物理文件，仅将该文件从缓存中删除；
     git rm --cached 文件名 ，可以从缓存区移除文件，使该文件变为未跟踪的状态，
-    git ls-files 查看缓冲区内有哪些文件
     git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
-    git rm -r --cached .  删除tag
+    git ls-files 查看缓冲区内有哪些文件
+    git rm -r --cached .  删除缓存区
 
 ### 版本回退
     
@@ -37,13 +38,30 @@
 
 ### 分支类（master）
 
-1. 查看分支图：git log --graph
-2. 查看分支：git branch
-3. 创建分支：git branch (name)
-4. 切换分支：git checkout (name)
-5. 创建+切换分支：git checkout -b (name)
-6. 合并某分支到当前分支：git merge (name)
-7. 删除分支：git branch -d (name)
+1. git log --graph					查看分支图
+2. git branch						查看分支
+3. git branch  `BranchName`			创建分支
+4. git checkout  `BranchName`		切换分支
+5. git checkout -b  `BranchName`	创建+切换分支
+6. git merge  `BranchName`			合并某分支到当前分支
+7. git branch -d  `BranchName`		删除分支
+8. git branch -m `oldBranchName` `newBranchName` 	修改branch名
+
+### 标签（tag）
+	
+* 创建标签
+ - git tag -a 'tagName' -m "注释"		创建附注标签(常用)
+ - git tag  tagName-light  				创建轻量标签
+
+* 上传标签
+ - git push origin tag tagName  		将 tagName 标签提交到git服务器
+ - git push origin -–tags 				将本地所有标签一次性提交到git服务器
+
+* git tag   							查看当前分支下的标签
+* git tag -d tagName 					删除本地标签
+* git push origin :refs/tags/tagName  	删除远程标签
+* git checkout tagName 					切换标签
+* git tag -m oldTagName newTagName 		修改tag名
 
 ### 远程主机（origin）
 
