@@ -4,64 +4,128 @@
 
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
 ### 使用git diff查看各个区之间的差异
+> git diff 和 git diff –-cached容易混淆
 
-    git diff 和 git diff –-cached容易混淆
-    git diff 比较的是工作区和暂存区的差别
-    git diff –-cached 比较的是暂存区和版本库的差别
-    git diff HEAD 可以查看工作区和版本库的差别
-    每次commit后,git diff –-cached没有内容，是因为暂存区的内容已经更新到版本库中，因此暂存区和版本库中的内容无差别
+    git diff                        # 比较的是工作区和暂存区的差别
+    git diff –-cached               # 比较的是暂存区和版本库的差别
+    git diff HEAD                   # 可以查看工作区和版本库的差别
+> 每次commit后,git diff –-cached没有内容，是因为暂存区的内容已经更新到版本库中，因此暂存区和版本库中的内容无差别
 
-    git rm --cached "文件路径"，不删除物理文件，仅将该文件从缓存中删除；
-    git rm --cached 文件名 ，可以从缓存区移除文件，使该文件变为未跟踪的状态，
-    git checkout –- <file>” 命令时，会用暂存区全部或指定的文件替换工作区的文件。
-    git ls-files 查看缓冲区内有哪些文件
-    git rm -r --cached .  删除缓存区
+    git rm --cached "文件路径"      # 不删除物理文件，仅将该文件从缓存中删除；
+    git rm --cached "文件名"        # 可以从缓存区移除文件，使该文件变为未跟踪的状态，
+    git checkout –- <file>          # 命令时，会用暂存区全部或指定的文件替换工作区的文件。
+    git ls-files                    # 查看缓冲区内有哪些文件
+    git rm -r --cached .            # 删除缓存区
 
 ### 版本回退
     
-    git reset --hard HEADE~1  回滚到上一版本
-    git reset --hard commit_id(版本号，版本ID，commit_id) 回滚到某个版本
-    git reflog 	查看命令历史的commit_id,可以获取回退之前的commit_id,
-    git reflog	记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
+    git reset --hard HEADE~1    # 回滚到上一版本
+    git reset --hard commit_id(版本号，版本ID，commit_id)      # 回滚到某个版本
+    git reflog 	# 查看命令历史的commit_id,可以获取回退之前的commit_id,
+    git reflog	# 记录这个仓库中所有的分支的所有更新记录，包括已经撤销的更新.
     
-    HEAD        表示当前版本
-    HEAD^       ^是上一个版本
-    HEAD^       ^^是上上一个版本
-    HEAD~100    ~100表示100个版本,100个版本写100个^比较容易数不过来。
+    HEAD        # 表示当前版本
+    HEAD^       # 是上一个版本
+    HEAD^       # ^是上上一个版本
+    HEAD~100    # 100表示100个版本,100个版本写100个^比较容易数不过来。
 
 #### git commit
 
-	git commit --amend         修改最近一次的git commit(git push过的不能修改) 
-    git rebase -i HEAD~3       修改倒数第几次的git commit
-	git rebase -i commit_id(版本号，版本ID，commit_id)  可以修改或删除某个commit
-	git rebase --continue      如果修改错了要返回原来的git commit，可以使用这个命令
+	git commit --amend         # 修改最近一次的git commit(git push过的不能修改) 
+    git rebase -i HEAD~3       # 修改倒数第几次的git commit
+	git rebase -i commit_id(版本号，版本ID，commit_id)    # 可以修改或删除某个commit
+	git rebase --continue      # 如果修改错了要返回原来的git commit，可以使用这个命令
+
 
 ### 分支类（master）
 
-1. git log --graph					查看分支图
-2. git branch						查看分支
-3. git branch  `BranchName`			创建分支
-4. git checkout  `BranchName`		切换分支
-5. git checkout -b  `BranchName`	创建+切换分支
-6. git merge  `BranchName`			合并某分支到当前分支
-7. git branch -d  `BranchName`		删除分支
-8. git branch -m `oldBranchName` `newBranchName` 	修改branch名
+* 查看分支图
+```bash
+    git log --graph
+```
+* 查看分支
+```bash
+    git branch
+```
+* 查看所有远程分支
+```bash
+    git branch -r                
+```
+* 创建分支
+```bash
+    git branch  `BranchName`
+```
+* 切换分支
+```bash
+    git checkout  `BranchName`
+```
+* 创建+切换分支
+```bash
+    git checkout -b  `BranchName`
+```
+* 合并某分支到当前分支
+```bash
+    git merge  `BranchName`
+```
+* 删除本地分支
+```bash
+    git branch -D  `BranchName`
+```
+* 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
+```bash
+    git push origin :`branchName`
+    git push -d origin `branchName`
+```
+* 修改branch名
+```bash
+    git branch -m `oldBranchName` `newBranchName`
+```
+
+__拉取远程分支到本地分支__
+
+    git fetch   # 获取全部分支                         
+
+> 方法一、使用该方式会在本地新建分支`localBranchName`，并自动切换到该本地分支`localBranchName`。
+```bash 
+    git checkout -b localBranchName  origin/remoteBranchName
+```
+> 方法二、使用该方式会在本地新建分支`localBranchName`，但是不会自动切换到该本地分支x，需要手动checkout。
+
+```bash 
+    git fetch origin  remoteBranchName:localBranchName
+```
+
+> 注： BranchName:分支名 localBranchName:本地分支名  remoteBranchName: 远程分支名
+
+__git clone 慢？__
+
+* 两步解决
+
+> 1、 开始 clone，如果觉得仓库太大，可以在 git clone 中加入参数 --depth=1，只拉取最近的一个 revision。 
+
+    git clone --depth=1  git clone --depth=1 git@github.com:roy-lau/web_project.git
+
+> 2、 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
+    
+    git fetch --unshallow               # 获取除当前分支外的所有分支
+
 
 ### 标签（tag）
 	
 * 创建标签
-    - git tag -a `tagName` -m "注释"		创建附注标签(常用)
-    - git tag  tagName-light  				创建轻量标签
+    - git tag -a `tagName` -m "注释"		# 创建附注标签(常用)
+    - git tag  tagName-light  				# 创建轻量标签
 
 * 上传标签
-    - git push origin tag `tagName`  		将 tagName 标签提交到git服务器
-    - git push origin -–tags 				将本地所有标签一次性提交到git服务器
+    - git push origin tag `tagName`  		# 将 tagName 标签提交到git服务器
+    - git push origin -–tags 				# 将本地所有标签一次性提交到git服务器
 
-* git tag   							    查看当前分支下的标签
-* git tag -d   `tagName` 					删除本地标签
-* git push origin `:refs/tags/tagName`  	删除远程标签
-* git checkout `tagName` 					切换标签
-* git tag -m oldTagName `newTagName` 		修改tag名
+* git tag   							    # 查看当前分支下的标签
+* git tag -d  `tagName` 					# 删除本地标签
+* git push origin `:refs/tags/tagName`  	# 删除远程标签
+* git checkout `tagName` 					# 切换标签
+* git tag -m oldTagName `newTagName`        # 修改tag名 
+* git fetch origin tag `tagName` 		    # 获取远程tag
 
 ### 远程主机（origin）
 
@@ -89,20 +153,6 @@
 7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。<br>
 End. ```git push -u <主机名> <分支名>```
 
-### git clone 慢？
-
-* 两步解决
-
-> 1、 开始 clone，如果觉得仓库太大，可以在 git clone 中加入参数 --depth=1，只拉取最近的一个 revision。 
-
-    git clone --depth=1  git clone --depth=1 git@github.com:roy-lau/web_project.git
-
-> 2、 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
-    
-    git fetch --unshallow  获取除当前分支外的所有分支
-
-    git fetch <远程主机名> <分支名> 获取分支
-    git fetch  获取全部分支
 ### 配置类
 
 1. git config -l                            查看git配置  
@@ -153,7 +203,7 @@ __2. 生成SSH密钥过程：__
         cd ~/.ssh
     > 如果没有密钥则不会有此文件夹，有则备份删除
 
-2. 生存密钥：
+2. 保存密钥：
 
         $ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
 
@@ -190,10 +240,11 @@ __2. 生成SSH密钥过程：__
 
 >解决步骤如下：
 
-    1.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
+```bash 
+1. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git add -A                                //重点在这里，以前都是用git add .或git add --all
 
-    2.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
+2. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git commit -m "error"
     [master ef2b048] error
      3 files changed, 0 insertions(+), 0 deletions(-)
@@ -201,7 +252,7 @@ __2. 生成SSH密钥过程：__
      create mode 100644 git_help.png
      create mode 100644 "git\351\200\237\347\216\207.png"
 
-    3.Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
+3. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git push -u origin master
     Counting objects: 5, done.
     Delta compression using up to 4 threads.
@@ -210,7 +261,7 @@ __2. 生成SSH密钥过程：__
     Total 5 (delta 0), reused 0 (delta 0)
     To git@github.com:roy-lau/README.git
        792f815..ef2b048  master -> master
-
+```
 ### git常用命令
 
 <img src="git-Common-commands.jpg" alt="">
