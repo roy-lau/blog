@@ -40,6 +40,32 @@
 		]
 	}
 
+#### subline代码片段
+
+步骤：Tools --> Developer --> New snippent 文件中写入下面片段:
+
+<snippet>
+	<content><![CDATA[
+	按下tab键出现的代码片段
+	${number} : 鼠标停留的位置
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>`!`唤醒代码片段的关键字 </tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>`source.python` 在什么文件类型下</scope>
+</snippet>
+
+
+#### Emmet配置让单标签闭合
+
+步骤：preference --> package Seeting --> emeet --> Setting-User配置文件中写入下面片段：
+
+	{
+		"syntaxProfiles":{
+			"html":"xhtml",
+			"vue":"xhtml"
+		}
+	}
 
 这行加在底部，可以让浏览器不停的刷新
 `<meta http-equiv="refresh" content="0.1">`
