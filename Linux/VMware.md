@@ -17,3 +17,7 @@
 > 不可以与网络中的其他电脑通信
 
 <img src="imgs/Linux_VMware_network.png" alt="虚拟机网络通信方式" />
+
+1. 进入BIOS
+
+开机时按F2
