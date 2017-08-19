@@ -31,3 +31,5 @@ yum 设置安装路径
 
 	cat /proc/cpuinfo| grep "processor"| wc -l
 
+### [network网络](network.md)
+
