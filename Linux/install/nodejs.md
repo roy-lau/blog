@@ -1,22 +1,23 @@
 
-## 方法一
+## 方法一（直接下载编译好的）
 
 第一步：
 
-	wget https://nodejs.org/dist/v4.2.3/node-v4.2.3-linux-x86.tar.gz  # 直接下载编译号好的
+	wget https://nodejs.org/dist/v6.6.0/node-v6.6.0-linux-x86.tar.xz
 
 
 第二步  解压缩文件包
-	 tar xvf node-v4.2.3-linux-x86.tar.gz
+
+	 tar xvf node-v6.6.0-linux-x86.tar.gz
 
 第三步  NODE 环境配置
-    这样可以使得在任何目录下，都可以使用/usr/local/src/node-v4.2.3-linux-x86/bin 下得node命令，
+    这样可以使得在任何目录下，都可以使用/usr/local/src/node-v6.6.0-linux-x86/bin 下得node命令，
     步骤如下：
     a、切换到 root 用户
     b、vi /etc/profile
     c、在最下面加入
        # node （注释作用）
-       export NODE_HOME=/usr/local/src/node-v4.2.3-linux-x86
+       export NODE_HOME=/usr/local/src/node-v6.6.0-linux-x86
        export PATH=$PATH:$NODE_HOME/bin  
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
@@ -25,7 +26,7 @@
 第四步 大功告成
     你就可以用 node -v 看自己的成果了！ 
 
-## 方法二：
+## 方法二：（自己编译）
 
 准备：
 
@@ -75,3 +76,17 @@ gcc --version
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
     e、source /etc/profile （使配置文件生效）
+
+## 方法三（通过yum下载）
+
+另一个有效且简单的方法来安装Node.js就是从官方库。这同样确保您可以访问到EPEL库，你可以通过运行以下命令。
+
+sudo yum install epel-release
+
+现在可以使用yum命令安装Node.js了。
+
+sudo yum install nodejs
+
+因为在开发过程中我需要管理节点包，我还要安装新公共管理的软件包管理器，使用以下命令。
+
+sudo yum install npm
