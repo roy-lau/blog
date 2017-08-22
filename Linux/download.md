@@ -1,1 +1,1 @@
-# [centos下载地址](!http://vault.centos.org/)
+[centos下载地址](http://vault.centos.org/)
