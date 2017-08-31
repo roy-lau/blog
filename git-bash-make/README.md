@@ -5,20 +5,23 @@
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
 ### 使用git diff查看各个区之间的差异
 > git diff 和 git diff –-cached容易混淆
-
+```bash 
     git diff                        # 比较的是工作区和暂存区的差别
     git diff –-cached               # 比较的是暂存区和版本库的差别
     git diff HEAD                   # 可以查看工作区和版本库的差别
+```
 > 每次commit后,git diff –-cached没有内容，是因为暂存区的内容已经更新到版本库中，因此暂存区和版本库中的内容无差别
-
+```bash 
     git rm --cached "文件路径"      # 不删除物理文件，仅将该文件从缓存中删除；
     git rm --cached "文件名"        # 可以从缓存区移除文件，使该文件变为未跟踪的状态，
     git checkout –- <file>          # 命令时，会用暂存区全部或指定的文件替换工作区的文件。
     git ls-files                    # 查看缓冲区内有哪些文件
     git rm -r --cached .            # 删除缓存区
+```
 
 ### 版本回退
-    
+
+```bash 
     git reset --hard HEADE~1    # 回滚到上一版本
     git reset --hard commit_id(版本号，版本ID，commit_id)      # 回滚到某个版本
     git reflog 	# 查看命令历史的commit_id,可以获取回退之前的commit_id,
@@ -28,57 +31,44 @@
     HEAD^       # 是上一个版本
     HEAD^       # ^是上上一个版本
     HEAD~100    # 100表示100个版本,100个版本写100个^比较容易数不过来。
+```
 
 #### git commit
 
+```bash
 	git commit --amend         # 修改最近一次的git commit(git push过的不能修改) 
     git rebase -i HEAD~3       # 修改倒数第几次的git commit
 	git rebase -i commit_id(版本号，版本ID，commit_id)    # 可以修改或删除某个commit
 	git rebase --continue      # 如果修改错了要返回原来的git commit，可以使用这个命令
+```
 
+#### 上传本地文件夹到远程仓库
+```bash
+    1. git init     # 本地项目根目录下执行这个命令
+    2. git add .    # 将项目的所有文件添加到仓库中
+    3. git commit -m "注释语句"
+    4. git remote add origin git@github.com:roy-lau/python.git     # 将本地的仓库关联到github上
+    5. git pull origin master       # 上传github之前，要先pull一下
+    6. git push -u origin master    # 上传代码到github远程仓库
+```
 
 ### 分支类（master）
 
-* 查看分支图
 ```bash
-    git log --graph
-```
-* 查看分支
-```bash
-    git branch
-```
-* 查看所有远程分支
-```bash
-    git branch -r                
-```
-* 创建分支
-```bash
-    git branch  `BranchName`
-```
-* 切换分支
-```bash
-    git checkout  `BranchName`
-```
-* 创建+切换分支
-```bash
-    git checkout -b  `BranchName`
-```
-* 合并某分支到当前分支
-```bash
-    git merge  `BranchName`
-```
-* 删除本地分支
-```bash
-    git branch -D  `BranchName`
-```
-* 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
-```bash
-    git push origin :`branchName`
-    git push -d origin `branchName`
-```
-* 修改branch名
-```bash
-    git branch -m `oldBranchName` `newBranchName`
+    git log --graph                 # 查看分支图
+    git branch                      # 查看分支
+    git branch -r                   # 查看所有远程分支
+    git branch  BranchName          # 创建分支
+    git checkout  BranchName        # 切换分支
+    git checkout -b  BranchName     # 创建+切换分支
+    git merge  BranchName           # 合并某分支到当前分支
+    git branch -D  BranchName       # 删除本地分支
+
+    # 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
+    git push origin :branchName
+    git push -d origin branchName
+
+    git branch -m oldBranchName newBranchName   # 修改branch名
 ```
 
 __拉取远程分支到本地分支__
@@ -155,11 +145,11 @@ End. ```git push -u <主机名> <分支名>```
 
 ### 配置类
 
-1. git config -l                            查看git配置  
-1. git config -e                            vim下修改配置  
-3. git config -–add user.name=roy-lau       添加一个配置项命令参数  
-4. git config --get user.name               获取一个配置项命令参数  
-5. git congig --unset user.name=roy-lau     删除一个配置项命令参数  
+1. `git config -l`                            查看git配置  
+1. `git config -e`                            vim下修改配置  
+3. `git config -–add user.name=roy-lau`       添加一个配置项命令参数  
+4. `git config --get user.name`               获取一个配置项命令参数  
+5. `git congig --unset user.name=roy-lau`     删除一个配置项命令参数  
 
 * git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
 
@@ -242,7 +232,7 @@ __2. 生成SSH密钥过程：__
 
 ```bash 
 1. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
-    $ git add -A                                //重点在这里，以前都是用git add .或git add --all
+    $ git add -A                                # 重点在这里，以前都是用git add .或git add --all
 
 2. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git commit -m "error"
