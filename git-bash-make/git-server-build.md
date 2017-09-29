@@ -24,7 +24,7 @@ $ su git                # 切换到git用户
 $ cd /home/git/
 $ mkdir .ssh
 $ chmod 700 .ssh
-$ touch .ssh/authorized_keys
+$ touch .ssh/authorized_keys	# 这个文件是用来存放用户的 公钥 的，一行一个
 $ chmod 600 .ssh/authorized_keys
 ```
 
