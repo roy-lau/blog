@@ -151,7 +151,7 @@ End. ```git push -u <主机名> <分支名>```
 4. `git config --get user.name`               获取一个配置项命令参数  
 5. `git congig --unset user.name=roy-lau`     删除一个配置项命令参数  
 
-* git add 的时候，中文会显示成` \344\270\255\346\226\207.txt `，使用如下命令进行配置：
+* git add 的时候，中文会显示成`\344\270\255\346\226\207.txt `，使用如下命令进行配置：
 
         git config --global core.quotepath false
 
@@ -223,6 +223,10 @@ __2. 生成SSH密钥过程：__
     ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
     Connection to github.com closed.
     
+
+### git私服搭建
+
+&nbsp;&nbsp;&nbsp;&nbsp;__git如何搭建私服[点击查看](git-server-build.md)__
 
 ### bug记录！
 
