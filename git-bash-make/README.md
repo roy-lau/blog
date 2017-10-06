@@ -88,13 +88,13 @@ __拉取远程分支到本地分支__
 
 > 注： BranchName:分支名 localBranchName:本地分支名  remoteBranchName: 远程分支名
 
-__git clone 慢？__
+__git clone__
 
-* 两步解决
 
-> 1、 开始 clone，如果觉得仓库太大，可以在 git clone 中加入参数 --depth=1，只拉取最近的一个 revision。 
+> 1、 开始 `clone`，如果觉得仓库太大，可以在 `git clone` 中加入参数 `--depth=1`，只拉取最近的一个 `revision`。 
 
-    git clone --depth=1  git clone --depth=1 git@github.com:roy-lau/web_project.git
+    git clone  git@github.com:roy-lau/web_project.git --depth=1     # 设置克隆的深度(两个参数可以连起来)
+    git clone  git@github.com:roy-lau/web_project.git -b dev        # 设置克隆的分支(两个参数可以连起来)
 
 > 2、 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
     
