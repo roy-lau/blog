@@ -3,6 +3,11 @@
 :modify:
 
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
+
+### git常用命令
+
+<img src="git-Common-commands.jpg" alt="">
+
 ### 使用git diff查看各个区之间的差异
 > git diff 和 git diff –-cached容易混淆
 ```bash 
@@ -257,9 +262,7 @@ __2. 生成SSH密钥过程：__
     To git@github.com:roy-lau/README.git
        792f815..ef2b048  master -> master
 ```
-### git常用命令
 
-<img src="git-Common-commands.jpg" alt="">
 
 ### 小技巧
 
