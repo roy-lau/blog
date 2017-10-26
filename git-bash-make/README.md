@@ -39,17 +39,17 @@
 #### git commit
 
 ```bash
-    git reset --soft HEAD^     # 删除到HEAD^的commit，(仅commit删除，文件未变化)
+	git reset --soft HEAD^     # 删除到HEAD^的commit，(仅commit删除，文件未变化)
 	git commit --amend         # 修改最近一次的commit内容(git push过的不能修改) 
-    git rebase -i HEAD~3       # 修改倒数第几次的git commit
+	git rebase -i HEAD~3       # 修改倒数第几次的git commit
 	git rebase -i commit_id(版本号，版本ID，commit_id)    # 可以修改或删除某个commit
 	git rebase --continue      # 如果修改错了要返回原来的git commit，可以使用这个命令
 ```
 
 #### 上传本地文件夹到远程仓库
 ```bash
-    1. git init     # 本地项目根目录下执行这个命令
-    2. git add .    # 将项目的所有文件添加到仓库中
+    1. git init     				# 本地项目根目录下执行这个命令
+    2. git add .    				# 将项目的所有文件添加到仓库中
     3. git commit -m "注释语句"
     4. git remote add origin git@github.com:roy-lau/python.git     # 将本地的仓库关联到github上
     5. git pull origin master       # 上传github之前，要先pull一下
@@ -59,24 +59,24 @@
 ### 分支类（master）
 
 ```bash
-    git log --graph                 # 查看分支图
-    git branch                      # 查看分支
-    git branch -r                   # 查看所有远程分支
-    git branch  BranchName          # 创建分支
-    git checkout  BranchName        # 切换分支
-    git checkout -b  BranchName     # 创建+切换分支
-    git merge  BranchName           # 合并某分支到当前分支
-    git branch -D  BranchName       # 删除本地分支
+	git log --graph                 # 查看分支图
+	git branch                      # 查看分支
+	git branch -r                   # 查看所有远程分支
+	git branch  BranchName          # 创建分支
+	git checkout  BranchName        # 切换分支
+	git checkout -b  BranchName     # 创建+切换分支
+	git merge  BranchName           # 合并某分支到当前分支
+	git branch -D  BranchName       # 删除本地分支
 	git pull origin  remoteBranchName:localBranchName # 获取远程分支
 
-    # 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
-    git push origin :branchName
-    git push -d origin branchName
+	# 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
+	git push origin :branchName
+	git push -d origin branchName
 
-    git branch -m oldBranchName newBranchName   # 修改branch名
+	git branch -m oldBranchName newBranchName   # 修改branch名
 ```
 
-__git 快速clone__
+#### git 快速clone
 
 > 1、 开始 `clone`，如果觉得仓库太大，可以在 `git clone` 中加入参数 `--depth=1`，只拉取最近的一个 `revision`。 
 
@@ -97,8 +97,6 @@ __git 快速clone__
 ```
 
 > 注： BranchName:分支名 localBranchName:本地分支名  remoteBranchName: 远程分支名
-
-
 
 ### 标签（tag）
 	
