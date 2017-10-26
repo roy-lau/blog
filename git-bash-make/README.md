@@ -1,7 +1,5 @@
 #  -----------------下面是使用git的一些心得笔记 ----------
 
-:modify:
-
 ~~能成功上传全依赖于http://www.cnblogs.com/schaepher/p/5561193.html#six~~
 
 ### git常用命令
@@ -69,6 +67,7 @@
     git checkout -b  BranchName     # 创建+切换分支
     git merge  BranchName           # 合并某分支到当前分支
     git branch -D  BranchName       # 删除本地分支
+	git pull origin  remoteBranchName:localBranchName # 获取远程分支
 
     # 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
     git push origin :branchName
@@ -77,24 +76,7 @@
     git branch -m oldBranchName newBranchName   # 修改branch名
 ```
 
-__拉取远程分支到本地分支__
-
-    git fetch   # 获取全部分支                         
-
-> 方法一、使用该方式会在本地新建分支`localBranchName`，并自动切换到该本地分支`localBranchName`。
-```bash 
-    git checkout -b localBranchName  origin/remoteBranchName
-```
-> 方法二、使用该方式会在本地新建分支`localBranchName`，但是不会自动切换到该本地分支x，需要手动checkout。
-
-```bash 
-    git fetch origin  remoteBranchName:localBranchName
-```
-
-> 注： BranchName:分支名 localBranchName:本地分支名  remoteBranchName: 远程分支名
-
-__git clone__
-
+__git 快速clone__
 
 > 1、 开始 `clone`，如果觉得仓库太大，可以在 `git clone` 中加入参数 `--depth=1`，只拉取最近的一个 `revision`。 
 
@@ -103,7 +85,19 @@ __git clone__
 
 > 2、 如果后面想看历史的版本，那么也很好办，使用 git fetch 即可。  
     
-    git fetch --unshallow               # 获取除当前分支外的所有分支
+    git fetch --unshallow               # 获取除当前分支的所有历史版本
+
+> 3、拉取远程分支到本地分支
+
+```bash 
+    git fetch origin  remoteBranchName:localBranchName	
+    # 如果remoteBranchName和localBranchName冲突,手动merge,可以设置深度--depth=1
+    git pull origin  remoteBranchName:localBranchName	
+    # 如果remoteBranchName和localBranchName冲突,自动merge,可以设置深度--depth=1
+```
+
+> 注： BranchName:分支名 localBranchName:本地分支名  remoteBranchName: 远程分支名
+
 
 
 ### 标签（tag）
@@ -146,7 +140,7 @@ __git clone__
 4. ```git remote show <主机名>``` 可以查看该主机的详细信息。
 5. ```git remote add <主机名><网址>```  添加远程主机。
 6. ```git remote rm <主机名>``` 删除远程主机
-7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。<br>
+7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。  
 End. ```git push -u <主机名> <分支名>```
 
 ### 配置类
@@ -266,9 +260,9 @@ __2. 生成SSH密钥过程：__
 
 ### 小技巧
 
-1. ``` git add -A ```   保存所有的修改
-2. ``` git add . ```    保存新的添加和修改，但是不包括删除
-3. ``` git add -u ```   保存修改和删除，但是不包括新建文件。
+1. ` git add -A `   保存所有的修改
+2. ` git add . `    保存新的添加和修改，但是不包括删除
+3. ` git add -u `   保存修改和删除，但是不包括新建文件。
 4. 工作的时候经常需要在各个目录之间跳转，可以通过环境变量对目录进行缩写，方便地在多个目录直接切换。
 
 在 ~/.bashrc 添加：
