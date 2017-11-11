@@ -212,15 +212,12 @@ __2. 生成SSH密钥过程：__
     
     打开https://github.com/ ，登陆roy-lau，然后添加ssh。
 
-5. 测试：ssh git@github.com
+5. 测试：
 
-    The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.
-    RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
-    Are you sure you want to continue connecting (yes/no)? yes
-    Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.
-    ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
-    Connection to github.com closed.
-    
+```shell
+    $ ssh -T git@github.com
+    Hi roy-lau! You've successfully authenticated, but GitHub does not provide shell access.    
+```
 
 ### git私服搭建
 
