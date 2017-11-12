@@ -8,13 +8,13 @@
 
 ### 使用git diff查看各个区之间的差异
 > git diff 和 git diff –-cached容易混淆
-```bash 
+```shell
     git diff                        # 比较的是工作区和暂存区的差别
     git diff –-cached               # 比较的是暂存区和版本库的差别
     git diff HEAD                   # 可以查看工作区和版本库的差别
 ```
 > 每次commit后,git diff –-cached没有内容，是因为暂存区的内容已经更新到版本库中，因此暂存区和版本库中的内容无差别
-```bash 
+```shell
     git rm --cached "文件路径"      # 不删除物理文件，仅将该文件从缓存中删除；
     git rm --cached "文件名"        # 可以从缓存区移除文件，使该文件变为未跟踪的状态，
     git checkout –- <file>          # 命令时，会用暂存区全部或指定的文件替换工作区的文件。
@@ -24,7 +24,7 @@
 
 ### 版本回退
 
-```bash 
+```shell
     git reset --hard HEADE~1    # 回滚到上一版本
     git reset --hard commit_id(版本号，版本ID，commit_id)      # 回滚到某个版本
     git reflog 	# 查看命令历史的commit_id,可以获取回退之前的commit_id,
@@ -89,7 +89,7 @@
 
 > 3、拉取远程分支到本地分支
 
-```bash 
+```shell
     git fetch origin  remoteBranchName:localBranchName	
     # 如果remoteBranchName和localBranchName冲突,手动merge,可以设置深度--depth=1
     git pull origin  remoteBranchName:localBranchName	
@@ -229,7 +229,7 @@ __2. 生成SSH密钥过程：__
 
 >解决步骤如下：
 
-```bash 
+```shell
 1. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git add -A                                # 重点在这里，以前都是用git add .或git add --all
 
