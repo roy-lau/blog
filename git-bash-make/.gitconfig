@@ -1,0 +1,104 @@
+[user]
+	name = roy-lau
+	email = roy-lau@foxmail.com
+[core]
+	editor = notepad
+	quotepath = false
+	autocrlf = false
+	whitespace = cr-at-eol
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	dt = difftool
+	mt = mergetool
+	st = status
+	s = status
+    st = status
+    sb = status -s -b
+    #############
+    d = diff
+    di = diff
+    dc = diff --cached
+    dk = diff --check
+    dck = diff --cached --check
+    #############
+    c = commit
+    ca = commit -a
+    cm = commit -m
+    ci = commit
+    #############
+    l = log --oneline
+    #############
+    o = checkout
+    co = checkout
+    ob = checkout -b
+    cob = checkout -b
+    #############
+    b = branch
+    bv = branch -vv
+    ba = branch -a
+    bd = branch -d
+    br = branch -r
+	unstage = reset HEAD
+	last = log -1 HEAD
+	visual = !gitk
+	vs = !gitk
+	#############
+    f = fetch
+    fo = fetch origin
+    #############
+    m = merge
+    #############
+    ps = push
+    pl = pull
+    pb = pull --rebase
+    psf = push -f
+    psu = push -u
+    plu = pull -u
+    pso = push origin
+    plo = pull origin
+    pbo = pull --rebase origin
+    psfo = push -f origin
+    psuo = push -u origin
+    pluo = pull -u origin
+    #############
+    rb = rebase
+    #############
+    re = reset
+    rh = reset HEAD
+    reh = reset --hard
+    rem = reset --mixed
+    res = reset --soft
+    rehh = reset --hard HEAD
+    remh = reset --mixed HEAD
+    resh = reset --soft HEAD
+    #############
+    w = show
+    #############
+	rank = shortlog -sn --no-merges
+	bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+	plg = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+	tlg = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+[gui]
+	encoding = utf-8
+[i18n]
+	commitencoding = utf-8
+[merge]
+	tool = extMerge
+[mergetool "extMerge"]
+	cmd = D:/roy-lau/p4/p4merge.exe "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	trustExitCode = true
+[diff]
+	tool = extMerge
+[difftool]
+    cmd = D:/roy-lau/p4/p4merge.exe "$LOCAL" "$REMOTE"
+[mergetool]
+	keepBackup = false
+[commit]
+	template = C:/Users/roy-lau/template/.git_template
+[init]
+	templatedir = C:/Users/roy-lau/.git_template
