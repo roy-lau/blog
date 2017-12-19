@@ -193,7 +193,7 @@ __2. 生成SSH密钥过程：__
 
 2. 保存密钥：
 
-        $ ssh-keygen -t rsa -C  “roy-lau.vip@163.com"
+        $ ssh-keygen -t rsa -C  "roy-lau.vip@163.com"
 
     按3个回车，密码为空。
 
