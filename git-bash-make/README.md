@@ -38,16 +38,54 @@
 
 #### git commit
 
-```bash
-	git reset --soft HEAD^     # 删除到HEAD^的commit，(仅commit删除，文件未变化)
-	git commit --amend         # 修改最近一次的commit内容(git push过的不能修改) 
-	git rebase -i HEAD~3       # 修改倒数第几次的git commit
-	git rebase -i commit_id(版本号，版本ID，commit_id)    # 可以修改或删除某个commit
-	git rebase --continue      # 如果修改错了要返回原来的git commit，可以使用这个命令
+```shell
+    git reset --soft HEAD^     # 删除到HEAD^的commit，(仅commit删除，文件未变化)
+    git commit --amend         # 修改最近一次的commit内容(git push过的不能修改) 
+    git rebase -i HEAD~3       # 修改倒数第几次的git commit
+    git rebase -i commit_id(版本号，版本ID，commit_id)    # 可以修改或删除某个commit
+    git rebase --continue      # 如果修改错了要返回原来的git commit，可以使用这个命令
+```
+修改commit massage
+
+```shell
+    1. $ git rebase -i commit_id(版本号，版本ID，commit_id)    # 可以修改或删除某个commit
+    
+    2. 显示结果如下，修改 pick 为 edit ，并 :wq 保存退出
+        pick 92b495b 2009-08-08: ×××××××
+
+        # Rebase 9ef2b1f..92b495b onto 9ef2b1f
+        #
+        # Commands:
+        #  pick = use commit
+        #  edit = use commit, but stop for amending //改上面的 pick 为 edit
+        #  squash = use commit, but meld into previous commit
+        #
+        # If you remove a line here THAT COMMIT WILL BE LOST.
+        # However, if you remove everything, the rebase will be aborted.
+        
+    3. 命令行显示： 
+    
+        Stopped at e35b8f3… reflog branch first commit
+        You can amend the commit now, with
+        git commit –amend
+        Once you are satisfied with your changes, run
+        git rebase –continue
+        
+    4. 修改需要修改的地方（只是修改commit message就不用做)
+    
+        git add . #这一步如果只是修改commit message不用输入
+        git commit --amend 
+        #输入修改后的commit message，保存
+        
+    5. $ git rebase –continue   # 使用 git rebase –continue 完成操作
+    
+    6. 推送到远端（若还没有推送到远端，不用处理）
+        $ git push <remote> <branch> -f   # 加-f 表示忽略冲突（强推）
 ```
 
 #### 上传本地文件夹到远程仓库
-```bash
+
+```shell
     1. git init     				# 本地项目根目录下执行这个命令
     2. git add .    				# 将项目的所有文件添加到仓库中
     3. git commit -m "注释语句"
@@ -58,22 +96,22 @@
 
 ### 分支类（master）
 
-```bash
-	git log --graph                 # 查看分支图
-	git branch                      # 查看分支
-	git branch -r                   # 查看所有远程分支
-	git branch  BranchName          # 创建分支
-	git checkout  BranchName        # 切换分支
-	git checkout -b  BranchName     # 创建+切换分支
-	git merge  BranchName           # 合并某分支到当前分支
-	git branch -D  BranchName       # 删除本地分支
-	git pull origin  remoteBranchName:localBranchName # 获取远程分支
+```shell
+    git log --graph                 # 查看分支图
+    git branch                      # 查看分支
+    git branch -r                   # 查看所有远程分支
+    git branch  BranchName          # 创建分支
+    git checkout  BranchName        # 切换分支
+    git checkout -b  BranchName     # 创建+切换分支
+    git merge  BranchName           # 合并某分支到当前分支
+    git branch -D  BranchName       # 删除本地分支
+    git pull origin  remoteBranchName:localBranchName # 获取远程分支
 
-	# 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
-	git push origin :branchName
-	git push -d origin branchName
+    # 删除远程分支(推送一个空分支到远程分支,就相当于删除了远程分支)
+    git push origin :branchName
+    git push -d origin branchName
 
-	git branch -m oldBranchName newBranchName   # 修改branch名
+    git branch -m oldBranchName newBranchName   # 修改branch名
 ```
 
 #### git 快速clone
@@ -105,8 +143,8 @@
     - git tag  tagName-light  				# 创建轻量标签
 
 * 上传标签
-    - git push origin tag `tagName`  		# 将 tagName 标签提交到git服务器
-    - git push origin -–tags 				# 将本地所有标签一次性提交到git服务器
+	- git push origin tag `tagName`  		# 将 tagName 标签提交到git服务器
+	- git push origin -–tags 				# 将本地所有标签一次性提交到git服务器
 
 * git tag   							    # 查看当前分支下的标签
 * git tag -d  `tagName` 					# 删除本地标签
@@ -119,19 +157,19 @@
 
 1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
 
-		$ git remote
-		origin
+        $ git remote
+        origin
 
 2. 使用```-v```选项可以查看远程主机的网址
 
-    	$ git remote -v
-    	origin git@github.com:roy-lau/python.git(fetch)
-    	origin git@github.com:roy-lau/python.git(push)
+		$ git remote -v
+		origin git@github.com:roy-lau/python.git(fetch)
+		origin git@github.com:roy-lau/python.git(push)
 
 3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
 
-    	$ git clone -o roy-lau https://github.com/roy-lau/python.git
-    	$ git remote roy-lau
+		$ git clone -o roy-lau https://github.com/roy-lau/python.git
+		$ git remote roy-lau
 
     上面命令表示，克隆的时候，指定远程主机叫roy-lau
 
@@ -155,7 +193,7 @@ End. ```git push -u <主机名> <分支名>```
 
 * Git使用https方式进行连接时，默认每次推送时都要输入用户名和密码。进行如下设置后，只要在推送一次，以后就不需要用户名和密码了
 
-    	git config credential.helper store
+        git config credential.helper store
 
 * 设置 `git lg` （设置个命令后，使用git lg命令可以查看分支日志等！）
 ```bash
@@ -166,8 +204,8 @@ End. ```git push -u <主机名> <分支名>```
 
 > 问题原因是`http.postBuffer`默认上限为`1M`所致。在git的配置里将`http.postBuffer`变量改大一些即可，比如将上限设为`500M`：
 
-        git config --global http.postBuffer 524288000
-        git sparse clone 路径  可以克隆git仓库下的某个目录
+    git config --global http.postBuffer 524288000
+    git sparse clone 路径  可以克隆git仓库下的某个目录
 
 * 设置git push请求时间
 
@@ -180,8 +218,8 @@ End. ```git push -u <主机名> <分支名>```
 
 __1. 设置Git的user name和email：__
     
-        $ git config --global user.name "roy-lau"
-        $ git config --global user.email "roy-lau.vip@163.com
+    $ git config --global user.name "roy-lau"
+    $ git config --global user.email "roy-lau.vip@163.com
 
 
 __2. 生成SSH密钥过程：__
@@ -204,9 +242,9 @@ __2. 生成SSH密钥过程：__
 
     > 最后得到了两个文件：`id_rsa`和`id_rsa.pub`
 
-3. 添加密钥到 `ssh：ssh-add 文件名`
+3. 添加密钥
 
-    需要之前输入密码。
+        ssh：ssh-add 文件名   # 需要之前输入密码。
 
 4. 在github上添加ssh密钥，这要添加的是```id_rsa.pub```里面的公钥。
     
