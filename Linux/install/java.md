@@ -10,7 +10,7 @@
 
   当结果显示为Complete！即卸载完毕。
 
-注：“*”表示卸载掉java 1.7.0的所有openjdk相关文件。
+注：`*`表示卸载掉java 1.7.0的所有openjdk相关文件。
 
 3、检查CentOS系统网络连接是否正常。
 
@@ -18,15 +18,15 @@
 
 4、查看yum库中的Java安装包。
 
-	输入：yum -y list java* 
+	输入：yum -y list java*
 
 5、使用yum安装Java环境。
 
-	输入：yum -y install java-1.7.0-openjdk* ，以yum库中java-1.7.0为例。 
+	输入：yum -y install java-1.7.0-openjdk* ，以yum库中java-1.7.0为例。
 
   当结果显示为Complete！即安装完毕。
 
-注：“*”表示将java-1.7.0的所有相关Java程序都安装上。
+注：`*`表示将java-1.7.0的所有相关Java程序都安装上。
 
 6、查看刚安装的Java版本信息。
 
