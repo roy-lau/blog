@@ -3,6 +3,8 @@
 140.143.158.138
 qazplm123
 
+<a href="README.md">目录</a>
+
 MYSQL相关的包：
 
 * `MySQL`： MySQL服务器。你需要该选项，除非你只想连接运行在另一台机器上的`MySQL`服务器。
@@ -13,7 +15,7 @@ MYSQL相关的包：
 
 检测卸载mysql：
 
-```shell
+```bash
 rpm -qa | grep mysql 	# 检测系统是否自带安装 mysql
 
 rpm -e mysql　　		# 普通删除模式
@@ -22,14 +24,14 @@ rpm -e --nodeps mysql　 # 强力删除模式，如果使用上面命令删除�
 
 安装 mysql(CentOS 7以下)：
 
-```shell
+```bash
 yum install mysql
 yum install mysql-server
 yum install mysql-devel
 ```
 
 启动 mysql：
-```shell
+```bash
 service mysqld start
 ```
 _注意：如果我们是第一次启动 mysql 服务，mysql 服务器首先会进行初始化的配置。_
@@ -41,7 +43,7 @@ _注意：如果我们是第一次启动 mysql 服务，mysql 服务器首先会
 
 mariadb数据库的相关命令是：
 
-```shell
+```bash
 systemctl start mariadb  	# 启动MariaDB
 systemctl stop mariadb  	# 停止MariaDB
 systemctl restart mariadb  	# 重启MariaDB
@@ -51,7 +53,7 @@ systemctl enable mariadb  	# 设置开机启动
 
 验证Mysql安装：
 
-```shell
+```bash
 [root@host]# mysqladmin --version
 mysqladmin  Ver 8.42 Distrib 5.6.39, for Linux on x86_64  # 此结果是mysql基于Linux系统信息
 ```
@@ -60,7 +62,7 @@ _如果以上命令执行后未输入任何信息，说明你的Mysql未安装�
 
 使用 MySQL Client(Mysql客户端) 执行简单的SQL命令:
 
-```shell
+```bash
 [root@host]# mysql 		# 连接服务器（密码为空）
 mysql> SHOW DATABASES; 	# 显示数据库
 +--------------------+
@@ -83,6 +85,9 @@ Enter password:*******
 ```
 _注意：在输入密码时，密码是不会显示了，你正确输入即可。_
 
+<a href="administration.md" style="float: right;"><—— mysql 管理</a>
+
+
 MySQL安装后涉及的目录如下：
 
 
@@ -97,6 +102,7 @@ MySQL安装后涉及的目录如下：
 |/usr/lib/mysql 	|mysql的lib包
 |/usr/share/mysql 	|杂项的支持文件，包括错误消息） 字符设置的文件，示例配置文件，SQL 数据库安装
 |/usr/share/sql-bench |	基准
+|/etc/my.cnf |	*配置文件
 
 
 
