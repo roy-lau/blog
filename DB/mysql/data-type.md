@@ -64,4 +64,4 @@
 > 有4种TEXT类型：TINYTEXT、TEXT、MEDIUMTEXT和LONGTEXT。这些对应4种BLOB类型，有相同的最大长度和存储需求。
 
 
-<a href="data-type.md" style="float: right;"><—— mysql 数据类型</a>
+<a href="create-drop-tables.md" style="float: right;"><—— mysql 创建 查询 删除 数据表</a>

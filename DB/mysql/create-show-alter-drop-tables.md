@@ -1,4 +1,4 @@
-## Mysql 创建 删除数据表 插入 查询 数据
+## Mysql 创建 查询 修改 删除数据表
 
 <a href="README.md">目录</a>
 
@@ -25,7 +25,8 @@ Enter password:*******
 mysql> use test 						# 切换数据
 Database changed
 
-mysql> CREATE TABLE IF NOT EXISTS `test_tbl`( 		# 创建数据表
+# 创建数据表
+mysql> CREATE TABLE IF NOT EXISTS `test_tbl`(
    `test_id` INT UNSIGNED AUTO_INCREMENT,
    `test_title` VARCHAR(100) NOT NULL,
    `test_author` VARCHAR(40) NOT NULL,
@@ -50,6 +51,28 @@ mysql> SHOW TABLES; 						# 查询数据表
 * PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。
 * ENGINE 设置存储引擎，CHARSET 设置编码。
 
+### 修改数据表名称
+
+语法
+
+```mysql
+ALTER TABEL table_name rename table_new_name;
+```
+
+实例
+
+```mysql
+root@host# mysql -u root -p
+Enter password:*******
+
+mysql> use test;						# 切换数据库
+Database changed
+
+mysql> ALTER TABEL test rename new_table;						# 切换数据库
+Database changed
+
+```
+
 ### 删除数据表
 
 语法
@@ -64,7 +87,7 @@ DROP TABLE table_name;
 root@host# mysql -u root -p
 Enter password:*******
 
-mysql> use test;						# 切换数据库
+mysql> use new_table;					# 切换数据库
 Database changed
 
 mysql> DROP TABLE test_tbl				# 删除数据表
@@ -75,4 +98,4 @@ Empty set (0.00 sec)
 
 ```
 
-<a href="data-type.md" style="float: right;"><—— mysql 数据类型</a>
+<a href="insert-select-query.md" style="float: right;"><—— mysql 插入 查询 数据</a>
