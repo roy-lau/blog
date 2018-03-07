@@ -9,7 +9,6 @@
 * yum升级：`yum -y upgrade`(升级所有包，不改变软件设置和系统设置，系统版本升级，内核不改变), `yum -y update`(升级所有包，改变软件设置和系统设置,系统版本内核都升级)
 
 
-	
 * 查看软件安装路径：`whereis <package_name>`
 
 * 查看运行的进程：`ps(linux)	tasklist(windows)`
