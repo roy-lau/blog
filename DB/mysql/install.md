@@ -46,7 +46,7 @@ mariadb数据库的相关命令是：
 ```bash
 systemctl start mariadb  	# 启动MariaDB
 systemctl stop mariadb  	# 停止MariaDB
-systemctl restart mariadb  	# 重启MariaDB
+systemctl start mariadb 	# 重启MariaDB
 systemctl enable mariadb  	# 设置开机启动
 ```
 
