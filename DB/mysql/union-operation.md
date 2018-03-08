@@ -1,10 +1,8 @@
-## UNION操作符
+## mysql UNION操作符
 
 
 <a href="README.md">目录</a>
 
-
-### mysql UNION操作符
 
 > MySQL UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 语句会删除重复的数据。
 

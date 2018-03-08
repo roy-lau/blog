@@ -9,5 +9,7 @@
 * [mysql 插入 查询 删除 数据](insert-select-delete-query.md)
 * [Mysql WHERE LIKE子句 UPDATE查询 DELETE删除 UNION操作符](where-link-update-delete.md)
 * [Mysql UNION操作符](union-operation.md)
+* [Mysql order-by排序](order-by.md)
+* [Mysql group-by分组](group-by-statement.md)
 
 
