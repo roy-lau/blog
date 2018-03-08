@@ -46,10 +46,10 @@ mysql> SHOW TABLES; 						# 查询数据表
 
 实例解析：
 
-* 如果你不想字段为 NULL 可以设置字段的属性为 NOT NULL， 在操作数据库时如果输入该字段的数据为NULL ，就会报错。
-* AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。
-* PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。
-* ENGINE 设置存储引擎，CHARSET 设置编码。
+* 如果你不想字段为 `NULL` 可以设置字段的属性为 `NOT NULL`， 在操作数据库时如果输入该字段的数据为`NULL` ，就会报错。
+* `AUTO_INCREMENT`定义列为自增的属性，一般用于主键，数值会自动加`1`。
+* `PRIMARY KEY`关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。
+* `ENGINE` 设置存储引擎，`CHARSET` 设置编码。
 
 ### 修改数据表名称
 
@@ -65,10 +65,10 @@ ALTER TABEL table_name rename table_new_name;
 root@host# mysql -u root -p
 Enter password:*******
 
-mysql> use test;						# 切换数据库
+mysql> use test;								# 切换数据库
 Database changed
 
-mysql> ALTER TABEL test rename new_table;						# 切换数据库
+mysql> ALTER TABEL test rename new_table;		# 修改数据表名称
 Database changed
 
 ```
@@ -98,4 +98,27 @@ Empty set (0.00 sec)
 
 ```
 
-<a href="insert-select-query.md" style="float: right;"><—— mysql 插入 查询 数据</a>
+
+笔记：
+```mysql
+# 删除表内数据，用 delete。格式为：
+delete from 表名 where 删除条件;
+# 实例：删除学生表内姓名为张三的记录。
+delete from  student where  T_name = "张三";
+
+# 清除表内数据，保存表结构，用 truncate。格式为：
+truncate table 表名;
+# 实例：清除学生表内的所有数据。
+truncate  table  student;
+
+# 删除表用 drop，就是啥都没了。格式为：
+drop  table  表名;
+# 实例：删除学生表。
+drop table student;
+```
+
+1. 当你不再需要该表时， 用 drop;
+2. 当你仍要保留该表，但要删除所有记录时， 用 truncate;
+3. 当你要删除部分记录时， 用 delete。
+
+<a href="insert-select-delete-query.md" style="float: right;"><—— mysql 插入 查询 删除 数据</a>
