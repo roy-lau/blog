@@ -21,6 +21,15 @@ Enter password:*******
 mysql> use test;
 Database changed
 
+# 创建数据表
+mysql> CREATE TABLE IF NOT EXISTS `test_tbl`(
+   `test_id` INT UNSIGNED AUTO_INCREMENT,
+   `test_title` VARCHAR(100) NOT NULL,
+   `test_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `test_id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 mysql> INSERT INTO test_tbl
      (test_title, test_author, submission_date)
      VALUES
@@ -111,4 +120,4 @@ mysql> SELECT * FROM test_tbl;
 ```
 
 
-<a href="where-link-update-delete.md" style="float: right;"><—— Mysql WHERE LIKE子句 UPDATE查询 DELETE删除</a>
+<a href="where-like-update-delete.md" style="float: right;"><—— Mysql WHERE LIKE子句 UPDATE查询 DELETE删除</a>

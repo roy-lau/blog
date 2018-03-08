@@ -133,5 +133,5 @@ mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count
 <img src="imgs/right_join.gif" alt="右连接" />
 
 <br />
-<a href="where-clause.md" style="float: right;"><—— mysql where语句</a>
+<a href="null.md" style="float: right;"><—— mysql NULL值处理</a>
 <br />

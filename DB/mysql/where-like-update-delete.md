@@ -47,10 +47,10 @@ SELECT * from runoob_tbl WHERE runoob_author='菜鸟教程';
 __BINARY 关键字__
 
 ```mysql
-mysql> select * from test_tbl where binary test_title="学习 php"; 			# 小写，查不到数据
+mysql> select * from test_tbl where binary test_title="学习 php";		# 小写，查不到数据
 Empty set (0.00 sec)
 
-mysql> select * from test_tbl where binary test_title="学习 PHP"; 			# 大写，能查到数据
+mysql> select * from test_tbl where binary test_title="学习 PHP";		# 大写，能查到数据
 +---------+------------+--------------+-----------------+
 | test_id | test_title | test_author  | submission_date |
 +---------+------------+--------------+-----------------+
@@ -77,12 +77,12 @@ UPDATE table_name SET field1=new-value1, field2=new-value2
 实例
 
 ```mysql
-mysql> update test_tbl set test_title="学习 C++" where test_id=2;  	# 修改test_title=2行的test_title="学习 C++"
+mysql> update test_tbl set test_title="学习 C++" where test_id=2;	# 修改test_title=2行的test_title="学习 C++"
 Query OK, 1 row affected (0.02 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 
-mysql> select * from test_tbl where test_id=2;						# 查询test_title=2行的数据
+mysql> select * from test_tbl where test_id=2;				# 查询test_title=2行的数据
 +---------+------------+--------------+-----------------+
 | test_id | test_title | test_author  | submission_date |
 +---------+------------+--------------+-----------------+
