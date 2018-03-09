@@ -18,3 +18,5 @@
 * [Mysql alter(修改数据表名,修改数据表字段)](alter.md)
 * [Mysql 索引](index.md)
 * [Mysql 临时表](temporary-tables.md)
+* [Mysql 复制表](clone-tables.md)
+* [Mysql 元数据](database-info.md)
