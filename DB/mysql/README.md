@@ -15,3 +15,4 @@
 * [Mysql null值处理](null.md)
 * [Mysql 正则表达式](regexp.md)
 * [Mysql 事务](transaction.md)
+* [Mysql alter(修改数据表名,修改数据表字段)](alter.md)

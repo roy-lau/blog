@@ -38,7 +38,7 @@ mysql> CREATE TABLE `employee_tbl` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 Query OK, 0 rows affected (0.12 sec)
 
-mysql> BEGIN;
+mysql> BEGIN; 							# 开始一个事务
 Query OK, 0 rows affected (0.00 sec)
 
 # 插入数据
@@ -53,7 +53,7 @@ mysql> INSERT INTO `employee_tbl`
 Query OK, 6 rows affected (0.00 sec)
 Records: 6  Duplicates: 0  Warnings: 0
 
-mysql> COMMIT;
+mysql> COMMIT;								# 事务确认
 SET FOREIGN_KEY_CHECKS = 1;Query OK, 0 rows affected (0.03 sec)
 
 mysql> SET FOREIGN_KEY_CHECKS=1;			# 启用外键约束

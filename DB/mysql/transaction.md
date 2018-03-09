@@ -32,5 +32,68 @@ __事务控制语句：__
 * **ROLLBACK TO identifier；** 把事务回滚到标记点；
 * **SET TRANSACTION；** 用来设置事务的隔离级别。`InnoDB`存储引擎提供事务的隔离级别有`READ UNCOMMITTED`、`READ COMMITTED`、`REPEATABLE READ`和`SERIALIZABLE`。
 
+MYSQL 事务处理主要有两种方法：
 
+1、用 BEGIN, ROLLBACK, COMMIT来实现
+
+* **BEGIN** 开始一个事务
+* **ROLLBACK** 事务回滚
+* **COMMIT** 事务确认
+
+2、直接用 SET 来改变 MySQL 的自动提交模式:
+
+* **SET AUTOCOMMIT=0** 禁止自动提交
+* **SET AUTOCOMMIT=1** 开启自动提交
+
+事务示例：
+
+```mysql
+mysql> use test;
+Database changed
+mysql> CREATE TABLE test_transaction( id int(5)) engine=innodb;  # 创建数据表
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from test_transaction;							# 查询数据
+Empty set (0.01 sec)
+
+mysql> begin;													# 开始事务
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into test_transaction value(5);					# 插入数据
+Query OK, 1 rows affected (0.01 sec)
+
+mysql> insert into test_transaction value(6);					# 插入数据
+Query OK, 1 rows affected (0.00 sec)
+
+mysql> commit; 													# 提交事务
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from test_transaction;							# 查询数据
++------+
+| id   |
++------+
+| 5    |
+| 6    |
++------+
+2 rows in set (0.01 sec)
+
+mysql> begin;    												# 开始事务
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into test_transaction values(7);					# 插入数据
+Query OK, 1 rows affected (0.00 sec)
+
+mysql> rollback;   												# 回滚
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from test_transaction;   						# 因为回滚所以数据没有插入
++------+
+| id   |
++------+
+| 5    |
+| 6    |
++------+
+2 rows in set (0.01 sec)
+
+```
 <a href="regexp.md" style="float: right;"><—— mysql 正则表达式</a>
