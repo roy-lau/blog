@@ -12,22 +12,22 @@
 
 实例:
 
-复制表 runoob_tbl 。
+复制表 test_tbl。
 
 步骤一：
 获取数据表的完整结构。
 ```mysql
-mysql> SHOW CREATE TABLE runoob_tbl \G;
+mysql> SHOW CREATE TABLE test_tbl \G;
 *************************** 1. row ***************************
-       Table: runoob_tbl
-Create Table: CREATE TABLE `runoob_tbl` (
-  `runoob_id` int(11) NOT NULL auto_increment,
-  `runoob_title` varchar(100) NOT NULL default '',
-  `runoob_author` varchar(40) NOT NULL default '',
-  `submission_date` date default NULL,
-  PRIMARY KEY  (`runoob_id`),
-  UNIQUE KEY `AUTHOR_INDEX` (`runoob_author`)
-) ENGINE=InnoDB
+       Table: test_tbl
+Create Table: CREATE TABLE `test_tbl` (
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
+  `test_title` varchar(100) NOT NULL DEFAULT '',
+  `test_author` varchar(40) NOT NULL DEFAULT '',
+  `submission_date` date DEFAULT NULL,
+  PRIMARY KEY (`test_id`),
+  UNIQUE KEY `AUTHOR_INDEX` (`test_author`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
 1 row in set (0.00 sec)
 
 ERROR:
@@ -38,27 +38,27 @@ No query specified
 修改SQL语句的数据表名，并执行SQL语句。
 ```mysql
 mysql> CREATE TABLE `clone_tbl` (
-  	`runoob_id` int(11) NOT NULL auto_increment,
-  	`runoob_title` varchar(100) NOT NULL default '',
-  	`runoob_author` varchar(40) NOT NULL default '',
+  	`test_id` int(11) NOT NULL auto_increment,
+  	`test_title` varchar(100) NOT NULL default '',
+  	`test_author` varchar(40) NOT NULL default '',
   	`submission_date` date default NULL,
-  	PRIMARY KEY  (`runoob_id`),
-  	UNIQUE KEY `AUTHOR_INDEX` (`runoob_author`)
+  	PRIMARY KEY  (`test_id`),
+  	UNIQUE KEY `AUTHOR_INDEX` (`test_author`)
 	) ENGINE=InnoDB;
 Query OK, 0 rows affected (1.80 sec)
 ```
 
 步骤三：
 
-执行完第二步骤后，你将在数据库中创建新的克隆表 clone_tbl。 如果你想拷贝数据表的数据你可以使用 INSERT INTO... SELECT 语句来实现。
+执行完第二步骤后，你将在数据库中创建新的克隆表 `clone_tbl`。 如果你想拷贝数据表的数据你可以使用 `INSERT INTO... SELECT` 语句来实现。
 ```mysql
-mysql> INSERT INTO clone_tbl (runoob_id,
-    	                       runoob_title,
-    	                       runoob_author,
+mysql> INSERT INTO clone_tbl (test_id,
+    	                       test_title,
+    	                       test_author,
     	                       submission_date)
-    	SELECT runoob_id,runoob_title,
-    	       runoob_author,submission_date
-    	FROM runoob_tbl;
+    	SELECT test_id,test_title,
+    	       test_author,submission_date
+    	FROM test_tbl;
 Query OK, 3 rows affected (0.07 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 ```
