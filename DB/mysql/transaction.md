@@ -50,25 +50,25 @@ MYSQL 事务处理主要有两种方法：
 ```mysql
 mysql> use test;
 Database changed
-mysql> CREATE TABLE test_transaction( id int(5)) engine=innodb;  # 创建数据表
+mysql> CREATE TABLE test_transaction( id int(5)) engine=innodb		# 创建数据表
 Query OK, 0 rows affected (0.04 sec)
 
-mysql> select * from test_transaction;							# 查询数据
+mysql> select * from test_transaction;		# 查询数据
 Empty set (0.01 sec)
 
-mysql> begin;													# 开始事务
+mysql> begin;									# 开始事务
 Query OK, 0 rows affected (0.00 sec)
 
-mysql> insert into test_transaction value(5);					# 插入数据
+mysql> insert into test_transaction value(5);	# 插入数据
 Query OK, 1 rows affected (0.01 sec)
 
-mysql> insert into test_transaction value(6);					# 插入数据
+mysql> insert into test_transaction value(6);	# 插入数据
 Query OK, 1 rows affected (0.00 sec)
 
-mysql> commit; 													# 提交事务
+mysql> commit;									# 提交事务
 Query OK, 0 rows affected (0.01 sec)
 
-mysql> select * from test_transaction;							# 查询数据
+mysql> select * from test_transaction;			# 查询数据
 +------+
 | id   |
 +------+
@@ -77,16 +77,16 @@ mysql> select * from test_transaction;							# 查询数据
 +------+
 2 rows in set (0.01 sec)
 
-mysql> begin;    												# 开始事务
+mysql> begin;									# 开始事务
 Query OK, 0 rows affected (0.00 sec)
 
-mysql> insert into test_transaction values(7);					# 插入数据
+mysql> insert into test_transaction values(7);	# 插入数据
 Query OK, 1 rows affected (0.00 sec)
 
-mysql> rollback;   												# 回滚
+mysql> rollback;								# 事物回滚
 Query OK, 0 rows affected (0.00 sec)
 
-mysql> select * from test_transaction;   						# 因为回滚所以数据没有插入
+mysql> select * from test_transaction;		# 因为回滚所以数据没有插入
 +------+
 | id   |
 +------+
@@ -96,4 +96,4 @@ mysql> select * from test_transaction;   						# 因为回滚所以数据没有�
 2 rows in set (0.01 sec)
 
 ```
-<a href="regexp.md" style="float: right;"><—— mysql 正则表达式</a>
+<a href="alter.md" style="float: right;"><—— mysql alter(修改数据表名,修改数据表字段)</a>
