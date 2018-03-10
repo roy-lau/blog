@@ -79,7 +79,7 @@ __使用ALTER 命令添加和删除索引__
 * **ALTER TABLE tbl_name ADD PRIMARY KEY (column_list):** 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为`NULL`。
 * **ALTER TABLE tbl_name ADD UNIQUE index_name (column_list):** 这条语句创建索引的值必须是唯一的（除了`NULL`外，`NULL`可能会出现多次）。
 * **ALTER TABLE tbl_name ADD INDEX index_name (column_list):** 添加普通索引，索引值可出现多次。
-* **ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):**该语句指定了索引为 `FULLTEXT` ，用于全文索引。
+* **ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):** 该语句指定了索引为 `FULLTEXT` ，用于全文索引。
 
 以下实例为在表中添加索引。
 ```mysql

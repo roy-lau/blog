@@ -14,9 +14,9 @@
 * [Mysql join连接(多表查询)](join.md)
 * [Mysql null值处理](null.md)
 * [Mysql 正则表达式](regexp.md)
-* [Mysql 事务](transaction.md)  leaning to do this
+* [Mysql 事务](transaction.md)
 * [Mysql alter(修改数据表名,修改数据表字段)](alter.md)
-* [Mysql 索引](index.md)
+* [Mysql 索引](index.md) 	leaning to do this
 * [Mysql 临时表](temporary-tables.md)
 * [Mysql 复制表](clone-tables.md)
 * [Mysql 元数据](database-info.md)
