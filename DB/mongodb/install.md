@@ -1,6 +1,6 @@
 ## 安装MongoDB
 
-下载地址：https://www.mongodb.com/download-center#community
+下载地址：https://www.mongodb.com/download-center?jmp=nav#community
 
 下载完安装包，并解压 `tgz`（以下演示的是 64 位 Linux上的安装） 。
 ```bash
