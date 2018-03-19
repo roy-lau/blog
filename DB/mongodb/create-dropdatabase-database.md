@@ -89,4 +89,4 @@ true
 > show tables
 ```
 
-<a href=""></a>
+<a href="create-delete-collection.md" style="float: right;"> 创建 删除集合</a>

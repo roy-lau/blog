@@ -91,4 +91,4 @@ $ ./mongod --dbpath=/data/db --rest
 如果你的`MongoDB`运行端口使用默认的`27017`，你可以在端口号为`28017`访问`web`用户界面，即地址为：[http://localhost:28017](http://localhost:28017)。
 
 
-<a href="nodejs-mongodb.md">nodejs操作MongoDB</a>
+<a href="nodejs-mongodb.md" style="float: right;">nodejs操作MongoDB</a>

@@ -275,4 +275,4 @@ string
 > Date()
 Sun Mar 04 2018 15:02:59 GMT+0000 (UTC)
 ```
-<a href="connections.md"> MongoDB 连接</a>
+<a href="connections.md" style="float: right;"> MongoDB 连接</a>

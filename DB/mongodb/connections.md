@@ -122,4 +122,4 @@ mongodb://localhost/?safe=true
 mongodb://host1,host2,host3/?safe=true;w=2;wtimeoutMS=2000
 ```
 
-<a href="create-database.md">MongoDB 创建数据库</a>
+<a href="create-database.md" style="float: right;">MongoDB 创建数据库</a>
