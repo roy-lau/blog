@@ -13,7 +13,8 @@
 * [常用软件安装](./install/)
 	* [git](./install/git.md)
 	* [java](./install/java.md)
-	* [MySQl](./install/MySQl.md)
+	* [MySQl](./install/mysql.md)
+	* [MongoDB](./install/mongodb.md)
 	* [nodejs](./install/nodejs.md)
 	* [python](./install/python.md)
 

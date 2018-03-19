@@ -33,6 +33,7 @@ yum install mysql-devel
 启动 mysql：
 ```bash
 service mysqld start
+service mysqld restart # 重启mysql
 ```
 _注意：如果我们是第一次启动 mysql 服务，mysql 服务器首先会进行初始化的配置。_
 
@@ -77,7 +78,7 @@ mysql> SHOW DATABASES; 	# 显示数据库
 
 # Mysql安装成功后，默认的root用户密码为空，也可以通过下面命令创建root用户的密码
 
-[root@host]# mysqladmin -u root password "lq_toor";
+[root@host]# mysqladmin -u root password "toor";
 
 # 用户名密码连接
 [root@host]# mysql -u root -p
