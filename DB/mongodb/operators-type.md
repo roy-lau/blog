@@ -82,4 +82,4 @@ db.col.find({"title" : {$type : 2}})
 { "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
 ```
 
-<a href="" style="float: right;"></a>
+<a href="limit-skip.md" style="float: right;">MongoDB Limit与Skip方法</a>

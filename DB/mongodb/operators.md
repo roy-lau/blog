@@ -158,4 +158,4 @@ $ne ----------- not equal  !=
 $eq  --------  equal  =
 ```
 
-<a href="" style="float: right;"></a>
+<a href="operators-type.md" style="float: right;">MongoDB $type 操作符</a>
