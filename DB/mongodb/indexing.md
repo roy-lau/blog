@@ -48,4 +48,4 @@ db.values.ensureIndex({open: 1, close: 1}, {background: true})
 ```
 通过在创建索引时加`background:true` 的选项，让创建工作在后台执行
 
-<a href="" style="float: right;"></a>
+<a href="aggregate.md" style="float: right;"></a>

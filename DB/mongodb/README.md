@@ -12,3 +12,4 @@
 * [MongoDB Limit与Skip方法](limit-skip.md)
 * [MongoDB sort()方法](sort.md)
 * [MongoDB 索引](indexing.md)
+* [MongoDB 聚合](aggregate.md)
