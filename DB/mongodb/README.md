@@ -13,3 +13,6 @@
 * [MongoDB sort()方法](sort.md)
 * [MongoDB 索引](indexing.md)
 * [MongoDB 聚合](aggregate.md)
+* [MongoDB 复制（副本集）](replication.md)
+* [MongoDB 分片](sharding.md)
+* [MongoDB 备份(mongodump)与恢复(mongorestore)](mongodump-mongorestore.md)
