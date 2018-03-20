@@ -16,3 +16,5 @@
 * [MongoDB 复制（副本集）](replication.md)
 * [MongoDB 分片](sharding.md)
 * [MongoDB 备份(mongodump)与恢复(mongorestore)](mongodump-mongorestore.md)
+* [MongoDB 监控](mongostat-mongotop.md)
+* [MongoDB Node.js 连接 MongoDB](nodejs-mongodb.md)

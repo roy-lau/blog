@@ -1,4 +1,4 @@
-# 						nodejs简单操作mongodb
+#             nodejs简单操作mongodb
 
 [目录](README.md)
 
@@ -63,11 +63,11 @@ node连接mongodb
 ### mongo 命令
 
 ```mongodb
-show dbs					// 显示所有数据库
-use movie   				// 进入名为movie的数据库
-db.movie.find({})   		// 查找movie下的所有数据
-db.movie.find({}).count() 	// 查看数据库内的数据条数
-db.movie.remove()   		// 删除 movie下的所有数据
+show dbs                    // 显示所有数据库
+use movie                   // 进入名为movie的数据库
+db.movie.find({})           // 查找movie下的所有数据
+db.movie.find({}).count()   // 查看数据库内的数据条数
+db.movie.remove()           // 删除 movie下的所有数据
 ```
 
 <a href="databases-documents-collections.md" style="float: right;">概念解析</a>

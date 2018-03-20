@@ -57,4 +57,4 @@ mongodb使用 mongorestore 命令来恢复备份的数据。
 
 <img src="imgs/mongorestore.png" alt="mongorestore输出结果图" />
 
-<a href="" style="float: right;"></a>
+<a href="mongostat-mongotop" style="float: right;">MongoDB 监控</a>
