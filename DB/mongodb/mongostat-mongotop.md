@@ -54,4 +54,4 @@ E:\mongodb-win32-x86_64-2.2.1\bin>mongotop --locks
 * **read：** 提供了大量的时间，这mongod花费在执行读操作，在此命名空间。
 * **write：** 提供这个命名空间进行写操作，这mongod花了大量的时间。
 
-<a href="" style="float: right;"></a>
+<a href="nodejs-mongodb.md" style="float: right;">nodejs 连接MongoDB</a>

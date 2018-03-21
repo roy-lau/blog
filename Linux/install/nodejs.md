@@ -3,12 +3,12 @@
 
 第一步：
 
-	wget https://nodejs.org/dist/v6.6.0/node-v6.6.0-linux-x86.tar.xz
+	wget https://nodejs.org/dist/v8.8.0/node-v8.8.0-linux-x86.tar.xz
 
 
 第二步  解压缩文件包
 
-	 tar xvf node-v6.6.0-linux-x86.tar.gz
+	 tar xvf node-v8.8.0-linux-x86.tar.gz
 
 第三步  NODE 环境配置
     这样可以使得在任何目录下，都可以使用`/usr/local/src/node-v6.6.0-linux-x86/bin` 下得node命令，
@@ -19,13 +19,14 @@
     c、在最下面加入
        # node （注释作用）
        export NODE_HOME=/usr/local/src/node-v6.6.0-linux-x86
-       export PATH=$PATH:$NODE_HOME/bin  
+       export PATH=$PATH:$NODE_HOME/bin
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
-    e、source /etc/profile （使配置文件生效）
+    e、source /etc/profile （使配置文件生效,重启后失效）
+    e、source //etc/bashrc （使配置文件生效,重启后有效）
 
 第四步 大功告成
-    你就可以用 `node -v` 看自己的成果了！ 
+    你就可以用 `node -v` 看自己的成果了！
 
 ## 方法二：（自己编译）
 
@@ -75,7 +76,7 @@ gcc --version
     c、在最下面加入
        # node （注释作用）
        export NODE_HOME=/usr/local/src/node-6.6.0
-       export PATH=$PATH:$NODE_HOME/bin  
+       export PATH=$PATH:$NODE_HOME/bin
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
     e、source /etc/profile （使配置文件生效）
