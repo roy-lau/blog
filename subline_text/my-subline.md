@@ -34,7 +34,8 @@
 			"OmniMarkupPreviewer",   // markdown文本实时预览插件(用法：Ctrl+Alt+o )
 			"OneDarkMaterial", 		 // 皮肤
 			"Package Control",
-			"Vuejs Complete Package"
+			"Vuejs Complete Package",
+			"DocBlockr" 			// 代码注释插件
 		]
 	}
 

@@ -23,7 +23,7 @@
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
     e、source /etc/profile （使配置文件生效,重启后失效）
-    e、source //etc/bashrc （使配置文件生效,重启后有效）
+    e、source /etc/bashrc （使配置文件生效,重启后有效）
 
 第四步 大功告成
     你就可以用 `node -v` 看自己的成果了！
