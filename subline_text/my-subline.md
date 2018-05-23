@@ -90,6 +90,13 @@
         },
 ```
 
+### 主题背景（会提示下载文件图标）
+
+	Material Theme
+	配置
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"theme": "Material-Theme.sublime-theme",
+
 这行加在底部，可以让浏览器不停的刷新
 `<meta http-equiv="refresh" content="0.1">`
 
