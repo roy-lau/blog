@@ -11,5 +11,6 @@
 	- [redis](./DB/redis)
 * [收集的一些安装包](./Installation_package)
 * [git使用心得](./git-bash-make)
+* [ubunto](./ubunto)
 * [表情](./emoji)
 
