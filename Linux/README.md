@@ -5,6 +5,7 @@
 * [用户](user.md)
 * [network网络](network.md)
 * [yum使用](yum.md)
+* [安裝zsh](./install/zsh.md)
 * [shell脚本](./shell/)
 	* [变量](./shell/variable.md)
 	* [时间](./shell/date.md)

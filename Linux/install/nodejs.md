@@ -11,14 +11,14 @@
 	 tar xvf node-v8.8.0-linux-x86.tar.gz
 
 第三步  NODE 环境配置
-    这样可以使得在任何目录下，都可以使用`/usr/local/src/node-v6.6.0-linux-x86/bin` 下得node命令，
+    这样可以使得在任何目录下，都可以使用`/usr/local/src/node-v8.8.0-linux-x86/bin` 下得node命令，
     步骤如下：
 
     a、切换到 root 用户
     b、vi /etc/profile
     c、在最下面加入
        # node （注释作用）
-       export NODE_HOME=/usr/local/src/node-v6.6.0-linux-x86
+       export NODE_HOME=/usr/local/src/node-v8.8.0-linux-x86
        export PATH=$PATH:$NODE_HOME/bin
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
