@@ -1,5 +1,5 @@
 #   ubunto
 
-* [windows子系統](./windows-on-ubunto)
+* [windows子系統](./ubunto-on-windows)
 
 
