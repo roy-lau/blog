@@ -4,13 +4,14 @@
 
 
 * [Linux](./Linux)
-* [windows定时命令](./Automatic_task)
+	- [ubunto](./Linux/ubunto)
+	- [centOS](./Linux/centOS)
 * [数据库](./DB)
 	- [mysql](./DB/mysql)
 	- [mongodb](./DB/mongodb)
 	- [redis](./DB/redis)
-* [收集的一些安装包](./Installation_package)
-* [git使用心得](./git-bash-make)
-* [ubunto](./ubunto)
 * [表情](./emoji)
+* [git使用心得](./git-bash-make)
+* [windows定时命令](./Automatic_task)
+* [收集的一些安装包](./Installation_package)
 
