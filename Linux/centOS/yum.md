@@ -14,6 +14,7 @@
 
 	# CentOS 7
 	wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
 3、 生成缓存
 
 	yum makecache
@@ -25,7 +26,11 @@
 
 * yum 设置安装路径：`yum install --installroot=/usr/src/ vim`
 
-* yum升级：`yum -y upgrade`(升级所有包，不改变软件设置和系统设置，系统版本升级，内核不改变), `yum -y update`(升级所有包，改变软件设置和系统设置,系统版本内核都升级)
+* yum 清除缓存：`yum clean all`
+
+* yum升级：
+	`yum -y upgrade`(升级所有包，不改变软件设置和系统设置，系统版本升级，内核不改变),
+	`yum -y update`(升级所有包，改变软件设置和系统设置,系统版本内核都升级)
 
 
 * 查看软件安装路径：`whereis <package_name>`
