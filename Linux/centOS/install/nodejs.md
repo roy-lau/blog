@@ -54,16 +54,16 @@ gcc --version
 第一步：下载
 
     cd /usr/src
-    wget https://github.com/nodejs/node/archive/v6.6.0.tar.gz  # 源码（会有一些坑，而且还需要编译，不推荐使用）
+    wget https://github.com/nodejs/node/archive/v8.8.0.tar.gz  # 源码（会有一些坑，而且还需要编译，不推荐使用）
 
 第二步： 解压缩文件包
 
-	tar -zvxf v6.6.0.tar.gz
+	tar -zvxf v8.8.0.tar.gz
 
 第三步： 编译
 
-	mv ./node-6.6.0 /usr/local/node-6.6.0
-	cd /usr/local/node-6.6.0
+	mv ./node-8.8.0 /usr/local/src/node-8.8.0
+	cd /usr/local/src/node-8.8.0
 
 	sudo make && sudo make install
 	或者
@@ -75,7 +75,7 @@ gcc --version
     b、vi /etc/profile
     c、在最下面加入
        # node （注释作用）
-       export NODE_HOME=/usr/local/src/node-6.6.0
+       export NODE_HOME=/usr/local/src/node-8.8.0
        export PATH=$PATH:$NODE_HOME/bin
        export NODE_PATH=$NODE_HOME/lib/node_modules
     d、:wq （保存并退出）
