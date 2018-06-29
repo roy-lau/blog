@@ -4,7 +4,7 @@
 
 > 查看本机安装了那些shell `cat /etc/shells `
 
-1. 先将ubunto可能自带的`oh-my-zsh`删除
+1. 先将ubuntu可能自带的`oh-my-zsh`删除
 
 ```bash
 rm -r ~/.oh-my-zsh
@@ -29,7 +29,7 @@ chsh -s `which zsh`
 sudo shutdown -r 0
 ```
 
-如果上面命令无效，修改 ~/.bashrc 在开头输入：
+如果上面命令无效，修改 `~/.bashrc` 在开头输入：
 
 ```bash
 if [ -t 1 ]; then
@@ -91,4 +91,4 @@ fi
 按照注释中的提示改成 `plugins=(git zsh-syntax-highlighting)` 即可。
 
 
-<a href="change-ubunto-sources.md" style="float: right;"><—— ubunto </a>
+<a href="change-ubuntu-sources.md" style="float: right;"><—— ubuntu </a>

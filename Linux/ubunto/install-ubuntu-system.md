@@ -1,4 +1,4 @@
-# 在windows上安裝 ubunto16.04
+# 在windows上安裝 ubuntu16.04
 
 <a href="README.md">目录</a>
 
@@ -15,16 +15,16 @@
 
 1. 打开命令行工具（cmd or powerShell）
 
-安装ubunto
+安装ubuntu
 
 ```bash
 lxrun /install /y  # 或者输入 bash
 ```
 
-卸载ubunto
+卸载ubuntu
 
 ```bash
 lxrun /uninstall /full
 ```
 
-<a href="change-ubunto-sources.md" style="float: right;"><—— ubunto 换源</a>
+<a href="change-ubuntu-sources.md" style="float: right;"><—— ubuntu 换源</a>

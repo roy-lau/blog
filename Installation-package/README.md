@@ -14,6 +14,12 @@
 
 * [redis的32位地址](http://files.cnblogs.com/files/cuiwenyuan/Redis-3.2.100-Windows-32.zip)
 
+* [ubuntu下载地址](http://101.110.118.47/mirror.pnl.gov/releases/)
+
+* [vmware pro 下载地址](http://download3.vmware.com/software/wkst/file/VMware-workstation-full-14.1.2-8497320.exe)
+
+	 FF31K-AHZD1-H8ETZ-8WWEZ-WUUVA CV7T2-6WY5Q-48EWP-ZXY7X-QGUWD
+
 
 
 
