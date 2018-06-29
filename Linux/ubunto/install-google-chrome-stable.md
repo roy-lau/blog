@@ -18,4 +18,4 @@ _提示：如果安装时出现：正在处理用于 man-db (2.7.5-1) 的触发�
     sudo apt-get -f install
 
 
-<a href="install-sougoupinyin.md" style="float: right;"><—— ubuntu 搜狗输入法</a>
+<a href="install-zsh.md" style="float: right;"><—— ubuntu 安装zsh</a>

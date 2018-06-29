@@ -129,4 +129,4 @@ sudo apt-get upgrade 	# 更新软件
 ```
 
 
-<a href="install-zsh.md" style="float: right;"><—— 安装 zsh</a>
+<a href="install-sougoupinyin.md" style="float: right;"><—— 安装 搜狗输入法</a>

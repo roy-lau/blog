@@ -36,4 +36,4 @@ sudo apt remove ibus*
 Only Show Current Language前面的钩去掉 -> 输入**sougo**，选中，点击ok
 
 
-<a href="README.md" style="float: right;"><—— ubuntu </a>
+<a href="install-google-chrome-stable.md" style="float: right;"><—— ubuntu 安装 Chrome</a>
