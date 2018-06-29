@@ -63,4 +63,4 @@
 	sudo ln /usr/src/node-v8.8.0-linux-x64/bin/npm /usr/local/bin/npm
 	pwd
 
-<a href="change-ubunto-sources.md" style="float: right;"><—— ubunto </a>
+<a href="install-google-chrome-stable.md" style="float: right;"><—— ubuntu 安装 Chrome浏览器</a>

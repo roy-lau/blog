@@ -91,4 +91,4 @@ fi
 按照注释中的提示改成 `plugins=(git zsh-syntax-highlighting)` 即可。
 
 
-<a href="change-ubuntu-sources.md" style="float: right;"><—— ubuntu </a>
+<a href="install-nodejs.md" style="float: right;"><—— ubuntu 安装 nodejs</a>
