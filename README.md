@@ -13,5 +13,6 @@
 * [表情](./emoji)
 * [git使用心得](./git-bash-make)
 * [windows定时命令](./Automatic_task)
+* [sublime text](./sublime_text)
 * [收集的一些安装包](./Installation_package)
 
