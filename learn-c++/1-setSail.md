@@ -105,7 +105,7 @@ int main()
 
 ### C++ 输入输出方式
 
-对比**C**与**C++**的输入输出方式
+> 对比**C**与**C++**的输入输出方式
 
 <details>
 	<summary>C语言的I/O方式</summary>
@@ -115,6 +115,7 @@ int main()
 	<summary>C++的I/O方式</summary>
 	<img src="imgs/C++I-O.png" alt="C++的输入输出方式" />
 </details>
+
 
 **C++ 的I/O方式**
 
