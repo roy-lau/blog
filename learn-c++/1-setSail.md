@@ -1,5 +1,6 @@
-# C++ 远征——起航
+# C++ 远征之起航篇
 
+<a href="README.md">目录</a>
 
 <details>
   <summary>C++ 诞生地</summary>
@@ -236,7 +237,7 @@ int getMaxOrMin(int *arr,int count,bool isMax){
 
 int main(void){
 	int arr1[4] = {3,5,1,7};
-	cout << "求值(1:最大值，0:最小值): " ;
+	cout << "求值(1:最大值，0:最小值): ";
 	bool isMax = false;
 	cin >> isMax;
 	cout << getMaxOrMin(arr1,4,isMax) << endl;
@@ -244,3 +245,5 @@ int main(void){
 	return 0;
 }
 ```
+
+<a href="2-package.md">C++ 远征之封装篇</a>

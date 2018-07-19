@@ -10,6 +10,8 @@
 	- [mysql](./DB/mysql)
 	- [mongodb](./DB/mongodb)
 	- [redis](./DB/redis)
+* [C++ 学习笔记](./learn-c++)
+
 * [表情](./emoji)
 * [git使用心得](./git-bash-make)
 * [windows定时命令](./Automatic_task)
