@@ -299,4 +299,241 @@ int main(void){
 }
 ```
 
+#### 类外定义
+
+类内定义与内联函数
+
+1、 内联函数
+
+关键字: `inline`
+
+```C++
+inline void fun(){
+	cout << "Hello" << endl;
+}
+```
+
+> 内联函数与普通函数的区别
+
+- 普通函数
+
+	main() --> 调用fun() --> 寻找函数的入口 --> 运行函数相关的代码 --> 运行完以后回到fun()，然后去执行其它代码 --> 结束
+
+- 内联函数
+
+**编译时将函数体代码和实参代替函数调用语句**
+
+__内联函数只执行比较简单的函数，编辑器会拒绝按照内联的方式编译复杂的函数__
+
+2、 类内定义
+
+> 成员函数在类的内部(里边)
+
+
+```C++
+class Student{
+public:
+	void setAge(int _age){ // 这三个函数就是类内定义。由于函数比较简单，编译器会自动将其编译为内联函数。
+		age = _age
+	}
+	int getAge(){ // 这三个函数就是类内定义。由于函数比较简单，编译器会自动将其编译为内联函数。
+		return age;
+	}
+	void study(){ // 这三个函数就是类内定义。由于函数比较简单，编译器会自动将其编译为内联函数。
+	// todo
+	}
+
+private:
+	string name;
+	int age;
+}
+```
+
+3、 类外定义
+
+> 成员函数在类的外部(外边)
+> 类外定义分为： 同文件类外定义、分文件类外定义
+
+- 同文件类外定义
+
+```C++
+// Car.cpp
+class Car{
+public:
+	void run();
+	void stop();
+	void changeSpeed();
+};
+void Car::run(){}
+void Car::stop(){}
+void Cat::changeSpeed(){}
+```
+
+- 分文件类外定义
+
+```C++
+// Car.h 头文件
+class Car{
+public:
+	void run();
+	void stop();
+	void changeSpeed();
+};
+
+// Car.cpp
+#include "Car.h"
+void Car::run(){}
+void Car::stop(){}
+void Car::changeSpeed(){}
+```
+
+例子：
+
+1. 同文件类外定义
+
+```C++
+// demo.cpp
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+/*
+	定义一个 Teacher类， 要求分别采用同文件类外定义和分文件类外定义的方式完成，具体要求如下：
+	数据成员：
+		名字
+		年龄
+		性别
+	成员函数：
+		数据成员的封装函数
+		授课teach
+ */
+
+class Teacher{
+public:
+	void setName(string _name);
+	string getName();
+	void setGender(string _gender);
+	string getGender();
+	void setAge(int _age);
+	int getAge();
+	void speak();
+
+private:
+	string m_strName;
+	string m_strGender;
+	int m_iAge;
+
+};
+
+void Teacher::setName(string _name){
+	m_strName = _name;
+}
+string Teacher::getName(){
+	return m_strName;
+}
+
+void Teacher::setGender(string _gender){
+	m_strGender = _gender;
+}
+string Teacher::getGender(){
+	return m_strGender;
+}
+
+void Teacher::setAge(int _age){
+	m_iAge = _age;
+}
+int Teacher::getAge(){
+	return m_iAge;
+}
+
+void Teacher::speak(){
+	cout << "現在上課……" << endl;
+}
+
+int main(void){
+	Teacher t;
+	t.setName("孔子");
+	t.setGender("男");
+	t.setAge(30);
+	cout << t.getName() << "" << t.getAge() << "" << t.getGender() << endl;
+	t.speak();
+	return 0;
+}
+```
+2. 分文件类外定义
+
+```C++
+// demo.h
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+class Teacher{
+public:
+	void setName(string _name);
+	string getName();
+	void setGender(string _gender);
+	string getGender();
+	void setAge(int _age);
+	int getAge();
+	void speak();
+
+private:
+	string m_strName;
+	string m_strGender;
+	int m_iAge;
+
+};
+// demo.cpp
+#include <iostream>
+#include <stdlib.h>
+#include <demo.h>
+using namespace std;
+
+/*
+	定义一个 Teacher类， 要求分别采用同文件类外定义和分文件类外定义的方式完成，具体要求如下：
+	数据成员：
+		名字
+		年龄
+		性别
+	成员函数：
+		数据成员的封装函数
+		授课teach
+ */
+
+void Teacher::setName(string _name){
+	m_strName = _name;
+}
+string Teacher::getName(){
+	return m_strName;
+}
+
+void Teacher::setGender(string _gender){
+	m_strGender = _gender;
+}
+string Teacher::getGender(){
+	return m_strGender;
+}
+
+void Teacher::setAge(int _age){
+	m_iAge = _age;
+}
+int Teacher::getAge(){
+	return m_iAge;
+}
+
+void Teacher::speak(){
+	cout << "現在上課……" << endl;
+}
+
+int main(void){
+	Teacher t;
+	t.setName("孔子");
+	t.setGender("男");
+	t.setAge(30);
+	cout << t.getName() << "" << t.getAge() << "" << t.getGender() << endl;
+	t.speak();
+	return 0;
+}
+```
 <a href="3-inherit.md">C++ 远征之继承篇</a>
