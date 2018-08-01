@@ -317,7 +317,7 @@ inline void fun(){
 
 - 普通函数
 
-	main() --> 调用fun() --> 寻找函数的入口 --> 运行函数相关的代码 --> 运行完以后回到fun()，然后去执行其它代码 --> 结束
+		main() --> 调用fun() --> 寻找函数的入口 --> 运行函数相关的代码 --> 运行完以后回到fun()，然后去执行其它代码 --> 结束
 
 - 内联函数
 
@@ -389,7 +389,7 @@ void Car::changeSpeed(){}
 
 例子：
 
-1. 同文件类外定义
+1.同文件类外定义
 
 ```C++
 // demo.cpp
@@ -460,7 +460,7 @@ int main(void){
 	return 0;
 }
 ```
-2. 分文件类外定义
+2.分文件类外定义
 
 ```C++
 // demo.h
@@ -487,7 +487,7 @@ private:
 // demo.cpp
 #include <iostream>
 #include <stdlib.h>
-#include <demo.h>
+#include "demo.h"
 using namespace std;
 
 /*
@@ -536,4 +536,319 @@ int main(void){
 	return 0;
 }
 ```
+
+
+### 对象结构
+
+内存分区
+
+**栈区：** `int x = 0; int *p = NULL;`
+
+**堆区：** `int *p = new int[20];`
+
+**全局区： 存储全局变量及静态变量**
+
+**常量区：** `string str = "hello";`
+
+**代码区： 存储逻辑代码的二进制**
+
+
+```C++
+class Car{
+private:
+	int wheelCount;
+public:
+	int getWheelCoutn(){
+		return wheelCount;
+	}
+}
+```
+
+**对象初始化**
+
+```C++
+class Tank{
+private:
+	int m_iPosX;
+	int m_iPosY;
+public:
+	void init(){
+		m_iPosX = 0;
+		m_iPosY = 0;
+	}
+};
+int main(void){
+	Tank t1;
+	t1.init();
+	Tank t2;
+	t2.init();
+
+	return 0;
+}
+```
+
+> 对象初始化：1.有且只有一次，2.根据条件初始化
+
+
+构造函数的规则和特点：
+
+- 构造函数在对象实例化时被自动调用
+- 构造函数与类同名
+- 构造函数没有返回值
+- 构造函数可以有多个重载形式
+- 实例化对象时仅用到一个构造函数
+- 当用户没有定义构造函数时，编译器自动生成一个构造函数
+
+> 无参构造函数
+
+```C++
+class Student{
+public:
+	Student(){ // 无参构造函数的函数名与类名相同，无参构造函数没有返回值
+		m_strName = "jim"
+	}
+private:
+	string m_strName;
+};
+```
+
+> 有参构造函数
+
+```C++
+class Student{
+public:
+	Student(string name){ // 字符串类型的name就是有参构造函数的参数
+		m_strName = name;
+	}
+private:
+	string m_strName;
+};
+```
+
+> 重载构造函数
+
+```C++
+class Student{
+public:
+	Student(){
+		m_strName = "jim";
+	}
+	Student(string name){
+		m_strName = name;
+	}
+private:
+	string m_strName;
+};
+```
+
+**构造函数代码实例**
+
+```C++
+// demo.cpp
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include "Teacher.h"
+
+using namespace std;
+
+/*
+	Teacher类
+		自定义无参构造函数
+		自动以有参构造函数
+	数据：
+		名字
+		年龄
+	成员函数：
+		数据成员的封装函数
+ */
+
+int main(void){
+	Teacher t1;
+	Teacher t2("Merry",15);
+	Teacher t3("James");
+
+	cout << t1.getName() << " " << t1.getAge() << endl;
+	cout << t2.getName() << " " << t2.getAge() << endl;
+	cout << t3.getName() << " " << t3.getAge() << endl;
+	return 0;
+};
+
+
+// Teacher.cpp
+#include "Teacher.h"
+
+Teacher::Teacher(){
+	m_strName = "jim";
+	m_iAge = 5;
+	cout << "Teacher()" << endl;
+}
+
+Teacher::Teacher(string name,int age){
+	m_strName = name;
+	m_iAge = age;
+	cout << "Teacher(string name,int age)" << endl;
+}
+
+void Teacher::setName(string name){
+	m_strName = name;
+}
+string Teacher::getName(){
+	return m_strName;
+}
+
+void Teacher::setAge(int age){
+	m_iAge = age;
+}
+int Teacher::getAge(){
+	return m_iAge;
+}
+
+
+
+// Teacher.h
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Teacher{
+public:
+	Teacher();
+	Teacher(string name,int age = 18);
+	void setName(string name);
+	string getName();
+	void setAge(int age);
+	int getAge();
+private:
+	string m_strName;
+	int m_iAge;
+};
+```
+
+**默认构造函数(实例化时不需要传递参数的函数是默认构造函数)**
+
+```C++
+int main(){
+	Student stu1();
+	Student *p = NULL;
+	p = new Student();
+
+	return 0;
+};
+
+//
+class Student{
+public:
+	Student(){};
+	// Student(string name);
+
+private:
+	string m_strName;
+};
+```
+
+**构造函数初始化列表**
+
+```C++
+class Student{
+public:
+	Student():m_strName("jim"),m_iAge(10){};
+private:
+	string m_strName;
+	int m_iAge;
+};
+```
+
+**构造函数初始化列表特性**
+
+- 初始化列先于构造函数执行
+- 初始化列表只能用于构造函数
+- 初始化列表可以同时初始化多个数据成员
+
+**构造函数初始化列表的必要性**
+
+```C++
+class Circle{
+public:
+	// Circle(){m_dPi = 3.14};  通过构造函数的方式会报错
+	Circle():m_dPi(3.14){} // 通过初始化列表的方式才能成功
+private:
+	const double m_dPi;
+}
+```
+
+```C++
+// demo.cpp
+#include <iostream>
+#include <stdlib.h>
+#include "Teacher.h"
+using namespace std;
+
+/*
+	Teacher 类
+		自定义有参默认构造函数
+		使用初始化列表初始化数据
+	数据：
+		名字
+		年龄
+	成员函数：
+		数据成员的封装函数
+	拓展：
+		定义可以带最多学生的个数，此为常量
+ */
+
+int main(void){
+	Teacher t1("Merry",12,150);
+	cout << t1.getName() << " " << t1.getAge() << " " << t1.getMax() << endl;
+
+	return 0;
+};
+
+// Teacher.cpp
+#include <Teacher.h>
+
+Teacher::Teacher(string name,int age,int m):m_strName(name),m_iAge(age),m_iMax(m){
+	cout << "Teacher(string name,int age,int m)" << endl;
+}
+
+void Teacher::setName(string name){
+	m_strName = name;
+}
+string Teacher::getName(){
+	return m_strName;
+}
+
+void Teacher::setAge(int age){
+	m_iAge = age;
+}
+string Teacher::getAge(){
+	return m_iAge;
+}
+
+int Teacher::getMax(){
+	return m_iMax;
+}
+
+// Teacher.h
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Teacher{
+public:
+	Teacher(string name = "Jim",int age = 1,int m = 100)
+	void setName(string name);
+	string getName();
+	void setAge(int age);
+	int getAge();
+	int getMax();
+private:
+	string m_strName;
+	int m_iAge;
+	const int m_iMax;
+};
+```
+
+
 <a href="3-inherit.md">C++ 远征之继承篇</a>
