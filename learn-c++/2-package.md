@@ -850,5 +850,221 @@ private:
 };
 ```
 
+**拷贝构造函数**
 
+- 如果没有自定义的拷贝构造函数则系统自动生成一个默认的拷贝构造函数
+
+- 当采用直接初始化或复制初始化实例化对象时系统自动调用拷贝构造函数
+
+- 拷贝构造函数不可以重载
+
+
+定义格式： 类名（const类名 & 变量名）
+
+```C++
+class Student{
+public:
+	Student(){
+		m_strName = "jim";
+	}
+	Student(const Student & stu){ }
+private:
+	string m_strName;
+};
+```
+
+<img src="./constructor.png" alt="构造函数总结" />
+
+```C++
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include "Teacher.h"
+
+using namespace std;
+
+/*
+	Teacher类
+		自定义拷贝构造函数
+	数据：
+		名字
+		年龄
+	成员函数：
+		数据成员的封装函数
+ */
+
+int main(void){
+	Teacher t1;
+	Teacher t2 = t1; 	// 调用拷贝构造函数
+	Teacher t3(t1); 	// 调用拷贝构造函数
+
+	return 0;
+}
+// Teacher.cpp
+
+#include <Teacher.h>
+
+Teacher::Teacher(string name,int age):m_strName(name),m_iAge(age){
+	cout << "Teacher(string name,int age)" << endl;
+}
+
+Teacher::Teacher(const Teacher & tea){
+	cout << "Teacher(const Teacher & tea)" << endl;
+}
+
+void Teacher::setName(string name){
+	m_strName = name;
+}
+string Teacher::getName(){
+	return m_strName;
+}
+
+void Teacher::setAge(int age){
+	m_iAge = age;
+}
+string Teacher::getAge(){
+	return m_iAge;
+}
+
+
+// Teacher.h
+#include <iostream>
+#include <string>
+using namespace std;
+class Teacher{
+public:
+	Teacher(string name = "jim", int age = 1);
+	Teacher(const Teacher & tea)
+	void setName(string name);
+	string getName();
+	void setAge(int age);
+	int getAge();
+private:
+	string m_strName;
+	int m_iAge;
+};
+```
+
+**析构函数**
+
+- 如果没有自定义的析构函数则系统自动生成一个析构函数
+
+- 析构函数在对象销毁时自动调用
+
+- 析构函数没有返回值，没有参数也不能重载
+
+
+定义格式： `~类名()`
+
+```C++
+class Student{
+public:
+	Student(){
+		cout << "Student" << endl;
+	}
+	~Student(){ // 析构函数没有参数
+		cout << "~Student" << endl;
+	}
+private:
+	string m_strName;
+}
+
+//
+class Student{
+public:
+	Student(){
+		m_pName = new char[20];
+	}
+	~Student(){ // 析构函数的唯一作用就是释放资源
+		delete []m_pName;
+	}
+private:
+	char *m_pName;
+}
+```
+
+对象的生命历程
+
+	申请内存 --> 初始化列表 --> 构造函数
+		↑						|
+		↓						↓
+	释放内存 <-- 析构函数 <--- 参与运算
+
+```C++
+// demo
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include "Teacher.h"
+using namespace std;
+
+/*
+	Teacher类
+		1. 自定义析构函数
+		2. 普通方式实例化的对象，在销毁对象时是否自动调用析构函数
+		3. 通过拷贝析构函数实例化独享，在销毁对象是 是否调用析构函数
+	数据：
+		名字
+		年龄
+	成员函数：
+		数据成员的封装函数
+ */
+
+int main(void){
+	Teacher t1; 	// 栈
+	Teacher *p = new Teacher();		// 堆
+	delete p;
+
+	Teacher t2(t1); // 拷贝构造函数
+
+
+	return 0;
+};
+
+// Teacher.cpp
+#include <Teacher.h>
+
+Teacher::Teacher(string name,int age):m_strName(name),m_iAge(age){
+	cout << "Teacher(string name,int age)" << endl;
+}
+
+Teacher::Teacher(const Teacher & tea){
+	cout << "Teacher(const Teacher & tea)" << endl;
+}
+Teacher::~Teacher(){
+	cout << "~Teacher()" << endl;
+}
+void Teacher::setName(string name){
+	m_strName = name;
+}
+string Teacher::getName(){
+	return m_strName;
+}
+
+void Teacher::setAge(int age){
+	m_iAge = age;
+}
+string Teacher::getAge(){
+	return m_iAge;
+}
+
+
+// Teacher.h
+#include <iostream>
+#include <string>
+using namespace std;
+class Teacher{
+public:
+	Teacher(string name = "jim", int age = 1);
+	Teacher(const Teacher & tea);
+	~Teacher();
+	void setName(string name);
+	string getName();
+	void setAge(int age);
+	int getAge();
+private:
+	string m_strName;
+	int m_iAge;
+};
+```
 <a href="3-inherit.md">C++ 远征之继承篇</a>
