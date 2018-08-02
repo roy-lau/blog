@@ -1067,4 +1067,6 @@ private:
 	int m_iAge;
 };
 ```
+
+
 <a href="3-inherit.md">C++ 远征之继承篇</a>
