@@ -224,8 +224,163 @@ int main(void){
 }
 ```
 
+### C++函数的新特性
+
+***函数参数的默认值***
+
+> 有默认参数值的参数必须在参数表的最右端
+
+```C++
+void fun(int i, int j=5, int k = 10);
+
+void fun(int i, int j=5, int k); // 这种写法是错误的
+```
+> 无实参则用默认值，否则实参覆盖默认值
+
+```C++
+void fun(int i, int j=5, int k=10);
+
+void fun(int i, int j, int k){
+	cout << i << j << k;
+}
+
+int main(){
+	fun(20);
+	fun(20,30);
+	fun(20,30,40);
+}
+```
+
+函数重载
+
+1、 在相同的作用域内
+
+2、 用**同一个函数名**定义的多个函数
+
+3、 **参数个数**和**参数类型**不同
+
+```C++
+int getMax(int x,int y,int z){
+	// to do
+}
+double getMax(double x, double y){
+	// to do
+}
+
+// 编译时编译器会通过名称加参数的方式来区分同名函数
+
+getMax_int_int_int
+getMax_double_double_double
+
+```
+
+内联函数
+
+<img src="imgs/inline-function.png" alt="内联函数" />
+
+内联函数关键字： `inline`
+
+```C++
+inline int max(int a,int b, int c);
+int main(){
+	int i = 10, j = 20, k = 30, m;
+	m = max(i, j, k);
+	cout << "max=" << m << endl;
+	return 0;
+}
+```
+```C++
+// 上遍代码的展开式
+int main(){
+	int i = 10, j = 20, k = 30, m;
+	int a,b,c;
+	a = i; b = j; c = k;
+	if(b > a) a = b;
+	if(c > a) a = c;
+	m = a;
+	cout << "max=" << m << endl;
+	return 0;
+}
+```
+
+- 内联编译是建议性的，由编译器决定。
+
+- 逻辑简单，调用频繁的函数建议使用内联。
+
+- 递归函数无法使用内联方式。
 
 
+总结：
 
+  函数参数默认值 --> 实参覆盖默认值<br />
+  函数重载 --> 名称相同参数可辨<br />
+  内联函数 --> inline 效率高 有条件
+
+
+代码实例：
+
+```C++
+#include <stdlib.h>
+using namespace std;
+
+void fun(int i = 30, int j = 20, int k = 10);
+void fun(double i,double j);
+
+int main(void){
+	fun(); // 30,20,10
+	fun(100); // 100,20,10
+	fun(100,200); // 100,200,10
+	fun(100,200,300); // 100,200,300
+
+	fun(1.1,2.2) //1.1, 2.2
+	system("pause");
+	return 0;
+}
+
+void fun(int i, int j, int k){
+	cout << i <<","<< j <<","<< k << endl;
+}
+void fun(double i, double j){
+	cout << i << "," << j << endl;
+}
+```
+
+```C++
+// 1. 求两个数的最大值
+// 2. 求数组的最大值
+#include <iostream>
+using namespace std;
+
+int getMax(int a, int b){
+	return a > b ? a : b;
+}
+/**
+ * 函数功能：返回数组中的最大值
+ * @param  arr   整型数组
+ * @param  count 数组长度
+ * @return       数组的最大值
+ */
+int getMax(int *arr, int count){
+	int maxNum = arr[0];
+	for(int i =1; i < count; i++){
+		if (maxNum < arr[i]){
+			maxNum = arr[i];
+		}
+	}
+	return maxNum;
+}
+
+int main(void){
+	// 定义数组并初始化
+	int numArr[3] = {3, 8, 6};
+
+	// 自动调用 int getMax(int a, int b)
+	cout << getMax(2, 6) << endl;
+
+	// 自动调用返回数组中最大值的函数返回数组中的最大值
+	cout << getMax(numArr, 3) << endl;
+	return 0;
+}
+```
 
 <!-- <a href="6-departure.md">C++ 远征之离港篇</a> -->
