@@ -383,4 +383,117 @@ int main(void){
 }
 ```
 
+#### C++内存管理
+
+思考：
+
+  内存的本质是什么？  **资源**
+  谁来掌管资源？ 		**操作系统**
+  我们能做什么？ 		**申请/归还**
+
+__申请/规划内存资源就是内存管理__
+
+
+内存的申请和释放
+
+运算符：
+
+申请内存 `new`
+释放内存 `delete`
+
+方法：
+申请内存 `int *p = new int;`
+释放内存 `delete p;`
+
+申请和释放块内存：
+
+```C++
+int *arr = new int[10]; // 申请块内存
+delete []arr; 			// 释放块内存
+```
+
+内存管理的其他方式：
+```C
+C语言
+void *malloc(size_t size); // 申请内存
+void free(void *memblock); // 释放内存
+```
+```C++
+new
+delete
+```
+
+注意事项：
+```C++
+// 申请内存
+int *p = new int[1000];
+if(NULL == p){
+	// 内存申请失败
+}
+
+// 释放内存
+int *p = new int;
+if(NULL == p){
+	// 内存分配失败
+	// 异常处理
+}
+delete p;
+p = NULL;
+
+int *p = new int[1000];
+if(NULL == p){
+	// 内存分配失败
+	// 异常处理
+}
+delete []p;
+p = NULL;
+```
+
+总结：
+
+使用`new`申请内存，使用`delete`释放内存
+
+申请内存需要判断是否成功，释放内存需要设空指针
+
+`new`与`delete`配套使用（有申请也要有释放）
+
+```C++
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main(void){
+	int *p = new int; // 申请内存
+	if(NULL == p){ // 申请失败
+		return 0;
+	}
+	*p = 20;  // 赋值
+	cout << *p << endl; // 输出值
+	delete p; // 释放内存
+	p = NULL; // 指针赋值为空
+	return 0;
+}
+```
+```C++
+// 块内存
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main(void){
+	int *p = new int[1000]; // 申请块内存
+	if(NULL == p){ // 申请失败
+		return 0;
+	}
+	p[0] = 10;  // p[0]赋值
+	p[1] = 20;  // p[1]赋值
+	cout << p[0] << "," << p[1] << endl; // 输出值
+	delete []p; // 释放块内存
+	p = NULL; // 指针赋值为空
+	return 0;
+}
+```
+
+
+
 <a href="3-package.md">C++ 远征之封装篇</a>
