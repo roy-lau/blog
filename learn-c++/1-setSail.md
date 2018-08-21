@@ -246,4 +246,4 @@ int main(void){
 }
 ```
 
-<a href="2-package.md">C++ 远征之封装篇</a>
+<a href="2-departure.md">C++ 远征之离港篇</a>

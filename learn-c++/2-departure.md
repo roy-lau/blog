@@ -383,4 +383,4 @@ int main(void){
 }
 ```
 
-<!-- <a href="6-departure.md">C++ 远征之离港篇</a> -->
+<a href="3-package.md">C++ 远征之封装篇</a>

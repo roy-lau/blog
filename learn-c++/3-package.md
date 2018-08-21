@@ -1069,4 +1069,4 @@ private:
 ```
 
 
-<a href="3-inherit.md">C++ 远征之继承篇</a>
+<a href="4-inherit.md">C++ 远征之继承篇</a>
