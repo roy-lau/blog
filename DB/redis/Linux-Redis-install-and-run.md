@@ -14,7 +14,41 @@ tar zxf 4.0.10.tar.gz
 ```bash
 cd ./redis-4.0.10
 make && make install
+./utils/install_server.sh # 6下回车
 ```
+
+### 服务器端
+
+重启redis
+```bash
+redis-cli shutdown
+```
+启动服务器
+```bash
+redis-server ./redis.conf
+```
+
+**如何后台运行Redis服务器（守护进程）？**
+
+1、 配置
+```bash
+vim sentinel.conf
+
+# 加入或修改这三行
+protected-mode yes  # 使外网可以访问
+daemonize yes 		# 后台运行
+logfile "/var/log/sentinel_log.log"  # 设置日志文件的位置
+```
+
+2、 启动服务器
+```bash
+redis-server sentinel.conf --sentinel # 后台启动
+ps -ef|grep sentinel 			# 查看是否运行成功
+cat /var/log/sentinel_log.log 	# 查看日志
+```
+
+
+### 客户端
 
 
 <details>
@@ -22,18 +56,13 @@ make && make install
 <img src="./imgs/reids-config-dir.png" alt="redis 配置" />
 </details>
 
-```bash
-./utils/install_server.sh
-# 打开配置文件
-vim /etc/redis/6379.conf
-# 修改ip
-bind 127.0.0.1 改为 当前服务器的ip
-```
 
-运行
+
+访问Redis
 
 ```bash
-redis-cli -h 服务器的ip
+# 直接输入redis-cli， 默认是127.0.0.1：6379，无密码
+# 注： 守护进程的默认端口是26379，无密码
+redis-cli -h 服务器的ip -p 端口 -a 密码
 ping
-# 如果是在本机上运行，直接`redis-cli`就可以了
 ```
