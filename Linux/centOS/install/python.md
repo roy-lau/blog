@@ -3,11 +3,11 @@
 	yum groupinstall "Development tools"
 	yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
 
-2、下载Python3.5的源码包并编译
+2、下载Python3.6的源码包并编译
 
-	wget https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz
-	tar xf Python-3.5.0.tgz
-	cd Python-3.5.0
+	wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+	tar xf Python-3.6.0.tgz
+	cd Python-3.6.0
 	./configure --prefix=/usr/local --enable-shared
 	make
 	make install
@@ -21,7 +21,7 @@
 4、运行演示：
 
 	python3 --version
-	Python 3.5.0
+	Python 3.6.0
 
 5、删除编译Python时所需要的库(如果报错，可以不加--remove-leaveas)
 
@@ -32,13 +32,13 @@
 
 	alias py=python3
 
-7、CentOS 安装easy_install、pip的方法            
+7、CentOS 安装easy_install、pip的方法
 
 CentOS 安装easy_install的方法：
 
 	wget -q http://peak.telecommunity.com/dist/ez_setup.py
 	python ez_setup.py
-	
+
 8、CentOS安装python包管理安装工具pip的方法如下：
 
 	wget --no-check-certificate https://github.com/pypa/pip/archive/1.5.5.tar.gz

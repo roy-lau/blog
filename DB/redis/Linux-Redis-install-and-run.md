@@ -2,51 +2,32 @@
 
 下载
 ```bash
- wget https://github.com//antirez/redis/archive/4.0.10.tar.gz
+ wget https://github.com//antirez/redis/archive/4.0.1.tar.gz
 ```
 
 解压
 ```bash
-tar zxf 4.0.10.tar.gz
+tar zxf 4.0.1.tar.gz
 ```
 
 安装
 ```bash
-cd ./redis-4.0.10
+cd ./redis-4.0.1
 make && make install
 ./utils/install_server.sh # 6下回车
 ```
 
 ### 服务器端
 
-重启redis
+关闭redis
 ```bash
 redis-cli shutdown
 ```
 启动服务器
 ```bash
 redis-server ./redis.conf
+redis-server ./redis.conf&  #加上`&`可以使Redis-server在后台运行
 ```
-
-**如何后台运行Redis服务器（守护进程）？**
-
-1、 配置
-```bash
-vim sentinel.conf
-
-# 加入或修改这三行
-protected-mode yes  # 使外网可以访问
-daemonize yes 		# 后台运行
-logfile "/var/log/sentinel_log.log"  # 设置日志文件的位置
-```
-
-2、 启动服务器
-```bash
-redis-server sentinel.conf --sentinel # 后台启动
-ps -ef|grep sentinel 			# 查看是否运行成功
-cat /var/log/sentinel_log.log 	# 查看日志
-```
-
 
 ### 客户端
 
