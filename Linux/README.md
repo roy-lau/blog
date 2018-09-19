@@ -7,7 +7,7 @@
 	* [时间](./other/shell/date.md)
 	* [定时任务](./other/shell/crontab.md)
 
-* [contOS 系統](./contOS/)
+* [centOS 系統](./centOS/)
 * [ubunto 系統](./ubunto/)
 
 * [VMware](VMware.md)

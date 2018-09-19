@@ -7,6 +7,7 @@
 	* [安裝zsh](./install/zsh.md)
 	* [git](./install/git.md)
 	* [java](./install/java.md)
+	* [nginx](./install/nginx.md)
 	* [MySQl](./install/mysql.md)
 	* [MongoDB](./install/mongodb.md)
 	* [nodejs](./install/nodejs.md)
