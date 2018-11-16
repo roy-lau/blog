@@ -2,6 +2,7 @@
 * [centOS下载地址](http://vault.centos.org/)
 * [centOS目录结构](dir.md)
 * [yum使用](yum.md)
+* [scp使用](scp.md)
 
 * [常用软件安装](./install/)
 	* [安裝zsh](./install/zsh.md)

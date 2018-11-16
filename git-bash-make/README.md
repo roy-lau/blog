@@ -7,13 +7,16 @@
 <img src="git-Common-commands.jpg" alt="">
 
 ### 使用git diff查看各个区之间的差异
+
 > git diff 和 git diff –-cached容易混淆
+
 ```shell
     git diff                        # 比较的是工作区和暂存区的差别
     git diff –-cached               # 比较的是暂存区和版本库的差别
     git diff HEAD                   # 可以查看工作区和版本库的差别
 ```
 > 每次commit后,git diff –-cached没有内容，是因为暂存区的内容已经更新到版本库中，因此暂存区和版本库中的内容无差别
+
 ```shell
     git rm --cached "文件路径"      # 不删除物理文件，仅将该文件从缓存中删除；
     git rm --cached "文件名"        # 可以从缓存区移除文件，使该文件变为未跟踪的状态，
@@ -127,7 +130,7 @@
 
 > 3、拉取远程分支到本地分支
 
-```shell
+```bash
     git fetch origin  remoteBranchName:localBranchName
     # 如果remoteBranchName和localBranchName冲突,手动merge,可以设置深度--depth=1
     git pull origin  remoteBranchName:localBranchName
@@ -155,29 +158,29 @@
 
 ### 远程主机（origin）
 
-1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，```git remote```命令会列出所有远程主机。
+1. 为了便于管理，git要求每个远程主机都必须指定一个主机名。不带选项的时候，`git remote`命令会列出所有远程主机。
 
         $ git remote
         origin
 
-2. 使用```-v```选项可以查看远程主机的网址
+2. 使用`-v`选项可以查看远程主机的网址
 
 		$ git remote -v
 		origin git@github.com:roy-lau/python.git(fetch)
 		origin git@github.com:roy-lau/python.git(push)
 
-3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用```git clone```命令的```-o```选项指定。
+3. 克隆的时候，所使用的远程主机自动被git命名为origin。如果想使用其他主机名，需要用`git clone`命令的`-o`选项指定。
 
 		$ git clone -o roy-lau https://github.com/roy-lau/python.git
 		$ git remote roy-lau
 
-    上面命令表示，克隆的时候，指定远程主机叫roy-lau
+    上面命令表示，克隆的时候，指定远程主机叫**roy-lau**
 
-4. ```git remote show <主机名>``` 可以查看该主机的详细信息。
-5. ```git remote add <主机名><网址>```  添加远程主机。
-6. ```git remote rm <主机名>``` 删除远程主机
-7. ```git remote rename <源主机名> <新主机名>``` 更改远程主机名。
-End. ```git push -u <主机名> <分支名>```
+4. `git remote show <主机名>` 可以查看该主机的详细信息。
+5. `git remote add <主机名><网址>`  添加远程主机。
+6. `git remote rm <主机名>` 删除远程主机
+7. `git remote rename <源主机名> <新主机名>` 更改远程主机名。
+End. `git push -u <主机名> <分支名>`
 
 ### 配置类
 
@@ -187,7 +190,7 @@ End. ```git push -u <主机名> <分支名>```
 4. `git config --get user.name`               获取一个配置项命令参数
 5. `git congig --unset user.name=roy-lau`     删除一个配置项命令参数
 
-* git add 的时候，中文会显示成`\344\270\255\346\226\207.txt `，使用如下命令进行配置：
+* `git add` 的时候，中文会显示成`\344\270\255\346\226\207.txt `，使用如下命令进行配置：
 
         git config --global core.quotepath false
 
@@ -195,24 +198,40 @@ End. ```git push -u <主机名> <分支名>```
 
         git config credential.helper store
 
-* 设置 `git lg` （设置个命令后，使用git lg命令可以查看分支日志等！）
+* 设置 `git lg` （设置个命令后，使用***git lg***命令可以查看分支日志等！）
+
 ```bash
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
 * 设置git可提交最大bit
 
-> 问题原因是`http.postBuffer`默认上限为`1M`所致。在git的配置里将`http.postBuffer`变量改大一些即可，比如将上限设为`500M`：
+> 问题原因是`http.postBuffer`默认上限为`1M`所致。在git的配置里将`http.postBuffer`变量改大一些即可，比如将上限设为`500M`
 
     git config --global http.postBuffer 524288000
     git sparse clone 路径  可以克隆git仓库下的某个目录
 
-* 设置git push请求时间
+* 设置github大文件提交(超过50M)
 
-> 每多少秒向主机请求链接
+```bash
+    git lfs install     # 开启`lfs`功能（只需运行一次）
+    git lfs track "*.psd" #命令进行大文件追踪 例如 `git lfs track "*.psd"` 追踪所有后缀为 `psd`的文件
+    git lfs track       # 查看现有的文件追踪模式
+    git add .gitattributes # 提交代码需要将`gitattributes`文件提交至仓库`.` 它保存了文件的追踪记录
+    git lfs ls-files    # 可以显示当前跟踪的文件列表（查看当前有哪些文件是使用lfs管理的）
 
-    Host *
-    ServerAliveInterval 120
+    # 正常只需如下步骤即可
+    git lfs install
+    git lfs track "*.psd"
+    git add .gitattributes
+    git add file.psd
+    git commit -m "Add design file"
+    git push origin master
+```
+
+_将代码 `push` 到远程仓库后，`LFS` 跟踪的文件会以`Git LFS`的形式显示:
+`clone` 时 使用`git clone` 或 `git lfs clone` 均可_
+
 
 ### github的SSH配置如下：
 
@@ -265,9 +284,9 @@ __2. 生成SSH密钥过程：__
 
 * bug1：`工作区和暂存区和远程仓库不同。但是，git push 【Everything up-to-date】`
 
->解决步骤如下：
+> 解决步骤如下：
 
-```shell
+```bash
 1. Administrator@liuroy-lau MINGW32 /d/git_rpo/README (master)
     $ git add -A                                # 重点在这里，以前都是用git add .或git add --all
 
@@ -298,7 +317,7 @@ __2. 生成SSH密钥过程：__
 3. ` git add -u `   保存修改和删除，但是不包括新建文件。
 4. 工作的时候经常需要在各个目录之间跳转，可以通过环境变量对目录进行缩写，方便地在多个目录直接切换。
 
-在 ~/.bashrc 添加：
+在 **~/.bashrc**添加：
 
 	export wd="/d/Projects/MyProject/git"
 	export doc="/d/Projects/documents/"
