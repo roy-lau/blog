@@ -48,9 +48,12 @@
 		// 皮肤
 		"OneDarkMaterial",
 		"Package Control",
+		// vue 插件
 		"Vuejs Complete Package",
 		// 代码注释插件
-		"DocBlockr"
+		"DocBlockr",
+		// 可以记住折叠状态和位置的插件
+		"BufferScroll"
 	]
 }
 ```
@@ -59,7 +62,7 @@
 
 步骤：Tools --> Developer --> New snippent 文件中写入下面片段:
 
-```
+```xml
 <snippet>
 	<content><![CDATA[
 	按下tab键出现的代码片段

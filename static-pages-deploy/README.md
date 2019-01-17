@@ -43,7 +43,7 @@ __注：__http-server会一直开启进程，占用端口。所以我们用npm�
 四、发布
 
 	pm2 start "http-server所在目录" -x -- "项目所在的路径" 参数(-p 9090)
-	pm2 start 'hs' -x -- '.' -p 1024 	# 引号必须携带
+	pm2 start --name serveName 'hs' -x -- '.' -p 1024 	# 引号必须携带
 	pm2 list 查看进程
 
 /usr/lib/node_modules/http-server/bin/http-server
