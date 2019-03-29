@@ -77,7 +77,7 @@
 
 #### Emmet配置让单标签闭合
 
-步骤：preference --> package Seeting --> emeet --> Setting-User配置文件中写入下面片段：
+步骤：preferences --> package Seeting --> emeet --> Setting-User配置文件中写入下面片段：
 
 ```json
 {
@@ -89,7 +89,7 @@
 ```
 #### HTML-CSS-JS Prettify格式化.vue文件
 
-步骤：preference --> package Seeting --> HTML/CSS/JS Prettify --> Plugin Options-Default  配置文件中：
+步骤：preferences --> package Seeting --> HTML/CSS/JS Prettify --> Plugin Options-Default  配置文件中：
 
 将下面代码：
 ```json
@@ -107,6 +107,15 @@
         "allowed_file_syntaxes": ["html", "xml"],
         "disallowed_file_patterns": []
     },
+```
+
+### markdowm 文件单独配置
+
+步骤：preferences --> Browse Packages 打开 `Data\Packages\User\`目录下一个名字叫 `Markdown.sublime-settings` 的配置文件中：
+	
+```json
+	// 配置不自动清除空格
+   "trim_trailing_white_space_on_save": false
 ```
 
 ### 主题背景（会提示下载文件图标）
