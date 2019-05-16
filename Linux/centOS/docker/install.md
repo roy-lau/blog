@@ -13,7 +13,7 @@
         
     docker pull nginx
 
-> 启动 nginx
+> 运行 nginx
 
     docker run -d -p 3006:80 --name wechat-sell-nginx -v /home/dev/web/wechat-sell:/usr/share/nginx/html nginx
 
@@ -23,17 +23,40 @@
 
     docker pull tomcat
 
-> 启动 tomcat 镜像
+> 运行 tomcat 镜像
 
     docker run -d -p 80:8080 --name sell-server -v /home/sell/webapps:/usr/local/tomcat/webapps/ tomcat  
 
+### Redis
+
+> 1、 拉取 redis 镜像
+    
+    docker pull redis
+
+> 2、 运行 mysql
+
+    docker run -p 6379:6379 --name myRedis -v $PWD/data:/myRedis/data -v $PWD/conf/redis.conf:/myRedis/redis.conf -d redis redis-server --appendonly yes
+
+命令说明：
+
+- **-p 6379:6379** : 将容器的6379端口映射到主机的6379端口
+- **-v $PWD/data:/data** : 将主机中当前目录下的data挂载到容器的/data
+- **redis-server --appendonly yes** : 在容器执行redis-server启动命令，并打开redis持久化配置
+
+
+> 3、 连接、查看容器
+
+    docker exec -it myRedis redis-cli
+    info
+
+    
 ### mysql 8
 
 > 1、 拉取 mysql 镜像
     
     docker pull mysql
 
-> 2、 启动 mysql
+> 2、 运行 mysql
     
     docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=toor123 -d mysql
 
@@ -65,7 +88,7 @@
 
 _如果创建成功能会返回容器id_
 
-> 3、 启动容器 
+> 3、 运行容器 
 
 	docker start oracle11g
 
