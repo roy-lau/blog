@@ -20,15 +20,15 @@
 <meta property="og:site_name" content="Roy Lau">
 <meta property="og:description" content="已经安装部署并允许MongoDB服务后，须要了解MongoDB的运行情况，并查看MongoDB的性能。这样在大流量得情况下可以很好的应对并保证MongoDB正常运作。   MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。  mongostat 命令 mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//mongostat.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//mongotop.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//mongotop-10.gif">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//mongotop--locks.gif">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/mongostat-mongotop/imgs/mongostat.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/mongostat-mongotop/imgs/mongotop.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/mongostat-mongotop/imgs/mongotop-10.gif">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/mongostat-mongotop/imgs/mongotop--locks.gif">
 <meta property="og:updated_time" content="2019-06-12T07:21:24.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB 监控">
 <meta name="twitter:description" content="已经安装部署并允许MongoDB服务后，须要了解MongoDB的运行情况，并查看MongoDB的性能。这样在大流量得情况下可以很好的应对并保证MongoDB正常运作。   MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。  mongostat 命令 mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取m">
-<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//mongostat.png">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/mongostat-mongotop/imgs/mongostat.png">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -165,7 +165,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
-      <img src="/blog/imgs//random/material-9.png" style="max-height: 240px;">
+      <img src="/blog/imgs//random/material-8.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">MongoDB 监控</div>
@@ -225,17 +225,17 @@
 <p><code>mongostat</code>是<code>mongodb</code>自带的状态检测工具，在命令行下使用。它会间隔固定时间获取<code>mongodb</code>的当前运行状态，并输出。如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用<code>mongostat</code>来查看<code>mongo</code>的状态。</p>
 <p>启动你的<code>Mongod</code>服务，进入到你安装的<code>MongoDB</code>目录下的<code>bin</code>目录， 然后输入<code>mongostat</code>命令，如下所示：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:\<span class="title">set</span> <span class="title">up</span>\<span class="title">mongodb</span>\<span class="title">bin</span>&gt;<span class="title">mongostat</span></span></span><br></pre></td></tr></table></figure></p>
 <p>以上命令输出结果如下：</p>
-<p><img src="/blog/.io//mongostat.png" alt="mongostat输出结果图"></p>
+<p><img src="imgs/mongostat.png" alt="mongostat输出结果图"></p>
 <p><strong>mongotop 命令</strong></p>
 <p><code>mongotop</code>也是<code>mongodb</code>下的一个内置工具，<code>mongotop</code>提供了一个方法，用来跟踪一个<code>MongoDB</code>的实例，查看哪些大量的时间花费在读取和写入数据。 <code>mongotop</code>提供每个集合的水平的统计数据。默认情况下，<code>mongotop</code>返回值的每一秒。</p>
 <p>启动你的<code>Mongod</code>服务，进入到你安装的<code>MongoDB</code>目录下的<code>bin</code>目录， 然后输入<code>mongotop</code>命令，如下所示：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:\<span class="title">set</span> <span class="title">up</span>\<span class="title">mongodb</span>\<span class="title">bin</span>&gt;<span class="title">mongotop</span></span></span><br></pre></td></tr></table></figure></p>
 <p>以上命令执行输出结果如下：</p>
-<p><img src="/blog/.io//mongotop.png" alt="mongotop输出结果图"></p>
+<p><img src="imgs/mongotop.png" alt="mongotop输出结果图"></p>
 <p>带参数实例<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">E:\<span class="title">mongodb</span>-<span class="title">win32</span>-<span class="title">x86_64</span>-2.2.1\<span class="title">bin</span>&gt;<span class="title">mongotop</span> 10</span></span><br></pre></td></tr></table></figure></p>
-<p><img src="/blog/.io//mongotop-10.gif" alt="mongotop 10 输出结果图"></p>
+<p><img src="imgs/mongotop-10.gif" alt="mongotop 10 输出结果图"></p>
 <p>后面的<code>10</code>是<code>&lt;sleeptime&gt;</code>参数 ，可以不使用，等待的时间长度，以秒为单位，<code>mongotop</code>等待调用之间。通过的默认<code>mongotop</code>返回数据的每一秒。<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">E:\<span class="title">mongodb</span>-<span class="title">win32</span>-<span class="title">x86_64</span>-2.2.1\<span class="title">bin</span>&gt;<span class="title">mongotop</span> --<span class="title">locks</span></span></span><br></pre></td></tr></table></figure></p>
 <p>报告每个数据库的锁的使用中，使用<code>mongotop - 锁</code>，这将产生以下输出：</p>
-<p><img src="/blog/.io//mongotop--locks.gif" alt="mongotop 锁 输出结果图"></p>
+<p><img src="imgs/mongotop--locks.gif" alt="mongotop 锁 输出结果图"></p>
 <p>输出结果字段说明：</p>
 <ul>
 <li><strong>ns：</strong> 包含数据库命名空间，后者结合了数据库名称和集合。</li>
@@ -315,7 +315,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjwszskqe001lfghw9nbcmmv6"></div>
+<div id="SOHUCS" sid="cjwt03g73001l0ohwriyf5ylf"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';

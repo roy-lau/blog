@@ -19,12 +19,12 @@
 <meta property="og:site_name" content="Roy Lau">
 <meta property="og:description" content="C++ 远征之离港篇目录 引用类型引用是变量的别名  基本数据类型的引用  12345678910#include &amp;lt;iostream&amp;gt;using namespace std;int main(void)&amp;#123;	int a = 3;	int &amp;amp;b = a; // 引用（别名）必须初始化	b = 10;	cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl;	retu">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//inline-function.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/learn-c++/2-departure/imgs/inline-function.png">
 <meta property="og:updated_time" content="2019-06-12T07:21:24.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Roy Lau">
 <meta name="twitter:description" content="C++ 远征之离港篇目录 引用类型引用是变量的别名  基本数据类型的引用  12345678910#include &amp;lt;iostream&amp;gt;using namespace std;int main(void)&amp;#123;	int a = 3;	int &amp;amp;b = a; // 引用（别名）必须初始化	b = 10;	cout &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl;	retu">
-<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//inline-function.png">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/2019/06/12/learn-c++/2-departure/imgs/inline-function.png">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -161,7 +161,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
-      <img src="/blog/imgs//random/material-14.png" style="max-height: 240px;">
+      <img src="/blog/imgs//random/material-11.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title"></div>
@@ -247,7 +247,7 @@
 <p>3、 <strong>参数个数</strong>和<strong>参数类型</strong>不同</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">	<span class="comment">// to do</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getMax</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">	<span class="comment">// to do</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译时编译器会通过名称加参数的方式来区分同名函数</span></span><br><span class="line"></span><br><span class="line">getMax_int_int_int</span><br><span class="line">getMax_double_double_double</span><br></pre></td></tr></table></figure>
 <p>内联函数</p>
-<p><img src="/blog/.io//inline-function.png" alt="内联函数"></p>
+<p><img src="imgs/inline-function.png" alt="内联函数"></p>
 <p>内联函数关键字： <code>inline</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">10</span>, j = <span class="number">20</span>, k = <span class="number">30</span>, m;</span><br><span class="line">	m = max(i, j, k);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"max="</span> &lt;&lt; m &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上遍代码的展开式</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">10</span>, j = <span class="number">20</span>, k = <span class="number">30</span>, m;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	a = i; b = j; c = k;</span><br><span class="line">	<span class="keyword">if</span>(b &gt; a) a = b;</span><br><span class="line">	<span class="keyword">if</span>(c &gt; a) a = c;</span><br><span class="line">	m = a;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"max="</span> &lt;&lt; m &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -367,7 +367,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjwszskhq000ffghwlm4culy7"></div>
+<div id="SOHUCS" sid="cjwt03g46000f0ohwbmk1fago"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';

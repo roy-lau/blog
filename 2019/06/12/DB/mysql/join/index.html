@@ -19,14 +19,14 @@
 <meta property="og:site_name" content="Roy Lau">
 <meta property="og:description" content="mysql join连接目录  使用 MySQL 的 JOIN 可以在两个或多个表中查询数据。也以在 SELECT, UPDATE 和 DELETE 语句中使用 Mysql 的 JOIN 来联合多表查询。  JOIN 按照功能大致分为如下三类： INNER JOIN（内连接,或等值连接）： 获取两个表中字段匹配关系的记录。LEFT JOIN（左连接）： 获取左表所有记录，即使右表没有对应匹配的记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//inner_join.gif">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//left_join.gif">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//right_join.gif">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/DB/mysql/join/imgs/inner_join.gif">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/DB/mysql/join/imgs/left_join.gif">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/DB/mysql/join/imgs/right_join.gif">
 <meta property="og:updated_time" content="2019-06-12T07:21:24.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Roy Lau">
 <meta name="twitter:description" content="mysql join连接目录  使用 MySQL 的 JOIN 可以在两个或多个表中查询数据。也以在 SELECT, UPDATE 和 DELETE 语句中使用 Mysql 的 JOIN 来联合多表查询。  JOIN 按照功能大致分为如下三类： INNER JOIN（内连接,或等值连接）： 获取两个表中字段匹配关系的记录。LEFT JOIN（左连接）： 获取左表所有记录，即使右表没有对应匹配的记录">
-<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//inner_join.gif">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/2019/06/12/DB/mysql/join/imgs/inner_join.gif">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -163,7 +163,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
-      <img src="/blog/imgs//random/material-19.png" style="max-height: 240px;">
+      <img src="/blog/imgs//random/material-4.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title"></div>
@@ -226,7 +226,7 @@
 <p>INNER JOIN(内连接)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT a.runoob_id, a.runoob_author, b.runoob_count</span><br><span class="line">		FROM runoob_tbl a</span><br><span class="line">		INNER JOIN tcount_tbl b</span><br><span class="line">		ON a.runoob_author = b.runoob_author;</span><br><span class="line">+-------------+-----------------+----------------+</span><br><span class="line">| a.runoob_id | a.runoob_author | b.runoob_count |</span><br><span class="line">+-------------+-----------------+----------------+</span><br><span class="line">| 1           | 菜鸟教程    	| 10             |</span><br><span class="line">| 2           | 菜鸟教程    	| 10             |</span><br><span class="line">| 3           | RUNOOB.COM      | 20             |</span><br><span class="line">| 4           | RUNOOB.COM      | 20             |</span><br><span class="line">+-------------+-----------------+----------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
 <p>以上 SQL 语句等价于：</p>
 <p>WHERE 子句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT a.runoob_id, a.runoob_author, b.runoob_count</span><br><span class="line">		FROM runoob_tbl a, tcount_tbl b</span><br><span class="line">		WHERE a.runoob_author = b.runoob_author;</span><br><span class="line">+-------------+-----------------+----------------+</span><br><span class="line">| a.runoob_id | a.runoob_author | b.runoob_count |</span><br><span class="line">+-------------+-----------------+----------------+</span><br><span class="line">| 1           | 菜鸟教程    	| 10             |</span><br><span class="line">| 2           | 菜鸟教程    	| 10             |</span><br><span class="line">| 3           | RUNOOB.COM      | 20             |</span><br><span class="line">| 4           | RUNOOB.COM      | 20             |</span><br><span class="line">+-------------+-----------------+----------------+</span><br><span class="line">4 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure></p>
-<p><img src="/blog/.io//inner_join.gif" alt="内部联接"></p>
+<p><img src="imgs/inner_join.gif" alt="内部联接"></p>
 <p><strong>mysql LEFT JOIN(左连接)</strong></p>
 <blockquote>
 <p>MySQL left join 与 join 有所不同。 MySQL LEFT JOIN 会读取左边数据表的全部数据，即便右边表无对应数据。</p>
@@ -236,7 +236,7 @@
 <blockquote>
 <p>以上实例中使用了 LEFT JOIN，该语句会读取左边的数据表 runoob_tbl 的所有选取的字段数据，即便在右侧表 tcount_tbl中 没有对应的 runoob_author 字段值。</p>
 </blockquote>
-<p><img src="/blog/.io//left_join.gif" alt="左连接"></p>
+<p><img src="imgs/left_join.gif" alt="左连接"></p>
 <p><strong>mysql RIGHT JOIN(右连接)</strong></p>
 <blockquote>
 <p>MySQL RIGHT JOIN 会读取右边数据表的全部数据，即便左边边表无对应数据。</p>
@@ -245,7 +245,7 @@
 <blockquote>
 <p>以上实例中使用了 RIGHT JOIN，该语句会读取右边的数据表 tcount_tbl 的所有选取的字段数据，即便在左侧表 runoob_tbl 中没有对应的runoob_author 字段值。</p>
 </blockquote>
-<p><img src="/blog/.io//right_join.gif" alt="右连接"></p>
+<p><img src="imgs/right_join.gif" alt="右连接"></p>
 <p><br><br><a href="null.md" style="float: right;">&lt;—— mysql NULL值处理</a><br><br></p>
 
       <blockquote class="mdui-m-t-5">
@@ -314,7 +314,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjwszsksh003ofghwqikc6bww"></div>
+<div id="SOHUCS" sid="cjwt03g8k003o0ohwzb5cduap"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';

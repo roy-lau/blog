@@ -20,13 +20,13 @@
 <meta property="og:site_name" content="Roy Lau">
 <meta property="og:description" content="基本概念   SQL术语/概念 MongoDB术语/概念 解释/说明     database database 数据库   table conllection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域   index index 索引   table joins  表连接，MongoDB不支持   primary key prim">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//Figure-1-Mapping-Table-to-Collection-1.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//articlex.jpeg">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/21/DB/mongodb/databases-documents-collections/imgs/Figure-1-Mapping-Table-to-Collection-1.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/21/DB/mongodb/databases-documents-collections/imgs/articlex.jpeg">
 <meta property="og:updated_time" content="2019-06-12T07:21:24.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB 概念解析">
 <meta name="twitter:description" content="基本概念   SQL术语/概念 MongoDB术语/概念 解释/说明     database database 数据库   table conllection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域   index index 索引   table joins  表连接，MongoDB不支持   primary key prim">
-<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//Figure-1-Mapping-Table-to-Collection-1.png">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/2018/03/21/DB/mongodb/databases-documents-collections/imgs/Figure-1-Mapping-Table-to-Collection-1.png">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -163,7 +163,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
-      <img src="/blog/imgs//random/material-10.png" style="max-height: 240px;">
+      <img src="/blog/imgs//random/material-5.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">MongoDB 概念解析</div>
@@ -260,7 +260,7 @@
 </tbody>
 </table>
 <p>通过下面图例，可更直观的了解<code>mongodb</code>的一些概念</p>
-<p><img src="/blog/.io//Figure-1-Mapping-Table-to-Collection-1.png" alt="MongoDB基本概念"></p>
+<p><img src="imgs/Figure-1-Mapping-Table-to-Collection-1.png" alt="MongoDB基本概念"></p>
 <h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>一个<code>mongodb</code>中可以建立多个数据库。<br><code>MongoDB</code>的默认数据库为<code>&quot;db&quot;</code>，该数据库存储在<code>data</code>目录中。<br><code>MongoDB</code>的单个实例可以容纳多个独立的数据库，每一个都有自己的集合和权限，不同的数据库也放置在不同的文件中。<br><code>&quot;show dbs&quot;</code> 命令可以显示所有数据的列表。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ ./mongo</span><br><span class="line">MongoDB shell version: 3.0.6</span><br><span class="line">connecting to: test</span><br><span class="line">&gt; show dbs</span><br><span class="line">local  0.078GB</span><br><span class="line">test   0.078GB</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 <p>执行<code>&quot;db&quot;</code>命令可以显示当前数据库对象或集合。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ./mongo</span><br><span class="line">MongoDB shell version: 3.0.6</span><br><span class="line">connecting to: test</span><br><span class="line">&gt; db</span><br><span class="line">test</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
@@ -494,7 +494,7 @@
 <li>紧接的两个字节由进程 <code>id</code> 组成 <code>PID</code></li>
 <li>最后三个字节是随机数</li>
 </ul>
-<p><img src="/blog/.io//articlex.jpeg" alt="ObjectId解释"></p>
+<p><img src="imgs/articlex.jpeg" alt="ObjectId解释"></p>
 <p><code>MongoDB</code> 中存储的文档必须有一个 <code>_id</code> 键。这个键的值可以是任何类型的，默认是个 <code>ObjectId</code> 对象</p>
 <p>由于 <code>ObjectId</code> 中保存了创建的时间戳，所以你不需要为你的文档保存时间戳字段，你可以通过 <code>getTimestamp</code> 函数来获取文档的创建时间:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; var newObject = ObjectId()</span><br><span class="line">&gt; newObject.getTimestamp()</span><br><span class="line">ISODate(&quot;2017-11-25T07:21:10Z&quot;)</span><br></pre></td></tr></table></figure>
@@ -588,7 +588,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjwszskut0051fghwhfb1witf"></div>
+<div id="SOHUCS" sid="cjwt03g9v00510ohwb8cky2z2"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';

@@ -20,12 +20,12 @@
 <meta property="og:site_name" content="Roy Lau">
 <meta property="og:description" content="MongoDB复制是将数据同步在多个服务器的过程。   复制提供了数据的冗余备份，并在多个服务器上存储数据副本，提高了数据的可用性，并可以保证数据的安全性。   复制还允许您从硬件故障和服务中断中恢复数据。  什么是复制?  保障数据的安全性 数据高可用性 (24*7) 灾难恢复 无需停机维护（如备份，重建索引，压缩） 分布式读取数据  MongoDB复制原理 mongodb的复制至少需要两个节">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//replication.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/replication/imgs/replication.png">
 <meta property="og:updated_time" content="2019-06-12T07:21:24.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB 复制（副本集）">
 <meta name="twitter:description" content="MongoDB复制是将数据同步在多个服务器的过程。   复制提供了数据的冗余备份，并在多个服务器上存储数据副本，提高了数据的可用性，并可以保证数据的安全性。   复制还允许您从硬件故障和服务中断中恢复数据。  什么是复制?  保障数据的安全性 数据高可用性 (24*7) 灾难恢复 无需停机维护（如备份，重建索引，压缩） 分布式读取数据  MongoDB复制原理 mongodb的复制至少需要两个节">
-<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//replication.png">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/replication/imgs/replication.png">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -162,7 +162,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
-      <img src="/blog/imgs//random/material-7.png" style="max-height: 240px;">
+      <img src="/blog/imgs//random/material-6.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">MongoDB 复制（副本集）</div>
@@ -239,7 +239,7 @@
 <p>主节点记录在其上的所有操作oplog，从节点定期轮询主节点获取这些操作，然后对自己的数据副本执行这些操作，从而保证从节点的数据与主节点一致。</p>
 </blockquote>
 <p>MongoDB复制结构图如下所示：</p>
-<p><img src="/blog/.io//replication.png" alt="MongoDB复制原理图"></p>
+<p><img src="imgs/replication.png" alt="MongoDB复制原理图"></p>
 <p>以上结构图中，客户端从主节点读取数据，在客户端写入数据到主节点时， 主节点与从节点进行数据交互保障数据的一致性。</p>
 <p>副本集特征：</p>
 <ul>
@@ -334,7 +334,7 @@
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjwszskqr001yfghw85hudnrs"></div>
+<div id="SOHUCS" sid="cjwt03g7d001y0ohw3s9orksv"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';

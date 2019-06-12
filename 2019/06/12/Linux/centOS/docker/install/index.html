@@ -19,16 +19,16 @@
 <meta property="og:site_name" content="Roy Lau">
 <meta property="og:description" content="docker 安装工具 相关命令 安装使用（nginx，tomcat，mysql，oracle 11g） 容器使用 镜像使用 容器链接  nginx 拉取 nginx 镜像  docker pull nginx  运行 nginx  docker run -d -p 3006:80 --name wechat-sell-nginx -v /home/dev/web/wechat-sell:/usr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//imgs/docker-install-oracle11g.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//imgs/docker-install-oracle11g-1.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//imgs/docker-install-oracle11g-2.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//imgs/docker-install-oracle11g-3.png">
-<meta property="og:image" content="https://roy-lau.github.io/blog/.io//imgs/docker-install-oracle11g-4.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/Linux/centOS/docker/imgs/docker-install-oracle11g.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/Linux/centOS/docker/imgs/docker-install-oracle11g-1.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/Linux/centOS/docker/imgs/docker-install-oracle11g-2.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/Linux/centOS/docker/imgs/docker-install-oracle11g-3.png">
+<meta property="og:image" content="https://roy-lau.github.io/blog/2019/06/12/Linux/centOS/docker/imgs/docker-install-oracle11g-4.png">
 <meta property="og:updated_time" content="2019-06-12T07:21:24.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Roy Lau">
 <meta name="twitter:description" content="docker 安装工具 相关命令 安装使用（nginx，tomcat，mysql，oracle 11g） 容器使用 镜像使用 容器链接  nginx 拉取 nginx 镜像  docker pull nginx  运行 nginx  docker run -d -p 3006:80 --name wechat-sell-nginx -v /home/dev/web/wechat-sell:/usr">
-<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//imgs/docker-install-oracle11g.png">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/2019/06/12/Linux/centOS/docker/imgs/docker-install-oracle11g.png">
 
   <meta name="format-detection" content="telephone=no,email=no">
   <meta name="theme-color" content="#9C27B0">
@@ -165,7 +165,7 @@
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
   <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
-      <img src="/blog/imgs//random/material-17.png" style="max-height: 240px;">
+      <img src="/blog/imgs//random/material-11.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title"></div>
@@ -306,7 +306,7 @@ sqlplus /nolog
 
 # 连接
 conn /as sysdba
-</code></pre><p><img src="/blog/.io//imgs/docker-install-oracle11g.png" alt></p>
+</code></pre><p><img src="../imgs/docker-install-oracle11g.png" alt></p>
 <pre><code>创建用户 system
 alter user system identified by system;
 创建用户 sys
@@ -319,25 +319,25 @@ create user test identified by test;
 grant connect,resource,dba to test;
 </code></pre><p><strong>注意了</strong>当执行修改密码的时候出现： <code>database not open</code>  提示数据库没有打开，不急按如下操作</p>
 <pre><code>alter database open;
-</code></pre><p><img src="/blog/.io//imgs/docker-install-oracle11g-1.png" alt></p>
+</code></pre><p><img src="../imgs/docker-install-oracle11g-1.png" alt></p>
 <p><strong>注意了</strong>这里也许还会提示：<code>ORA-01507: database not mounted</code></p>
 <blockquote>
 <p>解决方法</p>
 </blockquote>
 <pre><code>database mount;
 alter database open;
-</code></pre><p><img src="/blog/.io//imgs/docker-install-oracle11g-2.png" alt></p>
+</code></pre><p><img src="../imgs/docker-install-oracle11g-2.png" alt></p>
 <blockquote>
 <p>然后就可执行 修改数据库密码的命令了</p>
 </blockquote>
 <pre><code>改完之后输入：ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
-</code></pre><p><img src="/blog/.io//imgs/docker-install-oracle11g-3.png" alt></p>
+</code></pre><p><img src="../imgs/docker-install-oracle11g-3.png" alt></p>
 <blockquote>
 <p>6、使用  进行连接</p>
 </blockquote>
 <p>打开 <strong>navcat 或者 pl/sql</strong> 进行登录： <strong>提示 <code>ORA-12514: TNS: 监听程序当前无法识别连接描述符中请求的服务</code></strong></p>
 <p>这时我们需要去看一下 oracle 的 <code>lsnrctl</code> 服务</p>
-<p><img src="/blog/.io//imgs/docker-install-oracle11g-4.png" alt></p>
+<p><img src="../imgs/docker-install-oracle11g-4.png" alt></p>
 <p>看到这两个了么，任选其一，修改 <code>tnsnames.ora</code> 的 <code>service_name=helowinXDB</code></p>
 <p><strong>之前我们把端口映射到了1521上，所以我们需要进行配置 tnsnames.ora</strong></p>
 <pre><code>tnsnames.ora 文件地址是 /home/oracle/app/oracle/product/11.2.0/dbhome_2/network/admin/tnsnames.ora
@@ -393,7 +393,7 @@ alter database open;
 
   <nav id="paginator">
     
-      <a rel="prev" class="extend prev" href="/blog/2019/06/12/Linux/centOS/install/git/">
+      <a rel="prev" class="extend prev" href="/blog/2019/06/12/Linux/centOS/install/docker/">
         <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
       </a>
@@ -410,7 +410,7 @@ alter database open;
 
   <div id="comment" class="mdui-m-t-5">
     <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
-<div id="SOHUCS" sid="cjwszskvv005hfghw4t62lg3c"></div>
+<div id="SOHUCS" sid="cjwt03gaj005h0ohwjm7i0f04"></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyubhC2Dq';
