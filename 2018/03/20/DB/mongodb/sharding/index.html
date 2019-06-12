@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>MongoDB 分片 | Roy Lau</title>
+
+  <link rel="shortcut icon" href="/blog/images/favicon.jpg">
+  <link rel="alternate" href="/blog/atom.xml" title="Roy Lau">
+  <meta name="description" content="分片 在Mongodb里面存在另一种集群，就是分片技术,可以满足MongoDB数据量大量增长的需求。 当MongoDB存储海量的数据时，一台机器可能不足以存储数据，也可能不足以提供可接受的读写吞吐量。这时，我们就可以通过在多台机器上分割数据，使得数据库系统能存储和处理更多的数据。 为什么使用分片?  复制所有的写入操作到主节点 延迟的敏感数据会在主节点查询 单个副本集限制在12个节点 当请求量巨大">
+<meta name="keywords" content="DB,MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB 分片">
+<meta property="og:url" content="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/index.html">
+<meta property="og:site_name" content="Roy Lau">
+<meta property="og:description" content="分片 在Mongodb里面存在另一种集群，就是分片技术,可以满足MongoDB数据量大量增长的需求。 当MongoDB存储海量的数据时，一台机器可能不足以存储数据，也可能不足以提供可接受的读写吞吐量。这时，我们就可以通过在多台机器上分割数据，使得数据库系统能存储和处理更多的数据。 为什么使用分片?  复制所有的写入操作到主节点 延迟的敏感数据会在主节点查询 单个副本集限制在12个节点 当请求量巨大">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://roy-lau.github.io/blog/.io//sharding.png">
+<meta property="og:updated_time" content="2019-06-12T07:21:24.457Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB 分片">
+<meta name="twitter:description" content="分片 在Mongodb里面存在另一种集群，就是分片技术,可以满足MongoDB数据量大量增长的需求。 当MongoDB存储海量的数据时，一台机器可能不足以存储数据，也可能不足以提供可接受的读写吞吐量。这时，我们就可以通过在多台机器上分割数据，使得数据库系统能存储和处理更多的数据。 为什么使用分片?  复制所有的写入操作到主节点 延迟的敏感数据会在主节点查询 单个副本集限制在12个节点 当请求量巨大">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//sharding.png">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content>
+  <meta name="keywords" content=",DB,MongoDB">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Roy Lau">
+  <meta name="msapplication-starturl" content="https://roy-lau.github.io/blog/blog/2018/03/20/DB/mongodb/sharding/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Roy Lau">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/blog/images/favicon.jpg">
+
+  
+    <meta property="article:published_time" content="Tue Mar 20 2018 11:00:31 GMT+0000">
+    <meta property="article:modified_time" content="Wed Jun 12 2019 15:21:24 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="https://roy-lau.github.io/blog/blog/2018/03/20/DB/mongodb/sharding/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/blog/css/mdui.css">
+<link rel="stylesheet" href="/blog/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-blue">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/blog/" class="mdui-typo-headline">Roy Lau</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/blog/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/blog/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/blog/imgs/banner.png" style="height: 160px;">
+    <img src="/blog/imgs/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 50px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">Roy Lau</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>是否能写好博客，在于坚持认真。</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:897379293@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '897379293@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/blog/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2019/06/">六月 2019<span class="mdui-ripple sidebar_archives-count">91</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2018/03/">三月 2018<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2017/06/">六月 2017<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/tags/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/blog/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/blog/imgs//random/material-15.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">MongoDB 分片</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2018-03-20 / <i class="iconfont">&#xe601;</i> Roy Lau &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=MongoDB 分片&url=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/&pic=https://roy-lau.github.io/blog/blog/images/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Roy Lau&title=MongoDB 分片&summary=&pics=https://roy-lau.github.io/blog/blog/images/favicon.jpg&url=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=MongoDB 分片&url=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/&via=Roy Lau" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/&title=MongoDB 分片" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/&text=MongoDB 分片" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <p><strong>分片</strong></p>
+<p>在<code>Mongodb</code>里面存在另一种集群，就是分片技术,可以满足<code>MongoDB</code>数据量大量增长的需求。</p>
+<p>当<code>MongoDB</code>存储海量的数据时，一台机器可能不足以存储数据，也可能不足以提供可接受的读写吞吐量。这时，我们就可以通过在多台机器上分割数据，使得数据库系统能存储和处理更多的数据。</p>
+<p><strong>为什么使用分片?</strong></p>
+<ul>
+<li>复制所有的写入操作到主节点</li>
+<li>延迟的敏感数据会在主节点查询</li>
+<li>单个副本集限制在12个节点</li>
+<li>当请求量巨大时会出现内存不足。</li>
+<li>本地磁盘不足</li>
+<li>垂直扩展价格昂贵</li>
+</ul>
+<h4 id="MongoDB分片"><a href="#MongoDB分片" class="headerlink" title="MongoDB分片"></a>MongoDB分片</h4><p>下图展示了在MongoDB中使用分片集群结构分布：</p>
+<p><img src="/blog/.io//sharding.png" alt="MongoDB分片图"></p>
+<p>上图中主要有如下所述三个主要组件：</p>
+<ul>
+<li><strong>Shard:</strong> 用于存储实际的数据块，实际生产环境中一个<code>shard server</code>角色可由几台机器组个一个<code>replica set</code>承担，防止主机单点故障</li>
+<li><strong>Config Server:</strong> <code>mongod</code>实例，存储了整个 <code>ClusterMetadata</code>，其中包括 <code>chunk</code>信息。</li>
+<li><strong>Query Routers:</strong>    前端路由，客户端由此接入，且让整个集群看上去像单一数据库，前端应用可以透明使用。</li>
+</ul>
+<p><strong>分片实例</strong></p>
+<p>分片结构端口分布如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Shard Server 1：27020</span><br><span class="line">Shard Server 2：27021</span><br><span class="line">Shard Server 3：27022</span><br><span class="line">Shard Server 4：27023</span><br><span class="line">Config Server ：27100</span><br><span class="line">Route Process：40000</span><br></pre></td></tr></table></figure></p>
+<p>步骤一：启动<code>Shard Server</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@100 /] mkdir -p /www/mongoDB/shard/s0</span><br><span class="line">[root@100 /] mkdir -p /www/mongoDB/shard/s1</span><br><span class="line">[root@100 /] mkdir -p /www/mongoDB/shard/s2</span><br><span class="line">[root@100 /] mkdir -p /www/mongoDB/shard/s3</span><br><span class="line">[root@100 /] mkdir -p /www/mongoDB/shard/<span class="built_in">log</span></span><br><span class="line">[root@100 /] /usr/<span class="built_in">local</span>/mongoDB/bin/mongod --port 27020 --dbpath=/www/mongoDB/shard/s0 --logpath=/www/mongoDB/shard/<span class="built_in">log</span>/s0.log --logappend --fork</span><br><span class="line">....</span><br><span class="line">[root@100 /] /usr/<span class="built_in">local</span>/mongoDB/bin/mongod --port 27023 --dbpath=/www/mongoDB/shard/s3 --logpath=/www/mongoDB/shard/<span class="built_in">log</span>/s3.log --logappend --fork</span><br></pre></td></tr></table></figure></p>
+<p>步骤二： 启动<code>Config Server</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@100 /] mkdir -p /www/mongoDB/shard/config</span><br><span class="line">[root@100 /] /usr/<span class="built_in">local</span>/mongoDB/bin/mongod --port 27100 --dbpath=/www/mongoDB/shard/config --logpath=/www/mongoDB/shard/<span class="built_in">log</span>/config.log --logappend --fork</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong> 这里我们完全可以像启动普通<code>mongodb</code>服务一样启动，不需要添加<code>—shardsvr</code>和<code>configsvr</code>参数。因为这两个参数的作用就是改变启动端口的，所以我们自行指定了端口就可以。</p>
+<p>步骤三： 启动<code>Route Process</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mongoDB/bin/mongos --port 40000 --configdb localhost:27100 --fork --logpath=/www/mongoDB/shard/<span class="built_in">log</span>/route.log --chunkSize 500</span><br></pre></td></tr></table></figure></p>
+<p><code>mongos</code>启动参数中，<code>chunkSize</code>这一项是用来指定<code>chunk</code>的大小的，单位是<code>MB</code>，默认大小为<code>200MB</code>.</p>
+<p>步骤四： 配置<code>Sharding</code></p>
+<p>接下来，我们使用<code>MongoDB Shell</code>登录到<code>mongos</code>，添加<code>Shard</code>节点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@100 shard] /usr/<span class="built_in">local</span>/mongoDB/bin/mongo admin --port 40000</span><br><span class="line">MongoDB shell version: 2.0.7</span><br><span class="line">connecting to: 127.0.0.1:40000/admin</span><br><span class="line">mongos&gt; db.runCommand(&#123; addshard:<span class="string">"localhost:27020"</span> &#125;)</span><br><span class="line">&#123; <span class="string">"shardAdded"</span> : <span class="string">"shard0000"</span>, <span class="string">"ok"</span> : 1 &#125;</span><br><span class="line">......</span><br><span class="line">mongos&gt; db.runCommand(&#123; addshard:<span class="string">"localhost:27029"</span> &#125;)</span><br><span class="line">&#123; <span class="string">"shardAdded"</span> : <span class="string">"shard0009"</span>, <span class="string">"ok"</span> : 1 &#125;</span><br><span class="line">mongos&gt; db.runCommand(&#123; enablesharding:<span class="string">"test"</span> &#125;) 	<span class="comment"># 设置分片存储的数据库</span></span><br><span class="line">&#123; <span class="string">"ok"</span> : 1 &#125;</span><br><span class="line">mongos&gt; db.runCommand(&#123; shardcollection: <span class="string">"test.log"</span>, key: &#123; id:1,time:1&#125;&#125;)</span><br><span class="line">&#123; <span class="string">"collectionsharded"</span> : <span class="string">"test.log"</span>, <span class="string">"ok"</span> : 1 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤五： 程序代码内无需太大更改，直接按照连接普通的<code>mongo</code>数据库那样，将数据库连接接入接口<code>40000</code></p>
+<p><strong>笔记</strong></p>
+<ol>
+<li>创建<code>Sharding</code>复制集 <code>rs0</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/<span class="built_in">log</span></span><br><span class="line">mkdir /data/db1</span><br><span class="line">nohup mongod --port 27020 --dbpath=/data/db1 --logpath=/data/<span class="built_in">log</span>/rs0-1.log --logappend --fork --shardsvr --replSet=rs0 &amp;</span><br><span class="line"></span><br><span class="line">mkdir /data/db2</span><br><span class="line">nohup mongod --port 27021 --dbpath=/data/db2 --logpath=/data/<span class="built_in">log</span>/rs0-2.log --logappend --fork --shardsvr --replSet=rs0 &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>1.1 复制集rs0配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># mongo localhost:27020</span><br><span class="line">&gt; rs.initiate(&#123;_id: &apos;rs0&apos;, members: [&#123;_id: 0, host: &apos;localhost:27020&apos;&#125;, &#123;_id: 1, host: &apos;localhost:27021&apos;&#125;]&#125;)</span><br><span class="line">&gt; rs.isMaster() 		# 查看主从关系</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建Sharding复制集 rs1<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/db3</span><br><span class="line">nohup mongod --port 27030 --dbpath=/data/db3 --logpath=/data/<span class="built_in">log</span>/rs1-1.log --logappend --fork --shardsvr --replSet=rs1 &amp;</span><br><span class="line">mkdir /data/db4</span><br><span class="line">nohup mongod --port 27031 --dbpath=/data/db4 --logpath=/data/<span class="built_in">log</span>/rs1-2.log --logappend --fork --shardsvr --replSet=rs1 &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.1 复制集rs1配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># mongo localhost:27030</span><br><span class="line">&gt; rs.initiate(&#123;_id: &apos;rs1&apos;, members: [&#123;_id: 0, host: &apos;localhost:27030&apos;&#125;, &#123;_id: 1, host: &apos;localhost:27031&apos;&#125;]&#125;)</span><br><span class="line">&gt; rs.isMaster() 		# 查看主从关系</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>创建Config复制集 conf<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/conf1</span><br><span class="line">nohup mongod --port 27100 --dbpath=/data/conf1 --logpath=/data/log/conf-1.log --logappend --fork --configsvr --replSet=conf &amp;</span><br><span class="line">mkdir /data/conf2</span><br><span class="line">nohup mongod --port 27101 --dbpath=/data/conf2 --logpath=/data/log/conf-2.log --logappend --fork --configsvr --replSet=conf &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.1 复制集conf配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># mongo localhost:27100</span><br><span class="line">&gt; rs.initiate(&#123;_id: &apos;conf&apos;, members: [&#123;_id: 0, host: &apos;localhost:27100&apos;&#125;, &#123;_id: 1, host: &apos;localhost:27101&apos;&#125;]&#125;)</span><br><span class="line">&gt; rs.isMaster() 		# 查看主从关系</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>创建Route<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup mongos --port 40000 --configdb conf/localhost:27100,localhost:27101 --fork --logpath=/data/<span class="built_in">log</span>/route.log --logappend &amp;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.1 设置分片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># mongo localhost:40000</span><br><span class="line">&gt; use admin</span><br><span class="line">&gt; db.runCommand(&#123; addshard: &apos;rs0/localhost:27020,localhost:27021&apos;&#125;)</span><br><span class="line">&gt; db.runCommand(&#123; addshard: &apos;rs1/localhost:27030,localhost:27031&apos;&#125;)</span><br><span class="line">&gt; db.runCommand(&#123; enablesharding: &apos;test&apos;&#125;)</span><br><span class="line">&gt; db.runCommand(&#123; shardcollection: &apos;test.user&apos;, key: &#123;name: 1&#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/">https://roy-lau.github.io/blog/2018/03/20/DB/mongodb/sharding/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/blog/categories/DB/">DB</a><a class="mdui-ripple article_categories-link" href="/blog/categories/DB/MongoDB/">MongoDB</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/blog/tags/DB/">DB</a><a class="mdui-ripple article_tags-link" href="/blog/tags/MongoDB/">MongoDB</a>
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.jpg" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/blog/2018/03/20/DB/mongodb/sort/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/blog/2018/03/20/DB/mongodb/replication/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjwswu4a5001x0shwwbofalag"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/2360828682/profile" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/niemingzhao" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/nie-1-58" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=1432440963&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 Roy Lau<br>
+    Powered by <a href="https://github.com/roylau" target="_blank" class="mdui-text-color-theme-accent">RoyLau</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/blog/js/mdui.js"></script>
+<script src="/blog/js/script.js"></script>
+</body>
+</html>

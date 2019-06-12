@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>Roy Lau</title>
+
+  <link rel="shortcut icon" href="/blog/images/favicon.jpg">
+  <link rel="alternate" href="/blog/atom.xml" title="Roy Lau">
+  <meta name="description" content="// While you can edit this file, it’s best to put your changes in // “User/Preferences.sublime-settings”, which overrides the settings in here. // Settings may also be placed in file type specific op">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Roy Lau">
+<meta property="og:url" content="https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/index.html">
+<meta property="og:site_name" content="Roy Lau">
+<meta property="og:description" content="// While you can edit this file, it’s best to put your changes in // “User/Preferences.sublime-settings”, which overrides the settings in here. // Settings may also be placed in file type specific op">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-12T07:21:24.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Roy Lau">
+<meta name="twitter:description" content="// While you can edit this file, it’s best to put your changes in // “User/Preferences.sublime-settings”, which overrides the settings in here. // Settings may also be placed in file type specific op">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content>
+  <meta name="keywords" content>
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Roy Lau">
+  <meta name="msapplication-starturl" content="https://roy-lau.github.io/blog/blog/2019/06/12/editor/subline_text/sublime-settings/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Roy Lau">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/blog/images/favicon.jpg">
+
+  
+    <meta property="article:published_time" content="Wed Jun 12 2019 07:21:24 GMT+0000">
+    <meta property="article:modified_time" content="Wed Jun 12 2019 15:21:24 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="https://roy-lau.github.io/blog/blog/2019/06/12/editor/subline_text/sublime-settings/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/blog/css/mdui.css">
+<link rel="stylesheet" href="/blog/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-blue">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/blog/" class="mdui-typo-headline">Roy Lau</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/blog/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/blog/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/blog/imgs/banner.png" style="height: 160px;">
+    <img src="/blog/imgs/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 50px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">Roy Lau</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>是否能写好博客，在于坚持认真。</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:897379293@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '897379293@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/blog/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2019/06/">六月 2019<span class="mdui-ripple sidebar_archives-count">91</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2018/03/">三月 2018<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2017/06/">六月 2017<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/tags/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/blog/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/blog/imgs//random/material-19.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title"></div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-06-12 / <i class="iconfont">&#xe601;</i> Roy Lau &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=&url=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/&pic=https://roy-lau.github.io/blog/blog/images/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Roy Lau&title=&summary=&pics=https://roy-lau.github.io/blog/blog/images/favicon.jpg&url=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=&url=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/&via=Roy Lau" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/&title=" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/&text=" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <p> // While you can edit this file, it’s best to put your changes in<br> // “User/Preferences.sublime-settings”, which overrides the settings in here.<br> // Settings may also be placed in file type specific options files, for<br> // example, in Packages/Python/Python.sublime-settings for python files.<br> {<br>   // Sets the colors used within the text area </p>
+<p>   主题文件的路径</p>
+<pre><code>&quot;color_scheme&quot;: &quot;Packages/Color Scheme - Default/Monokai.tmTheme&quot;,  
+</code></pre><p>   // Note that the font_face and font_size are overriden in the platform<br>   // specific settings file, for example, “Preferences (Linux).sublime-settings”.<br>   // Because of this, setting them here will have no effect: you must set them<br>   // in your User File Preferences.  </p>
+<p>   设置字体和大小，必须在Settings-User里重写，这里设置没有任何效果   </p>
+<pre><code>&quot;font_face&quot;: &quot;Consolas&quot;,
+&quot;font_size&quot;: 12,
+</code></pre><p>   // Valid options are “no_bold”, “no_italic”,     “no_antialias”, “gray_antialias”,<br>   // “subpixel_antialias” and “no_round” (OS X only)<br>   // 字体选项：no_bold不显示粗体字，no_italic不显示斜体字，no_antialias和no_antialias关闭反锯齿<br>   // subpixel_antialias和no_round是OS X系统独有的     </p>
+<pre><code>&quot;font_options&quot;: [],
+</code></pre><p>  在文字上双击会全选当前的内容，如果里面出现以下字符，就会被截断</p>
+<pre><code>&quot;word_separators”: “./()\”‘-:,.;~!@#$%^&amp;*|+=[]{}`~?&quot;,
+</code></pre><p>   是否显示行号</p>
+<pre><code>&quot;line_numbers&quot;: true,
+</code></pre><p>   是否显示行号边栏</p>
+<pre><code>&quot;gutter&quot;: true,
+</code></pre><p>   行号边栏和文字的间距</p>
+<pre><code>&quot;margin&quot;: 4,
+</code></pre><p>   是否显示代码折叠按钮</p>
+<pre><code>&quot;fold_buttons&quot;: true,
+</code></pre><p>   不管鼠标在不在行号边栏，代码折叠按钮一直显示</p>
+<pre><code>&quot;fade_fold_buttons&quot;: true,
+</code></pre><p>   列显示垂直标尺，在中括号里填入数字，宽度按字符计算</p>
+<pre><code>&quot;rulers&quot;: [],
+</code></pre><p>   是否打开拼写检查</p>
+<pre><code>&quot;spell_check&quot;: false,
+</code></pre><p>   Tab键制表符宽度</p>
+<pre><code>&quot;tab_size&quot;: 4,
+</code></pre><p>   设为true时，缩进和遇到Tab键时使用空格替代</p>
+<pre><code>&quot;translate_tabs_to_spaces&quot;: false,
+</code></pre><p>  translate_tabs_to_spaces设置为true，Tab和Backspace的删除/插入作用于制表符宽度<br>  否则作用于单个空格</p>
+<pre><code>&quot;use_tab_stops&quot;: true,
+</code></pre><p>   false时禁止在载入的时候检测制表符和空格</p>
+<pre><code>&quot;detect_indentation&quot;: true,
+</code></pre><p>   按回车时，自动与制表位对齐</p>
+<pre><code>&quot;auto_indent&quot;: true,
+</code></pre><p>   // Makes auto indent a little smarter, e.g., by indenting the next line<br>   // after an if statement in C. Requires auto_indent to be enabled.</p>
+<p>   针对C语言的</p>
+<pre><code>&quot;smart_indent&quot;: false,
+</code></pre><p>   需要启用auto_indent，第一次打开括号缩进时插入空格？（没测试出来效果…）</p>
+<pre><code>&quot;indent_to_bracket&quot;: true,
+</code></pre><p>   显示对齐的白线是否根据回车、tab等操作自动填补</p>
+<pre><code>&quot;trim_automatic_white_space&quot;: true,
+</code></pre><p>   是否自动换行，如果选auto，需要加双引号</p>
+<pre><code>&quot;word_wrap&quot;: false,
+</code></pre><p>   设置窗口内文字区域的宽度</p>
+<pre><code>&quot;wrap_width&quot;: 0,
+</code></pre><p>   防止被缩进到同一级的字换行</p>
+<pre><code>&quot;indent_subsequent_lines&quot;: true,
+</code></pre><p>   如果没有定义过，则文件居中显示（比如新建的文件）</p>
+<pre><code>&quot;draw_centered&quot;: false,
+</code></pre><p>   自动匹配引号，括号等</p>
+<pre><code>&quot;auto_match_enabled&quot;: true,
+</code></pre><p>   拼写检查的单词列表路径</p>
+<pre><code>&quot;dictionary&quot;: &quot;Packages/Language - English/en_US.dic&quot;,
+</code></pre><p>   代码地图的可视区域部分是否加上边框，边框的颜色可在配色方案上加入minimapBorder键</p>
+<pre><code>&quot;draw_minimap_border&quot;: false,
+</code></pre><p>   突出显示当前光标所在的行</p>
+<pre><code>&quot;highlight_line&quot;: false,
+</code></pre><p>   设置光标闪动方式<code>&quot;smooth&quot;, &quot;phase&quot;, &quot;blink&quot;, &quot;wide&quot; and &quot;solid&quot;</code>.</p>
+<pre><code>&quot;caret_style&quot;: &quot;smooth&quot;,
+</code></pre><p>   是否特殊显示当前光标所在的括号、代码头尾闭合标记</p>
+<pre><code>&quot;match_brackets&quot;: true,
+</code></pre><p>   设为false时，只有光标在括号或头尾闭合标记的两端时，match_brackets才生效</p>
+<pre><code>&quot;match_brackets_content&quot;: true,
+</code></pre><p>   是否突出显示圆括号，match_brackets为true生效</p>
+<pre><code>&quot;match_brackets_square&quot;: false,
+</code></pre><p>   是否突出显示大括号，match_brackets为true生效</p>
+<pre><code>&quot;match_brackets_braces&quot;: false,
+</code></pre><p>   是否突出显示尖括号，match_brackets为true生效</p>
+<pre><code>&quot;match_brackets_angle&quot;: false,
+</code></pre><p>   html和xml下突出显示光标所在标签的两端，影响HTML、XML、CSS等</p>
+<pre><code>&quot;match_tags&quot;: true,
+</code></pre><p>   全文突出显示和当前选中字符相同的字符</p>
+<pre><code>&quot;match_selection&quot;: true,
+</code></pre><p>   设置每一行到顶部，以像素为单位的间距，效果相当于行距</p>
+<pre><code>&quot;line_padding_top&quot;: 1,
+</code></pre><p>   设置每一行到底部，以像素为单位的间距，效果相当于行距</p>
+<pre><code>&quot;line_padding_bottom&quot;: 1,
+</code></pre><p>   // Set to false to disable scrolling past the end of the buffer.<br>   // On OS X, this value is overridden in the platform specific settings, so<br>   // you’ll need to place this line in your user settings to override it.</p>
+<p>   设置为false时，滚动到文本的最下方时，没有缓冲区</p>
+<pre><code>&quot;scroll_past_end&quot;: true,
+</code></pre><p>   // This controls what happens when pressing up or down when on the first<br>   // or last line.<br>   // On OS X, this value is overridden in the platform specific settings, so<br>   // you’ll need to place this line in your user settings to override it.</p>
+<p>   设置成true，当光标已经在第一行时，再Up则到行首，如果光标已经在最后一行，再Down则跳到行尾</p>
+<pre><code>&quot;move_to_limit_on_up_down&quot;: false,
+</code></pre><p>   按space或tab时，实际会产生白色的点（一个空格一个点）或白色的横线（tab_size设置的制表符的宽度），中状态下才能看到<br>   设置为none时，什么情况下都不显示这些点和线<br>   设置为selection时，只显示选中状态下的点和线<br>   设置为all时，则一直显示 </p>
+<pre><code>&quot;draw_white_space&quot;: &quot;selection&quot;,
+</code></pre><p>   制表位的对齐白线是否显示，颜色可在主题文件里设置（guide，activeGuide，stackGuide）</p>
+<pre><code>&quot;draw_indent_guides&quot;: true,
+</code></pre><p>   制表位的对齐白线，draw_normal为一直显示，draw_active为只显示当前光标所在的代码控制域</p>
+<pre><code>&quot;indent_guide_options&quot;: [&quot;draw_normal&quot;],
+</code></pre><p>   为true时，保存文件时会删除每行结束后多余的空格</p>
+<pre><code>&quot;trim_trailing_white_space_on_save&quot;: false,
+</code></pre><p>   为true时，保存文件时光标会在文件的最后向下换一行</p>
+<pre><code>&quot;ensure_newline_at_eof_on_save&quot;: false,
+</code></pre><p>   切换到其它文件标签或点击其它非本软件区域，文件自动保存</p>
+<pre><code>&quot;save_on_focus_lost&quot;: false,
+</code></pre><p>   编码时不能自动检测编码时，将自动检测ASCII, UTF-8 和 UTF-16</p>
+<pre><code>&quot;fallback_encoding&quot;: &quot;Western (Windows 1252)&quot;,
+</code></pre><p>   默认编码格式</p>
+<pre><code>&quot;default_encoding&quot;: &quot;UTF-8&quot;,
+</code></pre><p>   包含空字节的文件被打开默认为十六进制</p>
+<pre><code>&quot;enable_hexadecimal_encoding&quot;: true,
+</code></pre><p>   // Determines what character(s) are used to terminate each line in new files.<br>   // Valid values are ‘system’ (whatever the OS uses), ‘windows’ (CRLF) and<br>   // ‘unix’ (LF only).     </p>
+<p>   每一行结束的时候用什么字符做终止符</p>
+<pre><code>&quot;default_line_ending&quot;: &quot;system&quot;,
+</code></pre><p>   设置为enabled时，在一个字符串间按Tab将插入一个制表符<br>   设置为true时，按Tab会根据前后环境进行代码自动匹配填补   </p>
+<pre><code>&quot;tab_completion&quot;: true,
+</code></pre><p>   代码提示</p>
+<pre><code>&quot;auto_complete&quot;: true,
+</code></pre><p>   代码提示的大小限制</p>
+<pre><code>&quot;auto_complete_size_limit&quot;: 4194304,
+</code></pre><p>   代码提示延迟显示</p>
+<pre><code>&quot;auto_complete_delay&quot;: 50,
+</code></pre><p>   代码提示的控制范围</p>
+<pre><code>&quot;auto_complete_selector&quot;: &quot;source - comment&quot;,
+</code></pre><p>   触发代码提示的其他情况</p>
+<pre><code>&quot;auto_complete_triggers&quot;: [ 
+      {&quot;selector&quot;: &quot;text.html&quot;, &quot;characters&quot;: &quot;&lt;&quot;} 
+],
+</code></pre><p>   设为false时，选择提示的代码按回车或点击可以输出出来，但选择true时不会输出而是直接换行</p>
+<pre><code>&quot;auto_complete_commit_on_tab&quot;: false,
+</code></pre><p>   auto_complete_commit_on_tab必须为true，控制代码提示的活跃度</p>
+<pre><code>&quot;auto_complete_with_fields&quot;: false,
+</code></pre><p>   设置为false，使用Shift + tab总是插入制表符</p>
+<pre><code>&quot;shift_tab_unindent&quot;: true,
+</code></pre><p>   选中的文本按Ctrl + f时，自动复制到查找面板的文本框里</p>
+<pre><code>&quot;find_selected_text&quot;: true,
+</code></pre><p>   DataPackagesTheme - DefaultDefault.sublime-theme控制软件的主题</p>
+<pre><code>&quot;theme&quot;: &quot;Default.sublime-theme&quot;,
+</code></pre><p>   滚动的速度</p>
+<pre><code>&quot;scroll_speed&quot;: 1.0,
+</code></pre><p>   左边边栏文件夹动画</p>
+<pre><code>&quot;tree_animation_enabled&quot;: true,
+</code></pre><p>   标签页的关闭按钮<br>      “show_tab_close_buttons”: true,</p>
+<p>   // OS X 10.7 only: Set to true to disable Lion style full screen support.<br>   // Sublime Text must be restarted for this to take effect.<br>   针对OS X</p>
+<pre><code>&quot;use_simple_full_screen&quot;: false,
+</code></pre><p>   水平垂直滚动条：system和disabled为默认显示方式，enabled为自动隐藏显示 </p>
+<pre><code>&quot;overlay_scroll_bars&quot;: &quot;system&quot;,
+</code></pre><p>   热推出功能！退出时不会提示是否保存文件，而是直接退出<br>   下次打开软件时，文件保持退出前的状态，没来得及保存的内容都在，但并没有真实的写在原文件里</p>
+<pre><code>&quot;hot_exit&quot;: true,
+</code></pre><p>   软件使用最后的设定打开文件，hot_exit为true时没有效果</p>
+<pre><code>&quot;remember_open_files&quot;: true,
+</code></pre><p>   // OS X only: When files are opened from finder, or by dragging onto the<br>   // dock icon, this controls if a new window is created or not.<br>   针对OS X</p>
+<pre><code>&quot;open_files_in_new_window&quot;: true,
+</code></pre><p>   // there’s a folder open within the window. This is always enabled on OS X,<br>   // changing it here won’t modify the behavior.<br>   针对OS X</p>
+<pre><code>&quot;close_windows_when_empty&quot;: true,
+</code></pre><p>   哪些文件会被显示到边栏上<br>   // project basis.</p>
+<pre><code>&quot;folder_exclude_patterns&quot;: [&quot;.svn&quot;, &quot;.git&quot;, &quot;.hg&quot;, &quot;CVS&quot;],
+&quot;file_exclude_patterns&quot;: [&quot;*.pyc&quot;, &quot;*.pyo&quot;, &quot;*.exe&quot;, &quot;*.dll&quot;, &quot;*.obj&quot;,&quot;*.o&quot;, &quot;*.a&quot;, &quot;*.lib&quot;, &quot;*.so&quot;, &quot;*.dylib&quot;, &quot;*.ncb&quot;, &quot;*.sdf&quot;, &quot;*.suo&quot;, &quot;*.pdb&quot;, &quot;*.idb&quot;, &quot;.DS_Store&quot;, &quot;*.class&quot;, &quot;*.psd&quot;, &quot;*.db&quot;],
+</code></pre><p>   // Goto Anything or Find in Files</p>
+<pre><code>&quot;binary_file_patterns&quot;: [&quot;*.jpg&quot;, &quot;*.jpeg&quot;, &quot;*.png&quot;, &quot;*.gif&quot;, &quot;*.ttf&quot;, &quot;*.tga&quot;, &quot;*.dds&quot;, &quot;*.ico&quot;, &quot;*.eot&quot;, &quot;*.pdf&quot;, &quot;*.swf&quot;, &quot;*.jar&quot;, &quot;*.zip&quot;],
+</code></pre><p>   删除你想要忽略的插件，需要重启</p>
+<pre><code>&quot;ignored_packages&quot;: [&quot;Vintage&quot;]
+</code></pre><p> }</p>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/">https://roy-lau.github.io/blog/2019/06/12/editor/subline_text/sublime-settings/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.jpg" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/blog/2019/06/12/editor/subline_text/README/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/blog/2019/06/12/editor/subline_text/my-subline/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjwswu4cw004y0shwi8tn8881"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/2360828682/profile" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/niemingzhao" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/nie-1-58" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=1432440963&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 Roy Lau<br>
+    Powered by <a href="https://github.com/roylau" target="_blank" class="mdui-text-color-theme-accent">RoyLau</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/blog/js/mdui.js"></script>
+<script src="/blog/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>windows自动运行命令解析 | Roy Lau</title>
+
+  <link rel="shortcut icon" href="/blog/images/favicon.jpg">
+  <link rel="alternate" href="/blog/atom.xml" title="Roy Lau">
+  <meta name="description" content="windows自动运行命令解析 计划命令每24小时运行一次（目录 D:\git_rpo\web_project\gitpush.sh 是git上传的脚本）  1schtasks /create /sc hourly /st 00:24:00 /tn &amp;quot;Automatic git push&amp;quot; /tr D:\git_rpo\web_project\gitpush.sh 如果出现错误">
+<meta name="keywords" content="windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows自动运行命令解析">
+<meta property="og:url" content="https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/index.html">
+<meta property="og:site_name" content="Roy Lau">
+<meta property="og:description" content="windows自动运行命令解析 计划命令每24小时运行一次（目录 D:\git_rpo\web_project\gitpush.sh 是git上传的脚本）  1schtasks /create /sc hourly /st 00:24:00 /tn &amp;quot;Automatic git push&amp;quot; /tr D:\git_rpo\web_project\gitpush.sh 如果出现错误">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://roy-lau.github.io/blog/.io//schtask_ERR.png">
+<meta property="og:updated_time" content="2019-06-12T07:21:24.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows自动运行命令解析">
+<meta name="twitter:description" content="windows自动运行命令解析 计划命令每24小时运行一次（目录 D:\git_rpo\web_project\gitpush.sh 是git上传的脚本）  1schtasks /create /sc hourly /st 00:24:00 /tn &amp;quot;Automatic git push&amp;quot; /tr D:\git_rpo\web_project\gitpush.sh 如果出现错误">
+<meta name="twitter:image" content="https://roy-lau.github.io/blog/.io//schtask_ERR.png">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content>
+  <meta name="keywords" content=",windows">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Roy Lau">
+  <meta name="msapplication-starturl" content="https://roy-lau.github.io/blog/blog/2017/06/06/Automatic_task/README/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Roy Lau">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/blog/images/favicon.jpg">
+
+  
+    <meta property="article:published_time" content="Tue Jun 06 2017 15:43:27 GMT+0000">
+    <meta property="article:modified_time" content="Wed Jun 12 2019 15:21:24 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="https://roy-lau.github.io/blog/blog/2017/06/06/Automatic_task/README/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/blog/css/mdui.css">
+<link rel="stylesheet" href="/blog/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-blue">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/blog/" class="mdui-typo-headline">Roy Lau</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/blog/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/blog/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/blog/imgs/banner.png" style="height: 160px;">
+    <img src="/blog/imgs/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 50px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">Roy Lau</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>是否能写好博客，在于坚持认真。</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:897379293@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '897379293@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/blog/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2019/06/">六月 2019<span class="mdui-ripple sidebar_archives-count">91</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2018/03/">三月 2018<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2017/06/">六月 2017<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/tags/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/blog/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/blog/imgs//random/material-9.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">windows自动运行命令解析</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2017-06-06 / <i class="iconfont">&#xe601;</i> Roy Lau &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=windows自动运行命令解析&url=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/&pic=https://roy-lau.github.io/blog/blog/images/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Roy Lau&title=windows自动运行命令解析&summary=&pics=https://roy-lau.github.io/blog/blog/images/favicon.jpg&url=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=windows自动运行命令解析&url=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/&via=Roy Lau" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/&title=windows自动运行命令解析" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/&text=windows自动运行命令解析" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h1 id="windows自动运行命令解析"><a href="#windows自动运行命令解析" class="headerlink" title="windows自动运行命令解析"></a>windows自动运行命令解析</h1><blockquote>
+<p>计划命令每24小时运行一次（目录 <code>D:\git_rpo\web_project\gitpush.sh</code> 是git上传的脚本）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /sc hourly /st 00:24:00 /tn &quot;Automatic git push&quot; /tr D:\git_rpo\web_project\gitpush.sh</span><br></pre></td></tr></table></figure>
+<p>如果出现<code>错误：无法加载列资源</code>，需修改<code>chcp</code></p>
+<p><img src="/blog/.io//schtask_ERR.png" alt="schtasks错误注释图"></p>
+<h3 id="C-Users-Administrator-gt-schtasks"><a href="#C-Users-Administrator-gt-schtasks" class="headerlink" title="C:\Users\Administrator&gt;schtasks /?"></a>C:\Users\Administrator&gt;schtasks /?</h3><blockquote>
+<p>SCHTASKS /parameter [arguments]</p>
+</blockquote>
+<ul>
+<li>描述:</li>
+</ul>
+<blockquote>
+<p>允许管理员创建、删除、查询、更改、运行和中止本地或远程系统上的计划任务。</p>
+</blockquote>
+<ul>
+<li>参数列表:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/Create</code></td>
+<td>创建新计划任务。</td>
+</tr>
+<tr>
+<td><code>/Delete</code></td>
+<td>删除计划任务。(<code>schtasks /delete /tn 任务名</code>)</td>
+</tr>
+<tr>
+<td><code>/Query</code></td>
+<td>显示所有计划任务。(chcp:查看编码，936为中文GBK 437为美国 ，chcp 437 切换为美国编码才能查询)</td>
+</tr>
+<tr>
+<td><code>/Change</code></td>
+<td>更改计划任务属性。</td>
+</tr>
+<tr>
+<td><code>/Run</code></td>
+<td>按需运行计划任务。</td>
+</tr>
+<tr>
+<td><code>/End</code></td>
+<td>中止当前正在运行的计划任务。</td>
+</tr>
+<tr>
+<td><code>/ShowSid</code></td>
+<td>显示与计划的任务名称相应的安全标识符。</td>
+</tr>
+<tr>
+<td><code>/?</code></td>
+<td>显示此帮助消息。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Examples:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SCHTASKS</span><br><span class="line">SCHTASKS /?</span><br><span class="line">SCHTASKS /Run /?</span><br><span class="line">SCHTASKS /End /?</span><br><span class="line">SCHTASKS /Create /?</span><br><span class="line">SCHTASKS /Delete /?</span><br><span class="line">SCHTASKS /Query  /?</span><br><span class="line">SCHTASKS /Change /?</span><br><span class="line">SCHTASKS /ShowSid /?</span><br></pre></td></tr></table></figure>
+<h2 id="Schtasks"><a href="#Schtasks" class="headerlink" title="Schtasks"></a>Schtasks</h2><ol>
+<li>安排命令和程序定期运行或在指定时间内运行。从计划表中添加和删除任务，按需要启动和停止任务，显示和更改计划任务。</li>
+</ol>
+<p>若要查看该命令语法，请单击以下命令：</p>
+<h2 id="schtasks-create"><a href="#schtasks-create" class="headerlink" title="schtasks create"></a>schtasks create</h2><blockquote>
+<p>创建新的计划任务。</p>
+</blockquote>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc schedule [/mo modifier] [/d day] [/m month[,month...] [/i IdleTime] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]] /?</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数</li>
+</ul>
+<h3 id="tn-TaskName"><a href="#tn-TaskName" class="headerlink" title="/tn TaskName"></a>/tn TaskName</h3><blockquote>
+<p>指定任务的名称。</p>
+</blockquote>
+<h3 id="tr-TaskRun"><a href="#tr-TaskRun" class="headerlink" title="/tr TaskRun"></a>/tr TaskRun</h3><blockquote>
+<p>指定任务运行的程序或命令。键入可执行文件、脚本文件或批处理文件的完全合格的路径和文件名。如果忽略该路径，SchTasks.exe 将假定文件在 Systemroot\System32 目录下。</p>
+</blockquote>
+<h3 id="sc-schedule"><a href="#sc-schedule" class="headerlink" title="/sc schedule"></a>/sc schedule</h3><p>指定计划类型。有效值为 ‘’’MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY、ONCE、ONSTART、ONLOGON、ONIDLE。’’’值 说明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY     指定计划的时间单位。</span><br><span class="line">ONCE                任务在指定的日期和时间运行一次。</span><br><span class="line">ONSTART             任务在每次系统启动的时候运行。可以指定启动的日期，或下一次系统启动的时候运行任务。</span><br><span class="line">ONLOGON             每当用户（任意用户）登录的时候，任务就运行。可以指定日期，或在下次用户登录的时候运行任务。</span><br><span class="line">    ONIDLE              只要系统空闲了指定的时间，任务就运行。可以指定日期，或在下次系统空闲的时候运行任务。</span><br></pre></td></tr></table></figure>
+<h3 id="mo-modifier"><a href="#mo-modifier" class="headerlink" title="/mo modifier"></a>/mo modifier</h3><p>指定任务在其计划类型内的运行频率。这个参数对于 MONTHLY 计划是必需的。对于 MINUTE、HOURLY、DAILY 或 WEEKLY 计划，这个参数有效，但也可选。默认值为 1。计划类型 修饰符 说明</p>
+<pre><code>MINUTE      1 ～ 1439     任务每 n 分钟运行一次。
+HOURLY      1 ～ 23       任务每 n 小时运行一次。
+DAILY       1 ～ 365      任务每 n 天运行一次。
+WEEKLY      1 ～ 52       任务每 n 周运行一次。
+MONTHLY     1 ～ 12       任务每 n 月运行一次。
+LASTDAY                   任务在月份的最后一天运行。
+FIRST、SECOND、THIRD、FOURTH、LAST     与 /d day 参数共同使用,并在特定的周和天运行任务。例如，在月份的第三个周三。
+</code></pre><h3 id="d-dirlist"><a href="#d-dirlist" class="headerlink" title="/d dirlist"></a>/d dirlist</h3><pre><code>指定周或月的一天。只与 WEEKLY 或 MONTHLY 计划共同使用时有效。计划类型 日期值
+WEEKLY     可选项。有效值是 MON ~ SUN 和 * （每一天）。MON 是默认值。
+MONTHLY     在使用 FIRST、SECOND、THIRD、FOURTH 或 LAST 修饰符 (/mo) 时，需要 MON ～ SUN 中的某个值。1 ～ 31 是可选的，只在没有修饰符或修饰符为 1 ～ 12 类型时有效。默认值是 1 （月份的第一天）。
+</code></pre><h3 id="m-month-month…"><a href="#m-month-month…" class="headerlink" title="/m month[,month…]"></a>/m month[,month…]</h3><pre><code>指定一年中的一个月。有效值是 JAN ～ DEC 和 * （每个月）。/m 参数只对于 MONTHLY 计划有效。在使用 LASTDAY 修饰符时，这个参数是必需的。否则，它是可选的，默认值是 * （每个月）。
+</code></pre><h3 id="i-InitialPageFileSize"><a href="#i-InitialPageFileSize" class="headerlink" title="/i InitialPageFileSize"></a>/i InitialPageFileSize</h3><pre><code>指定任务启动之前计算机空闲多少分钟。键入一个 1 ～ 999 之间的整数。这个参数只对于 ONIDLE 计划有效，而且是必需的。
+</code></pre><h3 id="st-StartTime"><a href="#st-StartTime" class="headerlink" title="/st StartTime"></a>/st StartTime</h3><pre><code>以 HH:MM:SS 24 小时格式指定时间。默认值是命令完成时的当前本地时间。/st 参数只对于 MINUTE、HOURLY、DAILY、WEEKLY、MONTHLY 和 ONCE 计划有效。它只对于 ONCE 计划是必需的。
+</code></pre><h3 id="sd-StartDate"><a href="#sd-StartDate" class="headerlink" title="/sd StartDate"></a>/sd StartDate</h3><pre><code>以 MM/DD/YYYY 格式指定任务启动的日期。默认值是当前日期。/sd 参数对于所有的计划有效，但只对于 ONCE 计划是必需的。
+</code></pre><h3 id="ed-EndDate"><a href="#ed-EndDate" class="headerlink" title="/ed EndDate"></a>/ed EndDate</h3><pre><code>指定任务计划运行的最后日期。此参数是可选的。它对于 ONCE、ONSTART、ONLOGON 或 ONIDLE 计划无效。默认情况下，计划没有结束日期。
+</code></pre><h3 id="s-Computer"><a href="#s-Computer" class="headerlink" title="/s Computer"></a>/s Computer</h3><pre><code>指定远程计算机的名称或 IP 地址（带有或者没有反斜杠）。默认值是本地计算机。
+</code></pre><h3 id="u-domain-user"><a href="#u-domain-user" class="headerlink" title="/u [domain]user"></a>/u [domain]user</h3><pre><code>使用特定用户帐户的权限运行命令。默认情况下，使用已登录到运行 SchTasks 的计算机上的用户的权限运行命令。
+</code></pre><h3 id="p-password"><a href="#p-password" class="headerlink" title="/p password"></a>/p password</h3><pre><code>指定在 /u 参数中指定的用户帐户的密码。如果使用 /u 参数，则需要该参数。
+</code></pre><h3 id="ru-Domain-User-“System”"><a href="#ru-Domain-User-“System”" class="headerlink" title="/ru {[Domain]User | “System”}"></a>/ru {[Domain]User | “System”}</h3><pre><code>使用指定用户帐户的权限运行任务。默认情况下，使用用户登录到运行 SchTasks 的计算机上的权限运行任务。值 说明
+[domain\}User?     指定用户帐户。
+&quot;System&quot; 或 &quot;&quot;     指定操作系统使用的 NT Authority\System 帐户。
+</code></pre><h3 id="p-Password"><a href="#p-Password" class="headerlink" title="/p Password"></a>/p Password</h3><pre><code>指定用户帐户的密码，该用户帐户在 /u 参数中指定。如果在指定用户帐户的时候忽略了这个参数，SchTasks.exe 会提示您输入密码而且不显示键入的文本。使用 NT Authority\System 帐户权限运行的任务不需要密码，SchTasks.exe 也不会提示索要密码。
+</code></pre><h3 id><a href="#" class="headerlink" title="/?"></a>/?</h3><pre><code>在命令提示符显示帮助。
+</code></pre><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><pre><code>* XOX SchTasks.exe 不验证程序文件的位置或用户帐户密码。如果没有为用户帐户输入正确的文件位置或正确的密码，任务仍然可以创建，但不会运行。另外，如果帐户的密码更改或过 期，而且没有更改存储在任务中的密码，那么任务也不会运行。
+* NT Authority\System 帐户没有交互式登录权限。用户看不到以系统权限运行的程序，不能与之交互。
+* 每个任务只运行一个程序。但是，可以创建一个批处理文件来启动多个任务，然后计划一个任务来运行该批处理文件。
+* 只要创建了任务就可对其测试。使用 run 操作来测试任务，然后从 SchedLgU.txt 文件 ( Systemroot\SchedLgU.txt ) 中查阅错误。
+</code></pre><p>每个计划类型的语法和范例。</p>
+<blockquote>
+<p>若要查看该命令语法，请单击以下命令：</p>
+</blockquote>
+<h3 id="schtasks-create-minute"><a href="#schtasks-create-minute" class="headerlink" title="schtasks create minute"></a>schtasks create minute</h3><ul>
+<li><p>语法</p>
+<p>  schtasks /create /tn TaskName /tr TaskRun /sc minute [/mo {1 - 1439}] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain]user /p password]] [/ru {[Domain]User | “System”} [/rp Password]]</p>
+</li>
+<li><p>范例</p>
+</li>
+</ul>
+<blockquote>
+<p>计划任务每 20 分钟运行一次。</p>
+</blockquote>
+<p>下面的命令计划安全脚本 Sec.vbs 每 20 分钟运行一次。由于命令没有包含起始日期或时间，任务在命令完成 20 分钟后启动，此后每当系统运行它就每 20 分钟运行一次。请注意，安全脚本源文件位于远程计算机上，但任务在本地计算机上计划并执行。</p>
+<pre><code>schtasks /create /sc minute /mo 20 /tn &quot;Security Script&quot; /tr \\central\data\scripts\sec.vbs
+</code></pre><p>作为响应，SchTasks.exe 显示一条消息来说明任务会以当前用户的权限运行并需要当前用户的密码。输入密码时，SchTasks.exe 不显示键入的文本。</p>
+<pre><code>The task will be created under current logged-in user name. Please enter the password ************
+</code></pre><ul>
+<li>然后 SchTasks.exe 显示一条消息表明已计划该任务：<br>成功：计划任务 “Security Script” 已成功创建。</li>
+</ul>
+<h4 id="查询显示命令计划的任务：SCHTASKS-query-tn-taskname"><a href="#查询显示命令计划的任务：SCHTASKS-query-tn-taskname" class="headerlink" title="查询显示命令计划的任务：SCHTASKS /query /tn taskname"></a>查询显示命令计划的任务：SCHTASKS /query /tn taskname</h4><pre><code>TaskName                  Next Run Time            Status ========================= ======================== ============== Security Script           10:50:00 AM , 4/4/2001
+</code></pre><h3 id="schtasks-create-hourly"><a href="#schtasks-create-hourly" class="headerlink" title="schtasks create hourly"></a>schtasks create hourly</h3><ul>
+<li><p>语法</p>
+<p>  schtasks /create /tn TaskName /tr TaskRun /sc hourly [/mo {1 - 365}] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain]user /p password]] [/ru {[Domain]User | “System”} [/rp Password]]</p>
+</li>
+<li><p>范例</p>
+</li>
+</ul>
+<blockquote>
+<p>计划命令在每小时过五分的时候运行。</p>
+</blockquote>
+<p>下面的命令将计划 MyApp 程序从午夜过后五分钟起每小时运行一次。因为忽略了 /mo 参数，命令使用了小时计划的默认值，即每 (1) 小时。如果该命令在 12:05 A.M 之后生成，程序将在第二天才会运行。</p>
+<pre><code>schtasks /create /sc hourly /st 00:05:00 /tn &quot;My App&quot; /tr c:\apps\myapp.exe
+</code></pre><blockquote>
+<p>计划命令每五小时运行一次</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序从 2001 年 3 月的第一天起每五小时运行一次。它使用 /mo 参数来指定间隔时间，使用 /sd 参数来指定起始日期。由于命令没有指定起始时间，当前时间被用作起始时间。</p>
+<pre><code>schtasks /create /sc hourly /mo 5 /sd 03/01/2001 /tn &quot;My App&quot; /tr c:\apps\myapp.exe
+</code></pre><h3 id="schtasks-create-daily"><a href="#schtasks-create-daily" class="headerlink" title="schtasks create daily"></a>schtasks create daily</h3><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc daily [/mo &#123;1 - 365&#125;] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>范例</li>
+</ul>
+<blockquote>
+<p>计划任务每天运行一次</p>
+</blockquote>
+<p>下面的范例计划 MyApp 程序在每天的 8:00 A.M. 运行一次，直到 2001 年 12 月 31 日结束。由于它忽略了 /mo 参数，所以使用默认间隔 1 来每天运行命令。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc daily /st 08:00:00 /ed 12/31/2001
+</code></pre><blockquote>
+<p>计划任务每隔一天运行一次</p>
+</blockquote>
+<p>下面的范例计划 MyApp 程序从 2001 年 12 月 31 日起每隔一天在 1:00 P.M. (13:00) 运行。命令使用 /mo 参数来指定两 (2) 天的间隔。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc daily /mo 2 /st 13:00:00 /sd 12/31/2001
+</code></pre><h3 id="schtasks-create-weekly"><a href="#schtasks-create-weekly" class="headerlink" title="schtasks create weekly"></a>schtasks create weekly</h3><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc weekly [/d &#123;MON - SUN | *&#125;] [/mo &#123;1 - 52&#125;] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>范例</li>
+</ul>
+<blockquote>
+<p>计划任务每六周运行一次</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在远程计算机上每六周运行一次。该命令使用 /mo 参数来指定间隔。它也使用 /s 参数来指定远程计算机，使用 /ru 参数来计划任务以用户的 Administrator 帐户权限运行。因为忽略了 /rp 参数，SchTasks.exe 会提示用户输入 Administrator 帐户密码。</p>
+<p>另外，因为命令是远程运行的，所以命令中所有的路径，包括到 MyApp.exe 的路径，都是指向远程计算机上的路径。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc weekly /mo 6 /s Server16 /ru Admin01
+</code></pre><blockquote>
+<p>计划任务每隔一周在周五运行</p>
+</blockquote>
+<p>下面的命令计划任务每隔一周在周五运行。它使用 /mo 参数来指定两周的间隔，使用 /d 参数来指定是一周内的哪一天。如计划任务在每个周五运行，要忽略 /mo 参数或将其设置为 1。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc weekly /mo 2 /d FRI
+</code></pre><h3 id="schtasks-create-monthly"><a href="#schtasks-create-monthly" class="headerlink" title="schtasks create monthly"></a>schtasks create monthly</h3><ul>
+<li>语法</li>
+</ul>
+<blockquote>
+<p>常规月计划语法</p>
+</blockquote>
+<pre><code>schtasks /create /tn TaskName /tr TaskRun /sc monthly [/mo {FIRST | SECOND | THIRD | FOURTH | LAST | LASTDAY] [/d {MON - SUN | 1 - 31}] [/m {JAN - DEC[,JAN - DEC...] | *}] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru {[Domain\]User | &quot;System&quot;} [/rp Password]]
+</code></pre><blockquote>
+<p>指定周的语法</p>
+</blockquote>
+<pre><code>schtasks /create /tn TaskName /tr TaskRun /sc monthly /mo {FIRST | SECOND | THIRD | FOURTH | LAST} /d {MON - SUN} [/m {JAN - DEC[,JAN - DEC...] | *}] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru {[Domain\]User | &quot;System&quot;} [/rp Password]]
+</code></pre><blockquote>
+<p>Lastday 语法</p>
+</blockquote>
+<pre><code>schtasks /create /tn TaskName /tr TaskRun /sc monthly /mo LASTDAY /m {JAN - DEC[,JAN - DEC...] | *} [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru {[Domain\]User | &quot;System&quot;} [/rp Password]]
+</code></pre><blockquote>
+<p>指定日期的语法</p>
+</blockquote>
+<pre><code>schtasks /create /tn TaskName /tr TaskRun /sc monthly /d {1 - 31} [/m {JAN - DEC[,JAN - DEC...] | *}] [/st StartTime] [/sd StartDate] [/ed EndDate] [/s computer [/u [domain\]user /p password]] [/ru {[Domain\]User | &quot;System&quot;} [/rp Password]]
+</code></pre><ul>
+<li>范例<blockquote>
+<p>计划任务在每月的第一天运行</p>
+</blockquote>
+</li>
+</ul>
+<p>下面的命令计划 MyApp 程序在每月的第一天运行。因为默认修饰符是 none（即：没有修饰符），默认天是第一天，默认的月份是每个月，所以该命令不需要任何其它的参数。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly
+</code></pre><blockquote>
+<p>计划任务在每月的最后一天运行</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在每月的最后一天运行。它使用 <code>/mo</code> 参数指定在每月的最后一天运行程序，使用通配符 (<code>*</code>) 与 <code>/m</code> 参数表明在每月的最后一天运行程序。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly /mo lastday /m *
+</code></pre><blockquote>
+<p>计划任务每三个月运行一次</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序每三个月运行一次。.它使用 <code>/mo</code> 参数来指定间隔。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly /mo 3
+</code></pre><blockquote>
+<p>计划任务在每月的第二个周日运行</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在每月的第二个周日运行。它使用 /mo 参数指定是每月的第二周，使用 /d 参数指定天。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly /mo SECOND /d SUN
+</code></pre><blockquote>
+<p>计划任务在五月和六月的第 15 天运行。</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在五月 15 日和六月 15 日的 3:00 PM (15:00) 运行。它使用 /d 参数来指定日期，使用 /m 参数指定月份。它也使用 /st 参数来指定开始时间。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly /d 15 /m MAY,JUN /st 15:00:00
+</code></pre><h3 id="schtasks-create-once"><a href="#schtasks-create-once" class="headerlink" title="schtasks create once"></a>schtasks create once</h3><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc once /st StartTime /sd StartDate [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>范例</li>
+</ul>
+<blockquote>
+<p>计划任务运行一次</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在 2002 年 1 月 1 日午夜运行一次。它使用 /ru 参数指定以用户的 Administrator 帐户权限运行任务，使用 /rp 参数为 Administrator 帐户提供密码。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc once /st 00:00:00 /sd 01/01/2002 /ru Admin23 /rp p@ssworD1
+</code></pre><h3 id="schtasks-create-onstart"><a href="#schtasks-create-onstart" class="headerlink" title="schtasks create onstart"></a>schtasks create onstart</h3><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc onstart [/sd StartDate] [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>范例</li>
+</ul>
+<blockquote>
+<p>计划任务在每次系统启动的时候运行</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在每次系统启动的时候运行，起始日期是 2001 年 3 月 15 日。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc onstart /sd 03/15/2001
+</code></pre><h3 id="schtasks-create-onlogon"><a href="#schtasks-create-onlogon" class="headerlink" title="schtasks create onlogon"></a>schtasks create onlogon</h3><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc onlogon [/sd StartDate] [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>范例</li>
+</ul>
+<blockquote>
+<p>计划任务在用户登录到远程计算机的时候运行</p>
+</blockquote>
+<p>下面的命令计划批处理文件在用户（任何用户）每次登录到远程计算机上的时候运行。它使用 /s 参数指定远程计算机。因为命令是远程的，所以命令中所有的路径，包括批处理文件的路径，都指定为远程计算机上的路径。</p>
+<pre><code>schtasks /create /tn &quot;Start Web Site&quot; /tr c:\myiis\webstart.bat /sc onlogon /s Server23
+</code></pre><h3 id="schtasks-create-onidle"><a href="#schtasks-create-onidle" class="headerlink" title="schtasks create onidle"></a>schtasks create onidle</h3><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /create /tn TaskName /tr TaskRun /sc onidle /iIdleTime [/sd StartDate] [/s computer [/u [domain\]user /p password]] [/ru &#123;[Domain\]User | <span class="string">"System"</span>&#125; [/rp Password]]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>范例</li>
+</ul>
+<blockquote>
+<p>计划某项任务在计算机空闲的时候运行</p>
+</blockquote>
+<p>下面的命令计划 MyApp 程序在计算机空闲的时候运行。它使用必需的 /i 参数指定在启动任务之前计算机必需持续空闲十分钟。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc onidle /i 10
+</code></pre><h3 id="更多范例"><a href="#更多范例" class="headerlink" title="更多范例"></a>更多范例</h3><ul>
+<li>若要查看范例，请单击范例名称：</li>
+</ul>
+<p>创建以 <code>System</code> 权限运行的任务</p>
+<p>下面的命令计划 MyApp 程序以 NT Authority\System 帐户权限运行。在这个范例中，任务计划在每月的第一天运行，但对于以系统权限运行的任务可以使用所有的计划类型。</p>
+<p>该命令使用 /ru “System” 参数指定系统安全上下文。因为系统任务不需要密码，所以忽略了 /rp 参数。</p>
+<pre><code>schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc monthly /d 1 /ru &quot;System&quot;
+</code></pre><p>作为响应，SchTasks.exe 显示一个信息性消息和一个成功消息。它不提示输入密码。</p>
+<p><strong>信息</strong>：此任务将被创建于用户名下 (“NT AUTHORITY\SYSTEM”)。 成功：计划任务 “My App” 已成功创建。</p>
+<h2 id="创建运行多个程序的任务"><a href="#创建运行多个程序的任务" class="headerlink" title="创建运行多个程序的任务"></a>创建运行多个程序的任务</h2><p>每个任务只能运行一个程序。但是可以创建一个运行多个程序的批处理文件，然后计划一个任务来运行该批处理文件。下面的过程说明了这个方法：</p>
+<ol>
+<li>创建一个启动要运行程序的批处理文件。</li>
+</ol>
+<p>在这个范例中创建了一个启动“事件查看器”(Eventvwr.exe) 和“系统监视器”(Perfmon.exe) 的批处理文件。</p>
+<ul>
+<li>启动文本编辑器，例如“记事本”。</li>
+<li><p>键入每个程序的名称和指向可执行文件的完全合格的路径。在这种情况下，文件包含有下列语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\Eventvwr.exe</span><br><span class="line">C:\Windows\System32\Perfmon.exe</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将文件存储为 MyApps.bat。</p>
+</li>
+</ul>
+<ol start="2">
+<li>使用 SchTasks.exe 创建一个运行 MyApps.bat 的任务。</li>
+</ol>
+<p>下面的命令创建了 Monitor 任务，每当有人登录它就运行。它使用 /tn 参数命名任务，使用 /tr 参数运行 MyApps.bat。它使用 /sc 参数来指明 OnLogon 计划类型，使用 /ru 参数指定 Administrator 帐户。__</p>
+<pre><code>schtasks /create /tn Monitor /tr C:\MyApps.bat /sc onlogon /ru Reskit\Administrator
+</code></pre><p>该命令的结果是，每当用户登录到计算机，任务就启动“事件查看器”和“系统监视器”。</p>
+<ul>
+<li>更改计划任务</li>
+</ul>
+<blockquote>
+<p>更改一个或多个下列任务属性。</p>
+</blockquote>
+<pre><code>* 任务运行的程序 (/tr)。
+* 任务运行的用户帐户 (/ru)。
+* 用户帐户的密码 (/rp)。
+</code></pre><ul>
+<li>语法</li>
+</ul>
+<p>schtasks /change /tn TaskName [/s computer [/u [domain]user /p password]] [/tr TaskRun] [/ru [Domain]User | “System”] [/rp Password]<br>参数</p>
+<h3 id="tn-TaskName-1"><a href="#tn-TaskName-1" class="headerlink" title="/tn TaskName"></a>/tn TaskName</h3><pre><code>标识要更改的任务。输入任务名。
+</code></pre><h3 id="s-Computer-1"><a href="#s-Computer-1" class="headerlink" title="/s Computer"></a>/s Computer</h3><pre><code>指定远程计算机的名称或 IP 地址（带有或者没有反斜杠）。默认值是本地计算机。
+</code></pre><h3 id="u-domain-user-1"><a href="#u-domain-user-1" class="headerlink" title="/u [domain]user"></a>/u [domain]user</h3><pre><code>使用特定用户帐户的权限运行命令。默认情况下，使用已登录到运行 SchTasks 的计算机上的用户的权限运行命令。
+</code></pre><h3 id="p-password-1"><a href="#p-password-1" class="headerlink" title="/p password"></a>/p password</h3><pre><code>指定在 /u 参数中指定的用户帐户的密码。如果使用 /u 参数，则需要该参数。
+</code></pre><h3 id="tr-TaskRun-1"><a href="#tr-TaskRun-1" class="headerlink" title="/tr TaskRun"></a>/tr TaskRun</h3><pre><code>更改任务运行的程序。输入可执行文件、脚本文件或批处理文件的完全合格的路径和文件名。如果忽略了路径，SchTasks.exe 假定文件在 Systemroot\System32 目录下指定的程序替换任务最初运行的程序。
+</code></pre><h3 id="ru-Domain-User-“System”-1"><a href="#ru-Domain-User-“System”-1" class="headerlink" title="/ru [Domain]User | “System”"></a>/ru [Domain]User | “System”</h3><pre><code>更改用于任务的用户帐户。值 说明
+[domain\]User     指定用户帐户
+&quot;System&quot; or &quot;&quot;     指定为操作系统所使用的 NT Authority\System 帐户。
+
+在更改用户帐户的时候，必须也要更改用户密码。如果命令带有 /ru 参数，但没有 /rp 参数，SchTasks.exe 提示要求输入新的密码而且不显示键入的文本。
+
+任务以不需要密码的 NT Authority\System 帐户权限运行，SchTasks.exe 不会提示输入密码。
+</code></pre><h3 id="p-Password-1"><a href="#p-Password-1" class="headerlink" title="/p Password"></a>/p Password</h3><pre><code>更改用于任务的帐户密码。输入新的密码。
+</code></pre><h3 id="-1"><a href="#-1" class="headerlink" title="/?"></a>/?</h3><pre><code>在命令提示符显示帮助。
+</code></pre><ul>
+<li>注释</li>
+</ul>
+<ul>
+<li>XOX /tn 和 /s 参数标识该任务。/tr、/ru 和 /rp 参数指定可以更改的任务属性。</li>
+<li>使用 change 操作的命令必须至少更改一个任务属性。</li>
+<li>NT Authority\System 帐户没有交互式登录权限。用户看不到以系统权限运行的程序，不能与其交互。</li>
+</ul>
+<ul>
+<li>范例</li>
+</ul>
+<p>更改任务运行的程序</p>
+<p>下面的命令将 Virus Check 任务运行的程序由 VirusCheck.exe 更改为 VirusCheck2.exe。此命令使用 /tn 参数标识任务，使用 /tr 参数指定任务的新程序。（不能更改任务名称。）</p>
+<pre><code>schtasks /change /tn &quot;Virus Check&quot; /tr C:\VirusCheck2.exe
+</code></pre><p>作为响应，SchTasks.exe 显示以下成功消息：</p>
+<p>成功：计划任务 “Virus Check” 的参数已更改。</p>
+<p>此命令的结果是，Virus Check 任务现运行 VirusCheck2.exe。</p>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/">https://roy-lau.github.io/blog/2017/06/06/Automatic_task/README/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+        <a class="mdui-ripple article_categories-link" href="/blog/categories/windows/">windows</a>
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/blog/tags/windows/">windows</a>
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.jpg" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/blog/2018/03/18/DB/mongodb/install/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjwswu48g000q0shwiqjo2d6x"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/2360828682/profile" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/niemingzhao" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/nie-1-58" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=1432440963&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 Roy Lau<br>
+    Powered by <a href="https://github.com/roylau" target="_blank" class="mdui-text-color-theme-accent">RoyLau</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/blog/js/mdui.js"></script>
+<script src="/blog/js/script.js"></script>
+</body>
+</html>
