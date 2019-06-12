@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>Roy Lau</title>
+
+  <link rel="shortcut icon" href="/blog/images/favicon.jpg">
+  <link rel="alternate" href="/blog/atom.xml" title="Roy Lau">
+  <meta name="description" content="Mysql 导出数据目录  MySQL中可以使用SELECT...INTO OUTFILE语句来简单的导出数据到文本文件上。  使用 SELECT ... INTO OUTFILE 语句导出数据 以下实例中我们将数据表 test_tbl 数据导出到 /tmp/tutorials.txt 文件中 12mysql&amp;gt; SELECT * FROM test_tbl    INTO OUTFILE &apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Roy Lau">
+<meta property="og:url" content="https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/index.html">
+<meta property="og:site_name" content="Roy Lau">
+<meta property="og:description" content="Mysql 导出数据目录  MySQL中可以使用SELECT...INTO OUTFILE语句来简单的导出数据到文本文件上。  使用 SELECT ... INTO OUTFILE 语句导出数据 以下实例中我们将数据表 test_tbl 数据导出到 /tmp/tutorials.txt 文件中 12mysql&amp;gt; SELECT * FROM test_tbl    INTO OUTFILE &apos;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-11T10:23:21.394Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Roy Lau">
+<meta name="twitter:description" content="Mysql 导出数据目录  MySQL中可以使用SELECT...INTO OUTFILE语句来简单的导出数据到文本文件上。  使用 SELECT ... INTO OUTFILE 语句导出数据 以下实例中我们将数据表 test_tbl 数据导出到 /tmp/tutorials.txt 文件中 12mysql&amp;gt; SELECT * FROM test_tbl    INTO OUTFILE &apos;">
+
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+  <meta name="description" content>
+  <meta name="keywords" content>
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Roy Lau">
+  <meta name="msapplication-starturl" content="https://roy-lau.github.io/blog/blog/2019/06/11/DB/mysql/database-export/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Roy Lau">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/blog/images/favicon.jpg">
+
+  
+    <meta property="article:published_time" content="Tue Jun 11 2019 09:09:01 GMT+0000">
+    <meta property="article:modified_time" content="Tue Jun 11 2019 18:23:21 GMT+0800">
+  
+
+  
+    <link rel="canonical" href="https://roy-lau.github.io/blog/blog/2019/06/11/DB/mysql/database-export/">
+  
+
+  <meta name="google-site-verification" content="fXjtlIfaDc_X-0P11rO3bEp1Nk4IKXphoJv0GqGZCco">
+  <meta name="baidu-site-verification" content="I3t1wfwZvd">
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-139531378-1','auto');ga('send','pageview');
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?1054d51c0b66f1d168829173682c8159';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+
+  <link rel="stylesheet" href="/blog/css/mdui.css">
+<link rel="stylesheet" href="/blog/css/style.css">
+</head>
+<body class="mdui-appbar-with-toolbar mdui-drawer-body-left mdui-theme-primary-brown mdui-theme-accent-blue">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/blog/" class="mdui-typo-headline">Roy Lau</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/blog/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <div class="search-form">
+      <input type="search" class="search-form-input" placeholder="请输入关键字">
+    </div>
+    <div class="search-result" data-resource="/blog/search.xml"></div>
+  
+</div>
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <div class="mdui-grid-tile">
+    <img src="/blog/imgs/banner.png" style="height: 160px;">
+    <img src="/blog/imgs/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 50px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">Roy Lau</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i>是否能写好博客，在于坚持认真。</div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:897379293@qq.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '897379293@qq.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/blog/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">chrome_reader_mode</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/DB/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/categories/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">inbox</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2019/06/">六月 2019<span class="mdui-ripple sidebar_archives-count">92</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2018/03/">三月 2018<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2017/06/">六月 2017<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/blog/tags/DB/">DB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/MongoDB/">MongoDB<span class="mdui-ripple sidebar_archives-count">18</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/hexo/">hexo<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/windows/">windows<span class="mdui-ripple sidebar_archives-count">1</span></a>
+        
+      </div>
+    </div>
+    <a href="/blog/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+</aside>
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/blog/imgs//random/material-6.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title"></div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2019-06-11 / <i class="iconfont">&#xe601;</i> Roy Lau &nbsp;&nbsp; <span id="busuanzi_container_page_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span></div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="http://service.weibo.com/share/share.php?appkey=&title=&url=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/&pic=https://roy-lau.github.io/blog/blog/images/favicon.jpg&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到微博</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=&url=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/&via=Roy Lau" target="_blank" class="mdui-ripple">分享到Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/" target="_blank" class="mdui-ripple">分享到Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/" target="_blank" class="mdui-ripple">分享到Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/&title=" target="_blank" class="mdui-ripple">分享到LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="http://connect.qq.com/widget/shareqq/index.html?site=Roy Lau&title=&summary=&pics=https://roy-lau.github.io/blog/blog/images/favicon.jpg&url=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/" target="_blank" class="mdui-ripple">分享到QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/&text=" target="_blank" class="mdui-ripple">分享到Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h2 id="Mysql-导出数据"><a href="#Mysql-导出数据" class="headerlink" title="Mysql 导出数据"></a>Mysql 导出数据</h2><p><a href="README.md">目录</a></p>
+<blockquote>
+<p>MySQL中可以使用<code>SELECT...INTO OUTFILE</code>语句来简单的导出数据到文本文件上。</p>
+</blockquote>
+<p><strong>使用 <code>SELECT ... INTO OUTFILE</code> 语句导出数据</strong></p>
+<p>以下实例中我们将数据表 test_tbl 数据导出到 <code>/tmp/tutorials.txt</code> 文件中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM test_tbl</span><br><span class="line">    INTO OUTFILE '/tmp/tutorials.txt';</span><br></pre></td></tr></table></figure>
+<p>也可以通过命令选项来设置数据输出的指定格式，以下实例为导出 CSV 格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT * FROM passwd INTO OUTFILE '/tmp/tutorials.txt'</span><br><span class="line">    FIELDS TERMINATED BY ',' ENCLOSED BY '"'</span><br><span class="line">    LINES TERMINATED BY '\r\n';</span><br></pre></td></tr></table></figure>
+<p>下面的例子中，生成一个文件，各值用逗号隔开。这种格式可以被许多程序使用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a,b,a+b <span class="keyword">INTO</span> <span class="keyword">OUTFILE</span> <span class="string">'/tmp/result.text'</span></span><br><span class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span> <span class="keyword">OPTIONALLY</span> <span class="keyword">ENCLOSED</span> <span class="keyword">BY</span> <span class="string">'"'</span></span><br><span class="line"><span class="keyword">LINES</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\n'</span></span><br><span class="line"><span class="keyword">FROM</span> test_table;</span><br></pre></td></tr></table></figure>
+<p><strong>SELECT … INTO OUTFILE 语句有以下属性:</strong></p>
+<ul>
+<li><code>LOAD DATA INFILE是SELECT ... INTO OUTFILE</code>的逆操作，<code>SELECT</code>句法。为了将一个数据库的数据写入一个文件，使用<code>SELECT ... INTO OUTFILE</code>，为了将文件读回数据库，使用LOAD DATA INFILE。</li>
+<li><code>SELECT...INTO OUTFILE &#39;file_name&#39;</code>形式的<code>SELECT</code>可以把被选择的行写入一个文件中。该文件被创建到服务器主机上，因此您必须拥有FILE权限，才能使用此语法。</li>
+<li>输出不能是一个已存在的文件。防止文件数据被篡改。</li>
+<li>你需要有一个登陆服务器的账号来检索文件。否则 <code>SELECT ... INTO OUTFILE</code> 不会起任何作用。</li>
+</ul>
+<h3 id="导出表作为原始数据"><a href="#导出表作为原始数据" class="headerlink" title="导出表作为原始数据"></a>导出表作为原始数据</h3><h3 id="导出SQL格式的数据"><a href="#导出SQL格式的数据" class="headerlink" title="导出SQL格式的数据"></a>导出SQL格式的数据</h3><p>导出整个数据库的数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p <span class="built_in">test</span> &gt; database_dump.txt</span><br><span class="line">password ******</span><br></pre></td></tr></table></figure>
+<p>备份所有数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p --all-databases &gt; database_dump.txt</span><br><span class="line">password ******</span><br></pre></td></tr></table></figure>
+<p><code>--all-databases</code> 选项在 <code>MySQL 3.23.12</code> 及以后版本加入。该方法可用于实现数据库的备份策略。</p>
+<h3 id="将数据表及数据库拷贝至其他主机"><a href="#将数据表及数据库拷贝至其他主机" class="headerlink" title="将数据表及数据库拷贝至其他主机"></a>将数据表及数据库拷贝至其他主机</h3><p>如果你需要将数据拷贝至其他的 MySQL 服务器上, 你可以在 <code>mysqldump</code> 命令中指定数据库名及数据表。<br>在源主机上执行以下命令，将数据备份至 dump.txt 文件中:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p database_name table_name &gt; dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure></p>
+<p>如果完整备份数据库，则无需使用特定的表名称。<br>如果你需要将备份的数据库导入到MySQL服务器中，可以使用以下命令，使用以下命令你需要确认数据库已经创建：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p database_name &lt; dump.txt</span><br><span class="line">password *****</span><br></pre></td></tr></table></figure></p>
+<p>可以使用以下命令将导出的数据直接导入到远程的服务器上，但请确保两台服务器是相通的，是可以相互访问的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root -p database_name \</span><br><span class="line">       | mysql -h other-host.com database_name</span><br></pre></td></tr></table></figure></p>
+<p><em>以上命令中使用了管道来将导出的数据导入到指定的远程主机上。</em></p>
+<p><strong>笔记：</strong></p>
+<ul>
+<li>将指定主机的数据库拷贝到本地</li>
+</ul>
+<p>如果你需要将远程服务器的数据拷贝到本地，你也可以在 <code>mysqldump</code> 命令中指定远程服务器的<code>IP</code>、<code>端口</code>及<code>数据库名</code>。</p>
+<p>在源主机上执行以下命令，将数据备份到 <code>dump.txt</code> 文件中： </p>
+<p>请确保两台服务器是相通的： </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -h other-host.com -P port -u root -p database_name &gt; dump.txt</span><br><span class="line">password ****</span><br></pre></td></tr></table></figure>
+<p><a href="database-import.md" style="float: right;">&lt;—— mysql 导入数据</a></p>
+
+      <blockquote class="mdui-m-t-5">
+        
+          <strong>本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议</strong><br>
+        
+        <strong>本文链接：</strong><a href="https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/">https://roy-lau.github.io/blog/2019/06/11/DB/mysql/database-export/</a>
+      </blockquote>
+      
+        <div class="mdui-text-center">
+          <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '打赏', position: 'top'}"><i class="mdui-icon material-icons">local_cafe</i></button>
+        </div>
+      
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+    </footer>
+    
+      <div class="mdui-dialog" id="donate">
+        <div class="mdui-tab mdui-tab-centered" mdui-tab>
+          
+            <a href="#donate-0" class="mdui-ripple">支付宝</a>
+          
+            <a href="#donate-1" class="mdui-ripple">微信支付</a>
+          
+        </div>
+        
+        
+          <div id="donate-0" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/alipay.jpg" style="width: 300px;">
+            
+          </div>
+        
+          <div id="donate-1" class="mdui-p-a-2 mdui-typo mdui-text-center">
+            
+              <img src="/images/wechat.jpg" style="width: 300px;">
+            
+          </div>
+        
+      </div>
+    
+  </article>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/blog/2019/06/11/hexo/Hexo配置文件详细说明/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一篇
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/blog/2019/06/11/README/">
+        下一篇&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+  <div id="comment" class="mdui-m-t-5">
+    <style>#pop_ad,#feedAv{display:none!important;position:absolute!important;z-index:-9999;left:-1000px;opacity:0!important}</style>
+<div id="SOHUCS" sid="cjwso699w0015oohwaxf4roxa"></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyubhC2Dq';
+var conf = 'prod_e4cce65003c5bed049fefcb8a6f09e12';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  </div>
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+      <a href="https://weibo.com/2360828682/profile" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xec7e;</i></a>
+    
+    
+    
+    
+      <a href="https://github.com/niemingzhao" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe7ab;</i></a>
+    
+    
+    
+      <a href="https://www.zhihu.com/people/nie-1-58" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe6c0;</i></a>
+    
+    
+    
+      <a href="tencent://message/?uin=1432440963&Menu=yes" target="_blank"><i class="mdui-p-a-1 mdui-icon iconfont mdui-text-color-theme-a100">&#xe651;</i></a>
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2016 - 2019 Roy Lau<br>
+    Powered by <a href="https://github.com/roylau" target="_blank" class="mdui-text-color-theme-accent">RoyLau</a> | 鲁ICP备19009266号-1
+    <br>
+      <span id="busuanzi_container_site_pv" style="display: none;"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_site_pv"></span></span> &nbsp;&nbsp;
+      <span id="busuanzi_container_site_uv" style="display: none;"><i class="iconfont">&#xe601;</i> <span id="busuanzi_value_site_uv"></span></span>
+    
+  </div>
+</footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="/blog/js/mdui.js"></script>
+<script src="/blog/js/script.js"></script>
+</body>
+</html>
