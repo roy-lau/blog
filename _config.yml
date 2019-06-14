@@ -34,7 +34,8 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+all_minifier: true # 对所有文件进（html,js,css,img）行压缩，需要安装 hexo-all-minifier
+post_asset_folder: false # 是否启动静态资源目录，需要安装 hexo-asset-image （坑比较多）
 relative_link: false
 future: true
 highlight:
@@ -72,10 +73,14 @@ pagination_dir: page
 # Deployment 部署
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:roy-lau/blog.git
-  branch: gh-pages
-  message:
+  - type: git
+    repo: git@github.com:roy-lau/blog.git
+    branch: gh-pages
+    message:
+  - type: git
+    repo: git@github.com:roy-lau/blog.git
+    branch: dev
+    message:
 
 # Extensions 主题
 ## Plugins: https://hexo.io/plugins/
@@ -86,7 +91,7 @@ theme_color:
   primary: brown
   accent: blue
 
-notice:
+notice: 新增功能： 长按标题可以切换暗黑模式！
 
 favicon: /imgs/favicon.png
 banner: /imgs/banner.png
@@ -97,15 +102,15 @@ rss: /atom.xml
 email: 897379293@qq.com
 
 sns:
-  twitter: https://twitter.com/_roylau
+  twitter: //twitter.com/_roylau
   facebook:
   google_plus:
   instagram:
   tumblr:
   linkedin:
   weibo:
-  github: https://github.com/roy-lau
-  zhihu: https://www.zhihu.com/people/tian-zhi-dao-50-25
+  github: //github.com/roy-lau
+  zhihu: //www.zhihu.com/people/tian-zhi-dao-50-25
   douban:
   qq: tencent://message/?uin=897379293&Menu=yes
   wechat:
@@ -129,14 +134,15 @@ footer_text: " | 鲁ICP备19009266号-1"
 license: 本文遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0</a> 许可协议
 
 gallery:
-  fancybox_css: https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css
-  fancybox_js: https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js
-  jquery_js: https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js
-  lazyload_js: https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js
+  fancybox_css: //cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css
+  fancybox_js: //cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js
+  jquery_js: //cdn.bootcss.com/jquery/3.3.1/jquery.min.js
+  lazyload_js: //cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js
+# 卜算子，统计文章阅读量
 busuanzi:
   site: true
   page: true
-  busuanzi_js: http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+  busuanzi_js: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 qrcode:
   caption: 发送到手机
   use: plugin

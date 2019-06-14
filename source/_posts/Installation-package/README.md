@@ -1,3 +1,11 @@
+---
+title: 收集的一些安装包
+date: 2018-06-29 15:51:47
+tags: install-package
+categories: install-package
+toc: true
+---
+
 ##                  收集的一些安装包
 
 * [cygwin：windows的命令行增强工具](https://www.cygwin.com/setup-x86.exe)

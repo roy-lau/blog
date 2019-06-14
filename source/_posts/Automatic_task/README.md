@@ -3,6 +3,7 @@ title: windows自动运行命令解析
 date: 2017-06-06 15:43:27
 tags: windows
 categories: windows
+toc: true
 ---
 
 # 					windows自动运行命令解析

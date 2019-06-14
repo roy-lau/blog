@@ -3,6 +3,7 @@ title: Hexo配置文件详细说明
 date: 2019-06-11 13:12:21
 tags: hexo
 categories: hexo
+toc: true
 ---
 
 ### 配置

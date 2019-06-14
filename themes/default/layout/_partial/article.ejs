@@ -24,7 +24,7 @@
 <% } else { %>
   <%- css(theme.gallery.fancybox_css) %>
   <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
-  <article class="mdui-card mdui-m-b-5">
+  <article class="mdui-card mdui-m-b-5 mdui-hoverable">
     <header class="mdui-card-media">
       <img src="<%- page.thumbnail ||config.root_imgs + '/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png' %>" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
@@ -34,6 +34,21 @@
         </div>
       </div>
       <div class="mdui-card-menu">
+        <% if (page.qrcode !== false) { %>
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            <% if (theme.qrcode.caption) { %>
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple"><%= theme.qrcode.caption %></a></li>
+            <% } %>
+            <li class="mdui-menu-item" disabled>
+              <% if (theme.qrcode.use === 'plugin') { %>
+                <img src="<%- qrcode(page.permalink, {margin: 2}) %>">
+              <% } else { %>
+                <img src="<% if (config.language === 'zh-CN') { %>http://qr.liantu.com/api.php?w=246&m=10&text=<%- page.permalink %><% } else { %>https://chart.googleapis.com/chart?cht=qr&chs=246x246&chl=<%- page.permalink %>&chld=M|2<% } %>">
+              <% } %>
+            </li>
+          </ul>
+        <% } %>
         <% if (page.share_menu !== false) { %>
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
@@ -109,6 +124,7 @@
   <%- js([theme.gallery.jquery_js, theme.gallery.fancybox_js]) %>
   <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
 <% } %>
+
 <% if (page.prev || page.next) { %>
   <nav id="paginator">
     <% if (page.prev) { %>
@@ -126,11 +142,13 @@
     <% } %>
   </nav>
 <% } %>
+
 <% if (page.comments && theme.comment.use) { %>
   <div id="comment" class="mdui-m-t-5">
     <%- partial('_widget/comment/' + theme.comment.use) %>
   </div>
 <% } %>
+
 <% var toc = toc(page.content, {class: 'toc'}) %>
 <% if (is_post() && page.toc && toc.length) { %>
   <div style="position: fixed !important; right: 16px; top: 30%;">
