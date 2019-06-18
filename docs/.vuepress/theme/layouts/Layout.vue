@@ -2,24 +2,24 @@
     <v-container fluid grid-list-md class="pa-0">
         <v-layout row wrap>
             <!-- 侧边栏 start -->
-            <v-flex d-flex md2 lg2>
-                <SideBar />
+            <v-flex d-flex md2 lg2 class="pa-0">
+                <SideBar :show-side-bar="showSideBar" />
             </v-flex>
             <!-- 侧边栏 end -->
-            <v-flex d-flex md10>
+            <v-flex d-flex md10 class="pa-0">
                 <v-layout row wrap>
                     <!-- 头部 start -->
                     <v-flex d-flex md12 lg12>
-                        <Header />
+                        <Header @toggle-side-bar="toggleSideBar" />
                     </v-flex>
                     <!-- 头部 end -->
-                    <v-flex d-flex md12>
+                    <v-flex d-flex md12 color="gray">
                         <v-layout row wrap>
                             <!-- 内容和评论 start -->
                             <v-flex d-flex md8 lg8>
                                 <v-layout row wrap justify-center>
                                     <v-flex d-flex md8 lg8 child-flex>
-                                        <v-card color="white" class="card--flex-toolbar">
+                                        <v-card color="white" class="card--flex-toolbar elevation-15">
                                             <v-card-text>
                                                 <Content />
                                             </v-card-text>
@@ -65,13 +65,22 @@ import SideBar from "@theme/components/SideBar.vue"
 import Header from "@theme/components/Header.vue"
 import Footer from "@theme/components/Footer.vue"
 export default {
-    data: () => ({
-        lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
-    }),
+    data(){
+        return {
+            showSideBar: true
+        }
+    },
     components: {
         SideBar,
         Header,
         Footer
+    },
+
+    methods: {
+        toggleSideBar() {
+            this.showSideBar = !this.showSideBar
+            console.log(this.showSideBar)
+        }
     }
 }
 </script>

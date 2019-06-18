@@ -1,31 +1,38 @@
 <template>
-    <v-navigation-drawer v-model="drawer" hide-overlay stateless>
-        <v-card >
-            <v-toolbar flat class="transparent">
-                <v-list>
-                    <v-list-tile avatar>
-                        <v-list-tile-avatar>
-                            <img src="https://randomuser.me/api/portraits/men/85.jpg">
-                        </v-list-tile-avatar>
-                        <v-list-tile-content>
-                            <v-list-tile-title>Roy Lau</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                </v-list>
-            </v-toolbar>
-            <v-list dense>
-                <v-divider></v-divider>
-                <v-list-tile v-for="item in items" :key="item.title" @click="">
-                    <v-list-tile-action>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-            </v-list>
-        </v-card>
-    </v-navigation-drawer>
+    <v-card v-show="showSideBar" class="elevation-15" >
+        <v-card-actions class="card-actions-bg elevation-15" >
+            <v-list-tile class="grow">
+                <v-list-tile-avatar color="white darken-3" flat size="50">
+                    <v-img class="elevation-8" :src="$withBase('/imgs/avatar.svg')" alt="avatar" />
+                </v-list-tile-avatar>
+                <v-list-tile-content>
+                    <v-btn flat color="white" small>Roy Lau</v-btn>
+                </v-list-tile-content>
+                <!-- 邮箱 start -->
+                <v-layout align-center justify-end>
+                    <v-tooltip left>
+                        <template v-slot:activator="{ on }">
+                            <v-btn icon v-on="on" tag="a" href="mailto:897379293@qq.com" traget="_blink">
+                                <v-icon>email</v-icon>
+                            </v-btn>
+                        </template>
+                        <span color="white">897379293@qq.com</span>
+                    </v-tooltip>
+                </v-layout>
+                <!-- 邮箱 end -->
+            </v-list-tile>
+        </v-card-actions>
+        <v-list>
+            <v-list-tile v-for="item in items" :key="item.color" v-ripple="{ class: `${item.color}--text` }" @click="toPath">
+                <v-list-tile-action>
+                    <v-icon>{{ item.icon }}</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+    </v-card>
 </template>
 <script>
 export default {
@@ -37,13 +44,25 @@ export default {
     },
     data() {
         return {
-            drawer: true,
             items: [
-                { title: '主页', icon: 'dashboard' },
-                { title: '关于', icon: 'question_answer' }
-            ],
-            right: null
+                { title: '主页', icon: 'home', path: 'home', color:'info'  },
+                { title: '归档', icon: 'folder', path: 'files', color:'success' },
+                { title: '标签', icon: 'loyalty', path: 'tags', color:'error' },
+                { title: '时间线', icon: 'access_alarm', path: 'timeline', color:'warning' }
+            ]
         }
-    }
+    },
+    methods: {
+        toPath(path) {
+
+        }
+    },
 }
 </script>
+<style>
+.card-actions-bg {
+    height: 128px;
+    background-size: 100% 100%;
+    background-image: url('/imgs/title-bg.png');
+}
+</style>

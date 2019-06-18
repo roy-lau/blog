@@ -1,5 +1,8 @@
 module.exports = {
     // theme: 'material'
+    base: "/blog/",
+    name: "Roy Lau",
+    email: "897379293@qq.com",
     themeConfig: {
         sidebar: {
             '/home/': [

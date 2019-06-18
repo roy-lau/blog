@@ -1,10 +1,12 @@
 <template>
-    <v-card flat>
+    <v-card>
         <v-toolbar color="indigo" dark extended flat>
-            <v-toolbar-side-icon />
-            <h2>{{$frontmatter.title}}</h2>
+            <v-toolbar-side-icon @click.stop="toggle" />
+             <v-card-text>
+            <h2 class="text-xs-left text-sm-left text-md-center text-lg-center">{{$frontmatter.title}}</h2>
+             </v-card-text>
             <v-spacer></v-spacer>
-            <v-btn icon @click.stop="toggle">
+            <v-btn icon @click.stop="search">
                 <v-icon>search</v-icon>
             </v-btn>
         </v-toolbar>
@@ -12,13 +14,10 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            showSideBar: true
-        }
-    },
     methods: {
-    	toggle(){}
+        toggle() {
+            this.$emit('toggle-side-bar')
+        }
     },
 }
 </script>
