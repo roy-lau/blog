@@ -1,6 +1,6 @@
 <template>
-    <v-card v-show="showSideBar" class="elevation-15" >
-        <v-card-actions class="card-actions-bg elevation-15" >
+    <v-navigation-drawer v-model="showSideBar" fixed class="elevation-15">
+        <v-card-actions class="card-actions-bg">
             <v-list-tile class="grow">
                 <v-list-tile-avatar color="white darken-3" flat size="50">
                     <v-img class="elevation-8" :src="$withBase('/imgs/avatar.svg')" alt="avatar" />
@@ -23,7 +23,7 @@
             </v-list-tile>
         </v-card-actions>
         <v-list>
-            <v-list-tile v-for="item in items" :key="item.color" v-ripple="{ class: `${item.color}--text` }" @click="toPath">
+            <v-list-tile v-for="item in items" :key="item.color" :ripple="{ class: `${item.color}--text` }" :to="item.path">
                 <v-list-tile-action>
                     <v-icon>{{ item.icon }}</v-icon>
                 </v-list-tile-action>
@@ -32,7 +32,7 @@
                 </v-list-tile-content>
             </v-list-tile>
         </v-list>
-    </v-card>
+    </v-navigation-drawer>
 </template>
 <script>
 export default {
@@ -45,10 +45,10 @@ export default {
     data() {
         return {
             items: [
-                { title: '主页', icon: 'home', path: 'home', color:'info'  },
-                { title: '归档', icon: 'folder', path: 'files', color:'success' },
-                { title: '标签', icon: 'loyalty', path: 'tags', color:'error' },
-                { title: '时间线', icon: 'access_alarm', path: 'timeline', color:'warning' }
+                { title: '主页', icon: 'home', color: 'info', path: '/home' },
+                { title: '归档', icon: 'folder', color: 'success', path: '/files' },
+                { title: '标签', icon: 'loyalty', color: 'error', path: '/tags' },
+                { title: '时间线', icon: 'access_alarm', color: 'warning', path: '/timeline' }
             ]
         }
     },

@@ -23,11 +23,26 @@ module.exports = (options, ctx) => ({
     },
     // 增加一个纯粹的路由
     additionalPages: [{
+        path: '/home/',
+        frontmatter: {
+            layout: 'Home'
+        }
+    }, {
+        path: '/files/',
+        frontmatter: {
+            layout: 'Files'
+        }
+    }, {
+        path: '/tags/',
+        frontmatter: {
+            layout: 'Tags'
+        }
+    }, {
         path: '/timeline/',
         frontmatter: {
             layout: 'TimeLine'
         }
-    },{
+    }, {
         path: '/demo/',
         frontmatter: {
             layout: 'Demo'
