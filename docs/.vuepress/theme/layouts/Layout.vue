@@ -5,10 +5,20 @@
         <v-flex d-flex md8 lg8>
             <v-layout row wrap justify-center>
                 <v-flex d-flex md10 lg10>
-                    <v-card color="sliver">
+                    <v-card color="sliver" class="elevation-15">
                         <v-card-text>
                             <Content />
                         </v-card-text>
+                        <v-flex sm11 xs11 md11 lg11>
+                            <div class="text-xs-right" >
+                                <v-chip color="blue lighten-4">
+                                    <v-avatar>
+                                        <v-img :src="$withBase('/imgs/avatar.svg')" alt="my" />
+                                    </v-avatar>
+                                    Roy Lau
+                                </v-chip>
+                            </div>
+                        </v-flex>
                     </v-card>
                 </v-flex>
                 <v-flex d-flex md10 lg10>
@@ -20,8 +30,11 @@
         </v-flex>
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
-        <v-flex d-flex md2 lg2>
+        <v-flex d-flex md2 lg2 fixed>
             <v-card>
+                <v-card-text>
+                    <Toc></Toc>
+                </v-card-text>
                 <v-card-text>目录列表</v-card-text>
                 <h1>$localePath</h1>
                 <pre>{{$localePath}}</pre>
@@ -31,10 +44,10 @@
                 <pre>{{$themeConfig}}</pre>
                 <h1>$frontmatter</h1>
                 <pre>{{$frontmatter}}</pre>
-                <h1>$site</h1>
-                <pre>{{$site}}</pre>
                 <h1>$page</h1>
                 <pre>{{$page}}</pre>
+                <h1>$site</h1>
+                <pre>{{$site}}</pre>
             </v-card>
         </v-flex>
         <!-- 目录 end -->
@@ -42,7 +55,9 @@
 </template>
 <script>
 export default {
-    components: {},
+    components: {
+        Toc: () => import('@theme/components/Toc.js'),
+    },
     methods: {
 
     }

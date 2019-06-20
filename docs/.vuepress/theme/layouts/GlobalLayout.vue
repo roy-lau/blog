@@ -11,13 +11,15 @@
                 <Header @toggle-side-bar="toggleSideBar" />
             </v-flex>
             <!-- 头部 end -->
+        </v-layout>
+        <v-layout row wrap>
             <!-- 主体部分 start -->
             <v-flex d-flex md10 lg10 offset-md2 offset-lg2>
                 <component :is="layout" />
             </v-flex>
             <!-- 主体部分 end -->
             <!-- 底部 start -->
-            <v-flex d-flex md12 lg12>
+            <v-flex d-flex md10 lg10 offset-md2 offset-lg2 class="pa-0">
                 <Footer />
             </v-flex>
             <!-- 底部 end -->
@@ -25,9 +27,6 @@
     </v-container>
 </template>
 <script>
-import SideBar from "@theme/components/SideBar.vue"
-import Header from "@theme/components/Header.vue"
-import Footer from "@theme/components/Footer.vue"
 export default {
     computed: {
         layout() {
@@ -47,9 +46,9 @@ export default {
         }
     },
     components: {
-        SideBar,
-        Header,
-        Footer
+        SideBar: () => import('@theme/components/SideBar.vue'),
+        Header: () => import('@theme/components/Header.vue'),
+        Footer: () => import('@theme/components/Footer.vue')
     },
     methods: {
         toggleSideBar() {

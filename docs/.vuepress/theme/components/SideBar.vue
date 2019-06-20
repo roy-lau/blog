@@ -2,7 +2,7 @@
     <v-navigation-drawer v-model="showSideBar" fixed class="elevation-15">
         <v-card-actions class="card-actions-bg">
             <v-list-tile class="grow">
-                <v-list-tile-avatar color="white darken-3" flat size="50">
+                <v-list-tile-avatar color="white darken-3" size="50">
                     <v-img class="elevation-8" :src="$withBase('/imgs/avatar.svg')" alt="avatar" />
                 </v-list-tile-avatar>
                 <v-list-tile-content>
@@ -62,7 +62,7 @@ export default {
 <style>
 .card-actions-bg {
     height: 128px;
-    background-size: 100% 100%;
+    background-size: 100% 120%;
     background-image: url('/imgs/title-bg.png');
 }
 </style>
