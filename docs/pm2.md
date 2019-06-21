@@ -1,3 +1,15 @@
+---
+title: windows自动运行命令解析
+date: 2017-06-06 15:43:27
+tags:
+  - pm2
+  - nodejs
+  - npm
+categories:
+  - pm2
+toc: true
+---
+
 # 	pm2 用法及帮助
 
 用法:
@@ -5,7 +17,7 @@
     $ npm install pm2 -g            # 命令行安装 pm2
     $ pm2 start app.js -i 4         # 后台运行pm2，启动4核
     $ pm2 start app.js -i 0         # 后台运行pm2，启动全核
-    
+
 也可以把'max' 参数传递给 start
 正确的进程数目依赖于Cpu的核心数目
 
@@ -50,7 +62,7 @@
 
 CoffeeScript:
 
-    $ pm2 start my_app.coffee       
+    $ pm2 start my_app.coffee
 
 列出由pm2管理的所有进程信息，还会显示一个进程会被启动多少次，因为没处理的异常。
 

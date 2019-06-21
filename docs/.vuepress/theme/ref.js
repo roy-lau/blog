@@ -35,6 +35,51 @@ module.exports = (options, ctx) => ({
         imUtils: path.resolve(__dirname, 'utils')
     },
     async ready() {
+        let { postsFilter, postsSorter } = options;
+        postsFilter = postsFilter || (({ type }) => type === 'post');
+        postsSorter =
+            postsSorter ||
+            ((prev, next) => {
+                const prevTime = new Date(prev.frontmatter.date).getTime();
+                const nextTime = new Date(next.frontmatter.date).getTime();
+                return prevTime - nextTime > 0 ? -1 : 1;
+            });
+
+        const { pages } = ctx;
+        const posts = pages.filter(postsFilter);
+        const {
+            perPagePosts = 5,
+                paginationDir = 'page',
+                firstPagePath = '/',
+                layout = 'Layout'
+        } = options;
+
+        const intervallers = getIntervallers(posts.length, perPagePosts);
+        const pagination = {
+            paginationPages: intervallers.length !== 0 ?
+                intervallers.map((interval, index) => {
+                    const path =
+                        index === 0 ? firstPagePath : `/${paginationDir}/${index + 1}/`;
+                    return { path, interval };
+                }) :
+                [],
+            postsFilter: postsFilter.toString(),
+            postsSorter: postsSorter.toString()
+        };
+
+        ctx.pagination = pagination;
+        pagination.paginationPages.forEach(({ path }, index) => {
+            if (path === '/') {
+                return;
+            }
+            ctx.addPage({
+                permalink: path,
+                frontmatter: {
+                    layout,
+                    title: `Page ${index + 1}`
+                }
+            });
+        });
         //生成客户端所需的数据
         //只处理posts文件夹下的文件
         const postsFilter = val =>

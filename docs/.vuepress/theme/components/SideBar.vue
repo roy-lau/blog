@@ -22,13 +22,13 @@
                 <!-- 邮箱 end -->
             </v-list-tile>
         </v-card-actions>
-        <v-list>
-            <v-list-tile v-for="item in items" :key="item.color" :ripple="{ class: `${item.color}--text` }" :to="item.path">
+                <v-list>
+            <v-list-tile v-for="item in items" :key="item.color" v-ripple="{ class: `${item.color}--text` }" :to="item.path">
                 <v-list-tile-action>
-                    <v-icon>{{ item.icon }}</v-icon>
+                    <v-icon :color="item.color">{{ item.icon }}</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                    <v-list-tile-title >{{ item.title }}</v-list-tile-title>
                 </v-list-tile-content>
             </v-list-tile>
         </v-list>
@@ -45,10 +45,10 @@ export default {
     data() {
         return {
             items: [
-                { title: '主页', icon: 'home', color: 'info', path: '/home' },
-                { title: '归档', icon: 'folder', color: 'success', path: '/files' },
-                { title: '标签', icon: 'loyalty', color: 'error', path: '/tags' },
-                { title: '时间线', icon: 'access_alarm', color: 'warning', path: '/timeline' }
+                { title: '主页', icon: 'home', color: 'indigo', path: '/home' },
+                { title: '归档', icon: 'folder', color: 'orange', path: '/files' },
+                { title: '标签', icon: 'loyalty', color: 'brown', path: '/tags' },
+                { title: '时间线', icon: 'access_alarm', color: 'green', path: '/timeline' }
             ]
         }
     },

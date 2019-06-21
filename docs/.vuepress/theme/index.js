@@ -17,9 +17,9 @@ module.exports = (options, ctx) => ({
         }
     },
     ready() {
-        logger.warn(options)
         const { themeConfig, siteConfig } = ctx
-        logger.info(themeConfig)
+        // logger.warn(options)
+        // logger.info(themeConfig)
     },
     // 增加一个纯粹的路由
     additionalPages: [{
@@ -53,23 +53,9 @@ module.exports = (options, ctx) => ({
         ['@vuepress/active-header-links', options.activeHeaderLinks],
         '@vuepress/search',
         '@vuepress/plugin-nprogress',
-        ['container', {
-            type: 'tip',
-            defaultTitle: {
-                '/zh/': '提示'
-            }
-        }],
-        ['container', {
-            type: 'warning',
-            defaultTitle: {
-                '/zh/': '注意'
-            }
-        }],
-        ['container', {
-            type: 'danger',
-            defaultTitle: {
-                '/zh/': '警告'
-            }
-        }]
+        // path.resolve(__dirname, 'plugins/pagination'),
+        ['container', { type: 'tip' }],
+        ['container', { type: 'warning' }],
+        ['container', { type: 'danger' }]
     ]
 })

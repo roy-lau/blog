@@ -36,6 +36,7 @@
                     <Toc></Toc>
                 </v-card-text>
                 <v-card-text>目录列表</v-card-text>
+
                 <h1>$localePath</h1>
                 <pre>{{$localePath}}</pre>
                 <h1>$description</h1>

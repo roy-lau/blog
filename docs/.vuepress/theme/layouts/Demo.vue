@@ -2,10 +2,12 @@
     <v-container fluid grid-list-md>
         <v-layout row wrap style="border: 1px solid red;">
             <v-flex d-flex md2 lg2 style="border: 1px solid red;">
-                <v-card color="purple" dark v-show="showSideBar" >
-                    <v-card-title primary class="title">侧边</v-card-title>
-                    <v-card-text>{{ lorem }}</v-card-text>
-                </v-card>
+                <v-expand-x-transition>
+                    <v-card color="purple" dark v-show="showSideBar">
+                        <v-card-title primary class="title">侧边</v-card-title>
+                        <v-card-text>{{ lorem }}</v-card-text>
+                    </v-card>
+                </v-expand-x-transition>
             </v-flex>
             <v-flex d-flex md10 lg10 style="border: 1px solid red;">
                 <v-card color="indigo" dark>
@@ -41,6 +43,7 @@
 <script>
 export default {
     data: () => ({
+        expand: true,
         showSideBar: true,
         lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
     }),

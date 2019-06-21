@@ -1,14 +1,21 @@
 ---
 title: windows自动运行命令解析
 date: 2017-06-06 15:43:27
-tags: windows
-categories: windows
+tags:
+  - en
+categories:
+  - windows
+  - cmd
+  - autoTime
 toc: true
 ---
 
 # 					windows自动运行命令解析
 
+
 > 计划命令每24小时运行一次（目录 `D:\git_rpo\web_project\gitpush.sh` 是git上传的脚本）
+
+<!-- more -->
 
 ```
 schtasks /create /sc hourly /st 00:24:00 /tn "Automatic git push" /tr D:\git_rpo\web_project\gitpush.sh
