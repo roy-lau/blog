@@ -5,8 +5,7 @@ tags:
   - pm2
   - nodejs
   - npm
-categories:
-  - pm2
+categories: pm2
 toc: true
 ---
 
