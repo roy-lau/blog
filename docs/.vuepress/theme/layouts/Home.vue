@@ -1,6 +1,6 @@
 <template>
     <v-layout row wrap justify-center>
-        <v-flex d-flex md8 lg8 v-if="$site.pages" v-for="page in $site.pages" transition="slide-y-reverse-transition">
+        <v-flex d-flex md8 lg8 v-if="$site.pages" v-for="page in $site.pages">
             <v-card v-if="page.title">
                 <!-- :to="page.regularPath" -->
                 <v-card ripple :to="page.regularPath">
@@ -32,7 +32,7 @@
                     </v-btn>
 
                     <v-btn flat small color="brown" v-for="(tag,idx) in headleTags(page.frontmatter.tags)" :key="idx">
-                        <v-icon dark>folder</v-icon> {{tag||'标签'}}
+                        <v-icon dark>loyalty</v-icon> {{tag||'标签'}}
                     </v-btn>
 
                 </v-card-actions>
@@ -41,12 +41,9 @@
     </v-layout>
 </template>
 <script>
-import { isArrayLike } from "lodash"
 export default {
     components: {},
-    computed: {
-        // isArray(){}
-    },
+    computed: {},
     methods: {
         headleTags(tag) {
             if (typeof tag === "string") {

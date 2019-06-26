@@ -64,6 +64,7 @@ export default {
     }
 }
 </script>
+<style src="prismjs/themes/prism-tomorrow.css"></style>
 <style>
 .card--flex-toolbar {
     margin-top: -66px;
