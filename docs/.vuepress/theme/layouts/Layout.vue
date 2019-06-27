@@ -10,7 +10,7 @@
                             <Content />
                         </v-card-text>
                         <v-flex sm11 xs11 md11 lg11>
-                            <div class="text-xs-right" >
+                            <div class="text-xs-right">
                                 <v-chip color="blue lighten-4">
                                     <v-avatar>
                                         <v-img :src="$withBase('/imgs/avatar.svg')" alt="my" />
@@ -36,7 +36,6 @@
                     <Toc></Toc>
                 </v-card-text>
                 <v-card-text>目录列表</v-card-text>
-
                 <h1>$localePath</h1>
                 <pre>{{$localePath}}</pre>
                 <h1>$description</h1>
@@ -55,6 +54,9 @@
     </v-layout>
 </template>
 <script>
+import '@theme/styles/palette.styl'
+import '@theme/styles/code.styl'
+import '@theme/styles/content.styl'
 export default {
     components: {
         Toc: () => import('@theme/components/Toc.js'),
@@ -64,7 +66,6 @@ export default {
     }
 }
 </script>
-<style src="prismjs/themes/prism-tomorrow.css"></style>
 <style>
 .card--flex-toolbar {
     margin-top: -66px;

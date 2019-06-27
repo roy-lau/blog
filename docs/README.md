@@ -20,10 +20,17 @@ toc: true
 ### js代码
 
 ``` js
-let num = 1
+// 这是一段很长很长很长很长很长很长很长很长很长很长很长的注释
+	let num = 1
 	function (){
 		num++
 	}
+```
+
+### mysql 代码
+
+``` mysql
+	SELECT * FROM USER;
 ```
 
 ### 表格示例
