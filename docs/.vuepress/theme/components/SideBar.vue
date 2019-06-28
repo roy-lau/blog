@@ -22,7 +22,7 @@
                 <!-- 邮箱 end -->
             </v-list-tile>
         </v-card-actions>
-                <v-list>
+        <v-list>
             <v-list-tile v-for="item in items" :key="item.color" v-ripple="{ class: `${item.color}--text` }" :to="item.path">
                 <v-list-tile-action>
                     <v-icon :color="item.color">{{ item.icon }}</v-icon>
@@ -65,7 +65,8 @@ export default {
     background-size: 100% 120%;
     background-image: url('/imgs/title-bg.png');
 }
-.v-list__tile--active .v-list__tile__title{
+
+.v-list__tile--active .v-list__tile__title {
     font-weight: 900;
     font-size: 18px;
 }

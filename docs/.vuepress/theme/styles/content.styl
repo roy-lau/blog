@@ -1,4 +1,5 @@
 .content__default
+  @require '../styles/code.styl'
   display: block
   min-height: 150px
   font-size: 16px
@@ -28,17 +29,16 @@
       opacity: 0
       text-decoration: none
     &:hover
-      .header-anchor
+      a.header-anchor
         opacity: 1
-      a
         position relative
         font-weight: 500
-        text-decoration none
         color: $primary-color
         &:after
           content ''
           position absolute
           left 0
+          top 0
           bottom 0
           height 1px
           width 100%
@@ -46,6 +46,7 @@
           transition height 200ms ease-in
         &:hover:after
           height 100%
+  // 链接样式
   a
     position: relative
     text-decoration: none
@@ -99,7 +100,7 @@
       color darken(color, 20%)
       border-color color!important
       background lighten(color, 90%)!important
-      border-radius: 4px
+      border-radius 4px
 
     .line-numbers-wrapper
       position absolute

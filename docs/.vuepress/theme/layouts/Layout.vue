@@ -4,7 +4,7 @@
         <!-- 内容和评论 start -->
         <v-flex d-flex md8 lg8>
             <v-layout row wrap justify-center>
-                <v-flex d-flex md10 lg10>
+                <v-flex md10 lg10>
                     <v-card color="sliver" class="elevation-15">
                         <v-card-text>
                             <Content />
@@ -55,8 +55,8 @@
 </template>
 <script>
 import '@theme/styles/palette.styl'
-import '@theme/styles/content.styl'
-import '@theme/styles/code.styl'
+// import '@theme/styles/content.styl'
+// import '@theme/styles/code.styl'
 export default {
     components: {
         Toc: () => import('@theme/components/Toc.js'),
@@ -66,7 +66,9 @@ export default {
     }
 }
 </script>
-<style>
+<style lang="styl">
+
+@require '../styles/content.styl'
 .card--flex-toolbar {
     margin-top: -66px;
     padding: 30px;
