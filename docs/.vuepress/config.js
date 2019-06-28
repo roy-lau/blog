@@ -3,6 +3,9 @@ module.exports = {
     base: "/blog/",
     name: "Roy Lau",
     email: "897379293@qq.com",
+    markdown: {
+        lineNumbers: true //是否开启文章代码左边的行号显示
+    },
     themeConfig: {
         sidebar: {
             '/home/': [
@@ -15,7 +18,6 @@ module.exports = {
                 'three', /* /bar/three.html */
                 'four' /* /bar/four.html */
             ],
-
             // fallback
             '/': [
                 '', /* / */

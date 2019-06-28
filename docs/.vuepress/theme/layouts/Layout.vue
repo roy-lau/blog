@@ -35,7 +35,7 @@
                 <v-card-text>
                     <Toc></Toc>
                 </v-card-text>
-                <v-card-text>目录列表</v-card-text>
+                <v-card-text class="input-text">目录列表</v-card-text>
                 <h1>$localePath</h1>
                 <pre>{{$localePath}}</pre>
                 <h1>$description</h1>
@@ -55,8 +55,8 @@
 </template>
 <script>
 import '@theme/styles/palette.styl'
-import '@theme/styles/code.styl'
 import '@theme/styles/content.styl'
+import '@theme/styles/code.styl'
 export default {
     components: {
         Toc: () => import('@theme/components/Toc.js'),
@@ -71,4 +71,5 @@ export default {
     margin-top: -66px;
     padding: 30px;
 }
+
 </style>

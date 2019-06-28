@@ -16,7 +16,7 @@
                             <v-flex shrink style="background: rgba(0,0,0,.2);">
                                 <v-expand-transition>
                                     <div class="transition-fast-in-fast-out">
-                                        <v-card-title class="headline pb-1 white--text">{{page.title}}</v-card-title>
+                                        <v-card-title class="headline pb-1 white--text super-link">{{page.title}}</v-card-title>
                                         <v-card-text class="subheading py-1 white--text">时间，作者</v-card-text>
                                     </div>
                                 </v-expand-transition>

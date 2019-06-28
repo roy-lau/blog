@@ -65,4 +65,8 @@ export default {
     background-size: 100% 120%;
     background-image: url('/imgs/title-bg.png');
 }
+.v-list__tile--active .v-list__tile__title{
+    font-weight: 900;
+    font-size: 18px;
+}
 </style>

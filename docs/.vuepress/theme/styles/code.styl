@@ -5,7 +5,7 @@ pre, pre[class*="language-"]
 
 div[class*="language-"]
   position relative
-  
+
   .highlight-lines
     user-select none
     padding-top 1.3rem
@@ -148,7 +148,7 @@ pre {
     }
     .token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog {
       color: #999
-    }   
+    }
 
     &:before, &:after {
       content: '';
@@ -156,7 +156,7 @@ pre {
     }
   }
 }
-  
+
 for type, exts in $code-languages
   div
     &.language-{exts[0]}:before
@@ -165,8 +165,9 @@ for type, exts in $code-languages
       &.language-{exts[1]}:before
         content type
 
+// 引用
 blockquote {
-  margin 2em 0 2em 0
+  // margin 2em 0 2em 0
   color #dad7d7
   border-left .5em solid $primary-color
   padding: 1.25rem 1.5rem;
@@ -192,41 +193,6 @@ blockquote {
   }
 }
 
-strong {
-  font-weight: 600;
-  margin: 0 0.2em;
-}
-
-ol, ul {
-  padding-left: 2em;
-}
-
-table {
-  width: 100%;
-  border: 1px solid #dedede;
-  border-collapse: collapse;
-  border-spacing: 0;
-
-  thead {
-    tr {
-      background: #f6f8fa;
-    }
-  }
-
-  tbody {
-    tr {
-      &:hover {
-        background: #efefef;
-      }
-    }
-  }
-
-  td, th {
-    border: 1px solid #dedede;
-    padding: .375em .75em;
-    text-align: center !important;
-  }
-}
 
 video, audio {
   max-width: 100%;
