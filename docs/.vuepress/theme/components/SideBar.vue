@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="showSideBar" fixed class="elevation-15">
+    <v-navigation-drawer v-model="showSideBar" app class="elevation-15 aside-cls">
         <v-card-actions class="card-actions-bg">
             <v-list-tile class="grow">
                 <v-list-tile-avatar color="white darken-3" size="50">
@@ -35,6 +35,7 @@
     </v-navigation-drawer>
 </template>
 <script>
+
 export default {
     props: {
         showSideBar: { // 是否显示侧边
@@ -44,6 +45,7 @@ export default {
     },
     data() {
         return {
+            asideWidth: 316,
             items: [
                 { title: '主页', icon: 'home', color: 'indigo', path: '/home' },
                 { title: '归档', icon: 'folder', color: 'orange', path: '/files' },
@@ -53,9 +55,21 @@ export default {
         }
     },
     methods: {
+        onResize() {
+            if (window.innerWidth === 1920) {
+                this.asideWidth = 316
+            } else if (window.innerWidth === 1366) {
+                this.asideWidth = 224
+            }else if (document.body.clientWidth >=512) {
+                this.asideWidth = 0
+            }
+        },
         toPath(path) {
 
         }
+    },
+    mounted() {
+        this.onResize()
     },
 }
 </script>
