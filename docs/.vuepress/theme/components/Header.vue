@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar color="deep-purple" dark >
+    <v-toolbar color="deep-purple" dark>
         <v-toolbar-side-icon @click.stop="toggle" />
         <v-card-text>
             <h2 class="text-xs-left text-sm-left text-md-center text-lg-center">{{$title}}</h2>

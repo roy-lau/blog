@@ -6,15 +6,30 @@ html
   color: #2c3e50;
   font-family $body-font-family
 
-hr,.hr {
-    border: 0;
-    border-top: 1px solid #dadada;
-    box-sizing: content-box;
-    display: block;
-    height: 0;
-    margin-top: 24px;
+hr,.hr
+    border: 0
+    border-top: 1px solid #dadada
+    box-sizing: content-box
+    display: block
+    height: 0
+    margin-top: 24px
     margin-bottom: 24px
-}
+
+.aside-cls
+  position: fixed
+  top 0
+  bottom 0
+  z-index 5
+  @media $display.xl-only
+    width 320px
+  @media $display.lg-only
+    width 228px
+  @media $display.md-only
+    width 180px
+  @media $display.sm-only
+    width 150px
+  @media $display.xs-only
+    width 120px
 
 // 滚动条样式
 ::-webkit-scrollbar {

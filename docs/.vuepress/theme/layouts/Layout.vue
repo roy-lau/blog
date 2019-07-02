@@ -55,8 +55,7 @@
 </template>
 <script>
 import '@theme/styles/palette.styl'
-// import '@theme/styles/content.styl'
-// import '@theme/styles/code.styl'
+
 export default {
     components: {
         Toc: () => import('@theme/components/Toc.js'),
@@ -67,8 +66,8 @@ export default {
 }
 </script>
 <style lang="styl">
-
 @require '../styles/content.styl'
+
 .card--flex-toolbar {
     margin-top: -66px;
     padding: 30px;
