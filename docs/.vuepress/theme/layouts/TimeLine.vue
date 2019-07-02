@@ -2,7 +2,7 @@
     <v-layout row wrap justify-center>
         <v-flex d-flex md10 lg10>
             <transition name="slide-y">
-                <v-card color="white" class="card--flex-toolbar elevation-15">
+                <!-- <v-card color="white" class="card--flex-toolbar elevation-15"> -->
                     <v-timeline>
                         <v-timeline-item v-for="(page, i) in $site.pages" v-if="page.title" :color="years[i].color" :key="page.key" small>
                             <template v-slot:opposite>
@@ -16,7 +16,7 @@
                             </div>
                         </v-timeline-item>
                     </v-timeline>
-                </v-card>
+                <!-- </v-card> -->
             </transition>
         </v-flex>
     </v-layout>
@@ -52,10 +52,3 @@ export default {
     }
 }
 </script>
-<style>
-.card--flex-toolbar {
-    padding: 30px;
-    margin-top: -66px;
-}
-
-</style>

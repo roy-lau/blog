@@ -5,7 +5,7 @@
         <v-flex d-flex md8 lg8>
             <v-layout row wrap justify-center>
                 <v-flex md10 lg10>
-                    <v-card color="sliver" class="elevation-15">
+                    <v-card color="sliver" class="elevation-15 card--flex-toolbar">
                         <v-card-text>
                             <Content />
                         </v-card-text>
@@ -30,10 +30,10 @@
         </v-flex>
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
-        <v-flex d-flex md2 lg2 fixed>
+<!--         <v-flex d-flex md2 lg2>
             <v-card>
                 <v-card-text>
-                    <Toc></Toc>
+                    <Toc />
                 </v-card-text>
                 <v-card-text class="input-text">目录列表</v-card-text>
                 <h1>$localePath</h1>
@@ -49,7 +49,7 @@
                 <h1>$site</h1>
                 <pre>{{$site}}</pre>
             </v-card>
-        </v-flex>
+        </v-flex> -->
         <!-- 目录 end -->
     </v-layout>
 </template>

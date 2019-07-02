@@ -7,7 +7,7 @@ import Vuetify from 'vuetify'
 
 // 图标组件 icon
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-// 样式组件 css
+// 样式组件 css https://material.io/tools/icons/
 import 'vuetify/dist/vuetify.min.css'
 
 import '@theme/styles/index.styl'

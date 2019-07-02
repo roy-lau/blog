@@ -50,8 +50,8 @@ export default {
 
         const renderHeaders = items => {
             return h('ul', items.map(item => h('li', [
-                h('RouterLink', {
-                    props: { to: `#${item.slug}` },
+                h('a', {
+                    props: { href: `#${item.slug}` },
                 }, item.title),
                 item.children ? renderHeaders(item.children) : null,
             ])))
