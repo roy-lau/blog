@@ -23,6 +23,9 @@
                 <Footer />
             </v-flex>
             <!-- 底部 end -->
+            <!-- 回到顶部 end -->
+            <GoTop />
+            <!-- 回到顶部 end -->
         </v-layout>
     </v-container>
 </template>
@@ -52,7 +55,8 @@ export default {
     components: {
         SideBar: () => import('@theme/components/SideBar.vue'),
         Header: () => import('@theme/components/Header.vue'),
-        Footer: () => import('@theme/components/Footer.vue')
+        Footer: () => import('@theme/components/Footer.vue'),
+        GoTop: () => import('@theme/components/GoTop.vue')
     },
     methods: {
         toggleSideBar() {

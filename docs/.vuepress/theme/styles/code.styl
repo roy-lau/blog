@@ -78,13 +78,11 @@ code, kbd, pre, samp
   // color: #ff502c;
   font-size: 0.9em;
   padding: .02em .2em;
-
-  code, kbd {
+  code, kbd
     display: inline;
     margin: 0 0.5em;
     padding: .125em .25em;
     box-shadow: none;
-  }
 
 pre,
 pre[class*="language-"] {
@@ -166,45 +164,30 @@ for type, exts in $code-languages
         content type
 
 // 引用
-blockquote {
-  // margin 2em 0 2em 0
+blockquote
   color #dad7d7
-  border-left .5em solid $primary-color
-  padding: 1.25rem 1.5rem;
-  background-color: #282c34;
-  font-size: 15px;
-  border-radius: 4px;
-  p {
+  border-left .3em solid $primary-color
+  padding .5rem 1.5rem
+  background-color #282c34
+  font-size 15px
+  border-radius 4px
+  p
     margin-top: 0
-    &:last-child {
+    &:last-child
       margin-bottom: 0
-
-    }
-    code {
+    code
       background-color $primary-color
-      padding: 3px 5px;
-      border-radius: 3px;
-      color: #000;
-      vertical-align: bottom;
-      }
-  }
-  footer {
+      border-radius 3px
+      color #000
+      vertical-align bottom
+  footer
     font-size 80%
-  }
-}
 
+video, audio
+  max-width 100%
 
-video, audio {
-  max-width: 100%;
-}
-
-.highlighted-line {
-  display: block;
-  margin: 0 -1.5rem;
-  padding: 0 1.5rem;
-  background-color: rgba(0, 0, 0, 66%);
-}
-
-*:first-child {
-  margin-top 0
-}
+.highlighted-line
+  display: block
+  margin: 0 -1.5rem
+  padding: 0 1.5rem
+  background-color: rgba(0, 0, 0, 66%)
