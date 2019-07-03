@@ -3,6 +3,7 @@
     "vuepress": "^1.0.0-rc.1"
   },
   "dependencies": {
+    "markdown-it-checkbox": "^1.1.0",
     "material-design-icons-iconfont": "^5.0.1",
     "vue-prism": "^1.0.5",
     "vuetify": "^1.5.14"

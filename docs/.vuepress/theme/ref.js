@@ -1,300 +1,366 @@
-const path = require('path');
-const moment = require('moment');
-const fs = require('fs');
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(function () {
+      return factory;
+    });
+  } else if (typeof exports === 'object') {
+    module.exports = factory;
+  } else {
+    root.katelog = factory;
+  }
+})(window, function (opts) {
 
-module.exports = (options, ctx) => ({
-    plugins: [
-        [
-            '@vuepress/last-updated',
-            {
-                transformer: timestamp => {
-                    const moment = require('moment');
-                    moment.locale('zh-CN');
-                    return moment(timestamp).format(
-                        'YYYY-MM-DD HH:mm:ss'
-                    );
-                }
-            }
-        ]
-    ],
-    enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
-    chainMarkdown(config) {
-        config
-            .plugin('anchor')
-            .tap(([options]) => [
-                Object.assign(options, {
-                    level: [1, 2, 3, 4, 5, 6]
-                })
-            ]);
-    },
-    alias: {
-        imStyles: path.resolve(__dirname, 'styles'),
-        imRouter: path.resolve(__dirname, 'router'),
-        imComponents: path.resolve(__dirname, 'components'),
-        imData: path.resolve(__dirname, 'data'),
-        imUtils: path.resolve(__dirname, 'utils')
-    },
-    async ready() {
-        let { postsFilter, postsSorter } = options;
-        postsFilter = postsFilter || (({ type }) => type === 'post');
-        postsSorter =
-            postsSorter ||
-            ((prev, next) => {
-                const prevTime = new Date(prev.frontmatter.date).getTime();
-                const nextTime = new Date(next.frontmatter.date).getTime();
-                return prevTime - nextTime > 0 ? -1 : 1;
-            });
+  let defaultOpts = {
+    linkClass: 'k-catelog-link',
+    linkActiveClass: 'k-catelog-link-active',
+    supplyTop: 0,
+    selector: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    active: null    // 激活时候回调
+  };
 
-        const { pages } = ctx;
-        const posts = pages.filter(postsFilter);
-        const {
-            perPagePosts = 5,
-                paginationDir = 'page',
-                firstPagePath = '/',
-                layout = 'Layout'
-        } = options;
 
-        const intervallers = getIntervallers(posts.length, perPagePosts);
-        const pagination = {
-            paginationPages: intervallers.length !== 0 ?
-                intervallers.map((interval, index) => {
-                    const path =
-                        index === 0 ? firstPagePath : `/${paginationDir}/${index + 1}/`;
-                    return { path, interval };
-                }) :
-                [],
-            postsFilter: postsFilter.toString(),
-            postsSorter: postsSorter.toString()
-        };
-
-        ctx.pagination = pagination;
-        pagination.paginationPages.forEach(({ path }, index) => {
-            if (path === '/') {
-                return;
-            }
-            ctx.addPage({
-                permalink: path,
-                frontmatter: {
-                    layout,
-                    title: `Page ${index + 1}`
-                }
-            });
-        });
-        //生成客户端所需的数据
-        //只处理posts文件夹下的文件
-        const postsFilter = val =>
-            val.path.slice(1, 6) === 'posts';
-        //排序函数
-        const postsSorter = (prev, next) => {
-            const prevTime =
-                new Date(prev.frontmatter.date).getTime() ||
-                new Date(prev.lastUpdated).getTime() ||
-                new Date().getTime();
-            const nextTime =
-                new Date(next.frontmatter.date).getTime() ||
-                new Date(next.lastUpdated).getTime() ||
-                new Date().getTime();
-            return prevTime - nextTime > 0 ? -1 : 1;
-        };
-        const { pages } = ctx;
-        //格式化 lastUpdated
-        function changeDate(dateStr) {
-            if (dateStr.length === undefined) {
-                let str = JSON.stringify(dateStr, null, 2);
-                return str.slice(1, 11) + ' ' + str.slice(12, -6);
-            } else {
-                return dateStr;
-            }
+  if (typeof Object.assign != 'function') {
+    // Must be writable: true, enumerable: false, configurable: true
+    Object.defineProperty(Object, "assign", {
+      value: function assign(target, varArgs) { // .length of function is 2
+        'use strict';
+        if (target == null) { // TypeError if undefined or null
+          throw new TypeError('Cannot convert undefined or null to object');
         }
-        //进一步个性化 lastUpdated,全部文章页中使用
-        function changeTime(dateStr) {
-            let str = '';
-            str = dateStr.slice(0, 7);
-            const arr = str.split('-');
-            let result = [
-                arr[0] + '-' + arr[1],
-                Number(arr[0]) + Number(arr[1])
-            ];
-            return result;
+
+        var to = Object(target);
+
+        for (var index = 1; index < arguments.length; index++) {
+          var nextSource = arguments[index];
+
+          if (nextSource != null) { // Skip over if undefined or null
+            for (var nextKey in nextSource) {
+              // Avoid bugs when hasOwnProperty is shadowed
+              if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                to[nextKey] = nextSource[nextKey];
+              }
+            }
+          }
         }
-        //开始格式化和排序
-        const posts = pages.filter(postsFilter);
-        posts.sort(postsSorter);
+        return to;
+      },
+      writable: true,
+      configurable: true
+    });
+  }
 
-        //存放最终数据的变量
-        let archived = [];
-        let tagsList = {};
-        let poList = [];
-        let search = [];
-
-        posts.forEach((val, index) => {
-            //遍历posts目录生成包含所有文章信息的 archived
-            let page = {};
-            let sear = {};
-            let {
-                excerpt,
-                lastUpdated,
-                path,
-                _strippedContent
-            } = val;
-            let { tags, title } = val.frontmatter;
-            if (_strippedContent) {
-                _strippedContent = _strippedContent
-                    .replace(/[\n\r]/g, ' ')
-                    .replace(/\s+/, ' ');
-            }
-            if (_strippedContent) {
-                excerpt =
-                    excerpt ||
-                    (_strippedContent.slice(0, 200) ?
-                        _strippedContent.slice(0, 200) + '......' :
-                        false) ||
-                    '';
-                excerpt = excerpt.replace(/#/g, '');
-            } else {
-                excerpt = '';
-            }
-
-            lastUpdated =
-                val.frontmatter.date ||
-                lastUpdated ||
-                moment().format('YYYY-MM-DD HH:mm:ss');
-            lastUpdated = changeDate(lastUpdated);
-            tags = tags || '';
-            title = title || '你忘记写title字段了';
-
-            page.excerpt = excerpt;
-            page.tags = tags;
-            page.id = index;
-            page.title = title;
-            page.lastUpdated = lastUpdated;
-            page.path = path;
-
-            sear.title = title;
-            sear.path = path;
-            sear.strippedContent = _strippedContent;
-
-            archived.push(page);
-            search.push(sear);
-
-            //生成标签页的数据
-            //剔除不需要的数据
-            const t = {};
-            t.lastUpdated = lastUpdated;
-            t.tags = tags;
-            t.id = index;
-            t.title = title;
-            t.path = path;
-
-            if (!tags) {
-                if (!tagsList['未分类']) {
-                    tagsList['未分类'] = [{ name: '未分类' }];
-                }
-                tagsList['未分类'].push(t);
-            } else {
-                tags.forEach(tag => {
-                    if (tag === undefined) {
-                        if (!tagsList['未分类']) {
-                            tagsList['未分类'] = [{ name: '未分类' }];
-                        }
-                        tagsList['未分类'].push(t);
-                    }
-                    if (!tagsList[tag]) {
-                        tagsList[tag] = [{ name: tag }];
-                    }
-                    tagsList[tag].push(t);
-                });
-            }
-        });
-
-        //生成全部文章页所需要的数据
-        let index = 0;
-        archived.forEach((val, i) => {
-            let result1 = changeTime(val.lastUpdated);
-            if (archived.length === 1) {
-                poList[0] = [result1[0]];
-                return poList[0].push(val);
-            }
-            if (i + 1 !== archived.length) {
-                var result2 = changeTime(
-                    archived[i + 1].lastUpdated
-                );
-            } else {
-                var result2 = changeTime(
-                    archived[i - 1].lastUpdated
-                );
-            }
-            if (!poList[index]) {
-                poList[index] = [result1[0]];
-            }
-            if (!poList[index]) {
-                poList[index] = [result2[0]];
-            }
-            poList[index].push(val);
-            if (result1[1] !== result2[1]) {
-                index++;
-            }
-        });
-
-        const dataPath = path.resolve(__dirname, 'data');
-        console.log('正在写入本地数据,加快在客户端的速度~~');
-
-        fs.writeFile(
-            `${dataPath}/content.js`,
-            `export default ${JSON.stringify(
-        archived,
-        null,
-        2
-      )};`,
-            error => {
-                if (error)
-                    return console.log(
-                        '写入首页content文件失败,原因是' + error.message
-                    );
-                console.log('写入首页content文件成功');
-            }
-        );
-
-        fs.writeFile(
-            `${dataPath}/tagsList.js`,
-            `export default ${JSON.stringify(
-        tagsList,
-        null,
-        2
-      )};`,
-            error => {
-                if (error)
-                    return console.log(
-                        '写入标签页tagsList文件失败,原因是' +
-                        error.message
-                    );
-                console.log('写入标签页tagsList文件成功');
-            }
-        );
-
-        fs.writeFile(
-            `${dataPath}/search.js`,
-            `export default ${JSON.stringify(search, null, 2)};`,
-            error => {
-                if (error)
-                    return console.log(
-                        '写入搜索search文件失败,原因是' + error.message
-                    );
-                console.log('写入搜索search文件成功');
-            }
-        );
-
-        fs.writeFile(
-            `${dataPath}/poList.js`,
-            `export default ${JSON.stringify(poList, null, 2)};`,
-            error => {
-                if (error)
-                    return console.log(
-                        '写入归档页poList文件失败,原因是' +
-                        error.message
-                    );
-                console.log('写入归档页poList文件成功');
-            }
-        );
+  /**
+   * 判断是否有class
+   * @param node  节点
+   * @param className 样式名
+   * @returns {*}
+   */
+  function hasClass(node, className) {
+    if (node.className) {
+      return node.className.match(
+        new RegExp('(\\s|^)' + className + '(\\s|$)'));
+    } else {
+      return false;
     }
+  };
+
+  /**
+   *  添加样式
+   * @param node  节点
+   * @param className 样式名
+   */
+  function addClass(node, className) {
+    if (!hasClass(node, className)) node.className += " " + className;
+  };
+
+
+  /**
+   *  移除样式
+   * @param node  节点
+   * @param className 将移除的样式
+   */
+  function removeClass(node, className) {
+    if (hasClass(node, className)) {
+      var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
+      node.className = node.className.replace(reg, ' ');
+    }
+  };
+
+  function arrayLikeToArray(al) {
+    return Array.prototype.slice.call(al);
+  }
+
+  /**
+   * 获取目录树
+   * @param catelogs
+   */
+  function getCatelogsTree(catelogs) {
+    let title, tagName,
+      tree = [], treeItem = {}, parentItem = { id: -1 }, lastTreeItem = null;
+
+    let id;
+
+    for (let i = 0; i < catelogs.length; i++) {
+      title = catelogs[i].innerText || catelogs[i].textContent;
+      tagName = catelogs[i].tagName;
+      id = 'heading-' + i;
+      catelogs[i].id = id;
+      treeItem = {
+        name: title,
+        tagName: tagName,
+        id: id,
+        level: getLevel(tagName),
+        parent: parentItem
+      };
+      if (lastTreeItem) {
+        if (getPriority(treeItem.tagName) < getPriority(lastTreeItem.tagName)) {
+          treeItem.parent = lastTreeItem;
+        } else {
+          treeItem.parent = findParent(treeItem, lastTreeItem);
+        }
+      }
+      lastTreeItem = treeItem;
+      tree.push(treeItem);
+    }
+    return tree;
+  }
+
+
+
+  /**
+   * 找到当前节点的父级
+   * @param currTreeItem
+   * @param lastTreeItem
+   * @returns {*|Window}
+   */
+  function findParent(currTreeItem, lastTreeItem) {
+    let lastTreeParent = lastTreeItem.parent;
+    while (lastTreeParent && (getPriority(currTreeItem.tagName) >= getPriority(lastTreeParent.tagName))) {
+      lastTreeParent = lastTreeParent.parent;
+    }
+    return lastTreeParent || { id: -1 };
+  }
+
+
+  /**
+   *  获取等级
+   * @param tagName
+   * @returns {*}
+   */
+  function getLevel(tagName) {
+    return tagName ? tagName.slice(1) : 0;
+  }
+
+  /**
+   *  获取权重
+   */
+  function getPriority(tagName) {
+    let priority = 0;
+    if (tagName) {
+      switch (tagName.toLowerCase()) {
+        case 'h1':
+          priority = 6;
+          break;
+        case 'h2':
+          priority = 5;
+          break;
+        case 'h3':
+          priority = 4;
+          break;
+        case 'h4':
+          priority = 3;
+          break;
+        case 'h5':
+          priority = 2;
+          break;
+        case 'h6':
+          priority = 1;
+          break;
+      }
+    }
+    return priority;
+  }
+
+  /**
+   * 绑定事件
+   * @param obj
+   * @param type
+   * @param fn
+   */
+  function addEvent(obj, type, fn) {
+    if (obj) {
+      if (obj.attachEvent) {
+        obj['e' + type + fn] = fn;
+        obj[type + fn] = function () {
+          obj['e' + type + fn](window.event);
+        };
+        obj.attachEvent('on' + type, obj[type + fn]);
+      } else {
+        obj.addEventListener(type, fn, false);
+      }
+    }
+  };
+
+  /**
+   * 生成树
+   * @param tree
+   */
+  function generateHtmlTree(tree, _parent) {
+    let ul, hasChild = false;
+    if (tree) {
+      ul = '<ul>';
+      for (let i = 0; i < tree.length; i++) {
+        if (isEqual(tree[i].parent, _parent)) {
+          hasChild = true;
+          ul += `<li><div class="${option.linkClass} k-catelog-level-${tree[i].level}" data-target="${tree[i].id}">` + tree[i].name + '</div>';
+          ul += generateHtmlTree(tree, tree[i]);
+          ul += '</li>';
+        }
+      }
+      ul += '</ul>'
+    }
+    return hasChild ? ul : '';
+  }
+
+  /**
+   * 获取dataset属性
+   * @param el
+   * @param id
+   * @returns {*}
+   */
+  function getDataset(el, id) {
+    if (el.dataset) {
+      return el.dataset[id];
+    } else {
+      return el.getAttribute(`data-${id}`)
+    }
+  }
+
+  function isEqual(node, node2) {
+    return node && node2 && typeof node === 'object' && typeof node2 === 'object' && node.id === node2.id
+  }
+
+  /**
+   * 获取滚动条滚动的高度
+   * @returns {number}
+   */
+  function getScrollTop() {
+    return document.documentElement.scrollTop || document.body.scrollTop;
+  }
+
+
+  const option = Object.assign({}, defaultOpts, opts);
+  const $content = this.contentEl =
+    option.contentEl instanceof HTMLElement ? option.contentEl : document.getElementById(option.contentEl);      // 内容元素
+  const $catelog =
+    option.catelogEl instanceof HTMLElement ? option.catelogEl : document.getElementById(option.catelogEl);     // 目录元素
+
+  let allCatelogs = $content.querySelectorAll(option.selector.join());
+
+  let tree = getCatelogsTree(allCatelogs);
+
+  let clickToScroll = false;      // 点击跳转不触发scroll事件
+
+  $catelog.innerHTML = generateHtmlTree(tree, { id: -1 });
+
+  let styleText = `
+    .k-catelog-list > ul { position: relative; }
+  `
+  let styleNode = document.createElement('style');
+  styleNode.type = 'text/css';
+  if (styleNode.styleSheet) {
+    styleNode.styleSheet.cssText = styleText;
+  } else {
+    styleNode.innerHTML = styleText;
+  }
+  document.getElementsByTagName('head')[0].appendChild(styleNode);
+
+  addEvent($catelog, 'click', function (e) {
+    const target = e.target || e.srcElement;
+    const id = target.getAttribute('data-target');
+    if (id) {
+      let headEl = document.getElementById(id);
+      clickToScroll = true;
+      const scrollTop = getElementTop(headEl)
+      window.scrollTo(0, scrollTop - option.supplyTop);
+      setActiveItem(id);
+    }
+  });
+
+  /**
+   *  设置选中的项
+   */
+  function setActiveItem(id) {
+    let catelogs = $catelog.querySelectorAll('[data-target]');
+    catelogs = arrayLikeToArray(catelogs);
+    let activeTarget = null, c;
+
+    for (let i = 0; i < catelogs.length; i++) {
+      c = catelogs[i];
+      if (getDataset(c, 'target') === id) {
+
+        addClass(c, option.linkActiveClass)
+
+        activeTarget = c;
+
+        const top = getElementTop(c, $catelog)
+        $catelog.scrollTop = top - $catelog.offsetHeight / 2
+        // c.scrollIntoView({
+        //   behavior: 'smooth'
+        // })
+
+      } else {
+        removeClass(c, option.linkActiveClass)
+      }
+    }
+    if (typeof option.active === 'function') {
+      option.active.call(this, activeTarget);
+    }
+  }
+
+  /**
+   * 滚动处理事件
+   * @param e
+   */
+  function resolveScroll(e) {
+    // 鼠标滚动则触发，点击滚动不触发
+    if (!clickToScroll) {
+      let scrollTop = getScrollTop() + option.supplyTop;
+      let scrollToEl = null;
+      for (let i = allCatelogs.length - 1; i >= 0; i--) {
+        if (getElementTop(allCatelogs[i]) <= scrollTop) {
+          scrollToEl = allCatelogs[i];
+          break;
+        }
+      }
+      if (scrollToEl) setActiveItem(scrollToEl.id);
+      else setActiveItem(null);   // 无匹配的元素
+    }
+    clickToScroll = false;
+  }
+
+  /**
+   * 获取元素距离顶部的距离
+   * @param {*} el
+   */
+  function getElementTop(el, by = null) {
+    let top = el.offsetTop;
+    while (el = el.offsetParent) {
+      if (by === el) {
+        break
+      }
+      top += el.offsetTop;
+    }
+    return top;
+  }
+
+  addEvent(window, 'scroll', resolveScroll);
+
+  // fix https://github.com/KELEN/k-catelog/issues/1
+  // 重新构建目录
+  this.rebuild = function () {
+    allCatelogs = $content.querySelectorAll(option.selector.join());
+    let tree = getCatelogsTree(allCatelogs);
+    $catelog.innerHTML = generateHtmlTree(tree, { id: -1 });
+  }
 });

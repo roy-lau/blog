@@ -63,12 +63,20 @@ module.exports = (options, ctx) => ({
     }],
     // 使用到的插件
     plugins: [
-        ['@vuepress/active-header-links', options.activeHeaderLinks],
         '@vuepress/search',
         '@vuepress/plugin-nprogress',
         // path.resolve(__dirname, 'plugins/pagination'),
         ['container', { type: 'tip' }],
         ['container', { type: 'warning' }],
         ['container', { type: 'danger' }]
-    ]
+    ],
+    chainMarkdown(config) {
+        config
+            .plugin('anchor')
+            .tap(([options]) => [
+                Object.assign(options, {
+                    level: [1, 2, 3, 4, 5, 6]
+                })
+            ]);
+    },
 })

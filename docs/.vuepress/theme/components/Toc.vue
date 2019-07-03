@@ -1,20 +1,218 @@
 <template>
-   <ul>
-   	<li v-for="item in headers"><a :href="'#'+item.slug">{{item.title}}</a></li>
-   </ul>
+    <div class="toc-warp" :class="{ 'open-toc': hasToc }">
+        <h3 class="title"><a href="" class="link">目录</a></h3>
+        <div class="body">
+            <ul class="lists">
+                <li v-for="(item, index) in catalogList" :key="index" class="list" :class="{ active: currentIndex === index }">
+                    <a class="link ellipsis" :href="'#' + item.id" :style="{ marginLeft: offsetList[index] * 8 + 'px' }">
+                        {{ item.textContent.substring(2) }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </template>
 <script>
 export default {
-    computed: {
-      headers() {
-            if (this.$page && this.$page.headers) return this.$page.headers
+    name: "Toc",
+    data() {
+        return {
+            allH: [],
+            catalogList: [],
+            currentIndex: 0,
+            offsetList: [],
+            hasToc: false
+        };
+    },
+    props: {
+        content: {
+            type: Array,
+            default: () => []
         }
     },
-    methods: {
-
+    created() {
+        setTimeout(() => {
+            this.getTocList();
+            this.changeIndex();
+        }, 20);
     },
-}
+    methods: {
+        /**
+         * 防抖函数
+         * @param  {Function} fn          [description]
+         * @param  {[type]}   wait        [description]
+         * @param  {[type]}   maxTimelong [description]
+         * @return {[type]}               [description]
+         */
+        throttle(fn, wait, maxTimelong) {
+            var timeout = null,
+                startTime = Date.parse(new Date());
+
+            return function() {
+                if (timeout !== null) clearTimeout(timeout);
+                var curTime = Date.parse(new Date());
+                if (curTime - startTime >= maxTimelong) {
+                    fn();
+                    startTime = curTime;
+                } else {
+                    timeout = setTimeout(fn, wait);
+                }
+            };
+        },
+        changeToc() {
+            this.hasToc = !this.hasToc;
+        },
+        /**
+         * 获取目录列表
+         * @return {[type]} [description]
+         */
+        getTocList() {
+            this.catalogList.splice(0, this.catalogList.length);
+            this.offsetList.splice(0, this.offsetList.length);
+            this.allH.splice(0, this.allH.length);
+            if (typeof window === "undefined") return;
+            if (!document.querySelector(".post-card")) {
+                return;
+            }
+            let a = [];
+            let allH = document
+                .querySelector(".post-card")
+                .querySelectorAll("h1,h2,h3,h4,h5,h6");
+            if (allH.length === 0) {
+                return;
+            }
+            let nodeArr = [].slice.call(allH);
+            nodeArr.forEach((val, i) => {
+                this.allH.push(val.offsetTop);
+                this.catalogList.push(val);
+                if (i === 0) {
+                    a.push(0);
+                } else {
+                    let hNow = Number(val.tagName.slice(1));
+                    let hPrev = Number(nodeArr[i - 1].tagName.slice(1));
+                    if (hNow > hPrev) {
+                        a.push(a[i - 1] + (hNow - hPrev));
+                    } else if (hNow < hPrev) {
+                        a.push(a[i - 1] - (hPrev - hNow));
+                    } else {
+                        a.push(a[i - 1]);
+                    }
+                }
+            });
+            let min = a.reduce((x, y) => {
+                return x > y ? y : x;
+            });
+            let offset = Math.abs(min);
+            a.forEach(val => {
+                if (min < 0) {
+                    val += offset;
+                }
+                if (min > 0) {
+                    val -= offset;
+                }
+                this.offsetList.push(val);
+            });
+        },
+        changeIndex() {
+            if (typeof window === "undefined") return;
+            const _this = this,
+                tocWarpCls = document.getElementsByClassName("toc-warp")[0];
+            window.addEventListener(
+                "scroll",
+                _this.throttle(_=> {
+                        let h = _this.getScrollTop();
+                        // 动态设置目录距离顶部的位置
+                        tocWarpCls.style.top = h >= 200 ? '20px':'200px'
+                        // 动态设置滚动位置的 index
+                        for (let i = 0, len = _this.allH.length; i < len; i++) {
+                            if (i + 1 === _this.allH.length || h < _this.allH[i]) {
+                                return (_this.currentIndex = i);
+                            }
+                            if (h >= _this.allH[i] && h < _this.allH[i + 1]) {
+                                return (_this.currentIndex = i);
+                            }
+                        }
+                    }, 60, 110)
+            );
+        },
+        /**
+         * 获取滚动条当前所在的位置
+         * @return {[type]} 滚动条位置
+         */
+        getScrollTop() {
+            if (typeof window === "undefined") return;
+            var scrollPos;
+            if (window.pageYOffset) {
+                scrollPos = window.pageYOffset;
+            } else if (document.compatMode && document.compatMode != "BackCompat") {
+                scrollPos = document.documentElement.scrollTop;
+            } else if (document.body) {
+                scrollPos = document.body.scrollTop;
+            }
+            return scrollPos;
+        },
+    }
+};
 </script>
-<style>
+<style lang="stylus" scoped>
+
+.toc-warp
+    width 20rem
+    height 60%
+    font-size 14px
+    position fixed
+    top 200px
+    right 50px
+    overflow-y auto
+    border-radius 16px
+    // background white
+    transition all 0.2s ease-in-out
+    @media $display.lg-only
+        width 15rem
+        right 20px
+    .title
+        text-align center
+        line-height 20px
+
+    a.link
+        position relative
+        text-decoration none
+        color rgb(52, 73, 94)
+        &::after
+          content ''
+          width 100%
+          height 1px /*设置伪元素的高度，这里是下划线的粗细*/
+          position absolute
+          top 100%
+          left 0
+          background-color currentColor /*当前标签继承的文字颜色，这里让伪元素的背景色与父元素的文字颜色相同*/
+          transform scale(0)
+          transition all .2s
+        &:hover::after
+          transform scale(1)
+          transform-origin center
+    .body
+        .lists
+            list-style none
+            .list
+                height 25px
+                line-height 25px
+                a.link
+                    transition: background 0.5s
+            .active
+                dispaly block
+                color #3f51b5
+                a.link
+                    display block
+                    margin 4px 0
+                    padding-left 3px
+                    position relative
+                    background-color silver
+                    border-left: 4px solid #3f51b5
+                    font-weight 600
+                    color inherit
+                    &:hover
+                        text-decoration underline
+
 
 </style>

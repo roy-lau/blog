@@ -19,13 +19,18 @@ toc: true
 
 ### TODO
 
+[x] checked
+
 - [-] 侧边栏的宽度调整
-- [X] 内容固定宽度
+- [-] 内容固定宽度(手机和`ipad`适配)
 - [X] 头部固定
 - [X] 检索功能
 - [X] RSS 功能
-- [X] `subheader`还未完成
-- [X] 目录列表还未完成
+- [X] `subheader` 待完善
+- [X] 目录列表 **待完善**
+	- 适配手机和平板
+	- 动态调整距离顶部位置 待优化
+	- 选择项一直在 `toc-warp` 的中心位置
 - [X] 评论还未完成
 - [X] 底部还未完成
 - [X] 回到顶部
@@ -56,9 +61,13 @@ toc: true
 
 ### `mysql` 代码
 
+::: danger 警告
+下面这段代码没能正常渲染
+:::
 ``` mysql
 	SELECT * FROM USER;
 ```
+
 
 	this is a coption code
 

@@ -5,7 +5,7 @@
         <v-flex d-flex md8 lg8>
             <v-layout row wrap justify-center>
                 <v-flex md10 lg10>
-                    <v-card color="sliver" class="elevation-15 card--flex-toolbar">
+                    <v-card color="sliver" class="elevation-15 card--flex-toolbar post-card">
                         <v-card-text>
                             <Content />
                         </v-card-text>
@@ -19,6 +19,7 @@
                                 </v-chip>
                             </div>
                         </v-flex>
+                        <span id="footerPost"></span>
                     </v-card>
                 </v-flex>
                 <v-flex d-flex md10 lg10>
@@ -30,10 +31,10 @@
         </v-flex>
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
+                    <Toc />
 <!--         <v-flex d-flex md2 lg2>
             <v-card>
                 <v-card-text>
-                    <Toc />
                 </v-card-text>
                 <v-card-text class="input-text">目录列表</v-card-text>
                 <h1>$localePath</h1>
@@ -58,7 +59,7 @@ import '@theme/styles/palette.styl'
 
 export default {
     components: {
-        Toc: () => import('@theme/components/Toc.js'),
+        Toc: () => import('@theme/components/Toc.vue'),
     },
     methods: {
 

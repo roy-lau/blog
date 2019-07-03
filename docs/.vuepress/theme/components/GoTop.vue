@@ -29,6 +29,10 @@ export default {
         GoTop() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         },
+        /**
+         * 获取滚动条当前所在的位置
+         * @return {[type]} 滚动条位置
+         */
         getScrollTop() {
             var scrollPos;
             if (typeof window === "undefined") return;
