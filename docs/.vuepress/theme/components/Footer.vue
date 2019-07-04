@@ -1,19 +1,30 @@
 <!-- 底部组件 -->
 <template>
-    <v-footer dark height="auto">
+    <!--     <v-footer height="auto">
         <v-card flat tile class="deep-purple white--text text-xs-center">
             <v-card-text>
                 <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon>
                     <v-icon size="24px">{{ icon }}</v-icon>
                 </v-btn>
             </v-card-text>
-            <v-card-text class="white--text">
-                Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            <v-card-text>
+                Copyright &copy; 2019 — <strong>RoyLau</strong>
             </v-card-text>
-            <v-divider></v-divider>
-            <v-card-text class="white--text">
-                &copy;2019 — <strong>RoyLau</strong>
-            </v-card-text>
+        </v-card>
+    </v-footer> -->
+    <v-footer dark  height="auto">
+        <v-card class="flex pa-0" flat tile>
+            <v-card-title class="deep-purple">
+                <strong class="subheading">这是记录我文章的圣地!</strong>
+                <v-spacer></v-spacer>
+                <v-btn v-for="icon in icons" :key="icon" class="mx-3" dark icon>
+                    <v-icon size="24px">{{ icon }}</v-icon>
+                </v-btn>
+            </v-card-title>
+            <v-divider class="my-0 white"/>
+            <v-card-actions class="deep-purple white--text justify-center">
+                Copyright &copy; 2019 — <strong> RoyLau </strong>
+            </v-card-actions>
         </v-card>
     </v-footer>
 </template>

@@ -70,13 +70,15 @@ module.exports = (options, ctx) => ({
         ['container', { type: 'warning' }],
         ['container', { type: 'danger' }]
     ],
-    chainMarkdown(config) {
-        config
-            .plugin('anchor')
-            .tap(([options]) => [
-                Object.assign(options, {
-                    level: [1, 2, 3, 4, 5, 6]
-                })
-            ]);
-    },
+    // chainMarkdown(config) {
+    //     config
+    //         .plugin(require('markdown-it-checkbox'));
+
+    //             // <p>
+    //             //  <div classname="cb">
+    //             //    <input type="checkbox" id="cbx_0">
+    //             //    <label for="cbx_0">unchecked</label>
+    //             //  </div>
+    //             // </p>
+    // },
 })

@@ -7,19 +7,19 @@
             </v-flex>
             <!-- 侧边栏 end -->
             <!-- 头部 start -->
-            <v-flex :class="hcfClass" class="pa-0">
+            <v-flex :class="hcfClass" class="pa-0 side-x">
                 <Header @toggle-side-bar="toggleSideBar" :Layout="layout" />
             </v-flex>
             <!-- 头部 end -->
         </v-layout>
         <v-layout row wrap>
             <!-- 主体部分 start -->
-            <v-flex :class="hcfClass">
-                    <component :is="layout" />
+            <v-flex :class="hcfClass" class="side-x">
+                    <component :is="layout" :Layout="layout"/>
             </v-flex>
             <!-- 主体部分 end -->
             <!-- 底部 start -->
-            <v-flex :class="hcfClass" class="pa-0">
+            <v-flex :class="hcfClass" class="pa-0 side-x">
                 <Footer />
             </v-flex>
             <!-- 底部 end -->
@@ -66,5 +66,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.side-x{
+    transition: all .5s;
+}
 </style>

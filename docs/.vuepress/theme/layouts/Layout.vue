@@ -5,7 +5,7 @@
         <v-flex d-flex md8 lg8>
             <v-layout row wrap justify-center>
                 <v-flex md10 lg10>
-                    <v-card color="sliver" class="elevation-15 card--flex-toolbar post-card">
+                    <v-card color="sliver" class="elevation-15 layout-card" :class="{'has':hasLayoutCard}">
                         <v-card-text>
                             <Content />
                         </v-card-text>
@@ -19,7 +19,6 @@
                                 </v-chip>
                             </div>
                         </v-flex>
-                        <span id="footerPost"></span>
                     </v-card>
                 </v-flex>
                 <v-flex d-flex md10 lg10>
@@ -31,8 +30,8 @@
         </v-flex>
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
-                    <Toc />
-<!--         <v-flex d-flex md2 lg2>
+        <Toc />
+        <!--         <v-flex d-flex md2 lg2>
             <v-card>
                 <v-card-text>
                 </v-card-text>
@@ -61,18 +60,27 @@ export default {
     components: {
         Toc: () => import('@theme/components/Toc.vue'),
     },
-    methods: {
 
-    }
+    data() {
+        return {
+            hasLayoutCard: false
+        }
+    },
+    mounted() {
+        console.log(this.layout)
+        this.hasLayoutCard = true
+    },
 }
 </script>
-
 <style lang="styl">
 @require '../styles/content.styl'
 
-.card--flex-toolbar {
-    margin-top: -66px;
+.layout-card {
+    margin-top: 50px;
     padding: 30px;
 }
 
+.layout-card.has {
+    margin-top: -66px;
+}
 </style>

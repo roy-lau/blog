@@ -42,13 +42,12 @@ export default {
         showSideBar: { // 是否显示侧边
             type: Boolean,
             default: true
+        },
+        layout: { // 当前在哪个布局页面
+            type: String,
+            default: ''
         }
     },
-    // computed:{
-    //     showSideBar(){
-    //         // this.$refs.asideWarp.style.transform = 'translateX(0px)'
-    //     }
-    // },
     data() {
         return {
             asideWidth: 316,
@@ -91,15 +90,14 @@ export default {
     font-size: 18px;
 }
 
-
 .slide-x-leave-active,
 .slide-x-enter-active {
     transform: translateX(0px);
-    transition: all .3s ease;
 }
 
 .slide-x-enter,
 .slide-x-leave-to {
+    transition: all .3s ease;
     transform: translateX(-100%);
     opacity: 0;
 }

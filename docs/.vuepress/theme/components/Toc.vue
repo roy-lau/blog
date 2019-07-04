@@ -13,6 +13,7 @@
     </div>
 </template>
 <script>
+import { getScrollTop } from '@theme/utils'
 export default {
     name: "Toc",
     data() {
@@ -71,12 +72,12 @@ export default {
             this.offsetList.splice(0, this.offsetList.length);
             this.allH.splice(0, this.allH.length);
             if (typeof window === "undefined") return;
-            if (!document.querySelector(".post-card")) {
+            if (!document.querySelector(".layout-card")) {
                 return;
             }
             let a = [];
             let allH = document
-                .querySelector(".post-card")
+                .querySelector(".layout-card")
                 .querySelectorAll("h1,h2,h3,h4,h5,h6");
             if (allH.length === 0) {
                 return;
@@ -119,37 +120,21 @@ export default {
                 tocWarpCls = document.getElementsByClassName("toc-warp")[0];
             window.addEventListener(
                 "scroll",
-                _this.throttle(_=> {
-                        let h = _this.getScrollTop();
-                        // 动态设置目录距离顶部的位置
-                        tocWarpCls.style.top = h >= 200 ? '20px':'200px'
-                        // 动态设置滚动位置的 index
-                        for (let i = 0, len = _this.allH.length; i < len; i++) {
-                            if (i + 1 === _this.allH.length || h < _this.allH[i]) {
-                                return (_this.currentIndex = i);
-                            }
-                            if (h >= _this.allH[i] && h < _this.allH[i + 1]) {
-                                return (_this.currentIndex = i);
-                            }
+                _this.throttle(_ => {
+                    let h = getScrollTop();
+                    // 动态设置目录距离顶部的位置
+                    tocWarpCls.style.top = h >= 200 ? '60px' : '200px'
+                    // 动态设置滚动位置的 index
+                    for (let i = 0, len = _this.allH.length; i < len; i++) {
+                        if (i + 1 === _this.allH.length || h < _this.allH[i]) {
+                            return (_this.currentIndex = i);
                         }
-                    }, 60, 110)
+                        if (h >= _this.allH[i] && h < _this.allH[i + 1]) {
+                            return (_this.currentIndex = i);
+                        }
+                    }
+                }, 60, 110)
             );
-        },
-        /**
-         * 获取滚动条当前所在的位置
-         * @return {[type]} 滚动条位置
-         */
-        getScrollTop() {
-            if (typeof window === "undefined") return;
-            var scrollPos;
-            if (window.pageYOffset) {
-                scrollPos = window.pageYOffset;
-            } else if (document.compatMode && document.compatMode != "BackCompat") {
-                scrollPos = document.documentElement.scrollTop;
-            } else if (document.body) {
-                scrollPos = document.body.scrollTop;
-            }
-            return scrollPos;
         },
     }
 };

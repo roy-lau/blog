@@ -4,6 +4,7 @@
     </v-btn>
 </template>
 <script>
+import { getScrollTop } from '@theme/utils'
 export default {
     name: "GoTop",
     data() {
@@ -18,7 +19,7 @@ export default {
         hasShow() {
             const slef = this;
             window.addEventListener("scroll", function(e) {
-                let h = slef.getScrollTop();
+                let h = getScrollTop();
                 if (h > 300) {
                     slef.show = true;
                 } else {
@@ -28,22 +29,6 @@ export default {
         },
         GoTop() {
             window.scrollTo({ top: 0, behavior: "smooth" });
-        },
-        /**
-         * 获取滚动条当前所在的位置
-         * @return {[type]} 滚动条位置
-         */
-        getScrollTop() {
-            var scrollPos;
-            if (typeof window === "undefined") return;
-            if (window.pageYOffset) {
-                scrollPos = window.pageYOffset;
-            } else if (document.compatMode && document.compatMode != "BackCompat") {
-                scrollPos = document.documentElement.scrollTop;
-            } else if (document.body) {
-                scrollPos = document.body.scrollTop;
-            }
-            return scrollPos;
         }
     }
 };
