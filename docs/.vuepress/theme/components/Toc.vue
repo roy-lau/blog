@@ -123,7 +123,7 @@ export default {
                 _this.throttle(_ => {
                     let h = getScrollTop();
                     // 动态设置目录距离顶部的位置
-                    tocWarpCls.style.top = h >= 200 ? '60px' : '200px'
+                    tocWarpCls.style.top = h >= 200 ? '100px' : '260px'
                     // 动态设置滚动位置的 index
                     for (let i = 0, len = _this.allH.length; i < len; i++) {
                         if (i + 1 === _this.allH.length || h < _this.allH[i]) {
@@ -144,9 +144,8 @@ export default {
 .toc-warp
     width 20rem
     height 60%
-    font-size 14px
     position fixed
-    top 200px
+    top 260px
     right 50px
     overflow-y auto
     border-radius 16px
@@ -154,7 +153,7 @@ export default {
     transition all 0.2s ease-in-out
     @media $display.lg-only
         width 15rem
-        right 20px
+        right 35px
     .title
         text-align center
         line-height 20px
@@ -179,9 +178,10 @@ export default {
     .body
         .lists
             list-style none
+            text-indent 5px
             .list
-                height 25px
-                line-height 25px
+                height 30px
+                line-height 30px
                 a.link
                     transition: background 0.5s
             .active

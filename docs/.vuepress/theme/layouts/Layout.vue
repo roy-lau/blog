@@ -21,6 +21,32 @@
                         </v-flex>
                     </v-card>
                 </v-flex>
+                <!-- 分页 start -->
+                <v-flex md10 lg10 class="paginations">
+                    <v-tooltip top>
+                        <template v-slot:activator="{ on }">
+                            <v-btn fab dark color="purple" v-on="on">
+                                <v-icon dark>arrow_back</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>上一页</span>
+                    </v-tooltip>
+                    <v-tooltip top>
+                        <template v-slot:activator="{ on }">
+                            <v-btn flat v-on="on" class="page">- 1 -</v-btn>
+                        </template>
+                        <span>当前页</span>
+                    </v-tooltip>
+                    <v-tooltip top>
+                        <template v-slot:activator="{ on }">
+                            <v-btn fab dark color="purple" v-on="on" class="next">
+                                <v-icon dark>arrow_forward</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>下一页</span>
+                    </v-tooltip>
+                </v-flex>
+                <!-- 分页 end -->
                 <v-flex d-flex md10 lg10>
                     <v-card color="indigo" dark>
                         <v-card-text>评论</v-card-text>
@@ -31,7 +57,7 @@
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
         <Toc />
-        <!--         <v-flex d-flex md2 lg2>
+<!--         <v-flex d-flex md2 lg2>
             <v-card>
                 <v-card-text>
                 </v-card-text>
@@ -60,7 +86,6 @@ export default {
     components: {
         Toc: () => import('@theme/components/Toc.vue'),
     },
-
     data() {
         return {
             hasLayoutCard: false
@@ -74,7 +99,8 @@ export default {
 </script>
 <style lang="styl">
 @require '../styles/content.styl'
-
+</style>
+<style scoped>
 .layout-card {
     margin-top: 50px;
     padding: 30px;
@@ -82,5 +108,16 @@ export default {
 
 .layout-card.has {
     margin-top: -66px;
+}
+.paginations{
+    width: 100%;
+    height: 200px;
+}
+.paginations .page{
+    font-size: 16px;
+    margin-left: 300px;
+}
+.paginations .next{
+    float: right;
 }
 </style>
