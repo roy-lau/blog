@@ -32,31 +32,41 @@ module.exports = (options, ctx) => ({
     ready() {
         const { themeConfig, siteConfig, pages } = ctx
         // logger.warn(options)
-        // logger.info(themeConfig)
+        // logger.info(pages)
     },
     // 增加一个纯粹的路由
-    additionalPages: [{
+    additionalPages:
+    title:'主页',[{
         path: '/home/',
+        type: 'page',
         frontmatter: {
             layout: 'Home'
         }
     }, {
+        title:'归档',
         path: '/files/',
+        type: 'page',
         frontmatter: {
             layout: 'Files'
         }
     }, {
+        title:'标签',
         path: '/tags/',
+        type: 'page',
         frontmatter: {
             layout: 'Tags'
         }
     }, {
+        title:'时间线',
         path: '/timeline/',
+        type: 'page',
         frontmatter: {
             layout: 'TimeLine'
         }
     }, {
+        title:'示例',
         path: '/demo/',
+        type: 'page',
         frontmatter: {
             layout: 'Demo'
         }
@@ -70,15 +80,12 @@ module.exports = (options, ctx) => ({
         ['container', { type: 'warning' }],
         ['container', { type: 'danger' }]
     ],
-    // chainMarkdown(config) {
-    //     config
-    //         .plugin(require('markdown-it-checkbox'));
-
-    //             // <p>
-    //             //  <div classname="cb">
-    //             //    <input type="checkbox" id="cbx_0">
-    //             //    <label for="cbx_0">unchecked</label>
-    //             //  </div>
-    //             // </p>
-    // },
+    chainMarkdown(config) {
+        config
+            // reference: https://www.npmjs.com/package/markdown-it-checkbox
+            .plugin('checkbox')
+            .use(require('markdown-it-checkbox'))
+            // Move up one level, like .end() in jQuery.
+            .end()
+    },
 })

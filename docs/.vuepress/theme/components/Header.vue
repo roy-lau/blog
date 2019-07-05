@@ -7,7 +7,7 @@
                 </v-btn>
             </v-flex>
             <!-- <v-flex xs3> -->
-            <h3 class="white--text text-xs-center top-title" :class="{'side-top':hasMinHeader}">{{$title}}</h3>
+            <h3 class="white--text text-xs-center top-title" :class="{'side-top':hasMinHeader}" v-text="$title" />
             <!-- </v-flex> -->
             <v-flex xs3 sm3 md3 lg3 xl3>
                 <v-btn flat icon color="white" title="搜索">
@@ -18,7 +18,7 @@
                 </v-btn>
             </v-flex>
         </v-layout>
-        <h1 class="white--text text-xs-center header-title" :class="{'show':isLayout}">{{$title}}</h1>
+        <h1 class="white--text text-xs-center header-title" :class="{'show':isLayout}" v-text="$title" />
         <!-- rss 订阅 dialog start -->
         <v-dialog v-model="showRssDialog" max-width="500px">
             <v-card ref="emailForm">
@@ -90,7 +90,6 @@ export default {
             }
             window.onscroll = function() {
                 let topScroll = getScrollTop();
-                console.log(topScroll)
                 if (topScroll > 120) {
                     self.hasMinHeader = true;
                 } else {
