@@ -13,6 +13,7 @@
     </div>
 </template>
 <script>
+import {throttle} from 'lodash' // https://www.html.cn/doc/lodash/#_throttlefunc-wait0-options
 import { getScrollTop } from '@theme/utils'
 export default {
     name: "Toc",
@@ -25,41 +26,21 @@ export default {
             hasToc: false
         };
     },
-    props: {
-        content: {
-            type: Array,
-            default: () => []
-        }
-    },
-    created() {
-        setTimeout(() => {
+    watch: {
+      $route(to, from) {
+        this.$nextTick(function() {
             this.getTocList();
             this.changeIndex();
-        }, 20);
+        })
+      }
+    },
+    created() {
+        this.$nextTick(function() {
+            this.getTocList();
+            this.changeIndex();
+        })
     },
     methods: {
-        /**
-         * 防抖函数
-         * @param  {Function} fn          [description]
-         * @param  {[type]}   wait        [description]
-         * @param  {[type]}   maxTimelong [description]
-         * @return {[type]}               [description]
-         */
-        throttle(fn, wait, maxTimelong) {
-            var timeout = null,
-                startTime = Date.parse(new Date());
-
-            return function() {
-                if (timeout !== null) clearTimeout(timeout);
-                var curTime = Date.parse(new Date());
-                if (curTime - startTime >= maxTimelong) {
-                    fn();
-                    startTime = curTime;
-                } else {
-                    timeout = setTimeout(fn, wait);
-                }
-            };
-        },
         changeToc() {
             this.hasToc = !this.hasToc;
         },
@@ -120,7 +101,7 @@ export default {
                 tocWarpCls = document.getElementsByClassName("toc-warp")[0];
             window.addEventListener(
                 "scroll",
-                _this.throttle(_ => {
+                throttle(_ => {
                     let h = getScrollTop();
                     // 动态设置目录距离顶部的位置
                     tocWarpCls.style.top = h >= 200 ? '100px' : '260px'
@@ -133,7 +114,7 @@ export default {
                             return (_this.currentIndex = i);
                         }
                     }
-                }, 60, 110)
+                }, 60)
             );
         },
     }

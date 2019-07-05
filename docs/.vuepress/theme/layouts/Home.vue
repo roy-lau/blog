@@ -28,12 +28,9 @@
                     </v-card>
                     <v-card-text v-if="page.excerpt" v-html="page.excerpt"> </v-card-text>
                     <v-divider></v-divider>
-                    <v-card-actions>
-                        <v-btn flat small color="orange" v-for="(categorie,i) in headleTags(page.frontmatter.categories)">
-                            <v-icon dark>folder</v-icon> {{categorie||'归档'}}
-                        </v-btn>
-                        <v-btn flat small color="brown" v-for="(tag,idx) in headleTags(page.frontmatter.tags)" :key="idx">
-                            <v-icon dark>loyalty</v-icon> {{tag||'标签'}}
+                    <v-card-actions><!-- <v-icon>loyalty</v-icon> &nbsp;&nbsp; -->
+                        <v-btn  small v-for="(tag,idx) in headleTags(page.frontmatter.tags)" :key="idx" :color="tagsConf[idx].color">
+                             <span class="white--text">{{tag||'标签'}}</span>
                         </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -42,6 +39,31 @@
 </template>
 <script>
 export default {
+	data:()=>({
+		tagsConf:[
+		{icon:'loyalty',color:'brown'},
+		{icon:'loyalty',color:'red'},
+		{icon:'loyalty',color:'pink'},
+		{icon:'loyalty',color:'deep-purple'},
+		{icon:'loyalty',color:'indigo'},
+		{icon:'loyalty',color:'blue'},
+		{icon:'loyalty',color:'light-blue'},
+		{icon:'loyalty',color:'cyan'},
+		{icon:'loyalty',color:'teal'},
+		{icon:'loyalty',color:'green'},
+		{icon:'loyalty',color:'light-green'},
+		{icon:'loyalty',color:'lime'},
+		{icon:'loyalty',color:'yellow'},
+		{icon:'loyalty',color:'amber'},
+		{icon:'loyalty',color:'orange'},
+		{icon:'loyalty',color:'deep-orange'}, // next brow
+		{icon:'loyalty',color:'blue-grey'},
+		{icon:'loyalty',color:'grey'},
+		{icon:'loyalty',color:'black'},
+		{icon:'loyalty',color:'white'},
+		{icon:'loyalty',color:'transparent'}
+		]
+	}),
     components: {},
     computed: {},
     methods: {

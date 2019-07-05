@@ -51,7 +51,7 @@ export default {
         },
         // 当前页
         current() {
-            return resolveCurrent(this.$page, this.$site.pages) +1
+            return resolveCurrent(this.$page, this.$site.pages) + 1
         },
         // 下一页
         next() {

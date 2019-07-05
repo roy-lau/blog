@@ -26,7 +26,7 @@
                 <!-- 分页 end -->
                 <v-flex d-flex md10 lg10>
                     <v-card color="indigo" dark>
-                        <v-card-text>评论</v-card-text>
+                        <v-card-text>评论 {{list}}</v-card-text>
                     </v-card>
                 </v-flex>
             </v-layout>
