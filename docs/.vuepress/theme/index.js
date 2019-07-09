@@ -1,5 +1,4 @@
-const { logger } = require('@vuepress/shared-utils')
-const path = require('path')
+const { path, logger } = require('@vuepress/shared-utils')
 
 // Theme API.
 module.exports = (options, ctx) => ({
@@ -16,6 +15,54 @@ module.exports = (options, ctx) => ({
                 path.resolve(__dirname, 'components/AlgoliaSearchBox.vue') : path.resolve(__dirname, 'noopModule.js')
         }
     },
+    // 增加一个纯粹的路由
+    additionalPages: [{
+        title: '主页',
+        path: '/home/',
+        frontmatter: {
+            type: 'page',
+            layout: 'Home'
+        }
+    }, {
+        title: '归档',
+        path: '/files/',
+        frontmatter: {
+            type: 'page',
+            layout: 'Files'
+        }
+    }, {
+        title: '标签',
+        path: '/tags/',
+        frontmatter: {
+            type: 'page',
+            layout: 'Tags'
+        }
+    }, {
+        title: '时间线',
+        path: '/timeline/',
+        frontmatter: {
+            type: 'page',
+            layout: 'TimeLine'
+        }
+    }, {
+        title: '示例',
+        path: '/demo/',
+        frontmatter: {
+            type: 'page',
+            layout: 'Demo'
+        }
+    }],
+    // 使用到的插件
+    plugins: [
+        '@vuepress/search',
+        '@vuepress/plugin-nprogress',
+        '@vuepress/last-updated',
+        // path.resolve(__dirname, 'plugins/pagination/index.js'),
+        ['container', { type: 'tip' }],
+        ['container', { type: 'warning' }],
+        ['container', { type: 'danger' }]
+    ],
+    // 修改 $page 对象。每个页面都会执行一次
     extendPageData($page) {
         const {
             _filePath, // 源文件的绝对路径
@@ -27,59 +74,34 @@ module.exports = (options, ctx) => ({
             regularPath, // 当前页面遵循文件层次结构的默认链接
             path, // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
         } = $page
-        // logger.warn($page)
+        // logger.info($page)
+        if (frontmatter.type === 'page') {
+            return
+        } else {
+            $page.type = 'post'
+            // $page.size = (_content.length / 1024).toFixed(2) + 'kb'
+        }
+        /**
+         * Generate summary. 生成摘要信息
+         */
+        if (!_strippedContent || $page.excerpt) {
+            return
+        } else {
+            const excerptLength = 200
+            $page.excerpt = (
+                _strippedContent
+                .trim()
+                .replace(/^#+\s+(.*)/, '')
+                .slice(0, excerptLength)
+            ) + ' ...'
+        }
+
+        // logger.info($page.title)
+        // logger.info($page.type)
     },
     ready() {
-        const { themeConfig, siteConfig, pages } = ctx
-        // logger.warn(options)
-        // logger.info(pages)
+        // const { themeConfig, siteConfig, pages } = ctx
     },
-    // 增加一个纯粹的路由
-    additionalPages:
-    title:'主页',[{
-        path: '/home/',
-        type: 'page',
-        frontmatter: {
-            layout: 'Home'
-        }
-    }, {
-        title:'归档',
-        path: '/files/',
-        type: 'page',
-        frontmatter: {
-            layout: 'Files'
-        }
-    }, {
-        title:'标签',
-        path: '/tags/',
-        type: 'page',
-        frontmatter: {
-            layout: 'Tags'
-        }
-    }, {
-        title:'时间线',
-        path: '/timeline/',
-        type: 'page',
-        frontmatter: {
-            layout: 'TimeLine'
-        }
-    }, {
-        title:'示例',
-        path: '/demo/',
-        type: 'page',
-        frontmatter: {
-            layout: 'Demo'
-        }
-    }],
-    // 使用到的插件
-    plugins: [
-        '@vuepress/search',
-        '@vuepress/plugin-nprogress',
-        // path.resolve(__dirname, 'plugins/pagination'),
-        ['container', { type: 'tip' }],
-        ['container', { type: 'warning' }],
-        ['container', { type: 'danger' }]
-    ],
     chainMarkdown(config) {
         config
             // reference: https://www.npmjs.com/package/markdown-it-checkbox

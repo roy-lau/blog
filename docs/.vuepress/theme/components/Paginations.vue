@@ -31,6 +31,7 @@
                     <span>下一页: {{ next.title || next.path }}</span>
                 </v-tooltip>
             </div>
+            <div class="text-xs-right" v-else />
         </v-layout>
     </v-flex>
 </template>
@@ -88,7 +89,7 @@ function resolveNext(page, items) {
 function find(page, items, offset) {
     for (let i = 0; i < items.length; i++) {
         const cur = items[i]
-        if (cur.type !== 'page' && cur.path === decodeURIComponent(page.path)) {
+        if (cur.type === 'post' && cur.path === decodeURIComponent(page.path)) {
             return items[i + offset]
         }
     }

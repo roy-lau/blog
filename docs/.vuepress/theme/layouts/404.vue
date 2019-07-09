@@ -7,7 +7,10 @@
 <script>
 export default {
     components: {},
-    methods: {}
+    methods: {},
+      created() {
+        console.log(this.$page.size)
+    },
 }
 </script>
 <style scoped>

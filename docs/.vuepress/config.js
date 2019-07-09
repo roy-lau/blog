@@ -4,12 +4,7 @@ module.exports = {
     name: "Roy Lau",
     email: "897379293@qq.com",
     markdown: {
-        lineNumbers: true, //是否开启文章代码左边的行号显示
-        config: md => {
-            md.set({ breaks: true })
-            // https://www.npmjs.com/package/markdown-it-checkbox
-            md.use(require('markdown-it-checkbox'))
-        }
+        lineNumbers: true //是否开启文章代码左边的行号显示
     },
     themeConfig: {
         sidebar: {
