@@ -10,7 +10,6 @@
     body {
         border: 0;
     }
-
     #Paginations {
         margin: 0 auto;
         text-align: center;
@@ -25,8 +24,8 @@
         </ol>
         <button v-show="pageCurrent>1" @click="onPrev">上一页</button>
         <button>当前 {{pageCurrent}}</button>
-        <button @click="onNext">下一页</button>
-        <button>总 {{pageTotal}}</button>
+        <button v-show="pageTotal>pageCurrent" @click="onNext">下一页</button>
+        <span>总 {{pageTotal}}</span>
     </div>
 </body>
 <script>
@@ -49,7 +48,7 @@ new Vue({
     },
     computed: {
         pageTotal() {
-            return this.list.length
+            return Math.round(this.list.length / this.pageSize)
         },
         pageStart(){
         	return this.pageSize * (this.pageCurrent-1)

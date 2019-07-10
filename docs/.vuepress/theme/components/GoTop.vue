@@ -1,34 +1,39 @@
 <template>
-    <v-btn @click="GoTop" :class="{show:show}" class="gotop-btn" color="orange" fab dark>
+    <v-btn @click="scrollToTop" :class="{show:show}" class="gotop-btn" color="orange" fab dark>
         <v-icon>arrow_upward</v-icon>
     </v-btn>
 </template>
 <script>
+import { debounce } from 'lodash' // 防抖函数
 import { getScrollTop } from '@theme/utils'
 export default {
     name: "GoTop",
+    props: {
+        threshold: {
+            type: Number,
+            default: 300
+        }
+    },
     data() {
         return {
-            show: false
-        };
+            scrollTop: null
+        }
+    },
+    computed: {
+        show() {
+            return this.scrollTop > this.threshold
+        }
     },
     mounted() {
-        this.hasShow();
+        this.scrollTop = getScrollTop()
+        window.addEventListener('scroll', debounce(() => {
+            this.scrollTop = getScrollTop()
+        }, 100))
     },
     methods: {
-        hasShow() {
-            const slef = this;
-            window.addEventListener("scroll", function(e) {
-                let h = getScrollTop();
-                if (h > 300) {
-                    slef.show = true;
-                } else {
-                    slef.show = false;
-                }
-            });
-        },
-        GoTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            // this.scrollTop = 0
         }
     }
 };

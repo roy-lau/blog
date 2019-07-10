@@ -15,9 +15,7 @@
                             <v-flex shrink style="background: rgba(0,0,0,.2);">
                                 <v-expand-transition>
                                     <div class="transition-fast-in-fast-out">
-                                        <v-card-title class="headline pb-1 white--text">{{page.title}}
-                                            <!-- {{postList}} -->
-                                        </v-card-title>
+                                        <v-card-title class="headline pb-1 white--text">{{page.title}}</v-card-title>
                                         <v-card-text class="subheading py-1 white--text lighten-3">
                                             <v-icon color="grey lighten-3">perm_identity</v-icon>{{page.frontmatter.author||page.author||'roylau'}} /
                                             <v-icon color="grey lighten-3">date_range</v-icon> {{page.frontmatter.date||page.lastUpdated||'时间'}}
@@ -78,20 +76,29 @@ export default {
         pageCurrent: 1, // 默认当前是在第几页
     }),
     computed: {
-        pageList() { // 过滤后的文章数据
+        // 过滤后的文章数据
+        pageList() {
             let pages = this.$site.pages
             return pages.filter(({ type }) => type === 'post')
         },
-        pageLength(){ // 分页长度    WTF： 四舍五入不太合适，以后优化
+
+        // 分页长度    WTF： 四舍五入不太合适，以后优化
+        pageLength(){
             return Math.round(this.pageList.length / this.pageSize)
         },
-        pageStart() { // pageStart： 开始页，pageCurrent 的变化会改变 pageStart。 pageCurrent 的变化是由 v-pagination 组件控制的
+
+        // pageStart： 开始页，pageCurrent 的变化会改变 pageStart。 pageCurrent 的变化是由 v-pagination 组件控制的
+        pageStart() {
             return this.pageSize * (this.pageCurrent - 1)
         },
-        pageEnd() { // pageEnd： 结束页，pageCurrent 的变化会改变 pageEnd。 pageCurrent 的变化是由 v-pagination 组件控制的
+
+        // pageEnd： 结束页，pageCurrent 的变化会改变 pageEnd。 pageCurrent 的变化是由 v-pagination 组件控制的
+        pageEnd() {
             return this.pageSize * this.pageCurrent
         },
-        postList() { // 处理后的文章数据
+
+        // 处理后的文章数据
+        postList() {
             console.table({ '开始页': this.pageStart, '结束页': this.pageEnd })
 
             let post = new Array(this.pageSize),

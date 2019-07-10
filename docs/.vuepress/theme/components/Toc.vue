@@ -13,7 +13,7 @@
     </div>
 </template>
 <script>
-import {throttle} from 'lodash' // https://www.html.cn/doc/lodash/#_throttlefunc-wait0-options
+import {throttle} from 'lodash' // 节流 https://www.html.cn/doc/lodash/#_throttlefunc-wait0-options
 import { getScrollTop } from '@theme/utils'
 export default {
     name: "Toc",
