@@ -1,17 +1,5 @@
 <!-- 底部组件 -->
 <template>
-    <!--     <v-footer height="auto">
-        <v-card flat tile class="deep-purple white--text text-xs-center">
-            <v-card-text>
-                <v-btn v-for="icon in icons" :key="icon" class="mx-3 white--text" icon>
-                    <v-icon size="24px">{{ icon }}</v-icon>
-                </v-btn>
-            </v-card-text>
-            <v-card-text>
-                Copyright &copy; 2019 — <strong>RoyLau</strong>
-            </v-card-text>
-        </v-card>
-    </v-footer> -->
     <v-footer dark  height="auto">
         <v-card class="flex pa-0" flat tile>
             <v-card-title class="deep-purple">

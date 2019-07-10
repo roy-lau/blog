@@ -30,8 +30,9 @@
                 <v-divider class="my-0" />
                 <v-card-actions>
                     <!-- <v-icon>loyalty</v-icon> &nbsp;&nbsp; -->
-                    <v-btn small v-for="(tag,idx) in headleTags(page.frontmatter.tags)" :key="idx" :color="tagsConf[idx].color">
-                        <span class="white--text">{{tag||'标签'}}</span>
+                    <v-btn small v-for="(tag,idx) in headleTags(page.frontmatter.tags)" :key="idx"
+                        :color="tagsConf[idx].color" :to="{ path: '/tags/', query: { tag: tag }}">
+                        <span class="tag-cls">{{tag||'标签'}}</span>
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -51,20 +52,20 @@ export default {
     data: () => ({
         tagsConf: [
             { icon: 'loyalty', color: 'brown' },
-            { icon: 'loyalty', color: 'red' },
             { icon: 'loyalty', color: 'pink' },
+            { icon: 'loyalty', color: 'orange' },
             { icon: 'loyalty', color: 'deep-purple' },
             { icon: 'loyalty', color: 'indigo' },
             { icon: 'loyalty', color: 'blue' },
+            { icon: 'loyalty', color: 'teal' },
             { icon: 'loyalty', color: 'light-blue' },
             { icon: 'loyalty', color: 'cyan' },
-            { icon: 'loyalty', color: 'teal' },
             { icon: 'loyalty', color: 'green' },
             { icon: 'loyalty', color: 'light-green' },
             { icon: 'loyalty', color: 'lime' },
-            { icon: 'loyalty', color: 'yellow' },
             { icon: 'loyalty', color: 'amber' },
-            { icon: 'loyalty', color: 'orange' },
+            { icon: 'loyalty', color: 'red' },
+            { icon: 'loyalty', color: 'yellow' },
             { icon: 'loyalty', color: 'deep-orange' }, // next brow
             { icon: 'loyalty', color: 'blue-grey' },
             { icon: 'loyalty', color: 'grey' },
@@ -125,3 +126,11 @@ export default {
     },
 }
 </script>
+<style scoped>
+.tag-cls{
+    color: rgba(255,255,255,0.8);
+}
+.tag-cls:hover{
+    color: white;
+}
+</style>

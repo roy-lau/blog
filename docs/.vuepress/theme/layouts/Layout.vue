@@ -10,7 +10,17 @@
                             <Content />
                         </v-card-text>
                         <v-divider />
-                        <v-flex sm11 xs11 md11 lg11>
+                        <v-flex sm12 xs12 md12 lg12>
+                            <div class="post-copyright">
+                                <div class="content">
+                                    <p>最后更新时间：
+                                        <time :datetime="$page.lastUpdated||$frontmatter.date" itemprop="dateUpdated" v-text="$page.lastUpdated||$frontmatter.date" />
+                                    </p>
+                                    <p>原文链接：
+                                        <a :href="selfLink" target="_blank" rel="external" v-text="selfLink" />
+                                    </p>
+                                </div>
+                            </div>
                             <div class="text-xs-right">
                                 <v-chip color="blue lighten-4">
                                     <v-avatar>
@@ -35,7 +45,7 @@
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
         <Toc />
-        <!--         <v-flex d-flex md2 lg2>
+ <!--                <v-flex d-flex md2 lg2>
             <v-card>
                 <v-card-text>
                 </v-card-text>
@@ -66,18 +76,45 @@ export default {
     },
     data() {
         return {
+            selfLink: null,
             hasLayoutCard: false,
-            prevPage: 0,
-            nextPage: 0,
         }
     },
-    created() {
-        this.hasLayoutCard = true
+    beforeCreate(){
+        console.count('l-beforeCreate')
     },
-    mounted() {
-    }
+    created(){
+        console.count('l-created')
+    },
+    beforeMount(){
+        console.count('l-beforeMount')
+    },
+    mounted(){
+        console.count('l-mounted')
+    },
+    beforeUpdate(){
+        this.selfLink = window.location.href
+        console.count('l-beforeUpdate')
+    },
+    updated(){
+        console.count('l-updated')
+    },
+    activated(){
+        console.count('l-activated')
+    },
+    deactivated(){
+        console.count('l-deactivated')
+    },
+    beforeDestroy(){
+        console.count('l-beforeDestroy')
+    },
+    destroyed(){
+        console.count('l-destroyed')
+    },
+    errorCaptured(){
+        console.count('l-errorCaptured')
+    },
 }
-
 </script>
 <style lang="styl">
 @require '../styles/content.styl'
@@ -90,5 +127,17 @@ export default {
 
 .layout-card.has {
     margin-top: -66px;
+}
+
+.post-copyright .content {
+    margin-bottom: 1em;
+    padding: 20px 30px;
+    word-break: break-all;
+    color: #727272;
+    background: #f1f3fa;
+    border-radius: 30px 30px 0;
+}
+.post-copyright .content p{
+    margin: 0;
 }
 </style>

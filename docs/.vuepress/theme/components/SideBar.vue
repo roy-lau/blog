@@ -60,21 +60,11 @@ export default {
         }
     },
     methods: {
-        onResize() {
-            if (window.innerWidth === 1920) {
-                this.asideWidth = 316
-            } else if (window.innerWidth === 1366) {
-                this.asideWidth = 224
-            } else if (document.body.clientWidth >= 512) {
-                this.asideWidth = 0
-            }
-        },
         toPath(path) {
 
         }
     },
     mounted() {
-        this.onResize()
     },
 }
 </script>

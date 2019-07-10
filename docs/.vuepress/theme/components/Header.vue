@@ -2,14 +2,14 @@
     <header class="deep-purple header-warp" :class="{'h-layout': isLayout}">
         <v-layout row justify-space-between class="deep-purple ma-0 min-header" :class="{'elevation-5':hasMinHeader }">
             <v-flex xs1 sm1 md1 lg1 xl1>
-                <v-btn flat icon @click.stop="$emit('toggle-side-bar')" color="white" title="切换视图">
+                <v-btn flat icon @click.stop="toggleSideBar" color="white" title="切换视图">
                     <v-icon>view_headline</v-icon>
                 </v-btn>
             </v-flex>
             <!-- <v-flex xs3> -->
             <h3 class="white--text text-xs-center top-title" :class="{'side-top':hasMinHeader}" v-text="$title" />
             <!-- </v-flex> -->
-            <v-flex xs3 sm3 md3 lg3 xl3>
+            <v-flex :class="headerWclass">
                 <v-btn flat icon color="white" title="搜索">
                     <v-icon>search</v-icon>
                 </v-btn>
@@ -55,6 +55,10 @@ export default {
             }
             return false
         },
+        // header宽度样式
+        headerWclass(){
+             return this.showSideBar ? 'xs1 sm1 md1 lg1 xl1' :'xs3 sm3 md3 lg3 xl3'
+        },
         emailForm() {
             return {
                 emailValue: this.emailValue,
@@ -63,6 +67,7 @@ export default {
     },
     data() {
         return {
+            showSideBar: false,
             hasMinHeader: false,
             showRssDialog: false,
             emailValue: null,
@@ -70,6 +75,10 @@ export default {
         }
     },
     methods: {
+        toggleSideBar(){
+            this.showSideBar = !this.showSideBar
+            this.$emit('toggle-side-bar')
+        },
         rssDialogOk() {
             if (this.emailValue) {
                 this.$refs.email.validate(true)
@@ -98,11 +107,40 @@ export default {
             };
         },
     },
-    mounted() {
-        this.bindScrl();
+    beforeCreate(){
+        console.count('header-beforeCreate')
     },
-    activated() {
+    created(){
+        console.count('header-created')
+    },
+    beforeMount(){
+        console.count('header-beforeMount')
+    },
+    mounted(){
         this.bindScrl();
+
+        console.count('header-mounted')
+    },
+    beforeUpdate(){
+        console.count('header-beforeUpdate')
+    },
+    updated(){
+        console.count('header-updated')
+    },
+    activated(){
+        console.count('header-activated')
+    },
+    deactivated(){
+        console.count('header-deactivated')
+    },
+    beforeDestroy(){
+        console.count('header-beforeDestroy')
+    },
+    destroyed(){
+        console.count('header-destroyed')
+    },
+    errorCaptured(){
+        console.count('header-errorCaptured')
     },
 }
 </script>

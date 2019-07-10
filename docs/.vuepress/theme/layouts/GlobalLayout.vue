@@ -62,7 +62,40 @@ export default {
         toggleSideBar() {
             this.showSideBar = !this.showSideBar
         }
-    }
+    },
+    beforeCreate(){
+        console.count('g-beforeCreate')
+    },
+    created(){
+        console.count('g-created')
+    },
+    beforeMount(){
+        console.count('g-beforeMount')
+    },
+    mounted(){
+        console.count('g-mounted')
+    },
+    beforeUpdate(){
+        console.count('g-beforeUpdate')
+    },
+    updated(){
+        console.count('g-updated')
+    },
+    activated(){
+        console.count('g-activated')
+    },
+    deactivated(){
+        console.count('g-deactivated')
+    },
+    beforeDestroy(){
+        console.count('g-beforeDestroy')
+    },
+    destroyed(){
+        console.count('g-destroyed')
+    },
+    errorCaptured(){
+        console.count('g-errorCaptured')
+    },
 }
 </script>
 <style scoped>

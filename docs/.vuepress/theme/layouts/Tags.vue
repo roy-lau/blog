@@ -1,5 +1,5 @@
 <template>
-        <div>这是标签页面</div>
+        <div>这是标签页面 {{$route.query.tag}} </div>
 </template>
 <script>
 export default {
