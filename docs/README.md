@@ -2,10 +2,10 @@
 title: 本博客
 date: 2019-06-25 16:32:23
 tags:
-  - blog
+  - Blog
   - vuepress
   - vue
-  - vuetifyjs
+  - vuetifyJs
 categories: blog
 toc: true
 ---

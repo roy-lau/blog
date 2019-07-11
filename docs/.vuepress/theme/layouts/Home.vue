@@ -1,8 +1,8 @@
 <template>
     <v-layout row wrap justify-center>
-        <v-flex d-flex md8 lg8 v-if="page" v-for="page in postList" :key="page.key" class="mt-5">
-            <v-card v-if="page.type==='post'">
-                <v-card ripple :to="page.regularPath" flat>
+        <v-flex d-flex md8 lg8  v-for="post in postList" v-if="post" :key="post.key" class="mt-5">
+            <v-card v-if="post.type==='post'">
+                <v-card ripple :to="post.regularPath" flat>
                     <v-img max-height="260px" min-height="100px" :src="'/imgs/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png'">
                         <template v-slot:placeholder>
                             <v-layout fill-height align-center justify-center>
@@ -15,10 +15,10 @@
                             <v-flex shrink style="background: rgba(0,0,0,.2);">
                                 <v-expand-transition>
                                     <div class="transition-fast-in-fast-out">
-                                        <v-card-title class="headline pb-1 white--text">{{page.title}}</v-card-title>
+                                        <v-card-title class="headline pb-1 white--text">{{post.title}}</v-card-title>
                                         <v-card-text class="subheading py-1 white--text lighten-3">
-                                            <v-icon color="grey lighten-3">perm_identity</v-icon>{{page.frontmatter.author||page.author||'roylau'}} /
-                                            <v-icon color="grey lighten-3">date_range</v-icon> {{page.frontmatter.date||page.lastUpdated||'时间'}}
+                                            <v-icon color="grey lighten-3">perm_identity</v-icon>{{post.frontmatter.author||post.author||'roylau'}} /
+                                            <v-icon color="grey lighten-3">date_range</v-icon> {{post.frontmatter.date||post.lastUpdated||'时间'}}
                                         </v-card-text>
                                     </div>
                                 </v-expand-transition>
@@ -26,13 +26,13 @@
                         </v-layout>
                     </v-img>
                 </v-card>
-                <v-card-text class="gray--text" v-if="page.excerpt" v-html="page.excerpt"> </v-card-text>
+                <v-card-text class="gray--text" v-if="post.excerpt" v-html="post.excerpt"> </v-card-text>
                 <v-divider class="my-0" />
                 <v-card-actions>
                     <!-- <v-icon>loyalty</v-icon> &nbsp;&nbsp; -->
-                    <v-btn small v-for="(tag,idx) in headleTags(page.frontmatter.tags)" :key="idx"
+                    <v-btn small v-for="(tag,idx) in headleTags(post.frontmatter.tags)" :key="idx"
                         :color="tagsConf[idx].color" :to="{ path: '/tags/', query: { tag: tag }}">
-                        <span class="tag-cls">{{tag||'标签'}}</span>
+                        <span class="tag-cls text-none">{{tag||'标签'}}</span>
                     </v-btn>
                 </v-card-actions>
             </v-card>
