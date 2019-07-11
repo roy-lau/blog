@@ -111,37 +111,6 @@ function resolvePath (relative, base, append) {
   return stack.join('/')
 }
 
-/**
- * 获取 开始页 和 结束页。间隔
- * @param  {Number} max      一共多少个 post 页面
- * @param  {Number} interval 每 interval 个 post 为一页
- * @return {Array}          二维数组，列： [ [ 0, 4 ] ]
- */
-export function getIntervallers (max, interval) {
-  const count = max % interval === 0 ? Math.floor(max / interval) : Math.floor(max / interval) + 1
-  const arr = [...Array(count)]
-  return arr.map((v, index) => {
-    const start = index * interval
-    const end = (index + 1) * interval
-    return [start, end > max ? max : end]
-  })
-}
-
-export function stringifyFunction (input) {
-  let output = String(input)
-  if (!/^(function\b|\()/.test(output)) {
-    /**
-     * fix edge case:
-     * ```js
-     * const foo = { bar () {} }
-     * stringifyFunction(foo.bar)
-     * ```
-     */
-    output = output.replace(/^[^(]+/, 'function')
-  }
-  return output
-}
-
  /**
   * 获取滚动条当前所在的位置
   * @return {[type]} 滚动条位置

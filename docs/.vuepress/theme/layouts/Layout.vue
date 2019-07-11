@@ -77,7 +77,7 @@ export default {
     data() {
         return {
             selfLink: null,
-            hasLayoutCard: false,
+            hasLayoutCard: true,
         }
     },
     beforeCreate(){
@@ -90,10 +90,12 @@ export default {
         console.count('l-beforeMount')
     },
     mounted(){
+        // this.hasLayoutCard = true
         console.count('l-mounted')
     },
     beforeUpdate(){
         this.selfLink = window.location.href
+        // this.hasLayoutCard = true
         console.count('l-beforeUpdate')
     },
     updated(){
@@ -109,6 +111,7 @@ export default {
         console.count('l-beforeDestroy')
     },
     destroyed(){
+        this.hasLayoutCard = null
         console.count('l-destroyed')
     },
     errorCaptured(){
@@ -123,6 +126,7 @@ export default {
 .layout-card {
     margin-top: 50px;
     padding: 30px;
+    transition: all 1s;
 }
 
 .layout-card.has {

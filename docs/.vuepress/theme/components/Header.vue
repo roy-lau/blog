@@ -18,7 +18,7 @@
                 </v-btn>
             </v-flex>
         </v-layout>
-        <h1 class="white--text text-xs-center header-title" :class="{'show':isLayout}" v-text="$title" />
+        <h1 class="white--text text-xs-center header-title" :class="{'show':isLayout&&!hasMinHeader}" v-text="$title" />
         <!-- rss 订阅 dialog start -->
         <v-dialog v-model="showRssDialog" max-width="500px">
             <v-card ref="emailForm">
@@ -40,11 +40,9 @@
     </header>
 </template>
 <script>
+import { debounce } from 'lodash'
 import { getScrollTop } from '@theme/utils'
 export default {
-    components: {
-        RssDialog: () => import('@theme/components/RssDialog.vue'),
-    },
     computed: {
         isLayout() {
             if (this.$page.path) {
@@ -88,23 +86,18 @@ export default {
                 alert("很遗憾，订阅失败（请尝试复制rss链接订阅）")
             }
         },
-        bindScrl() {
+        changeHeader() {
             if (!this.isLayout) return
-            const self = this;
+
             let topScroll = getScrollTop();
-            if (topScroll > 120) {
-                this.hasMinHeader = true;
-            } else {
-                this.hasMinHeader = false;
-            }
-            window.onscroll = function() {
+            this.hasMinHeader = topScroll > 100 ? true : false
+
+            window.addEventListener('scroll', debounce(() => {
+
                 let topScroll = getScrollTop();
-                if (topScroll > 120) {
-                    self.hasMinHeader = true;
-                } else {
-                    self.hasMinHeader = false;
-                }
-            };
+                this.hasMinHeader = topScroll > 100 ? true : false
+
+            }, 100));
         },
     },
     beforeCreate(){
@@ -117,8 +110,7 @@ export default {
         console.count('header-beforeMount')
     },
     mounted(){
-        this.bindScrl();
-
+        this.changeHeader()
         console.count('header-mounted')
     },
     beforeUpdate(){
@@ -181,6 +173,7 @@ export default {
     z-index: 5;
     width: 100%;
     height: 60px;
+    transition: box-shadow .5s ease;
     /*opacity: .9;*/
 }
 </style>

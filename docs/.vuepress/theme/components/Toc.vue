@@ -30,17 +30,23 @@ export default {
       $route(to, from) {
         this.$nextTick(function() {
             this.getTocList();
-            this.changeIndex();
         })
       }
     },
-    created() {
-        this.$nextTick(function() {
+    mounted(){
+       this.$nextTick(function() {
             this.getTocList();
             this.changeIndex();
+            window.addEventListener('scroll', this.onScroll)
         })
     },
+    beforeDestroy(){
+        window.removeEventListener('scroll', this.onScroll)
+    },
     methods: {
+        onScroll: throttle(function () {
+          this.changeIndex()
+        }, 300),
         changeToc() {
             this.hasToc = !this.hasToc;
         },
@@ -95,27 +101,25 @@ export default {
                 this.offsetList.push(val);
             });
         },
+        /**
+         * 页面滚动时触发，通过改变index，改变 toc 的选中项
+         * @return {Number} currentIndex  当前index
+         */
         changeIndex() {
-            if (typeof window === "undefined") return;
-            const _this = this,
-                tocWarpCls = document.getElementsByClassName("toc-warp")[0];
-            window.addEventListener(
-                "scroll",
-                throttle(_ => {
-                    let h = getScrollTop();
-                    // 动态设置目录距离顶部的位置
-                    tocWarpCls.style.top = h >= 200 ? '100px' : '260px'
-                    // 动态设置滚动位置的 index
-                    for (let i = 0, len = _this.allH.length; i < len; i++) {
-                        if (i + 1 === _this.allH.length || h < _this.allH[i]) {
-                            return (_this.currentIndex = i);
-                        }
-                        if (h >= _this.allH[i] && h < _this.allH[i + 1]) {
-                            return (_this.currentIndex = i);
-                        }
-                    }
-                }, 60)
-            );
+            const tocWarpCls = document.getElementsByClassName("toc-warp")[0];
+            let h = getScrollTop();
+            // 动态设置目录距离顶部的位置
+            tocWarpCls.style.top = h >= 200 ? '100px' : '260px'
+            // 动态设置滚动位置的 index
+            for (let i = 0, len = this.allH.length; i < len; i++) {
+                if (i + 1 === this.allH.length || h < this.allH[i]) {
+                    return (this.currentIndex = i);
+                }
+                if (h >= this.allH[i] && h < this.allH[i + 1]) {
+                    return (this.currentIndex = i);
+                }
+            }
+
         },
     }
 };
