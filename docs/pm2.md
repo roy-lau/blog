@@ -1,5 +1,5 @@
 ---
-title: windows自动运行命令解析
+title: PM2 用法及帮助
 date: 2017-06-06 15:43:27
 tags:
   - pm2

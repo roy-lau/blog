@@ -4,9 +4,23 @@
             <v-timeline dense clipped align-top>
                 <v-slide-x-reverse-transition group hide-on-leave>
                     <v-timeline-item v-for="(post, i) in postList" :color="years[i].color" v-if="post" :key="i" smail><!-- fill-dot  -->
-                        <v-card :color="years[i].color" dark>
+                        <v-card :color="years[i].color" dark flat>
                             <v-card-title v-text="post.frontmatter.date||post.lastUpdated||'时间'" />
-                            <v-card-text class="white" style="color: gray;" dark v-text="post.title" />
+                            <!-- <v-card-text class="white" style="color: gray;" dark v-text="post.title" /> -->
+                            <v-list class="white">
+                                <template v-for="n in 3">
+                                    <v-list-tile avatar v-ripple="{ class: `${years[i].color}--text` }" class="py-2" :to="post.regularPath" :title="post.excerpt">
+                                        <v-list-tile-content>
+                                            <v-list-tile-title style="color: black;" headline dark v-text="post.title" />
+                                            <v-list-tile-sub-title style="color: gray;"><div style="width: 100px;" v-if="post.excerpt"  v-html="post.excerpt"></div> </v-list-tile-sub-title>
+                                        </v-list-tile-content>
+                                        <v-list-tile-action>
+                                            <v-list-tile-action-text>两天前</v-list-tile-action-text>
+                                        </v-list-tile-action>
+                                    </v-list-tile>
+                                    <v-divider color="silver" class="my-0"></v-divider>
+                                </template>
+                            </v-list>
                         </v-card>
                     </v-timeline-item>
                 </v-slide-x-reverse-transition>
