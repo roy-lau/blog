@@ -38,13 +38,6 @@ module.exports = (options, ctx) => ({
             layout: 'Tags'
         }
     }, {
-        title: '时间线',
-        path: '/timeline/',
-        frontmatter: {
-            type: 'page',
-            layout: 'TimeLine'
-        }
-    }, {
         title: '示例',
         path: '/demo/',
         frontmatter: {

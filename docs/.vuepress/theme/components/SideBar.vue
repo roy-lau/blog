@@ -55,7 +55,6 @@ export default {
                 { title: '主页', icon: 'home', color: 'indigo', path: '/home' },
                 { title: '归档', icon: 'folder', color: 'orange', path: '/files' },
                 { title: '标签', icon: 'loyalty', color: 'brown', path: '/tags' },
-                { title: '时间线', icon: 'access_alarm', color: 'green', path: '/timeline' }
             ]
         }
     },
