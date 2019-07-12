@@ -76,7 +76,7 @@ export default {
     },
     data() {
         return {
-            selfLink: null,
+            selfLink: window.location.href,
             hasLayoutCard: true,
         }
     },
