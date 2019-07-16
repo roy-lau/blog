@@ -1,4 +1,7 @@
-const { path, logger } = require('@vuepress/shared-utils')
+const { path, logger } = require('@vuepress/shared-utils'),
+    moment = require('moment');
+
+moment.locale('zh-cn')
 
 // Theme API.
 module.exports = (options, ctx) => ({
@@ -49,7 +52,11 @@ module.exports = (options, ctx) => ({
     plugins: [
         '@vuepress/search',
         '@vuepress/plugin-nprogress',
-        '@vuepress/last-updated',
+        // '@vuepress/last-updated',
+        [
+            '@vuepress/last-updated',
+            { transformer: (timestamp, lang) => { return moment(timestamp).format("YYYY MMMM Do, a h:mm:ss") } }
+        ],
         // path.resolve(__dirname, 'plugins/pagination/index.js'),
         ['container', { type: 'tip' }],
         ['container', { type: 'warning' }],
@@ -63,17 +70,16 @@ module.exports = (options, ctx) => ({
             _content, // 源文件的原始内容字符串
             _strippedContent, // 源文件剔除掉 frontmatter 的内容字符串
             key, // 页面唯一的 hash key
+            lastUpdated, // 最后更新时间，需要 last-updated 插件
             frontmatter, // 页面的 frontmatter 对象
             regularPath, // 当前页面遵循文件层次结构的默认链接
             path, // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
         } = $page
         // logger.info($page)
-        if (frontmatter.type === 'page') {
-            return
-        } else {
-            $page.type = 'post'
-            // $page.size = (_content.length / 1024).toFixed(2) + 'kb'
-        }
+        // 设置 type ，用来过滤文章
+        frontmatter.type === 'page' ? null : $page.type = 'post'
+        // 设置 type ，用来过滤文章
+        $page.frontmatter.date = frontmatter.date && moment(frontmatter.date).format("YYYY MMMM Do, a h:mm:ss")
         /**
          * Generate summary. 生成摘要信息
          */

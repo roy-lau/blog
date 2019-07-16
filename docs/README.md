@@ -64,6 +64,8 @@ toc: true
 
 ### 代码
 
+`vuepress` 使用 [prismjs](https://prismjs.com/ "prismjs") 实现代码高亮
+
 #### `js`代码
 
 ``` js {4}

@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "material-design-icons-iconfont": "^5.0.1",
+    "moment": "^2.24.0",
     "vue-prism": "^1.0.5",
     "vuetify": "^1.5.14"
   }

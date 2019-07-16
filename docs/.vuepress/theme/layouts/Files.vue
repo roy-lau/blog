@@ -5,7 +5,7 @@
                 <v-slide-x-reverse-transition group hide-on-leave>
                     <v-timeline-item v-for="(post, i) in postList" :color="years[i].color" v-if="post" :key="i" smail><!-- fill-dot  -->
                         <v-card :color="years[i].color" dark flat>
-                            <v-card-title v-text="post.frontmatter.date||post.lastUpdated||'时间'" />
+                            <v-card-title  v-text="post.frontmatter.date || post.lastUpdated" />
                             <v-list class="white">
                                 <template v-for="n in 3">
                                     <v-list-tile avatar v-ripple="{ class: `${years[i].color}--text` }" class="py-2" :to="post.regularPath">
@@ -67,11 +67,13 @@ export default {
 
         // 处理后的文章数据
         postList() {
-
+            // this.filterTime.map(page => page.date = page.frontmatter.date || page.lastUpdated)
             let _size = this.filterTime.length,
                 post = new Array(_size)
 
-            for (let i = _size; i >= 0; i--) {
+            for (let i = _size; i > 0; i--) {
+
+                // console.log(post[_size--])
                 post[_size--] = this.filterTime[i]
             }
 
