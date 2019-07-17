@@ -13,7 +13,7 @@
                         <v-flex sm12 xs12 md12 lg12>
                             <div class="post-copyright">
                                 <div class="content">
-                                    <p>最后更新时间：
+                                    <p>更新时间：
                                         <time :datetime="$page.lastUpdated||$frontmatter.date" itemprop="dateUpdated" v-text="$page.lastUpdated||$frontmatter.date" />
                                     </p>
                                     <p>原文链接：
