@@ -1,6 +1,6 @@
 <template>
     <v-layout row wrap justify-center>
-        <v-flex d-flex md8 lg8  v-for="post in postList" v-if="post" :key="post.key" class="mt-5">
+        <v-flex d-flex md8 lg8 v-for="post in postList" v-if="post" :key="post.key" class="mt-5">
             <v-card v-if="post.type==='post'">
                 <v-card ripple :to="post.regularPath" flat>
                     <v-img max-height="260px" min-height="100px" :src="'/imgs/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png'">
@@ -30,8 +30,7 @@
                 <v-divider class="my-0" />
                 <v-card-actions>
                     <!-- <v-icon>loyalty</v-icon> &nbsp;&nbsp; -->
-                    <v-btn small v-for="(tag,idx) in headleTags(post.frontmatter.tags)" :key="idx"
-                        :color="tagsConf[idx].color" :to="{ path: '/tags/', query: { tag: tag }}">
+                    <v-btn small v-for="(tag,idx) in headleTags(post.frontmatter.tags)" :key="idx" :color="tagsConf[idx].color" :to="{ path: '/tags/', query: { tag: tag }}">
                         <span class="tag-cls text-none">{{tag||'标签'}}</span>
                     </v-btn>
                 </v-card-actions>
@@ -84,7 +83,7 @@ export default {
         },
 
         // 分页长度    WTF： 四舍五入不太合适，以后优化
-        pageLength(){
+        pageLength() {
             return Math.round(this.pageList.length / this.pageSize)
         },
 
@@ -105,7 +104,7 @@ export default {
             let post = new Array(this.pageSize),
                 _size = this.pageSize
 
-            for (let i = this.pageEnd; i >= this.pageStart; i--) {
+            for (let i = this.pageEnd; i >= this.pageStart - 1; i--) {
                 post[_size--] = this.pageList[i]
             }
 
@@ -127,10 +126,11 @@ export default {
 }
 </script>
 <style scoped>
-.tag-cls{
-    color: rgba(255,255,255,0.8);
+.tag-cls {
+    color: rgba(255, 255, 255, 0.8);
 }
-.tag-cls:hover{
+
+.tag-cls:hover {
     color: white;
 }
 </style>

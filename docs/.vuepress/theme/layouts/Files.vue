@@ -3,23 +3,24 @@
         <v-flex d-flex md8 lg8>
             <v-timeline dense clipped align-top>
                 <v-slide-x-reverse-transition group hide-on-leave>
-                    <v-timeline-item v-for="(post, i) in postList" :color="years[i].color" v-if="post" :key="i" smail><!-- fill-dot  -->
+                    <v-timeline-item v-for="(post, i) in postList" :color="years[i].color" v-if="post" :key="i" smail>
+                        <!-- fill-dot  -->
                         <v-card :color="years[i].color" dark flat>
-                            <!-- {{postList}} -->
-                            <v-card-title  v-text="post.frontmatter.date || post.lastUpdated" />
+                            <v-card-title v-text="post.date" />
                             <v-list class="white">
-                                <template v-for="n in 3">
-                                    <v-list-tile avatar v-ripple="{ class: `${years[i].color}--text` }" class="py-2" :to="post.regularPath">
+                                    <v-list-tile avatar v-for="list in post.list" :to="list.path"
+                                     v-ripple="{ class: `${years[i].color}--text` }" class="py-2">
                                         <v-list-tile-content>
-                                            <v-list-tile-title style="color: black;" headline dark v-text="post.title" />
-                                            <v-list-tile-sub-title style="color: gray;"><div style="width: 100px;" v-if="post.excerpt"  v-html="post.excerpt"></div> </v-list-tile-sub-title>
+                                            <v-list-tile-title style="color: black;" headline dark v-text="list.title" />
+                                            <v-list-tile-sub-title style="color: gray;">
+                                                <div style="width: 100px;" v-if="list.excerpt" v-html="list.excerpt"></div>
+                                            </v-list-tile-sub-title>
                                         </v-list-tile-content>
                                         <v-list-tile-action>
-                                            <v-list-tile-action-text>两天前</v-list-tile-action-text>
+                                            <v-list-tile-action-text v-text="list.time"/>
                                         </v-list-tile-action>
                                     </v-list-tile>
                                     <v-divider color="silver" class="my-0"></v-divider>
-                                </template>
                             </v-list>
                         </v-card>
                     </v-timeline-item>
@@ -69,13 +70,28 @@ export default {
         // 处理后的文章数据
         postList() {
             console.log(this.filterTime)
-            let _size = this.filterTime.length-1,
-                post = new Array(_size)
 
-            for (let i = _size; i >= 0; i--) {
-                    post[_size--] = this.filterTime[i]
-            }
+            let post = [];
+            this.filterTime.forEach((item, i) => {
+                let _dateTime = item.frontmatter.date || item.lastUpdated,
+                    _dateArr = _dateTime.split(","),
+                    _day = _dateArr[0],
+                    _dayLength = _dateArr[0].length,
+                    _month = _day.substr(0, 7),
+                    _dayStr = _day.substr(7, _dayLength),
+                    _time = _dayStr + _dateArr[1],
 
+                    findItem = post.find(r => r && r.date === _month);
+
+                if (findItem) {
+                    findItem.list.push({ title: item.title, path: item.regularPath, excerpt: item.excerpt, time: _time });
+                } else {
+                    post.push({
+                        date: _month,
+                        list: [{ title: item.title, path: item.regularPath, excerpt: item.excerpt, time: _time }]
+                    });
+                }
+            });
             return post
         }
     },
