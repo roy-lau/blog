@@ -3,24 +3,22 @@
         <v-flex d-flex md8 lg8>
             <v-timeline dense clipped align-top>
                 <v-slide-x-reverse-transition group hide-on-leave>
-                    <v-timeline-item v-for="(post, i) in postList" :color="years[i].color" v-if="post" :key="i" smail>
-                        <!-- fill-dot  -->
+                    <v-timeline-item v-for="(post, i) in postList" :color="years[i].color" v-if="post" :key="i"> <!-- fill-dot  -->
                         <v-card :color="years[i].color" dark flat>
                             <v-card-title v-text="post.date" />
                             <v-list class="white">
-                                    <v-list-tile avatar v-for="list in post.list" :to="list.path"
-                                     v-ripple="{ class: `${years[i].color}--text` }" class="py-2">
-                                        <v-list-tile-content>
-                                            <v-list-tile-title style="color: black;" headline dark v-text="list.title" />
-                                            <v-list-tile-sub-title style="color: gray;">
-                                                <div style="width: 100px;" v-if="list.excerpt" v-html="list.excerpt"></div>
-                                            </v-list-tile-sub-title>
-                                        </v-list-tile-content>
-                                        <v-list-tile-action>
-                                            <v-list-tile-action-text v-text="list.time"/>
-                                        </v-list-tile-action>
-                                    </v-list-tile>
+                                <template v-for="list in post.list" >
+                                        <div>
+                                            <div>
+                                                <v-list-tile :to="list.path" style="color: black;" class="text-xs-left" headline dark v-text="list.title" />
+                                                <div class="text-xs-right">
+                                                    <v-chip small outline :color="years[i].color" v-text="list.time" class="px-2"/>
+                                                </div>
+                                            </div>
+                                            <div style="color: gray;" v-if="list.excerpt" v-html="list.excerpt"></div>
+                                        </div>
                                     <v-divider color="silver" class="my-0"></v-divider>
+                                </template>
                             </v-list>
                         </v-card>
                     </v-timeline-item>
