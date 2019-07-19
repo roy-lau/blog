@@ -8,16 +8,18 @@
                             <v-card-title v-text="post.date" />
                             <v-list class="white">
                                 <template v-for="list in post.list" >
-                                        <div>
-                                            <div>
-                                                <v-list-tile :to="list.path" style="color: black;" class="text-xs-left" headline dark v-text="list.title" />
-                                                <div class="text-xs-right">
-                                                    <v-chip small outline :color="years[i].color" v-text="list.time" class="px-2"/>
-                                                </div>
-                                            </div>
-                                            <div style="color: gray;" v-if="list.excerpt" v-html="list.excerpt"></div>
-                                        </div>
-                                    <v-divider color="silver" class="my-0"></v-divider>
+                                    <v-layout row wrap mt-2 ml-2>
+                                        <v-flex xs10 sm10 md10 lg10 xl10 >
+                                            <router-link :to="list.path" :class="`${years[i].color}--text text--lighten-1 text-xs-left text--link title`" v-text="list.title" />
+                                        </v-flex>
+                                        <v-flex xs2 sm2 md2 lg2 xl2>
+                                            <v-chip small outline :color="years[i].color" v-text="list.time" class="px-2" />
+                                        </v-flex>
+                                        <v-flex xs12 sm12 md12 lg12 xl12>
+                                            <div class="grey--text text--darken-3 body-2 px-3" v-if="list.excerpt" v-html="list.excerpt"></div>
+                                        </v-flex>
+                                    </v-layout>
+                                    <v-divider color="silver" class="mt-2"></v-divider>
                                 </template>
                             </v-list>
                         </v-card>
@@ -67,7 +69,6 @@ export default {
 
         // 处理后的文章数据
         postList() {
-            console.log(this.filterTime)
 
             let post = [];
             this.filterTime.forEach((item, i) => {

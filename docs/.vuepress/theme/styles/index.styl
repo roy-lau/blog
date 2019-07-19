@@ -6,26 +6,6 @@ html
   color: #2c3e50;
   font-family $body-font-family
 
-hr,.hr
-    border: 0
-    border-top: 1px solid #dadada
-    box-sizing: content-box
-    display: block
-    height: 0
-    margin-top: 24px
-    margin-bottom: 24px
-
-
-// 侧边栏样式
-.aside-cls
-  position: fixed
-  top 0
-  bottom 0
-  left 0
-  z-index 10
-  background-color white
-  width 16.666666666666664%
-
 // 滚动条样式
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -65,3 +45,21 @@ hr,.hr
     text-overflow: ellipsis;
     white-space: nowrap
 }
+
+a.text--link
+    position relative
+    text-decoration none
+    color rgb(52, 73, 94)
+    &::after
+      content ''
+      width 100%
+      height 1px /*设置伪元素的高度，这里是下划线的粗细*/
+      position absolute
+      top 100%
+      left 0
+      background-color currentColor /*当前标签继承的文字颜色，这里让伪元素的背景色与父元素的文字颜色相同*/
+      transform scale(0)
+      transition all .2s
+    &:hover::after
+      transform scale(1)
+      transform-origin center

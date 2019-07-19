@@ -67,7 +67,17 @@ export default {
     },
 }
 </script>
-<style>
+<style scoped>
+/* 侧边栏样式*/
+.aside-cls{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: white;
+  width: 16.666666666666664%;
+}
 .card-actions-bg {
     height: 128px;
     background-size: 100% 120%;

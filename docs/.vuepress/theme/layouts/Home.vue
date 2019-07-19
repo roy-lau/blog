@@ -15,8 +15,8 @@
                             <v-flex shrink style="background: rgba(0,0,0,.2);">
                                 <v-expand-transition>
                                     <div class="transition-fast-in-fast-out">
-                                        <v-card-title class="headline pb-1 white--text">{{post.title}}</v-card-title>
-                                        <v-card-text class="subheading py-1 white--text lighten-3">
+                                        <v-card-title class="headline pb-1"><a class="text--link white--text" v-text="post.title"/></v-card-title>
+                                        <v-card-text class="subheading py-1 white--text lighten-5">
                                             <v-icon color="grey lighten-3">perm_identity</v-icon>{{post.frontmatter.author||post.author||'roylau'}} /
                                             <v-icon color="grey lighten-3">date_range</v-icon> {{post.frontmatter.date||post.lastUpdated||'时间'}}
                                         </v-card-text>

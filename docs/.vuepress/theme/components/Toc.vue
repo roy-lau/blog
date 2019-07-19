@@ -4,7 +4,7 @@
         <div class="body">
             <ul class="lists">
                 <li v-for="(item, index) in catalogList" :key="index" class="list" :class="{ active: currentIndex === index }">
-                    <a class="link ellipsis" :href="'#' + item.id" :style="{ marginLeft: offsetList[index] * 8 + 'px' }">
+                    <a class="text--link ellipsis" :href="'#' + item.id" :style="{ marginLeft: offsetList[index] * 8 + 'px' }">
                         {{ item.textContent.substring(2) }}
                     </a>
                 </li>
@@ -143,23 +143,6 @@ export default {
         text-align center
         line-height 20px
 
-    a.link
-        position relative
-        text-decoration none
-        color rgb(52, 73, 94)
-        &::after
-          content ''
-          width 100%
-          height 1px /*设置伪元素的高度，这里是下划线的粗细*/
-          position absolute
-          top 100%
-          left 0
-          background-color currentColor /*当前标签继承的文字颜色，这里让伪元素的背景色与父元素的文字颜色相同*/
-          transform scale(0)
-          transition all .2s
-        &:hover::after
-          transform scale(1)
-          transform-origin center
     .body
         .lists
             list-style none
@@ -167,12 +150,12 @@ export default {
             .list
                 height 30px
                 line-height 30px
-                a.link
+                a.text--link
                     transition: background 0.5s
             .active
                 dispaly block
                 color #3f51b5
-                a.link
+                a.text--link
                     display block
                     margin 4px 0
                     padding-left 3px
