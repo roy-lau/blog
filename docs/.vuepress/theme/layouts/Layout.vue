@@ -14,7 +14,7 @@
                             <div class="post-copyright">
                                 <div class="content">
                                     <p>更新时间：
-                                        <router-link :to="selfLink" class="text--link indigo--text" target="_blank" rel="external"><time :datetime="$page.lastUpdated||$frontmatter.date" itemprop="dateUpdated" v-text="$page.lastUpdated||$frontmatter.date" /></router-link>
+                                        <router-link :to="{ path: '/files/',query: { dateTime :$page.key }}" class="text--link indigo--text" rel="external"><time :datetime="$page.lastUpdated||$frontmatter.date" itemprop="dateUpdated" v-text="$page.lastUpdated||$frontmatter.date" /></router-link>
                                     </p>
                                     <p>原文链接：
                                         <a :href="selfLink" class="text--link indigo--text" target="_blank" rel="external" v-text="selfLink" />
@@ -76,7 +76,7 @@ export default {
     },
     data() {
         return {
-            selfLink: window.location.href,
+            selfLink: null,
             hasLayoutCard: true,
         }
     },
