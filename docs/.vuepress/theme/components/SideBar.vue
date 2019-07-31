@@ -50,7 +50,6 @@ export default {
     },
     data() {
         return {
-            asideWidth: 316,
             items: [
                 { title: '主页', icon: 'home', color: 'indigo', path: '/home' },
                 { title: '归档', icon: 'folder', color: 'orange', path: '/files' },
@@ -63,8 +62,7 @@ export default {
 
         }
     },
-    mounted() {
-    },
+    mounted() {},
 }
 </script>
 <style scoped>

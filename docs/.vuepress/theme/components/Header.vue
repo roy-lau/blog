@@ -87,7 +87,7 @@ export default {
             }
         },
         changeHeader() {
-            if (!this.isLayout) return
+            // if (!this.isLayout) return
 
             let topScroll = getScrollTop();
             this.hasMinHeader = topScroll > 100 ? true : false

@@ -3,6 +3,9 @@ module.exports = {
     base: "/blog/",
     name: "Roy Lau",
     email: "897379293@qq.com",
+    head: [
+        ['link', { rel: 'icon', href: '/logo.png' }]
+    ],
     markdown: {
         lineNumbers: true //是否开启文章代码左边的行号显示
     },

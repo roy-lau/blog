@@ -109,7 +109,7 @@ export default {
             const tocWarpCls = document.getElementsByClassName("toc-warp")[0];
             let h = getScrollTop();
             // 动态设置目录距离顶部的位置
-            tocWarpCls.style.top = h >= 200 ? '100px' : '260px'
+            // tocWarpCls.style.top = h >= 200 ? '100px' : '260px'
             // 动态设置滚动位置的 index
             for (let i = 0, len = this.allH.length; i < len; i++) {
                 if (i + 1 === this.allH.length || h < this.allH[i]) {
@@ -129,8 +129,9 @@ export default {
 .toc-warp
     width 20rem
     height 60%
-    position fixed
-    top 260px
+    // position fixed
+    position sticky
+    top 120px
     right 50px
     overflow-y auto
     border-radius 16px

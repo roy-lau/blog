@@ -45,7 +45,7 @@
         <!-- 内容和评论 end -->
         <!-- 目录 start -->
         <Toc />
- <!--                <v-flex d-flex md2 lg2>
+         <!-- v-flex d-flex md2 lg2>
             <v-card>
                 <v-card-text>
                 </v-card-text>
@@ -91,6 +91,7 @@ export default {
     },
     mounted(){
         // this.hasLayoutCard = true
+        this.selfLink = window.location.href
         console.count('l-mounted')
     },
     beforeUpdate(){

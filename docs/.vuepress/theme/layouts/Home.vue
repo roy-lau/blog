@@ -3,7 +3,7 @@
         <v-flex d-flex md8 lg8 v-for="post in postList" v-if="post" :key="post.key" class="mt-5">
             <v-card v-if="post.type==='post'">
                 <v-card ripple :to="post.regularPath" flat>
-                    <v-img max-height="260px" min-height="100px" :src="'/imgs/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png'">
+                    <v-img max-height="260px" min-height="100px" :src="$withBase('/imgs/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png')">
                         <template v-slot:placeholder>
                             <v-layout fill-height align-center justify-center>
                                 <!-- <v-progress-circular indeterminate color="grey lighten-3"></v-progress-circular> -->
