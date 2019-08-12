@@ -50,6 +50,7 @@ export default {
     },
     data() {
         return {
+            isMobile: null,
             items: [
                 { title: '主页', icon: 'home', color: 'indigo', path: '/home' },
                 { title: '归档', icon: 'folder', color: 'orange', path: '/files' },
@@ -57,12 +58,21 @@ export default {
             ]
         }
     },
+
+ computed: {
+
+ },
     methods: {
         toPath(path) {
 
         }
     },
-    mounted() {},
+    mounted() {
+        this.$nextTick(function() {
+            const ua = navigator.userAgent.toLowerCase();
+            this.isMobile = /ios|iphone|ipod|ipad|android/.test(ua);
+        })
+    },
 }
 </script>
 <style scoped>

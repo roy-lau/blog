@@ -5,14 +5,14 @@
                 <v-slide-x-reverse-transition group hide-on-leave>
                     <v-timeline-item v-for="(post, i) in postList" :color="colors[i]" v-if="post" :key="i"> <!-- fill-dot  -->
                         <v-card :color="colors[i]" dark flat>
-                            <v-card-title v-text="post.date" id="aa"/>
+                            <v-card-title v-text="post.date" />
                             <v-list class="white">
                                 <template v-for="list in post.list" >
                                     <v-layout row wrap mt-2 ml-2>
-                                        <v-flex xs10 sm10 md10 lg10 xl10 >
+                                        <v-flex xs6 sm10 md10 lg10 xl10 >
                                             <router-link :to="list.path" :class="`${colors[i]}--text text--lighten-1 text-xs-left text--link title`" v-text="list.title" />
                                         </v-flex>
-                                        <v-flex xs2 sm2 md2 lg2 xl2>
+                                        <v-flex xs6 sm2 md2 lg2 xl2>
                                             <v-chip small outline :color="colors[i]" v-text="list.time" :id="encodeURIComponent(list.dateTime)" class="px-2" />
                                         </v-flex>
                                         <v-flex xs12 sm12 md12 lg12 xl12>
@@ -77,7 +77,7 @@ export default {
     },
     mounted(){
         console.info(this.$route.query.dateTime)
-        document.getElementById(this.$route.query.dateTime).scrollIntoView()
+        // document.getElementById(this.$route.query.dateTime).scrollIntoView()
         console.info(document.getElementById(this.$route.query.dateTime))
         console.info(document.getElementById("2019%20%E4%B8%83%E6%9C%88%205%E6%97%A5%2C%20%E4%B8%8B%E5%8D%88%204%3A25%3A44"))
     },

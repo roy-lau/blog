@@ -1,9 +1,9 @@
 <template>
-    <v-container fluid grid-list-md class="pa-0">
+    <v-container fluid grid-list-md class="pa-0" ref="container">
         <v-layout row wrap>
             <!-- 侧边栏(固定定位,其实不占用实际位置) start -->
             <v-flex md2 lg2 class="pa-0">
-                <SideBar :show-side-bar="showSideBar" :Layout="layout"/>
+                <SideBar :show-side-bar="showSideBar" :Layout="layout" />
             </v-flex>
             <!-- 侧边栏 end -->
             <!-- 头部 start -->
@@ -15,7 +15,7 @@
         <v-layout row wrap>
             <!-- 主体部分 start -->
             <v-flex :class="hcfClass" class="side-x">
-                    <component :is="layout" :Layout="layout"/>
+                <component :is="layout" :Layout="layout" />
             </v-flex>
             <!-- 主体部分 end -->
             <!-- 底部 start -->
@@ -42,6 +42,7 @@ export default {
             }
             return 'NotFound'
         },
+
         // header component and footer class
         hcfClass() {
             return this.showSideBar ? 'xs12 sm12 md12 lg10 xl10 offset-lg2 offset-xl2' : 'xs12 sm12 md12 lg12 xl12'
@@ -49,8 +50,16 @@ export default {
     },
     data() {
         return {
-            showSideBar: true
+            showSideBar: true,
+            isMobile: null
         }
+    },
+    watch: {
+      $route(to, from) {
+        this.$nextTick(function() {
+          this.layoutShowSiderBar()
+        })
+      }
     },
     components: {
         SideBar: () => import('@theme/components/SideBar.vue'),
@@ -61,45 +70,38 @@ export default {
     methods: {
         toggleSideBar() {
             this.showSideBar = !this.showSideBar
+        },
+        // layout 页面不显示 siderBar
+        layoutShowSiderBar(){
+              if (this.layout === 'Layout') {
+                this.showSideBar = false
+            }else{
+                this.showSideBar = true
+            }
+        },
+        hasShowSideBar(e){
+             if (!this.$el.contains(e.target) && this.showSideBar) {
+                this.showSideBar = false
+            }
         }
     },
-    beforeCreate(){
-        console.count('g-beforeCreate')
+    created() {
+        const ua = navigator.userAgent.toLowerCase();
+        this.isMobile = /ios|iphone|ipod|ipad|android/.test(ua);
+        this.showSideBar = !this.isMobile
+        this.layoutShowSiderBar()
+        if (this.isMobile) {
+            document.addEventListener('click', this.hasShowSideBar, false);
+        }
     },
-    created(){
-        console.count('g-created')
-    },
-    beforeMount(){
-        console.count('g-beforeMount')
-    },
-    mounted(){
-        console.count('g-mounted')
-    },
-    beforeUpdate(){
-        console.count('g-beforeUpdate')
-    },
-    updated(){
-        console.count('g-updated')
-    },
-    activated(){
-        console.count('g-activated')
-    },
-    deactivated(){
-        console.count('g-deactivated')
-    },
-    beforeDestroy(){
-        console.count('g-beforeDestroy')
-    },
-    destroyed(){
-        console.count('g-destroyed')
-    },
-    errorCaptured(){
-        console.count('g-errorCaptured')
-    },
+    beforeDestroy() {
+        document.removeEventListener('click', this.hasShowSideBar, false);
+    }
+
 }
 </script>
 <style scoped>
-.side-x{
+.side-x {
     transition: all .5s;
 }
 </style>
