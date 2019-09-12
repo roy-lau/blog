@@ -33,7 +33,7 @@
     
     docker pull redis
 
-> 2、 运行 mysql
+> 2、 运行 redis
 
     docker run -p 6379:6379 --name myRedis -v $PWD/data:/myRedis/data -v $PWD/conf/redis.conf:/myRedis/redis.conf -d redis redis-server --appendonly yes
 
@@ -48,7 +48,16 @@
 
     docker exec -it myRedis redis-cli
     info
+    
+### [mariadb](https://hub.docker.com/_/mariadb)
 
+> 1、 拉取 mariadb 镜像
+    
+    docker pull mariadb
+
+> 2、 运行 mariadb
+    
+    docker run --name my-mariadb -v /home/dev/mysql:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=toor123 -d mariadb
     
 ### mysql 8
 
