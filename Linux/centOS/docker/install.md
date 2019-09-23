@@ -10,7 +10,7 @@
 ### nginx
 
 > 拉取 nginx 镜像
-        
+
     docker pull nginx
 
 > 运行 nginx
@@ -30,7 +30,7 @@
 ### Redis
 
 > 1、 拉取 redis 镜像
-    
+
     docker pull redis
 
 > 2、 运行 redis
@@ -56,27 +56,27 @@
     docker pull mariadb
 
 > 2、 运行 mariadb
-    
+
     docker run --name my-mariadb -v /home/dev/mysql:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=toor123 -d mariadb
     
 ### mysql 8
 
 > 1、 拉取 mysql 镜像
-    
+
     docker pull mysql
 
 > 2、 运行 mysql
-    
+
     docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=toor123 -d mysql
 
 * `-e MYSQL_ROOT_PASSWORD=123456：初始化root用户的密码`
 
 > 3、 进入容器
-    
+
     docker exec -it mysql bash
 
 > 4、 创建新用户(用户名：dev 密码 dev123!)
-    
+
     mysql -u root -p
     CREATE USER 'dev'@'%' IDENTIFIED WITH mysql_native_password BY 'dev123!';
 
@@ -129,7 +129,7 @@ su - oracle
 
 ```
 
- > 5、 登录sqlplus并修改sys、system用户密码
+> 5、 登录sqlplus并修改sys、system用户密码
 	
 	# 登录
 	sqlplus /nolog

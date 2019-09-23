@@ -245,33 +245,46 @@ __2. 生成SSH密钥过程：__
 
 1. 查看是否已经有了ssh密钥：
 
-        cd ~/.ssh
-    > 如果没有密钥则不会有此文件夹，有则备份删除
+```bash
+    cd ~/.ssh
+```
 
-2. 保存密钥：
+_如果没有密钥则不会有此文件夹，有则备份删除_
 
-        $ ssh-keygen -t rsa -C  "roylau_vip@163.com"
+2. 生成密钥：
 
-    按3个回车，密码为空。
+```bash
+    $ ssh-keygen -t rsa -C  "roylau_vip@163.com"
+```   
+> 按3个回车，密码为空。
+```bash
+[root@host ~]$ ssh-keygen  # <== 建立密钥对
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): # <== 按 Enter
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase):         # <== 输入密钥锁码，或直接按 Enter 留空
+Enter same passphrase again: # <== 再输入一遍密钥锁码
+Your identification has been saved in /root/.ssh/id_rsa.    # <== 私钥
+Your public key has been saved in /root/.ssh/id_rsa.pub.    # <== 公钥
+The key fingerprint is:
+0f:d3:e7:1a:1c:bd:5c:03:f1:19:f1:22:df:9b:cc:08 root@host
+```
 
-    Your identification has been saved in /home/tekkub/.ssh/id_rsa.
-    Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub.
-    The key fingerprint is:
-    ………………
-
-    > 最后得到了两个文件：`id_rsa`和`id_rsa.pub`
+最后得到了两个文件：**id_rsa (私钥)** 和 **id_rsa.pub（公钥）**
 
 3. 添加密钥
 
-        ssh：ssh-add 文件名   # 需要之前输入密码。
+```bash
+ssh：ssh-add 文件名   # 需要之前输入密码。
+```
 
 4. 在github上添加ssh密钥，这要添加的是```id_rsa.pub```里面的公钥。
 
-    打开https://github.com/ ，登陆roy-lau，然后添加ssh。
+打开 https://github.com/ ，登陆roy-lau，然后添加ssh。
 
 5. 测试：
 
-```shell
+```bash
     $ ssh -T git@github.com
     Hi roy-lau! You've successfully authenticated, but GitHub does not provide shell access.
 ```
