@@ -14,7 +14,9 @@
 	- [sublime text](./editor/subline_text)
 	- [vsCode](./editor/vsCode)
 	- [vim](./editor/vim)
+
 * [C++ 学习笔记](./learn-c++)
+* [ndoejs 学习笔记](./learn-ndoejs)
 
 * [表情](./emoji)
 * [git使用心得](./git-bash-make)
