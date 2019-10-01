@@ -3,3 +3,4 @@
 * [pm2 命令用法及配置](pm2.md)
 * [http-server](http-server.md)
 * [静态页面部署](static-pages-deploy.md)
+* [jade模板的基本用法](jade.md)
