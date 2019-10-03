@@ -16,7 +16,7 @@
 	- [vim](./editor/vim)
 
 * [C++ 学习笔记](./learn-c++)
-* [ndoejs 学习笔记](./learn-ndoejs)
+* [nodejs 学习笔记](./learn-nodejs)
 
 * [表情](./emoji)
 * [git使用心得](./git-bash-make)

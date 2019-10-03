@@ -206,6 +206,7 @@ let $p = $('p')
 console.log($p)
 console.log($p.addClass())
 ```
+<span id="factory-pattern-jQuery-demo">上面用到了工厂模式</span>
 
 ####  为何使用面向对象？
 
@@ -215,10 +216,6 @@ console.log($p.addClass())
 编程应 **简单&抽象** ——面向对象解决的就是这个问题
 
 程序的执行顺序一般主要有判断（if，else，switch，case……）和循环（for……）。使用面像对象主要是使 **数据结构化** ——松本行弘（日本人，ruby语言作者），数据结构化才能使代码简单&抽象，简单&抽象的代码更利于计算机识别
-
-### js 面向对象应用举例
-
-### 面向对象的意义
 
 ## 设计原则
 
@@ -291,7 +288,6 @@ L I D 体现较少，但是要了解其用意
 * 开发封闭原则： 如果需求增加，扩展 `then`
 * 对扩展开发，对修改封闭
 
-
 ### 从设计到模式
 
 * 设计
@@ -307,31 +303,31 @@ L I D 体现较少，但是要了解其用意
 > 三大类型 23种设计模式
 
 * 创建型
-    - 工厂模式（工厂方法模式，抽象工厂模式，建造者模式）
-    - 单例模式
-    - 原型模式
+    - [工厂模式（工厂方法模式，抽象工厂模式，建造者模式）](#factory-pattern)
+    - [单例模式](#singleton-pattern)
+    - [原型模式](#prototype-pattern)
 
 * 结构型（组合型）
-    - 适配器模式
-    - 装饰器模式
-    - 代理模式
-    - 外观模式
-    - 桥接模式
-    - 组合模式
-    - 享元模式
+    - [适配器模式](#adapter-pattern)
+    - [装饰器模式](#decorator-pattern)
+    - [代理模式](#proxy-pattern)
+    - [外观模式](#facade-pattern)
+    - [桥接模式](#bridge-pattern)
+    - [组合模式](#composite-pattern)
+    - [享元模式](#flyweight-pattern)
 
 * 行为型
-    - 策略模式
-    - 模板方法模式
-    - 观察者模式*
-    - 迭代器模式*
-    - 职责连模式
-    - 命令模式
-    - 备忘录模式
-    - 状态模式
-    - 访问者模式
-    - 中介者模式*
-    - 解释器模式
+    - [策略模式](#strategy-pattern)
+    - [模板方法模式](#template-method-pattern)
+    - [观察者模式*](#observer-pattern)
+    - [迭代器模式*](#iterator-pattern)
+    - [职责联模式](#chain-of-responsibility-pattern)
+    - [命令模式](#command-pattern)
+    - [备忘录模式](#memento-pattern)
+    - [状态模式](#state-pattern)
+    - [访问者模式](#visitor-pattern)
+    - [中介者模式*](#mediator-pattern)
+    - [解释器模式](#interpreter-pattern)
 
 如何讲解设计模式？
 
@@ -543,3 +539,290 @@ park.out(car3)
 </details>
 
 
+<h2 id="factory-pattern">工厂模式</h2>
+
+### 介绍
+
+* 将 `new` 操作单独封装
+* 遇到 `new` 时，应该考虑是否使用工厂模式
+
+### 演示
+
+* 示例
+> 你去购买汉堡，直接点餐，取餐，不用自己亲手做
+> 商店要"封装"做汉堡的工作，做好直接给买者
+
+<img src="./imgs/factory-pattern-1.png" title="传统的 UML 类图（工厂模式）" alt="传统的 UML 类图（工厂模式）">
+<img src="./imgs/factory-pattern-2.png" title="js简化的 UML 类图（工厂模式）" alt="js简化的 UML 类图（工厂模式）">
+
+```js
+// 产品
+class Product{
+    constructor(name){
+        this.name = name
+    }
+    init(){
+        alert('init')
+    }
+    fun1(){
+        alert('fun1')
+    }
+    fun2(){
+        alert('fun2')
+    }
+}
+// 工厂
+class Creator{
+    create(name){
+        return new Product(name)
+    }
+}
+
+let creator = new Creator()
+let p = creator.create('p1')
+
+p.init()
+p.fun1()
+```
+
+### 场景
+
+* `jQuery - $('div')`
+
+> `$('div')` 和 `new $('div')` 有何区别？
+`$('div')` 是工厂模式封装后的，`new $('div')`没有。
+> 书写麻烦，jQuery的链式操作将成为噩梦。
+> 一旦 jQuery 名字变化，将是灾难性的
+
+[jQuery工厂模式的例子](#factory-pattern-jQuery-demo)
+
+* `React.createElement`
+
+```jsx
+// 使用示例
+var profile = `<div>
+    <img src="avatar.png" className="profile" />
+    <h3>{{user.firstName, user.lastName}.join(' ')}</h3>`
+
+
+// 上面示例代码编译后如下：
+var profile = React.createElement("div", null, 
+    React.createElement("img",{src:"avatar.png",className:"profile"}),
+    React.createElement("h3",null,{user.firstName, user.lastName}.join(" "))
+);
+
+// 简略源码如下:
+class Vnode(tag, atts, chilren){
+    // ……省略内部代码……
+}
+React.createElement = function(tag,attrs,children){
+    return new Vnode(tag,attrs,chilren)
+}
+```
+
+* `Vue` 异步组件
+
+```js
+Vue.componet('axync-example', function (resole,reject){
+    setTimeout(function(){
+        resolve({
+            template:'<div>I am async component !</div>'
+        })
+    },1000)
+})
+```
+
+### 总结
+
+> 设计原则验证
+* 构造函数和创建者分离
+* 符合开放封闭原则
+
+
+<h2 id="singleton-pattern">单例模式</h2>
+
+### 介绍
+
+* 系统中唯一被使用
+* 一个类只有一个实例（只被 new 一次）
+
+示例
+
+* 登陆框
+* 购物车
+ 
+<img src="./imgs/singleton-pattern-1.png" title="传统UML类图（单例模式，Java版）" alt="传统UML类图（单例模式，Java版）">
+
+说明
+
+* 单例模式需要用到 `java` 的特性(private)
+* ES6 中没有(`typescript` 除外)
+* 只能用Java代码来演示 UML 图的内容
+
+### 演示
+
+`Java` 使用单例模式的例子
+
+```java
+public class SingleObject {
+    // 注意，私有化构造函数，外部不能 new ，只能内部 new ！！！
+    private SingleObject(){}
+    // 唯一被 new 出来的对象
+    private SingleObject instance = null;
+    // 获取对象的唯一接口
+    public SingleObject getInstance() {
+        if(instance == null){
+            // 只 new 一次
+            instance = new SingleObject()
+        }
+        return instance;
+    }
+
+    // 对象方法
+    public void login(username, password){
+        System.out.println("login……");
+    }
+}
+
+public class SingletonPatterDemo{
+    public static void main(String[] args){
+        // 不合法的构造函数
+        // 编译时错误：构造函数 SingleObject() 是不可见的！！！
+        // SingleObject object = new SingleObject();
+
+        // 获取唯一可用的对象那个
+        SingleObject object = SingleObject.getInstance();
+        object.login();
+    }
+}
+```
+
+`js` 使用单例模式的例子
+
+```js
+class SingleObject {
+    login() {
+        console.log('login……')
+    }
+}
+// 通过闭包（外部不可访问）的方式实现单例模式
+SingleObject.getInstance = (function(){
+    let instance
+    return function(){
+        if(!instance){
+            instance = new SingleObject();
+        }
+        return instance
+    }
+})()
+
+// 测试：注意这里只能使用函数 getInstance，不能 new SingleObject（通过文档约束，实际还是可以使用new的）
+let obj1 = SingleObject.getInstance()
+object.login()
+let obj2 = SingleObject.getInstance()
+obj2.login()
+console.log(obj1 === obj2) // 单例模式，两个实例必须完全相等
+
+// 下面使用方式是错误的，但是js中无法完全控制
+let obj3 = new SingleObject()
+obj3.login()
+console.log(obj1 === obj3)
+```
+
+
+### 场景
+
+* `jQuery` 只有一个 `$`
+```js
+// jQuery 只有一个 $
+if(window.jQuery != null) {
+    return window.jQuery
+}else {
+    // 初始化……
+}
+```
+* 模拟登陆框
+```js
+class LoginForm {
+    constructor(){
+        this.state = 'hide'
+    }
+    show(){
+        if (this.state === 'show'){
+            alert('已经显示')
+            return
+        }
+        this.state = 'show'
+        console.log('登陆框已显示')
+    }
+    hide(){
+        if(this.state === 'hide'){
+            alert('已经隐藏')
+            return
+        }
+        this.state = 'hide'
+        console.log('登陆框已隐藏')
+    }
+}
+LoginForm.getInstance = (function(){
+    let instance 
+    return function(){
+        if (!instance){
+            instance = new LoginForm();
+        }
+        return instance
+    }
+})()
+
+// 测试
+let login1 = LoginForm.getInstance()
+login1.show()
+let login2 = LoginForm.getInstance()
+login2.hide() // 这里是可以将login1的登陆框隐藏掉的，因为两个单例是完全相同的
+```
+
+* 其他
+
+> 购物车（和登陆框类似） 
+
+> `vuex` 和 `redux` 中的 `store`
+
+
+
+### 总结
+
+> 设计原则验证
+
+* 单例模式符合单一职责原则，只实例化唯一的对象。
+* 单例模式没法具体开放封闭原则，但是绝不违反开放封闭原则。
+
+<h2 id="prototype-pattern">原型模式</h2>
+
+### 介绍
+### 演示
+### 场景
+### 总结
+
+<hr />
+
+
+<h2 id="adapter-pattern">适配器模式</h2>
+<h2 id="decorator-pattern">装饰器模式</h2>
+<h2 id="proxy-pattern">代理模式</h2>
+<h2 id="facade-pattern">外观模式</h2>
+<h2 id="bridge-pattern">桥接模式</h2>
+<h2 id="composite-pattern">组合模式</h2>
+<h2 id="flyweight-pattern">享元模式</h2>
+<hr />
+
+<h2 id="strategy-pattern">策略模式 </h2>
+<h2 id="template-method-pattern">模板方法模式 </h2>
+<h2 id="observer-pattern">观察者模式 *</h2>
+<h2 id="iterator-pattern">迭代器模式 *</h2>
+<h2 id="chain-of-responsibility-pattern">职责联模式 </h2>
+<h2 id="command-pattern">命令模式 </h2>
+<h2 id="memento-pattern">备忘录模式 </h2>
+<h2 id="state-pattern">状态模式 </h2>
+<h2 id="visitor-pattern">访问者模式 </h2>
+<h2 id="mediator-pattern">中介者模式 *</h2>
+<h2 id="interpreter-pattern">解释器模式 </h2>
