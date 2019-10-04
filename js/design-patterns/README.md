@@ -257,6 +257,7 @@ console.log($p.addClass())
 8. 避免强制性的用户界面
 9. 让每个程序都称为过滤器
 <br />
+
 1. 允许用户定制环境
 2. 尽量使用操作系统内核小而轻量化
 3. 使用小写字母并尽量简短
@@ -659,7 +660,6 @@ Vue.componet('axync-example', function (resole,reject){
 > 设计原则验证
 * 构造函数和创建者分离
 * 符合开放封闭原则
-
 
 <h2 id="singleton-pattern">单例模式</h2>
 
@@ -1115,6 +1115,158 @@ person.facepalnHarder();
 * 符合开放封闭原则
 
 <h2 id="proxy-pattern">代理模式</h2>
+
+### 介绍
+
+* 使用者无权访问目标对象
+* 中间加代理，通过代理做授权和控制
+
+### 演示
+
+> 示例
+* 科学上网，比如访问 github.com
+* [明星经纪人](es6-proxy)
+
+<img src="./imgs/proxy-pattern-1.png" title="传统UML类图（代理模式，Java版）" alt="传统UML类图（代理模式，Java版）">
+<img src="./imgs/proxy-pattern-2.png" title="简化后UML类图（代理模式，Js版）" alt="简化后UML类图（代理模式，Js版）">
+
+```js
+class ReadImg {
+    constructor(fileName){
+        this.fileName = fileName
+        this.loadFromDisk()     // 模拟初始化即从硬盘加载
+    }
+    // 显示器
+    display(){
+        console.log('display...')
+    }
+    // 从硬盘加载
+    loadFromDisk(){
+        console.log('loading... ' + this.fileName)
+    }
+}
+class ProxyImg {
+    constructor(fileName){
+        this.realImg = new ReadImg(fileName)
+    }
+    // 代理 display
+    display(){
+        this.realImg.display()
+    }
+}
+
+let proxyImg = new ProxyImg('1.png') 
+proxyImg.display()
+```
+
+### 场景
+
+* 网页事件代理
+```html
+<div id="div1">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+</div>
+<button> 点击增加一个 a 标签</button>
+
+<script>
+    let div1 = document.getElementById('div1')
+    div1.addEventListener('click',function(e){
+        let target = e.target
+        if(e.nodeName === 'A'){
+            alert(target.innerHTML)
+        }
+    })
+</script>
+```
+* `jQuery $.proxy`
+```js
+$('#div1').click(function(){
+    // this 符合期望
+    $(this).addClass('red')
+})
+
+$('#div1').click(function(){
+    setTimeout(function(){
+        // this 不符合预期
+        $(this).addClass('red')
+    }, 1000)
+})
+// 通过变量提升的方式解决
+$('#div1').click(function(){
+    let _this = this
+    setTimeout(function(){
+        // _this 符合预期
+        $(_this).addClass('red')
+    }, 1000)
+})
+// 通过 `jQuery $.proxy` 的方式解决
+$('#div1').click(function(){
+    setTimeout($.proxy(function(){
+        // this 符合预期
+        $(this).addClass('red')
+    },this),1000)
+})
+```
+* `ES6 Proxy` <i id="es6-proxy">明星经纪人锚点</i>
+```js
+// 明星
+let star = {
+    name: '章XX',
+    age: 66,
+    phone: '186-8888-6666'
+}
+// 经纪人
+let agent = new Proxy(star, {
+    get(target,key){
+        if(key === 'phone'){
+            // 返回经纪人自己的手机号
+            return '138-3838-3838'
+        }
+        if(key === 'price'){
+            // 明星不报价，经纪人报价
+            return 12000
+        }
+        return target[key]
+    },
+    set(target, key, val){
+        if(key === 'customPrice'){
+            if(val < 1e5){
+                // 最低 10w
+                throw new Error('价格太低')
+            }else{
+                target[key] = val
+                return true
+            }
+        }
+    }
+})
+
+console.log(agent.name)
+console.log(agent.age)
+console.log(agent.phone)
+console.log(agent.price)
+agent.customPrice = 15e4 // 报价15w
+```
+
+### 总结
+
+> 设计原则验证
+* 代理类和目标类分离，隔离开目标类和使用者
+* 符合开放封闭原则
+
+__代理模式 VS 适配器模式__
+
+* 适配器模式： 提供一个不同的接口（例如不同版本的插头）
+* 代理模式：提供一模一样的接口
+
+__代理模式 VS 装饰器模式__
+
+* 装饰器模式：扩展功能，原有功能不变且可直接使用
+* 代理模式：显示原有功能，但是经过限制或者阉割之后的
+
 <h2 id="facade-pattern">外观模式</h2>
 <h2 id="bridge-pattern">桥接模式</h2>
 <h2 id="composite-pattern">组合模式</h2>
