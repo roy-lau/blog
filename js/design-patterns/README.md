@@ -75,6 +75,7 @@ xianghong.speak()
 ```
 总结：
 > `People` 是父类，公共的，不仅仅服务于 `Student`
+
 > 继承可将公共的方法抽离处理，提高复用，减少冗余
 
 #### 封装: 子类继承父类
@@ -126,12 +127,17 @@ xiangming.getWeight()   // xiangming获取自己女朋友的 weight（体重）
 ```
  总结：
 > 减少耦合，不该外漏的不外漏
+
 > 利于数据，接口的权限管理
+
 > ES6目前不支持(ES9中支持 `#` )，js里一般认为 `_` 开头的属性是 `private`
 
 #### 多态: 同一接口不同实现
+
 > 同一接口，不同表现
+
 > js 应用极少
+
 > 需要结合 Java 等语言的接口 重写 重载等功能
 
 ```js
@@ -165,16 +171,21 @@ a.saySomething() // 子类里的 saySomething 并没有将父类或前一个子�
 let b = new B('b')
 b.saySomething() // 子类里的 saySomething 并没有将父类或前一个子类里的 saySomething 覆盖掉
 ```
-总结：
+ 总结：
 > 保持子类的开放性和灵活性
+
 > 面向接口编程
+
 > (js 使用极少，了解即可)
 
 
 #### jQuery 应用举例
 
 > `jQuery` 是一个 `class`
+
 > `$('p')` 是一个 `jQuery` 的一个实例
+
+<span id="factory-pattern-jQuery-demo">下面jQuery例子用到了工厂模式</span>
 
 ```js
 // 创建 jQuery 类，即模板
@@ -206,13 +217,15 @@ let $p = $('p')
 console.log($p)
 console.log($p.addClass())
 ```
-<span id="factory-pattern-jQuery-demo">上面用到了工厂模式</span>
 
 ####  为何使用面向对象？
 
 程序的执行有 **顺序，判断，循环** —— 结构化
+
 而 **面向对象** —— 数据结构化
+
 对技算机，结构化的才最简单
+
 编程应 **简单&抽象** ——面向对象解决的就是这个问题
 
 程序的执行顺序一般主要有判断（if，else，switch，case……）和循环（for……）。使用面像对象主要是使 **数据结构化** ——松本行弘（日本人，ruby语言作者），数据结构化才能使代码简单&抽象，简单&抽象的代码更利于计算机识别
@@ -232,7 +245,7 @@ console.log($p.addClass())
 
 * 结合《UNIX/LINUX设计哲学》
 
-《UNIX/LINUX设计哲学》小准则：
+> 《UNIX/LINUX设计哲学》小准则：
     
 1. 小即是美
 2. 让每个程序只做好一件事
@@ -243,7 +256,7 @@ console.log($p.addClass())
 7. 是用 shell 脚本来提高杠杆效应和可移植性
 8. 避免强制性的用户界面
 9. 让每个程序都称为过滤器
-
+<br />
 1. 允许用户定制环境
 2. 尽量使用操作系统内核小而轻量化
 3. 使用小写字母并尽量简短
@@ -253,25 +266,25 @@ console.log($p.addClass())
 
 ### 五大设计原则（ S O L I D ）
 
-* S（single） - 单一职责原则
+* __S（single）__ - 单一职责原则
     - 一个程序只做好一件事情
     - 如果功能过于复杂就拆分开，每个部分保持独立
 
-* O（open） - 开放封闭原则
+* __O（open）__ - 开放封闭原则
     - 对扩展开放，对修改封闭
     - 增加需求时，扩展新代码，而非修改已有代码
 
-* L（lee） - 李氏置换原则
+* __L（lee）__ - 李氏置换原则
     - 子类能覆盖父类
     - 父类能出现的地方子类就能出现
     - js中使用较少（主要是js弱类型&继承使用较少）
 
-* I（interface） - 接口独立原则
+* __I（interface）__ - 接口独立原则
     - 保持接口的单一独立，避免出现"胖接口"
     - js中没有接口（typeScript例外），使用较少
     - 类似于单一设计原则，这里更关注接口
      
-* D（depend） - 依赖导致原则
+* __D（depend）__ - 依赖导致原则
     - 面向接口编程，依赖于抽象而不依赖于具体
     - 使用方只关注接口而不关注具体类的实现
     - js中使用较少（没有接口&弱类型）
@@ -279,10 +292,11 @@ console.log($p.addClass())
 总结：
 
 S O 体现较多，重点学习
+
 L I D 体现较少，但是要了解其用意
 
-<img src="./imgs/promise-demo.png" title="用promise来说明SO" alt="用promise来说明SO">
-<img src="./imgs/promise-result-demo.png" title="用promise来说明SO结果" alt="用promise来说明SO结果用法">
+<img src="./imgs/promise-demo.png" title="用promise来说明SO" alt="用promise来说明SO" width="60%">
+<img src="./imgs/promise-result-demo.png" title="用promise来说明SO结果" alt="用promise来说明SO结果用法" width="60%">
 
 * 单一职责原则： 每个 `then` 中的逻辑只做好一件事
 * 开发封闭原则： 如果需求增加，扩展 `then`
@@ -331,18 +345,22 @@ L I D 体现较少，但是要了解其用意
 
 如何讲解设计模式？
 
-> 介绍和举例（生活中易于理解的示例） 
-> 画 UML 类图写 demo 代码 
+> 介绍和举例（生活中易于理解的示例）
+
+> 画 UML 类图写 demo 代码  
+
 > 结合经典应用场景，讲解该设计模式如何被使用 
 
 如何学习设计模式？
 
 > 明白每个设计的道理和用意 
+
 > 通过经典应用体会它的真正使用场景 
+
 > 自己编码时多思考，尽量模仿，举一反三 
 
 
-## 两道面试题示例
+## _两道面试题示例_
 
 题目一：
 
@@ -550,6 +568,7 @@ park.out(car3)
 
 * 示例
 > 你去购买汉堡，直接点餐，取餐，不用自己亲手做
+
 > 商店要"封装"做汉堡的工作，做好直接给买者
 
 <img src="./imgs/factory-pattern-1.png" title="传统的 UML 类图（工厂模式）" alt="传统的 UML 类图（工厂模式）">
@@ -590,8 +609,11 @@ p.fun1()
 * `jQuery - $('div')`
 
 > `$('div')` 和 `new $('div')` 有何区别？
+
 `$('div')` 是工厂模式封装后的，`new $('div')`没有。
+
 > 书写麻烦，jQuery的链式操作将成为噩梦。
+
 > 一旦 jQuery 名字变化，将是灾难性的
 
 [jQuery工厂模式的例子](#factory-pattern-jQuery-demo)
@@ -792,7 +814,6 @@ login2.hide() // 这里是可以将login1的登陆框隐藏掉的，因为两个
 ### 总结
 
 > 设计原则验证
-
 * 单例模式符合单一职责原则，只实例化唯一的对象。
 * 单例模式没法具体开放封闭原则，但是绝不违反开放封闭原则。
 
@@ -807,7 +828,292 @@ login2.hide() // 这里是可以将login1的登陆框隐藏掉的，因为两个
 
 
 <h2 id="adapter-pattern">适配器模式</h2>
+
+### 介绍
+
+* 旧接口和使用者不兼容
+* 中间加一个适配转换接口
+
+<img src="./imgs/adapter-pattern-demo.png" title="适配器模式示例" alt="适配器模式示例">
+
+<img src="./imgs/adapter-pattern-1.png" title="传统UML类图（适配器模式）" alt="传统UML类图（适配器模式）">
+<img src="./imgs/adapter-pattern-2.png" title="简化后UML类图（适配器模式）" alt="传统UML类图（适配器模式）">
+
+### 演示
+
+```js
+class Adaptee {
+    specificRequest(){
+        return '德国标准插头'
+    }
+}
+class Target {
+    constructor(){
+        this.adapee = new Adaptee()
+    }
+    request(){
+        let info = this.adaptee.specificRequest()
+        return `${info} -> 转换器 -> 中国标准插头`
+    }
+}
+
+let target = new Target()
+target.request()
+```
+
+### 场景
+
+* 封装旧接口
+
+```js
+// 自己封装的ajax，使用方法如下：
+ajax({
+    url: 'getData',
+    type: 'POST',
+    dataType: 'json'
+    data: {id:123}
+})
+.done(function(){})
+
+// 但因为历史原因，代码中全都是：
+// $.ajax({……})
+
+// 做一层适配器
+let $ = {
+    ajax: function(options){
+        return ajax(options)
+    }
+}
+```
+* `vue computed`
+```html
+<div id="example">
+    <p> Original message: " {{message}} "</p>
+    <p> Computed reversed message: " {{ reversedMessage }}" </p>
+</div>
+```
+```js
+let vm = new Vue({
+    el:'#example',
+    data:{
+        message:'Hello'
+    },
+    computed:{
+        // 计算属性 getter
+        reversedMessage: function(){
+            // `this` 指向 vm 实例
+            return this.message.split('').reverse().join('')
+        }
+    }
+})
+```
+
+### 总结
+
+> 设计原则验证
+* 将旧接口和使用者进行分离
+* 符合开放封闭原则
+
 <h2 id="decorator-pattern">装饰器模式</h2>
+
+### 介绍
+
+* 为对象添加新功能
+* 不改变其原有的结构和功能
+
+<img src="./imgs/decorator-pattern-demo.png" title="装饰器模式示例" alt="装饰器模式示例">
+
+### 演示
+
+<img src="./imgs/decorator-pattern-1.png" title="传统UML类图（装饰器模式，Java版）" alt="传统UML类图（装饰器模式，Java版）">
+<img src="./imgs/decorator-pattern-2.png" title="简化UML类图（装饰器模式，js版）" alt="简化UML类图（装饰器模式，js版）">
+ 
+> 装饰器模式，代码示例
+```js
+class Circle {
+    draw(){
+        console.log('画一个圆形')
+    }
+}
+class Decorator {
+    constructor(circle){
+        this.circle = circle
+    }
+    draw(){
+        this.circle.draw()
+        this.setReaBorder(circle)
+    }
+    setRedBorder(circle){
+        console.log('设置红色边框')
+    }
+}
+
+let circle = new Circle()
+circle.draw()
+
+let dec = new Decorator(circle)
+dec.draw()
+```
+
+### 场景
+
+> `ES7` 装饰器
+
+* 装饰类
+
+```js
+//*** 一个简单的 demo
+@testDec
+class Demo{
+    // ...
+}
+function testDec(target){
+    target.isDec = true
+}
+alert(Demo.isDec) // true
+```
+```js
+//*** 可以加参数
+function testDec(isDec){
+    return function(target){
+        target.isDec = isDec;
+    }
+}
+@testDec(true)
+class Demo{
+    // ....
+}
+alert(Demo.isDec) // true
+```
+```js
+//*** mixin 示例
+function mixins(...list){
+    return function(target){
+        Object.assign(target.prototype, ...list)
+    }
+}
+const Foo = {
+    foo(){ alert('foo')}
+}
+@mixins(Foo)
+class MyClass{}
+
+let obj = new MyClass();
+obj.foo() // 'foo'
+```
+```js
+/*
+ * 装饰器的原理
+ */
+@decorator
+class A{}
+// 等同于
+class A{}
+A = decorator(A) || A;
+```
+
+* 装饰方法
+
+```js
+function readonly（target, name, descriptor){
+    // descriptor 属性藐视对象（Object.defineProperty 中会用到），原来的值如下
+    // {
+        // value: specifiedFunction,
+        // enumerable: false,
+        // configurable: true,
+        // writable: true
+    // };
+    descriptor.writable = false;
+    return descriptor;
+}
+class Person {
+    constructor(){
+        this.first = 'A'
+        this.last = 'B'
+    }
+    // 装饰器方法
+    @readonly
+    name(){ return `${this.first} ${this.last}` }
+}
+
+let p = new Person()
+console.log(p.name())
+// p.name = function () {} // 这里会报错，因为 name 是只读属性
+```
+```js
+function log(target, name, descriptor){
+    let oldValue = descriptor.value;
+
+    descriptor.value = function(){
+        console.log(`Calling ${name} with`, arguments);
+        return oldValue.apply(this,arguments);
+    };
+    return descriptor;
+}
+class Math{
+    // 装饰方法
+    @log
+    add(a,b){
+        return a+b;
+    }
+}
+const math = new Math();
+const result = math.add(2,4); // 执行 add 时，会自动打印日志，因为有 @log 装饰器
+console.log('result',result)
+```
+
+> `core-decorators` 库（一个封装了js装饰器的库）
+
+* `core-decorators` 是一个第三方的 lib
+* `core-decorators` 提供常用的装饰器
+
+```js
+// 首先安装 npm i core-decoeators --save
+// 开始编码：
+import { readonly } from 'core-decorators'
+class Person {
+    @readonly
+    name(){
+        return 'zhang'
+    }
+}
+let p = new Person()
+alert(p.name())
+// p.name = function(){/*...*/} // 此处会报错
+```
+```js
+// 给废弃（deprecate）方法做提示
+import { deprecate } from 'core-decorators';
+class Person {
+    @deprecate
+    facepalm(){}
+
+    @deprecate('We stopped facepalming')
+    facepalmHard(){}
+
+    @deprecate('We stopped facepalming',{url:'http://knowyourmeme.com/memes/facepalm'})
+    facepalmHarder(){}
+}
+
+let person = new Person();
+person.facepalm();
+// DEPERCATION Person#facepaln: This function will be removed in future versions.
+
+person.facepalmHard();
+// DEPECATION Person#facepalmHard: We stoppend facepalming
+
+person.facepalnHarder();
+// DEPECATION Person#facepalmHarder: We stopped facepalming
+//
+//      See http://knowyourmeme.com/memes/facepalm for more details.
+```
+
+### 总结
+
+> 设计原则验证
+* 将现有对象和装饰器进行分离，两者独立存在
+* 符合开放封闭原则
+
 <h2 id="proxy-pattern">代理模式</h2>
 <h2 id="facade-pattern">外观模式</h2>
 <h2 id="bridge-pattern">桥接模式</h2>
