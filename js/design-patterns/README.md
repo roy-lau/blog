@@ -668,20 +668,21 @@ Vue.componet('axync-example', function (resole,reject){
 * 系统中唯一被使用
 * 一个类只有一个实例（只被 new 一次）
 
-示例
+
+### 演示
+
+> 示例
 
 * 登陆框
 * 购物车
  
 <img src="./imgs/singleton-pattern-1.png" title="传统UML类图（单例模式，Java版）" alt="传统UML类图（单例模式，Java版）">
 
-说明
+> 说明
 
 * 单例模式需要用到 `java` 的特性(private)
 * ES6 中没有(`typescript` 除外)
 * 只能用Java代码来演示 UML 图的内容
-
-### 演示
 
 `Java` 使用单例模式的例子
 
@@ -1268,6 +1269,42 @@ __代理模式 VS 装饰器模式__
 * 代理模式：显示原有功能，但是经过限制或者阉割之后的
 
 <h2 id="facade-pattern">外观模式</h2>
+
+### 介绍
+
+* 为子系统中的一组接口提供了一个高层接口
+* 使用者使用这个高层接口
+
+<img src="./imgs/facade-pattern-demo.png" title="演示外观模式" alt="演示外观模式">
+
+### 演示
+
+> 示例
+* 去医院看病，接待员去挂号、门诊、划价、取药
+<img src="./imgs/facade-pattern-1.png" title="UML类图（外观模式）" alt="UML类图（外观模式）">
+
+### 场景
+
+```js
+function baindEvent(elem, type, selector, fn){
+    if(fn == null){
+        fn = selector
+        selector = null
+    }
+    // ****
+}
+
+// 调用
+bindEvent(elem, 'click', '#div1', fn)
+bindEvent(elem, 'click', fn)
+```
+
+### 总结
+
+> 设计原则验证
+* 外观模式不符合单一职责原则和开放封闭原则，因此谨慎使用，不可滥用
+
+
 <h2 id="bridge-pattern">桥接模式</h2>
 <h2 id="composite-pattern">组合模式</h2>
 <h2 id="flyweight-pattern">享元模式</h2>
@@ -1276,6 +1313,21 @@ __代理模式 VS 装饰器模式__
 <h2 id="strategy-pattern">策略模式 </h2>
 <h2 id="template-method-pattern">模板方法模式 </h2>
 <h2 id="observer-pattern">观察者模式 *</h2>
+
+### 介绍
+
+* 发布 & 订阅
+* 一对多
+
+### 演示
+
+> 示例
+* 点咖啡，点好之后坐等被叫
+
+### 场景
+### 总结
+
+
 <h2 id="iterator-pattern">迭代器模式 *</h2>
 <h2 id="chain-of-responsibility-pattern">职责联模式 </h2>
 <h2 id="command-pattern">命令模式 </h2>
