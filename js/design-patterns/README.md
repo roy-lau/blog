@@ -1128,8 +1128,8 @@ person.facepalnHarder();
 * 科学上网，比如访问 github.com
 * [明星经纪人](es6-proxy)
 
-<img src="./imgs/proxy-pattern-1.png" title="传统UML类图（代理模式，Java版）" alt="传统UML类图（代理模式，Java版）">
-<img src="./imgs/proxy-pattern-2.png" title="简化后UML类图（代理模式，Js版）" alt="简化后UML类图（代理模式，Js版）">
+<img src="./imgs/proxy-pattern-1.png" title="传统UML类图（代理模式，Java版）" alt="传统UML类图（代理模式，Java版）" />
+<img src="./imgs/proxy-pattern-2.png" title="简化后UML类图（代理模式，Js版）" alt="简化后UML类图（代理模式，Js版）" />
 
 ```js
 class ReadImg {
@@ -1275,13 +1275,13 @@ __代理模式 VS 装饰器模式__
 * 为子系统中的一组接口提供了一个高层接口
 * 使用者使用这个高层接口
 
-<img src="./imgs/facade-pattern-demo.png" title="演示外观模式" alt="演示外观模式">
+<img src="./imgs/facade-pattern-demo.png" title="演示外观模式" alt="演示外观模式" />
 
 ### 演示
 
 > 示例
 * 去医院看病，接待员去挂号、门诊、划价、取药
-<img src="./imgs/facade-pattern-1.png" title="UML类图（外观模式）" alt="UML类图（外观模式）">
+<img src="./imgs/facade-pattern-1.png" title="UML类图（外观模式）" alt="UML类图（外观模式）" />
 
 ### 场景
 
@@ -1324,8 +1324,277 @@ bindEvent(elem, 'click', fn)
 > 示例
 * 点咖啡，点好之后坐等被叫
 
+<img src="./imgs/observer-pattern-1.png" title="传统UML类图（观察者模式，Java版）" alt="传统UML类图（观察者模式，Java版）" />
+<img src="./imgs/observer-pattern-1.png" title="简化UML类图（观察者模式，js版）" alt="简化UML类图（观察者模式，js版）" />
+
+
+```js 
+// 主题，保存状态，状态变化之后触发所有观察者对象
+class Subject {
+    constructor(){
+        this.state = 0
+        this.observers = []
+    }
+    getState(){
+        return this.state
+    }
+    // 状态改变，通知所有观察者
+    setState(state){
+        this.state = state
+        this.notifyAllObservers()
+    }
+    // 通知所有观察者更新
+    notifyAllObservers(){
+        this.observers.forEach(observer =>{
+            observer.update()
+        })
+    }
+    // 添加新的观察者
+    attach(observer){
+        this.observers.push(observer)
+    }
+}
+// 观察者
+class Observer {
+    constructor(name, subject){
+        this.name = name
+        this.subject = subject
+        this.subject.attach(this)
+    }
+    update(){
+        console.log(`${this.name} update, state: ${this.subject.getStatr()}`)
+    }
+}
+
+let s = new Subject()
+let o1 = new Observer('o1',s)
+let o2 = new Observer('o2',s)
+let o3 = new Observer('o3',s)
+s.setState(1)
+s.setState(2)
+s.setState(3)
+```
+
 ### 场景
+
+* 网页事件绑定
+
+```html
+<button id="btn1">btn</button>
+<script>
+    $('#btn1').click(function(){
+        console.log(1)
+    })
+    $('#btn1').click(function(){
+        console.log(2)
+    })
+    $('#btn1').click(function(){
+        console.log(3)
+    })
+</script>
+```
+* `Promise`
+```js
+function LoadImg(src){
+    let permise = new Promise(function(resolve,reject){
+        let img = document.createElement('img')
+        img.onload = function(){
+            resolve(img)
+        }
+        img.onerror = function(){
+            rejcet('图片加载失败')
+        }
+        img.src = src
+    })
+    return promise
+}
+
+let src = 'https://www/imooc.com/static/img/index/logo_new.png'
+let result = loadImg(src)
+result.then(function(img){
+    console.log('width: ',img.width)
+    return img
+}).then(function(img){
+    console.log('height: ',img.height)
+})
+```
+
+* `jQuery callbacks`
+```js
+let callBacks = $.Callbacks() // 注意大小写
+callBacks.add(function(info){
+    console.log('fn1', info)
+})
+callBacks.add(function(info){
+    console.log('fn2', info)
+})
+callBacks.add(function(info){
+    console.log('fn3', info)
+})
+callBacks.fire('go') // 触发三次
+callBacks.fire('fire') // 触发三次
+```
+
+* `nodejs` 自定义事件
+```js
+const EventEmitter = require('events').EventEmitter
+
+const emitter1 = new EventEmitter()
+emitter1.on('some',()=>{
+    // 监听 some 事件
+    console.log('some event is occured 1')
+})
+emitter1.on('some',()=>{
+    // 监听 some 事件
+    console.log('some event is occured 2')
+})
+// 触发 some 事件
+emitter1.emit('some')
+```
+```js
+const EventEmitter = require('events').EventEmitter
+const emitter = new EventEmitter()
+emitter.on('showName', name =>{
+    console.log('event occured', name)
+})
+emitter.emit('showName', 'zhangsan') // emit 也可以传递参数过去 
+```
+```js
+const EventEmitter = require('events').EventEmitter
+// 任何构造函数都可以继承 EventEmitter 的方法 on emit
+class Dog extends EventEmitter {
+    constructor(name){
+        super()
+        this.name = name
+    }
+}
+let simon = new Dog('simon')
+simon.on('bark', function(){
+    console.log(this.name, ' barked')
+})
+setInterval(()=>{
+    simon.emit('bark')
+}, 500)
+```
+```js
+// Stream 用到了自定义事件
+const fs = require('fs'),
+    readStream = fs.createReadStream('./data/big.txt') // 读取文件的 Stream
+
+let length = 0
+readStream.on('data',function(chunk){
+    length += chunk.toString().length
+})
+readStream.on('end',function(){
+    console.log(length)
+})
+```
+```js
+// readline 用到了自定义事件
+const readline = require('readline'),
+    fs = require('fs')
+
+let rl = readline.createInterface({
+    input: fs.createReadStream('./data/big.txt')
+})
+let lineNum = 0
+rl.on('line',function(line){
+    lineNum++
+})
+rl.on('close', function(){
+    console.log('lineNum', lineNum)
+})
+```
+
+> 其他场景
+* `nodejs` 中处理 `http` 请求；多进程通讯
+```js
+//*** 处理 http 请求
+function serverCallback(req, res){
+    let method = req.method.teLowerCase() // 获取请求的方法
+    if(method === 'get'){
+        // 处理 get 请求
+    }
+    if（method === 'post'){
+        // 接受 post 请求的内容
+        let data = ''
+        req.on('data',function(chunk){
+            // "一点一点" 接收内容
+            data += chunk.toString()
+        })
+        req.on('end',function(){
+            // 接收完毕，将内容输出
+            res.writeHead(200,{'Content-type': 'text/html'})
+            res.write(data)
+            res.end()
+        })
+    }
+}
+```
+```js
+//*** 多进程通信
+// parent.js
+let cp = require('child_process')
+let n = cp.for('./sub.js')
+n.on('message',function(m){
+    console.log('PARENT got message: ' + m)
+})
+n.send({hello: 'workd'})
+// sub.js
+process.on('message',function(m){
+    console.log('CHILD got message: ' + m)
+})
+process.send({foo:'bar'})
+```
+* `vue` 和 `React` 组件生命周期触发
+```jsx
+// React 组件
+class login extends React.Component {
+    constructor(props,context){
+        super(props,contest)
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+        this.sate = {
+            checking: true
+        }
+    }
+    render() {
+        return (
+            <div>
+                <Header title="登陆" history={this.props.history} />
+            </div>
+        )
+    }
+    componentDidMount(){
+        // 判断是否已登陆
+        this.doCheck()
+    }
+}
+```
+* vue watch
+```js
+let vm = new Vue({
+    el: '#demo',
+    data:{
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+    },
+    watch:{
+        firstName: function(val){
+            this.fullName = val + ' ' + this.lastName
+        },
+        lastName: function(val){
+            this.fullName = this.firstName + ' ' + val
+        }
+    }
+})
+```
+
 ### 总结
+
+> 设计原则验证
+* 主题和观察者分离，不是主动触发 而是被动监听，两者解耦
+* 符合开放封闭原则
 
 
 <h2 id="iterator-pattern">迭代器模式 *</h2>
