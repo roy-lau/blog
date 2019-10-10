@@ -2,9 +2,6 @@
   "name": "vuepress-theme-material",
   "main": "index.js",
   "devDependencies": {
-    "vuepress": "^1.0.0-rc.1"
-  },
-  "dependencies": {
-    "vue-material": "^1.0.0-beta-11"
+    "vuepress": "^1.0.0"
   }
 }
