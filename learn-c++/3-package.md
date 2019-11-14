@@ -873,7 +873,7 @@ private:
 };
 ```
 
-<img src="./constructor.png" alt="构造函数总结" />
+<img src="./imgs/constructor.png" alt="构造函数总结" />
 
 ```C++
 #include <iostream>

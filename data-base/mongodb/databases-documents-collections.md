@@ -163,17 +163,17 @@ dbname.system.*
 
 |集合命名空间 				|描述
 |---------------------------|-------------------------------
-|dbname.system.namespaces 	|列出所有名字空间。
-|dbname.system.indexes 		|列出所有索引。
-|dbname.system.profile 		|包含数据库概要`(profile)`信息。
-|dbname.system.users 		|列出所有可访问数据库的用户。
-|dbname.local.sources 		|包含复制对端`（slave）`的服务器信息和状态。
+|`dbname.system.namespaces` 	|列出所有名字空间。
+|`dbname.system.indexes` 		|列出所有索引。
+|`dbname.system.profile` 		|包含数据库概要`(profile)`信息。
+|`dbname.system.users` 			|列出所有可访问数据库的用户。
+|`dbname.local.sources` 		|包含复制对端`（slave）`的服务器信息和状态。
 
 对于修改系统集合中的对象有如下限制。
 
-在`{{system.indexes}}`插入数据，可以创建索引。但除此之外该表信息是不可变的(特殊的`drop index`命令将自动更新相关信息)。
+在`system.indexes`插入数据，可以创建索引。但除此之外该表信息是不可变的(特殊的`drop index`命令将自动更新相关信息)。
 
-`{{system.users}}`是可修改的。 `{{system.profile}}`是可删除的。
+`system.users`是可修改的。 `system.profile`是可删除的。
 
 #### MongoDB 数据类型
 

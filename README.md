@@ -9,6 +9,7 @@
 * [数据库](./data-base)
 	- [mysql](./data-base/mysql)
 	- [mongodb](./data-base/mongodb)
+	- [SQLserver](./data-base/sql-server)
 	- [redis](./data-base/redis)
 * [编辑器](./editor)
 	- [sublime text](./editor/subline_text)
