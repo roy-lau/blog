@@ -7,4 +7,5 @@
 
 * 数据库设计
 	* [排序规则](sql-server/collation.md)
-	* [数据库](sql-server/relational-databases.md)
+	* [数据库——管理](sql-server/relational-databases/management.md)
+	* [数据库——移动](sql-server/relational-databases/move.md)

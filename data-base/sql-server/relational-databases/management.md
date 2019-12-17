@@ -1,4 +1,4 @@
-# 						数据库
+# 						数据库 —— 管理
 
 ## 创建数据库
 
@@ -257,4 +257,49 @@ GO
 ```SQL
 DBCC SHRINKDATABASE (UserDB, 10);
 GO
+```
+
+## 收缩文件
+
+### 收缩数据或日志文件
+
+> 使用 DBCC SHRINKFILE 将 UserDB 数据库中名为 DataFile1 的数据文件的大小收缩到 7 MB。
+
+```SQL
+USE UserDB;
+GO
+DBCC SHRINKFILE (DataFile1, 7);
+GO
+```
+
+## 兼容级别
+
+### 查看数据库的兼容级别
+
+
+```SQL
+USE AdventureWorks2012;  
+GO  
+SELECT compatibility_level  
+FROM sys.databases WHERE name = 'AdventureWorks2012';  
+GO
+```
+
+### 更改数据库的兼容级别
+
+> 此示例将 AdventureWorks2012 数据库的兼容级别更改为 120，这是 SQL Server 2014 (12.x) 的兼容级别。
+
+```
+ALTER DATABASE AdventureWorks2012  
+SET COMPATIBILITY_LEVEL = 120;  
+GO
+```
+
+## 创建用户定义的数据类型别名
+
+> 基于系统提供的 varchar 数据类型创建一个数据类型别名。 ssn 数据类型别名用于那些保存 11 位数字的社会保障号 (999-99-9999) 的列。 该列不能为 NULL。
+
+```SQL
+CREATE TYPE ssn
+FROM varchar(11) NOT NULL;
 ```
