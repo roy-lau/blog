@@ -9,6 +9,7 @@
 | nginx |[安装](./nginx/install.md)| [配置](./nginx/config.md) | [用法](./nginx) |
 | yum | / | / | [用法](./yum) |
 | scp | / | / | [用法](./scp) |
+| iptables | / | / | [用法](./iptables) |
 | ssh | / | [配置](./ssh/config.md) | [用法](./ssh) |
 | MySQl |[安装](./install/mysql.md)| / | / |
 | MongoDB |[安装](./install/mongodb.md)| / | / |
