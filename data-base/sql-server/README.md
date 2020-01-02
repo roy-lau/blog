@@ -357,3 +357,11 @@ SELECT NVL(NULL,0)
 SELECT IFNULL(NULL,0)
 SELECT COALESCE(NULL,0)
 ```
+
+### 新增一列
+
+> 新增一列，并让其自动累加
+
+```SQL
+ALTER TABLE table_name ADD column_name INT IDENTITY ( 1, 1 ) NOT NULL
+```
