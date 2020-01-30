@@ -1598,6 +1598,64 @@ let vm = new Vue({
 
 
 <h2 id="iterator-pattern">迭代器模式 *</h2>
+
+### 介绍
+
+* 顺序访问一个集合
+* 访问者无需知道集合的内部结构（封装）
+* 没有较为合适的例子，用常用的 jQuery 演示一下  
+
+### 演示
+
+* jQuery
+
+```html
+<p>jquery each</p>
+<p>jquery each</p>
+<p>jquery each</p>
+```
+```js
+var arr = [1,2,3]
+var nodeList = document.getElementsByTagName('p')
+var $p = $('p')
+
+// 要对这三个变量进行遍历，有三种遍历方法
+// 第一
+arr.forEach(function(item){
+    console.log(item)
+})
+// 第二
+var i, len = nodeList.length
+for(i = 0;i<len; i++){
+    console.log(nodeList[i])
+}
+// 第三
+$p.each(function(key,p){
+    console.log(key,p)
+})
+
+
+// 封装
+function each(data){
+    var $data = $(data) // 生成迭代器
+    $data.each(funciton(key, val){
+        console.log(key, val)
+    })
+}
+
+// 用封装后的函数，顺序遍历有序集合
+each(arr)
+each(nodeList)
+each($p)
+
+```
+
+### 场景
+
+### 总结
+
+
+
 <h2 id="chain-of-responsibility-pattern">职责联模式 </h2>
 <h2 id="command-pattern">命令模式 </h2>
 <h2 id="memento-pattern">备忘录模式 </h2>
