@@ -1607,7 +1607,13 @@ let vm = new Vue({
 
 ### 演示
 
-* jQuery
+<img src="./imgs/iterator-pattern-1.png" title="传统UML类图（迭代器模式）" alt="传统UML类图（迭代器模式）" />
+<img src="./imgs/iterator-pattern-2.png" title="简化UML类图（迭代器模式）" alt="简化UML类图（迭代器模式）" />
+
+
+### 场景
+
+* jQuery each
 
 ```html
 <p>jquery each</p>
@@ -1647,19 +1653,346 @@ function each(data){
 each(arr)
 each(nodeList)
 each($p)
-
 ```
 
-### 场景
+* ES6 Iterator 1
+
+```js
+// 创建一个迭代器类
+class Iterator {
+    constructor(container){
+        this.list = container.list
+        this.index = 0
+    }
+    // 下一项
+    next(){
+        if(this.hasNext()){
+            return this.list[this.index++]
+        }
+        return null
+    }
+    // 判断是否还有下一项
+    hasNext(){
+        if(this.index === this.list.length) return false
+        return true
+    }
+}
+// 创建一个容器类
+class Container {
+    constructor(list){
+        this.list = list
+    }
+    // 生成遍历器
+    getIterator(){
+        return new Iterator(this)
+    }
+}
+
+// 测试代码
+let arr = [1,2,3,4,5,6]
+let container = new Container(arr)
+let iterator = container.getIterator()
+while(iterator.hasNext()){
+    console.log(iterator.next())
+}
+```
+
+* ES6 Iterator 2
+
+```js
+// 使用 Symbol.iterator 封装 each 迭代方法
+function each(data){
+    // 生成迭代器
+    let Iterator = data[Symbol.iterator]()
+    
+    /* 
+    console.log(iterator.next()) // 有数据时返回 {value:1, done: false}
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next())
+    console.log(iterator.next()) // 没有数据时返回 {value:undefined, done:true}
+    */
+    let item = {done: false}
+    while(!item.done){
+        item = iterator.next()
+        if(!item.done){
+            console.log(item.value)
+        }
+    }
+}
+
+/**
+    `Symbol.iterator` 并不是人人都知道，也不是每个人都需封装一个 `each` 方法
+    因此有了 `for……of` 语法
+*/
+function each(data){
+    // 带有遍历器特性的对象： data[Symbol.iterator] 有值，才能 for……of
+    for(let item of data){
+        console.log(item)
+    }
+}
+
+// 测试代码
+let arr = [1,2,3,4,5,6]
+let nodeList = document.getElementsByTagName('p')
+let m = new Map()
+m.set('a',100)
+m.set('b',200)
+
+each(arr)
+each(nodeList)
+each(m)
+```
+
+> ES6 Iterator 为何存在？
+
+* ES6 语法中，有序集合的数据类型已经很多
+* `Array` `Map` `Map` `String` `TypedArray` `arguments` `NodeList` 
+* 需要有一个统一的遍历接口来遍历所有的数据类型
+
+_注意：_　Object 不是有序集合，可以使用　Map 代替
+
+> ES6 Iterator 是什么？
+
+* `Array` `Map` `Map` `String` `TypedArray` `arguments` `NodeList` 以上数据类型都有　`[Symbol.iterator]` 属性
+* 属性值是函数，执行函数返回一个迭代器
+* 迭代器有　`next` 方法可以顺序迭代子元素
+* 可运行　`Array.prototype[Symbol.iterator]` 来测试
+
+> ES6 Iterator 与 Generator
+
+* `Iterator` 的价值不限于上述几种类型
+* 还有 `Generator` 函数的使用
+* 只要返回的数据符合 `Iterator` 接口的要求
+* 可使用 `Iterator` 语法，这就是迭代器模式
+
 
 ### 总结
 
+> 设计原则验证
+
+* 迭代器对象和目标对象分离
+* 迭代器将使用者与目标对象隔离开
+* 符合开放封闭原则
 
 
 <h2 id="chain-of-responsibility-pattern">职责联模式 </h2>
 <h2 id="command-pattern">命令模式 </h2>
 <h2 id="memento-pattern">备忘录模式 </h2>
 <h2 id="state-pattern">状态模式 </h2>
+
+### 介绍
+
+* 一个对象有状态变化
+* 每次状态变化都会触发一个逻辑
+* 不能总用 `if……else` 来控制
+
+### 演示
+
+<img src="./imgs/state-pattern-1.png" title="传统UML类图（迭代器模式）" alt="传统UML类图（状态模式）" />
+<img src="./imgs/state-pattern-2.png" title="简化UML类图（迭代器模式）" alt="简化UML类图（状态模式）" />
+
+### 场景
+
+* 交通信号灯不同颜色的变化
+
+```js
+// 状态：红灯，绿灯，黄灯
+class State {
+    constructor(color){
+        this.color = color
+    }
+    handle(context){
+        console.log(`trun to ${this.color} light`)
+        // 设置状态
+        context.setState(this)
+    }
+}
+// 主体
+class Context{
+    constructor(){
+        this.state = null
+    }
+    // 获取状态
+    getState(){
+        return this.state
+    }
+    setState(state){
+        this.state = state
+    }
+}
+
+/** 测试代码 */
+let context = new Context()
+
+let green = new State('green')
+let yellow = new State('yellow')
+let red = new State('red')
+
+// 绿灯亮了
+green.handle(context)
+console.log(context.getState()) // 打印状态
+
+// 黄灯亮了
+yellow.handle(context)
+console.log(context.getState()) // 打印状态
+
+// 红灯亮了
+red.handle(context)
+console.log(context.getState()) // 打印状态
+```
+
+
+* 有限状态机
+    - 有限个状态，以及在这些状态之间的变化
+    - 如交通信号灯
+    - 使用开源 lib： javascript-state-machine
+    - https://github.com/jakesgordon/javascript-state-machine
+
+```js
+import StateMachine from 'javascript-state-machine'
+
+// 初始化状态机模型
+let fsm = new StateMachine({
+    init: '收藏',
+    transitions:[
+        {
+            name: 'doStore',
+            from: '收藏',
+            to: '取消收藏',
+        }, {
+            name: 'deleteStore',
+            from: '取消收藏',
+            to: '收藏',
+        }
+    ],
+    methods:{
+        // 监听执行收藏
+        onDoStore(){
+            alert('收藏成功！') // 可以 post 请求
+            updateText()
+        },
+        // 监听取消收藏
+        onDeleteStore(){
+            alert('已经取消收藏') // 可以 post 请求
+            updateText()
+        }
+    }
+})
+
+let $btn = $('#btn1')
+
+// 按钮点击事件
+$btn.click(function(){
+    if(fsm.is('收藏')){
+        fsm.doStore()
+    }else{
+        fsm.deleteStore()
+    }
+})
+// 更新按钮的文案
+function updateText(){
+    $btn.text(fsm.state)
+}
+// 初始化文案
+updateText()
+```
+
+* 一个简单的 `Promise`
+    - Promise 三种状态： `pending` `fullfilled` `rejected`
+    - `pending` -> `fullfilled` 或者 `pending` -> `rejected`
+    - 不可逆向变化
+
+```js
+import StateMachine from 'javascript-state-machine'
+
+// 状态机模型
+const fsm = new StateMachine({
+    init: 'panding', // 初始化状态
+    transitions: [
+        {
+            name: 'resolve', // 事件名称
+            from: 'pending',
+            to: 'fullfilled'
+        }, {
+            name: 'reject', // 事件名称
+            from: 'pending',
+            to: 'rejected'
+        }
+    ],
+    methods:{
+        // 监听 resolve(成功)
+        onResolve(state,data){
+            // 参数： state - 当前状态示例 data - fsm.resolve(xxx) 执行时传递过来的参数
+            data.successList.forEach(fn => fn())
+        },
+        // 监听 reject(失败)
+        onReject(state,data){
+            // 参数： state - 当前状态示例 data - fsm.reject(xxx) 执行时传递过来的参数
+            data.failList.forEach(fn => fn())
+        }
+    }
+})
+
+// 定义 Promise
+class MyPromise{
+    constructor(fn){
+        this.successList = []
+        this.failList = []
+
+        fn(()=>{
+            // resolve 函数
+            fsm.resolve(this)
+        },()=>{
+            // reject 函数
+            fsm.reject(this)
+        })
+    }
+    then(successFn,failFn){
+        this.successList.push(successFn)
+        this.failList.push(failFn)
+    }
+}
+
+/** 测试代码 */
+
+function loadImg(src){
+    const promise = new Promise(function (resolve,reject){
+        let img = document.createElement('img')
+        img.onload = function(){
+            resolve(img)
+        }
+        img.onerror = function(){
+            reject()
+        }
+        img.src = src
+    })
+    return promise
+}
+
+let src = 'https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white-c4d7df0a00.png'
+let result = loadImg(src)
+
+result.then(funciton(){
+    console.log('ok 1')
+}, function(){
+    console.log('fail 1')
+})
+result.then(function(){
+    console.log('ok 2')
+},function(){
+    console.log('fail 2')
+})
+```
+
+### 总结
+
+> 设计原则验证
+
+* 将状态对象和主体对象分离，状态的变化逻辑单独处理
+* 符合开放封闭原则
+
+
 <h2 id="visitor-pattern">访问者模式 </h2>
 <h2 id="mediator-pattern">中介者模式 *</h2>
 <h2 id="interpreter-pattern">解释器模式 </h2>
