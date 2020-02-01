@@ -815,15 +815,61 @@ login2.hide() // 这里是可以将login1的登陆框隐藏掉的，因为两个
 ### 总结
 
 > 设计原则验证
+
 * 单例模式符合单一职责原则，只实例化唯一的对象。
 * 单例模式没法具体开放封闭原则，但是绝不违反开放封闭原则。
 
 <h2 id="prototype-pattern">原型模式</h2>
 
 ### 介绍
+
+* `clone` 自己，生成一个新对象
+* `java` 默认有 `clone` 接口，不用自己实现
+
 ### 演示
+
+略
+
 ### 场景
+
+* js 中原型模式的应用 -- Object.create
+
+```js
+// `Object.create` 用到了原型模式的思想
+// 基于一个原型创建对象
+var prototype = {
+    getName: function(){
+        return this.first + ' ' + this.last
+    },
+    say: function(){
+        console.log('hello')
+    }
+}
+
+// 基于原型创建 x
+var x = Object.create(prototype)
+x.first = "A"
+x.last = "B"
+console.log(x.getName())
+x.say()
+
+// 基于原型创建 y
+var y = Object.create(prototype)
+y.first = "C"
+y.last = "D"
+console.log(y.getName())
+y.say()
+```
+
+
 ### 总结
+
+> 原型模式对比 `js` 中的原型 `prototype`
+
+* `prototype` 可以理解为 `ES6 class` 的一种底层原理
+* 而 `class` 是实现面向对象的基础，并不是服务于某个模式
+* 若干年后 `ES6` 全面普及，人们可能会忽略掉 `prototype`
+* 但是 `Object.create` 却会长久存在
 
 <hr />
 
@@ -1306,12 +1352,117 @@ bindEvent(elem, 'click', fn)
 
 
 <h2 id="bridge-pattern">桥接模式</h2>
+
+### 介绍
+
+* 用于把抽象化于实现化解耦
+* 使得二者可以独立变化
+
+### 演示
+
+略
+
+### 场景
+
+* 混合方式
+> 画四个形状，每个都染不同的颜色
+<img src="./imgs/bridge-pattern-1.png" title="演示图1（桥接模式）" alt="演示图1（桥接模式）" />
+
+```js
+class ColorShape{
+    yellowCircle(){
+        console.log('yellow circle')
+    }
+    redCircle(){
+        console.log('red circle')
+    }
+    yellowTriangle(){
+        console.log('yellow triangle')
+    }
+    redTriangle(){
+        console.log('red triangle')
+    }
+}
+
+// 测试
+let test = new ColorShape()
+test.yellowCircle()
+test.redCircle()
+test.yellowTriangle()
+test.redTriangle()
+```
+
+
+* 抽象方式
+> 先画形状，再染颜色
+
+<img src="./imgs/bridge-pattern-2.png" title="演示图2（桥接模式）" alt="演示图2（桥接模式）" />
+
+```js
+class Color {
+    constructor(name){
+        this.name = name
+    }
+}
+class Shape {
+    constructor(name, color){
+        this.name = name
+        this.color = color
+    }
+    draw(){
+        console.log(`${this.color.name} ${this.name}`)
+    }
+}
+
+// 测试代码
+let red = new Color('red')
+let yellow = new Color('yellow')
+let circle = new Color('circle',red)
+circle.draw()
+let triangle = new Shape('triangle',yellow)
+triangle.draw()
+```
+
+### 总结
+
+> 设计原则验证
+* 抽象和实现分离，解耦
+* 符合开放封闭原则
+
+
 <h2 id="composite-pattern">组合模式</h2>
+
+### 介绍
+### 演示
+### 场景
+### 总结
+
 <h2 id="flyweight-pattern">享元模式</h2>
+
+### 介绍
+### 演示
+### 场景
+### 总结
+
+
 <hr />
 
 <h2 id="strategy-pattern">策略模式 </h2>
+
+
+### 介绍
+### 演示
+### 场景
+### 总结
+
+
 <h2 id="template-method-pattern">模板方法模式 </h2>
+
+### 介绍
+### 演示
+### 场景
+### 总结
+
 <h2 id="observer-pattern">观察者模式 *</h2>
 
 ### 介绍
