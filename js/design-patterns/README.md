@@ -1360,9 +1360,6 @@ bindEvent(elem, 'click', fn)
 
 ### 演示
 
-略
-
-### 场景
 
 * 混合方式
 > 画四个形状，每个都染不同的颜色
@@ -1423,6 +1420,10 @@ let triangle = new Shape('triangle',yellow)
 triangle.draw()
 ```
 
+### 场景
+
+略
+
 ### 总结
 
 > 设计原则验证
@@ -1433,17 +1434,100 @@ triangle.draw()
 <h2 id="composite-pattern">组合模式</h2>
 
 ### 介绍
+
+* 生成树形结构，表示 "整体-部分" 关系
+* 让整体和部分都具有一致的操作方式
+
 ### 演示
+
+* js 经典应用中，未找到复杂的数据类型来演示
+
+* 虚拟 DOM 中的 vnode 是这种类型，但数据类型较为简单
+    - 整体和单个节点的操作是一致的
+    - 整体和单个节点的数据结构也保持一致
+
+```html
+<div id="div1" class="container">
+    <p>123</p>
+    <p>456</p>
+</div>
+```
+上面的 dom 转换为 json 结构如下：
+```json
+{
+    "tag": "div",
+    "attr": {
+        "id": "div1",
+        "className": "container"
+    },
+    "children": [
+        {
+            "tag": "p",
+            "attr": {},
+            "children": ["123"]
+        },{
+            "tag": "p",
+            "attr": {},
+            "children": ["456"]
+        }
+    ]
+}
+```
+
+* js 实现一个菜单，不算经典应用，与业务相关
+
+
+
 ### 场景
+
+略
+
 ### 总结
+
+> 设计原则验证
+* 将整体和单个接的的操作抽象出来
+* 符合开放封闭原则
 
 <h2 id="flyweight-pattern">享元模式</h2>
 
 ### 介绍
+
+* 共享内存（主要考虑内存，而非效率）
+* 相同的数据，共享使用
+
 ### 演示
+
+```html
+<!-- 无限下拉列表，将事件代理到高层节点上 -->
+<!-- 如果都绑定到 `<a>` 标签，对内存开销太大 -->
+<div id="warp">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <!-- 无限下拉列表 -->
+</div>
+<script>
+    var $warp = document.getElementById("warp")
+    $warp.addEventListrner("click",function(e){
+        var target = e.target
+        if(e.nodeName === "A"){
+            alert(target.innerHTML)
+        }
+    })
+</script>
+```
+
 ### 场景
+
+略
+
 ### 总结
 
+> 设计原则验证
+* 将相同的部分抽象出来
+* 符合开放封闭原则
 
 <hr />
 
