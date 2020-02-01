@@ -1535,15 +1535,95 @@ triangle.draw()
 
 
 ### 介绍
+
+* 不同策略分开处理
+* 避免出现大量 `if……else` 或者 `switch……case` 
+
 ### 演示
+
+```js
+// if……else 写法
+class User {
+    constructor(type){
+        this.type = type
+    }
+    buy(){
+        if (this.type === 'ordinary'){
+            console.log('普通用户购买')
+        }else if (this.type === 'member'){
+            console.log('会员用户购买')
+        }else if (this.type === 'vip'){
+            console.log('vip 用户购买')
+        }
+    }
+}
+
+// 测试代码
+let u1 = new User('ordinary')
+u1.buy()
+let u2 = new User('member')
+u2.buy()
+let u3 = new User('vip')
+u3.buy()
+
+// 策略模式写法
+class OrdinaryUser{
+    buy(){
+        console.log('普通用户购买')
+    }
+}
+class MemberUser{
+    buy(){
+        console.log('会员用户购买')
+    }
+}
+class VipUser{
+    buy(){
+        console.log('vip 用户购买')
+    }
+}
+// 测试代码
+let u1 = new OrdinaryUser()
+u1.buy()
+let u2 = new MemberUser()
+u2.buy()
+let u3 = new VipUser()
+u3.buy()
+```
 ### 场景
+
+略
+
 ### 总结
 
+> 设计原则验证
+* 不同策略，分开处理，而不是混合在一块
+* 符合开放封闭原则
 
 <h2 id="template-method-pattern">模板方法模式 </h2>
 
 ### 介绍
 ### 演示
+
+```js
+class Action {
+    handle(){
+        handle1()
+        handle2()
+        handle3()
+    }
+    handle1(){
+        console.log(1)
+    }
+    handle2(){
+        console.log(2)
+    }
+    handle3(){
+        console.log(3)
+    }
+}
+```
+
 ### 场景
 ### 总结
 
@@ -2012,8 +2092,191 @@ _注意：_　Object 不是有序集合，可以使用　Map 代替
 
 
 <h2 id="chain-of-responsibility-pattern">职责联模式 </h2>
+
+
+### 介绍
+
+* 一步操作可能分为多个职责角色来完成
+* 把这些角色都分开，然后用一个链串起来
+* 将发起者和各个处理者进行隔离
+
+### 演示
+
+```js
+// 请假审批，需要组长审批/经理审批/最后总监审批
+class Action {
+    constructor(name){
+        this.name = name
+        this.nextAction = null
+    }
+    setNextAction(action){
+        this.nextAction = action
+    }
+    handle(){
+        console.log(`${this.name} 审批`)
+        if(this.nextAction !== null){
+            this.nextAction.handle()
+        }
+    }
+}
+
+// 测试代码
+let a1 = new Action('组长')
+let a2 = new Action('经理')
+let a3 = new Action('总监')
+a1.setNextAction(a2)
+a2.setNextAction(a3)
+a1.handle()
+```
+
+### 场景
+
+* 职责链模式和业务结合较多，js 中能联想到链式操作
+* jQuery 的链式操作，Promise.then 的链式操作
+
+### 总结
+
+> 设计原则验证
+* 发起者于各个处理者进行隔离
+* 符合开放封闭原则
+
 <h2 id="command-pattern">命令模式 </h2>
+
+### 介绍
+
+* 执行命令时，发布者和执行者分开
+* 中间加入命令对象，做为中转站
+<img src="./imgs/command-pattern-1.png" title="命令模式图" alt="命令模式图" />
+
+### 演示
+
+```js
+// 接收者
+class Receiver {
+    exec(){
+        console.log('执行')
+    }
+}
+// 命令者
+class Command {
+    constructor(receiver){
+        this.receiver = receiver
+    }
+    cmd(){
+        console.log('触发命令')
+        this.receiver.exec()
+    }
+}
+// 触发者
+class Invoker {
+    constructor(command){
+        this.command = command
+    }
+    invoke(){
+        console.log('开始')
+        this.command.cmd()
+    }
+}
+
+// 测试代码
+// 士兵
+let soldier = new Receiver()
+// 小号手
+let trumpeter = new Command(soldier)
+// 将军
+let general = new Invoker(trumpeter)
+grneral.invoke()
+```
+
+### 场景
+
+* 网页富文本编辑器操作，浏览器封装一个命令对象
+* `document.execCommand('bold')` 加粗
+* `document.execCommand('undo')` 撤销
+
+### 总结
+
+> 设计原则验证
+* 命令对象与执行对象分开，解耦
+* 符合开放封闭原则
+
 <h2 id="memento-pattern">备忘录模式 </h2>
+
+### 介绍
+
+* 随时记录一个对象的状态变化
+* 随时可以恢复之前的某个状态（如撤销功能）
+
+### 演示
+
+```js
+// 备忘类
+class Memento{
+    constructor(content){
+        this.content = content
+    }
+    getContent(){
+        return this.content
+    }
+}
+// 备忘列表
+class CareTaker {
+    constructor(){
+        this.list = []
+    }
+    add(memento){
+        this.list.push(memento)
+    }
+    get(index){
+        return this.list[index]
+    }
+}
+// 编辑器
+class Editor{
+    constructor(){
+        this.content = null
+    }
+    setContent(content){
+        this.content = content
+    }
+    getContent(){
+        return this.content
+    }
+    saveContentToMemento(){
+        return new Memento(this.content)
+    }
+    getContentFromMemento(memento){
+        this.content = memento.getContent()
+    }
+}
+
+// 测试代码
+let editor = new Editor()
+let careTaker = new CareTaker()
+editer.serContent("one")
+editer.serContent("two")
+careTaker.add(editor.saveContentToMemento()) // 储存备忘录
+editer.serContent("three")
+careTaker.add(editor.saveContentToMemento()) // 储存备忘录
+editer.serContent("four")
+
+console.log(editor.getContent())
+editor.getContentFromMemento(careTaker.get(1)) // 撤销
+console.log(editor.getContent())
+editor.getContentFromMemento(careTaker.get(0)) // 撤销
+console.log(editor.getContent())
+```
+
+### 场景
+
+同上
+
+### 总结
+
+> 设计原则验证
+* 状态对象与使用者分开，解耦
+* 符合开放封闭原则
+
 <h2 id="state-pattern">状态模式 </h2>
 
 ### 介绍
@@ -2229,5 +2492,87 @@ result.then(function(){
 
 
 <h2 id="visitor-pattern">访问者模式 </h2>
+
+### 介绍
+
+* 将数据操作和数据结构进行分离
+* 使用场景不多
+
+### 演示
+### 场景
+### 总结
+
 <h2 id="mediator-pattern">中介者模式 *</h2>
+
+### 介绍
+
+<img src="./imgs/mediator-pattern-1.png" title="中介者模式-概念" alt="中介者模式-概念" />
+
+### 演示
+
+```js
+class Mediator{
+    constructor(a,b){
+        this.a = a
+        this.b = b
+    }
+    setA(){
+        let number = this.b.number
+        this.a.setNumber(number * 100)
+    }
+    setB(){
+        let numver = this.a.number
+        this.b.setNumber(number / 100)
+    }
+}
+class A {
+    constructor(){
+        this.number = 0
+    }
+    setNumber(num,m){
+        this.number = num
+        if(m) m.setB()
+    }
+}
+class B {
+    constructor(){
+        this.number = 0
+    }
+    setNumber(num,m){
+        this.number = num
+        if(m) m.setA()
+    }
+}
+
+// 测试代码
+let a = new A()
+let b = new B()
+let m = new Mediator(a,b)
+a.setNumber(100,m)
+console.log(a.number,b.number)
+b.setNumber(100,m)
+console.log(a.number,b.number)
+```
+
+### 场景
+
+同上
+
+### 总结
+
+> 设计原则验证
+* 将各关联对象通过中介者隔离
+* 符合开放封闭原则
+
 <h2 id="interpreter-pattern">解释器模式 </h2>
+
+### 介绍
+
+* 描述语言语法如何定义，如何解释和编译
+* 用于专业场景
+
+### 演示
+### 场景
+### 总结
+
+模板模式，访问者模式，解释器模式。不常用也不太重要所以不用重点关注。23 种设计模式不可能的所有的模式都是重点，不同的设计模式在不同的场景和业务下重要性和使用频率各不相同。
