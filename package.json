@@ -4,7 +4,9 @@
   "description": "a semple lau press blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node index.js dev",
+    "build": "node index.js build",
+    "clean": "rm -rf ./blog"
   },
   "repository": {
     "type": "git",
