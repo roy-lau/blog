@@ -1,35 +1,33 @@
 {
-  "name": "laupress",
+  "name": "blog-dev-gulp",
   "version": "1.0.0",
-  "description": "a semple lau press blog",
+  "description": "gulp blog pass",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js dev",
-    "build": "node index.js build",
-    "clean": "rm -rf ./blog"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roy-lau/blog.git"
   },
-  "keywords": [
-    "blog",
-    "pug",
-    "press",
-    "webpack",
-    "markdown"
-  ],
-  "author": "roylau",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/roy-lau/blog/issues"
   },
   "homepage": "https://github.com/roy-lau/blog#readme",
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0",
-    "markdown-it": "^10.0.0",
-    "webpack": "^4.41.0",
-    "webpack-chain": "^6.0.0",
-    "webpack-dev-server": "^3.8.2"
+    "@babel/core": "^7.8.4",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-format-md": "^2.0.0",
+    "gulp-if": "^3.0.0",
+    "gulp-markdown": "^5.0.1",
+    "gulp-markdown-it": "^0.1.1",
+    "gulp-md5-plus": "^1.0.3",
+    "gulp-uglify": "^3.0.2",
+    "jsonfile": "^5.0.0"
   }
 }
