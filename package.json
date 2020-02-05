@@ -10,6 +10,6 @@
   "dependencies": {
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
-    "vuetify": "^1.5.14"
+    "vuetify": "^2.2.9"
   }
 }
