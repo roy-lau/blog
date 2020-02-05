@@ -21,11 +21,7 @@
     background-color $codeBgColor
     border-radius 6px
     overflow auto
-    code
-      color #fff
-      padding 0
-      background-color transparent
-      border-radius 0
+
 
 div[class*="language-"]
   position relative
@@ -100,8 +96,6 @@ div[class*="language-"]
 
 
 
-
-
 for lang in $codeLang
   div{'[class~="language-' + lang + '"]'}
     &:before
@@ -142,4 +136,63 @@ div[class~="language-sql"]:before
   content "sql"
 
 
-@import '~prismjs/themes/prism-okaidia.css'
+
+
+
+// @import '~prismjs/themes/prism-coy.css'
+// @import '~prismjs/themes/prism-dark.css'
+// @import '~prismjs/themes/prism-funky.css'
+// @import '~prismjs/themes/prism-okaidia.css'
+// @import '~prismjs/themes/prism-solarizedlight.css'
+// @import '~prismjs/themes/prism-tomorrow.css'
+// @import '~prismjs/themes/prism-twilight.css'
+{$contentClass}
+  pre {
+    code {
+      margin: 0;
+      padding: 0;
+      background-color: transparent ;
+      white-space: pre;
+      font-size: .85em;
+      font-weight: 400;
+      color: #03A9F4;
+      .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
+          color: #C678DD;
+      }
+      .token.boolean, .token.number, .token.function {
+          color: #61AFEF;
+      }
+      .token.punctuation {
+          color: #FFD700;
+      }
+      .token.attr-name,.token.deleted,.token.namespace,.token.tag {
+        color: #e06c75;
+      }
+      .token.attr-value,.token.char,.token.regex,.token.string,.token.variable {
+        color: #69B779;
+      }
+      .token.property {
+        color: #E2DDDD
+      }
+      .token.function-variable.function {
+        color: #49f581;
+      }
+      .token.function-name {
+        color: #6196cc
+      }
+      .token.operator {
+        color: #DA6FBC;
+      }
+      .token.boolean,.token.function,.token.number {
+        color: #f08d49;
+      }
+      .token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog {
+        color: #999
+      }
+
+      &:before, &:after {
+        content: '';
+        letter-spacing: 0;
+      }
+    }
+  }

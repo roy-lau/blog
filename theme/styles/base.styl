@@ -75,15 +75,30 @@ kbd
   border-radius 0.15rem
   padding 0 0.15em
 
-blockquote
-  font-size .9rem
-  color darken($accentColor, 50%)
-  border-left: 3px solid $accentColor;
-  margin 0.5rem 0
-  padding .25rem 0 .25rem 1rem
+// blockquote
+//   font-size .9rem
+//   color darken($accentColor, 50%)
+//   border-left: 3px solid $accentColor;
+//   margin 0.5rem 0
+//   padding .25rem 0 .25rem 1rem
 
-  & > p
-    margin 0
+//   & > p
+//     margin 0
+
+
+
+// 覆盖 引用块
+blockquote
+  color #6a737d
+  border-left .3em solid #dfe2e5
+  padding 0 1rem
+  margin 1rem 0
+  background-color #f6f8fa
+  border-radius 4px
+  p
+    padding .5rem 0
+  footer
+    font-size 80%
 
 ul, ol
   padding-left 1.2em
@@ -130,7 +145,7 @@ code, kbd, .line-number
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
 
 p, ul, ol
-  line-height 1.7
+  line-height 1.2
 
 hr
   border 0
