@@ -1,35 +1,24 @@
 {
-  "name": "laupress",
+  "name": "blog-dev",
   "version": "1.0.0",
-  "description": "a semple lau press blog",
-  "main": "index.js",
+  "description": "",
+  "main": "theme/index.js",
   "scripts": {
-    "dev": "node index.js dev",
-    "build": "node index.js build",
-    "clean": "rm -rf ./blog"
+    "dev":"vuepress dev docs",
+    "build":"vuepress build docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roy-lau/blog.git"
   },
-  "keywords": [
-    "blog",
-    "pug",
-    "press",
-    "webpack",
-    "markdown"
-  ],
-  "author": "roylau",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/roy-lau/blog/issues"
   },
   "homepage": "https://github.com/roy-lau/blog#readme",
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0",
-    "markdown-it": "^10.0.0",
-    "webpack": "^4.41.0",
-    "webpack-chain": "^6.0.0",
-    "webpack-dev-server": "^3.8.2"
+    "vuepress": "^1.3.0"
   }
 }
