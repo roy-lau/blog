@@ -1,28 +1,28 @@
 <template>
-    <header class="deep-purple header-warp" :class="{'h-layout': isLayout}">
-        <v-layout row justify-space-between class="deep-purple ma-0 min-header" :class="{'elevation-5':hasMinHeader }">
-            <v-flex xs1 sm1 md1 lg1 xl1>
+    <header class="deep-purple" :class="{'h-layout': isLayout}">
+        <v-layout align-cneter justify-space-between row class="deep-purple ma-0 min-header" :class="{'elevation-5 fixd':hasMinHeader }">
+            <div>
                 <v-btn flat icon @click.stop="toggleSideBar" color="white" title="切换视图">
                     <v-icon>view_headline</v-icon>
                 </v-btn>
-            </v-flex>
-            <!-- <v-flex xs3> -->
-            <h3 class="white--text text-xs-center top-title" :class="{'side-top':hasMinHeader}" v-text="$title" />
-            <!-- </v-flex> -->
-            <v-flex :class="headerWclass">
+            </div>
+            <div>
+            <h3 class="white--text top-title" :class="{'side-top':hasMinHeader}" v-text="$title" />
+            </div>
+            <div>
                 <v-btn flat icon color="white" title="搜索">
                     <v-icon>search</v-icon>
                 </v-btn>
                 <v-btn flat icon @click.stop="showRssDialog=!showRssDialog" color="white" title="订阅">
                     <v-icon>rss_feed</v-icon>
                 </v-btn>
-            </v-flex>
+            </div>
         </v-layout>
-        <h1 class="white--text text-xs-center header-title" :class="{'show':isLayout&&!hasMinHeader}" v-text="$title" />
+        <h1 class="white--text text-lg-center header-title" :class="{'show':isLayout&&!hasMinHeader}" v-text="$title" />
         <!-- rss 订阅 dialog start -->
         <v-dialog v-model="showRssDialog" max-width="500px">
             <v-card ref="emailForm">
-                <v-card-title>订阅</v-card-title>
+                <v-card-title><h3>订阅</h3></v-card-title>
                 <v-card-text>
                         <a href="https:roy-lau.github.io/blog/rss">https:roy-lau.github.io/blog/rss</a>
                     <v-btn>点击复制链接</v-btn>
@@ -55,7 +55,7 @@ export default {
         },
         // header宽度样式
         headerWclass(){
-             return this.showSideBar ? 'xs1 sm1 md1 lg1 xl1' :'xs3 sm3 md3 lg3 xl3'
+             return this.showSideBar ? 'xs1 sm1 md1 lg1 xl1' :'xs3 sm3 md3 lg2 xl3'
         },
         emailForm() {
             return {
@@ -137,11 +137,6 @@ export default {
 }
 </script>
 <style scoped>
-.header-warp {
-    min-height: 60px;
-    /*transition: all .3s ease;*/
-    padding-top: 0px;
-}
 
 .top-title {
     transition: all .5s ease;
@@ -155,11 +150,12 @@ export default {
 }
 
 .header-title {
+    width: 85%;
     transition: padding-top .5s ease;
 }
 
 .header-title.show {
-    padding-top: 80px;
+    padding-top: 30px;
 }
 
 /*只有在 layout 页面是个这个*/
@@ -168,12 +164,14 @@ export default {
 }
 
 .min-header {
+    transition: box-shadow .8s ease;
+}
+.min-header.fixd {
     position: fixed;
     top: 0;
     z-index: 5;
     width: 100%;
     height: 60px;
-    transition: box-shadow .5s ease;
     /*opacity: .9;*/
 }
 </style>

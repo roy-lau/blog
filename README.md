@@ -1,7 +1,11 @@
-										vuepress 开发分支
+# 										vuepress 开发分支
 
 
+### 技术栈
+
+* [vuepress](https://vuepress.vuejs.org/zh/)
+* [Vuetify](https://vuetifyjs.com/zh-Hans)
 
 > 使用 `vuepress` 开发博客
 
-等 vuepress 版本和 Vuetify 版本稳定了之后再继续开发……
+等 [vuepress](https://vuepress.vuejs.org/zh/) 版本和 [Vuetify](https://vuetifyjs.com/zh-Hans) 版本稳定了之后再继续开发……

@@ -2,9 +2,9 @@
     <v-container fluid grid-list-md class="pa-0" ref="container">
         <v-layout row wrap>
             <!-- 侧边栏(固定定位,其实不占用实际位置) start -->
-            <v-flex md2 lg2 class="pa-0">
+            <!-- <v-flex md2 lg2 class="pa-0"> -->
                 <SideBar :show-side-bar="showSideBar" :Layout="layout" />
-            </v-flex>
+            <!-- </v-flex> -->
             <!-- 侧边栏 end -->
             <!-- 头部 start -->
             <v-flex :class="hcfClass" class="pa-0 side-x">
