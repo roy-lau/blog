@@ -144,16 +144,16 @@ Select * from col where likes>100 AND  likes<200;
 ```
 
 笔记：
-```sql
-$gt -------- greater than  >
+```
+$gt  --------  greater than  >
 
-$gte --------- gt equal  >=
+$gte --------  gt equal  >=
 
-$lt -------- less than  <
+$lt  --------  less than  <
 
-$lte --------- lt equal  <=
+$lte --------  lt equal  <=
 
-$ne ----------- not equal  !=
+$ne  --------  not equal  !=
 
 $eq  --------  equal  =
 ```

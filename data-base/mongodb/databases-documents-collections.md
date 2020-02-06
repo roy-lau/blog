@@ -16,7 +16,7 @@
 
 通过下面图例，可更直观的了解`mongodb`的一些概念
 
-<img src="imgs/Figure-1-Mapping-Table-to-Collection-1.png" alt="MongoDB基本概念" />
+<img src="./imgs/Figure-1-Mapping-Table-to-Collection-1.png" alt="MongoDB基本概念" />
 
 #### 数据库
 
@@ -247,14 +247,14 @@ __日期__
 表示当前距离 Unix新纪元（1970年1月1日）的毫秒数。日期类型是有符号的, 负数表示 1970 年之前的日期.
 
 ```sql
-> var mydate1 = new Date()     //格林尼治时间
+> var mydate1 = new Date()     -- 格林尼治时间
 > mydate1
 ISODate("2018-03-04T14:58:51.233Z")
 > typeof mydate1
 object
 ```
 ```sql
-> var mydate2 = ISODate() //格林尼治时间
+> var mydate2 = ISODate() -- 格林尼治时间
 > mydate2
 ISODate("2018-03-04T15:00:45.479Z")
 > typeof mydate2
