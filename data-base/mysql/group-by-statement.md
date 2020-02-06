@@ -9,7 +9,7 @@
 
 语法
 
-```mysql
+```sql
 SELECT column_name, function(column_name)
 FROM table_name
 WHERE column_name operator value
@@ -18,7 +18,7 @@ GROUP BY column_name;
 
 实例
 
-```mysql
+```sql
 mysql> SET NAMES utf8;							# 指定了客户端和服务器之间传递字符的编码规则为UTF8
 Query OK, 0 rows affected (0.00 sec)
 
@@ -60,7 +60,7 @@ mysql> SET FOREIGN_KEY_CHECKS=1;			# 启用外键约束
 Query OK, 0 rows affected (0.00 sec)
 ```
 导入成功后，执行以下 SQL 语句：
-```mysql
+```sql
 mysql> set names utf8;						# 设置编码
 Query OK, 0 rows affected (0.00 sec)
 
@@ -93,7 +93,7 @@ __使用 WITH ROLLUP__
 
 > `WITH ROLLUP` 可以实现在分组统计数据基础上再进行相同的统计`（SUM,AVG,COUNT…）`。
 > 例如我们将以上的数据表按名字进行分组，再统计每个人登录的次数：
-```mysql
+```sql
 mysql> SELECT name, SUM(singin) as singin_count FROM  employee_tbl GROUP BY name WITH ROLLUP;
 +--------+--------------+
 | name   | singin_count |
@@ -108,13 +108,13 @@ mysql> SELECT name, SUM(singin) as singin_count FROM  employee_tbl GROUP BY name
 
 > 其中记录 `NULL` 表示所有人的登录次数。
 > 我们可以使用 `coalesce` 来设置一个可以取代 `NUll` 的名称，`coalesce` 语法：
-```mysql
+```sql
 select coalesce(a,b,c);
 ```
 
 > 参数说明：如果`a==null`,则选择`b`；如果`b==null`,则选择`c`；如果`a!=null`,则选择`a`；如果`a b c` 都为`null` ，则返回为`null（没意义）`。
 > 以下实例中如果名字为空我们使用总数代替：
-```mysql
+```sql
 mysql> SELECT coalesce(name, '总数'), SUM(singin) as singin_count FROM  employee_tbl GROUP BY name WITH ROLLUP;
 +--------------------------+--------------+
 | coalesce(name, '总数')   | singin_count |

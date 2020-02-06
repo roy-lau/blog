@@ -25,7 +25,7 @@
 `MongoDB`的单个实例可以容纳多个独立的数据库，每一个都有自己的集合和权限，不同的数据库也放置在不同的文件中。
 `"show dbs"` 命令可以显示所有数据的列表。
 
-```mongodb
+```sql
 $ ./mongo
 MongoDB shell version: 3.0.6
 connecting to: test
@@ -35,7 +35,7 @@ test   0.078GB
 >
 ```
 执行`"db"`命令可以显示当前数据库对象或集合。
-```mongodb
+```sql
 $ ./mongo
 MongoDB shell version: 3.0.6
 connecting to: test
@@ -44,7 +44,7 @@ test
 >
 ```
 运行`"use"`命令，可以连接一个指定的数据库。
-```mongodb
+```sql
 > use local
 switched to db local
 > db
@@ -130,7 +130,7 @@ __合法的集合名__
 * 用户创建的集合名字不能含有保留字符。有些驱动程序的确支持在集合名里面包含，这是因为某些系统生成的集合中包含该字符。除非你要访问这种系统创建的集合，否则千万不要在名字里出现`$`。　
 
 如下实例：
-```mongodb
+```sql
 db.col.findOne()
 ```
 
@@ -143,7 +143,7 @@ __capped collections__
 `Capped collections`是高性能自动的维护对象的插入顺序。它非常适合类似记录日志的功能 和标准的`collection`不同，你必须要显式的创建一个`capped collection`， 指定一个`collection`的大小，单位是字节。`collection`的数据存储空间值提前分配的。
 
 要注意的是指定的存储大小包含了数据库的头信息。
-```mongodb
+```sql
 db.createCollection("mycoll", {capped:true, size:100000})
 ```
 
@@ -156,7 +156,7 @@ db.createCollection("mycoll", {capped:true, size:100000})
 #### 元数据
 
 数据库的信息是存储在集合中。它们使用了系统的命名空间：
-```mongodb
+```sql
 dbname.system.*
 ```
 在`MongoDB`数据库中名字空间 `<dbname>.system.*` 是包含多种系统信息的特殊集合`(Collection)`，如下:
@@ -214,7 +214,7 @@ dbname.system.*
 
 由于 `ObjectId` 中保存了创建的时间戳，所以你不需要为你的文档保存时间戳字段，你可以通过 `getTimestamp` 函数来获取文档的创建时间:
 
-```mongodb
+```sql
 > var newObject = ObjectId()
 > newObject.getTimestamp()
 ISODate("2017-11-25T07:21:10Z")
@@ -222,7 +222,7 @@ ISODate("2017-11-25T07:21:10Z")
 
 ObjectId 转为字符串
 
-```mongodb
+```sql
 > newObject.str
 5a1919e63df83ce79df8b38f
 ```
@@ -246,14 +246,14 @@ __日期__
 
 表示当前距离 Unix新纪元（1970年1月1日）的毫秒数。日期类型是有符号的, 负数表示 1970 年之前的日期.
 
-```mongodb
+```sql
 > var mydate1 = new Date()     //格林尼治时间
 > mydate1
 ISODate("2018-03-04T14:58:51.233Z")
 > typeof mydate1
 object
 ```
-```mongodb
+```sql
 > var mydate2 = ISODate() //格林尼治时间
 > mydate2
 ISODate("2018-03-04T15:00:45.479Z")
@@ -263,7 +263,7 @@ object
 这样创建的时间是日期类型，可以使用 JS 中的 Date 类型的方法。
 
 返回一个时间类型的字符串：
-```mongodb
+```sql
 > var mydate1str = mydate1.toString()
 > mydate1str
 Sun Mar 04 2018 14:58:51 GMT+0000 (UTC)
@@ -271,7 +271,7 @@ Sun Mar 04 2018 14:58:51 GMT+0000 (UTC)
 string
 ```
 或者
-```mongodb
+```sql
 > Date()
 Sun Mar 04 2018 15:02:59 GMT+0000 (UTC)
 ```

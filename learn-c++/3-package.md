@@ -30,7 +30,7 @@ this 指针
 
 1、 从栈中实例化
 
-```C++
+```cpp
 class TV{
 public:
 	char name[20];
@@ -50,7 +50,7 @@ int main(void){
 
 2、 从堆中实例化
 
-```C++
+```cpp
 class TV{
 public:
 	char name[20];
@@ -75,7 +75,7 @@ int main(void){
 
 #### 对象成员访问
 
-```C++
+```cpp
 // 单一成员
 int main(void){
 	TV tv;
@@ -94,7 +94,7 @@ int main(void){
 }
 ```
 
-```C++
+```cpp
 // 数组成员
 int main(void){
 	TV tv;
@@ -117,7 +117,7 @@ int main(void){
 
 #### 实例化类对象
 
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -164,7 +164,7 @@ int main(void){
 
 ### string 类型
 
-```C++
+```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -194,7 +194,7 @@ int main(){
 | v1 == s2 		| 判定相等，相等返回true，否则返回false 	|
 | v1 != s2 		| 判定不等，不等返回true，否则返回false 	|
 
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -232,7 +232,7 @@ int main(void){
 
 ### 数据的封装
 
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 #include <string>
@@ -307,7 +307,7 @@ int main(void){
 
 关键字: `inline`
 
-```C++
+```cpp
 inline void fun(){
 	cout << "Hello" << endl;
 }
@@ -330,7 +330,7 @@ __内联函数只执行比较简单的函数，编辑器会拒绝按照内联的
 > 成员函数在类的内部(里边)
 
 
-```C++
+```cpp
 class Student{
 public:
 	void setAge(int _age){ // 这三个函数就是类内定义。由于函数比较简单，编译器会自动将其编译为内联函数。
@@ -356,7 +356,7 @@ private:
 
 - 同文件类外定义
 
-```C++
+```cpp
 // Car.cpp
 class Car{
 public:
@@ -371,7 +371,7 @@ void Cat::changeSpeed(){}
 
 - 分文件类外定义
 
-```C++
+```cpp
 // Car.h 头文件
 class Car{
 public:
@@ -391,7 +391,7 @@ void Car::changeSpeed(){}
 
 1.同文件类外定义
 
-```C++
+```cpp
 // demo.cpp
 #include <iostream>
 #include <stdlib.h>
@@ -462,7 +462,7 @@ int main(void){
 ```
 2.分文件类外定义
 
-```C++
+```cpp
 // demo.h
 #include <iostream>
 #include <stdlib.h>
@@ -553,7 +553,7 @@ int main(void){
 **代码区： 存储逻辑代码的二进制**
 
 
-```C++
+```cpp
 class Car{
 private:
 	int wheelCount;
@@ -566,7 +566,7 @@ public:
 
 **对象初始化**
 
-```C++
+```cpp
 class Tank{
 private:
 	int m_iPosX;
@@ -601,7 +601,7 @@ int main(void){
 
 > 无参构造函数
 
-```C++
+```cpp
 class Student{
 public:
 	Student(){ // 无参构造函数的函数名与类名相同，无参构造函数没有返回值
@@ -614,7 +614,7 @@ private:
 
 > 有参构造函数
 
-```C++
+```cpp
 class Student{
 public:
 	Student(string name){ // 字符串类型的name就是有参构造函数的参数
@@ -627,7 +627,7 @@ private:
 
 > 重载构造函数
 
-```C++
+```cpp
 class Student{
 public:
 	Student(){
@@ -643,7 +643,7 @@ private:
 
 **构造函数代码实例**
 
-```C++
+```cpp
 // demo.cpp
 #include <iostream>
 #include <stdlib.h>
@@ -728,7 +728,7 @@ private:
 
 **默认构造函数(实例化时不需要传递参数的函数是默认构造函数)**
 
-```C++
+```cpp
 int main(){
 	Student stu1();
 	Student *p = NULL;
@@ -750,7 +750,7 @@ private:
 
 **构造函数初始化列表**
 
-```C++
+```cpp
 class Student{
 public:
 	Student():m_strName("jim"),m_iAge(10){};
@@ -768,7 +768,7 @@ private:
 
 **构造函数初始化列表的必要性**
 
-```C++
+```cpp
 class Circle{
 public:
 	// Circle(){m_dPi = 3.14};  通过构造函数的方式会报错
@@ -778,7 +778,7 @@ private:
 }
 ```
 
-```C++
+```cpp
 // demo.cpp
 #include <iostream>
 #include <stdlib.h>
@@ -861,7 +861,7 @@ private:
 
 定义格式： 类名（const类名 & 变量名）
 
-```C++
+```cpp
 class Student{
 public:
 	Student(){
@@ -875,7 +875,7 @@ private:
 
 <img src="./imgs/constructor.png" alt="构造函数总结" />
 
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 #include <string>
@@ -956,7 +956,7 @@ private:
 
 定义格式： `~类名()`
 
-```C++
+```cpp
 class Student{
 public:
 	Student(){
@@ -990,7 +990,7 @@ private:
 		↓						↓
 	释放内存 <-- 析构函数 <--- 参与运算
 
-```C++
+```cpp
 // demo
 #include <iostream>
 #include <stdlib.h>

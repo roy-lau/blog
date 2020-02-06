@@ -16,7 +16,7 @@ __mysql INNER JOIN(内连接)__
 
 实例
 
-```mysql
+```sql
 mysql> use RUNOOB;
 Database changed
 mysql> SELECT * FROM tcount_tbl;
@@ -45,7 +45,7 @@ mysql> SELECT * from runoob_tbl;
 下面使用`MySQL`的`INNER JOIN`(也可以省略 INNER 使用 JOIN，效果一样)来连接以上两张表来读取`runoob_tbl`表中所有`runoob_author`字段在`tcount_tbl`表对应的`runoob_count`字段值：
 
 INNER JOIN(内连接)
-```mysql
+```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count
 		FROM runoob_tbl a
 		INNER JOIN tcount_tbl b
@@ -63,7 +63,7 @@ mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count
 以上 SQL 语句等价于：
 
 WHERE 子句
-```mysql
+```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count
 		FROM runoob_tbl a, tcount_tbl b
 		WHERE a.runoob_author = b.runoob_author;
@@ -86,7 +86,7 @@ __mysql LEFT JOIN(左连接)__
 实例
 
 LEFT JOIN(左连接)
-```mysql
+```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count
 		FROM runoob_tbl a
 		LEFT JOIN tcount_tbl b
@@ -112,7 +112,7 @@ __mysql RIGHT JOIN(右连接)__
 
 实例
 RIGHT JOIN(右连接)
-```mysql
+```sql
 mysql> SELECT a.runoob_id, a.runoob_author, b.runoob_count
 		FROM runoob_tbl a
 		RIGHT JOIN tcount_tbl b

@@ -1,6 +1,6 @@
-README
-===========================
-该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为`GitHub Flavored Markdown`。简称`GFM`，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。
+#                               README
+
+> 该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为`GitHub Flavored Markdown`。简称`GFM`，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。
 
 ****
 
@@ -12,7 +12,7 @@ README
 
 
 
-## <a name="index"/>目录
+## <a name="index" />目录
 * [横线](#line)
 * [标题](#title)
 * [文本](#text)
@@ -38,7 +38,7 @@ README
 * [表格](#table)
 * [表情](#emoji)
 
-<a name="line"/>
+<a name="line" />
 
 ## ***、---、___显示虚横线
 ***
@@ -47,7 +47,7 @@ ___
 
 
 
-<a name="title"/>
+<a name="title" />
 
 # 一级标题
 ## 二级标题
@@ -57,12 +57,12 @@ ___
 ###### 六级标题
 
 
-## <a name="text"/>显示文本
+## <a name="text" />显示文本
 ### 普通文本
 这是一段普通的文本
 #### 关于换行
-直接回车不能换行，<br>
-可以使用\<br>。
+直接回车不能换行，`<br>`
+可以使用`<br>`。
 但是使用html标签就丧失了markdown的意义。
 可以在上一行文本后面补两个空格，
 这样下一行的文本就换行了。
@@ -101,16 +101,19 @@ ___斜粗体2___
 
 ~~***斜粗体删除线2***~~
 
-## <a name="link"/>链接
+## <a name="link" />链接
 ### 链接外部URL
 [我的博客](https://roy-lau.github.io/blog/ "悬停显示")   语法如下：
+
 ```
 [我的博客](https://roy-lau.github.io/blog/ "悬停显示")
 ```
 ### 链接的另一种写法
+
 [我的博客][id]
 
 [id]:https://roy-lau.github.io/blog/ "悬停显示"
+
 语法如下：
 ```
 [我的博客][id]
@@ -125,23 +128,27 @@ ___斜粗体2___
 [Book](./Book)
 ```
 如果文件要引用的文件不存在，则待点击的文本为红色。引用的文件存在存在则文本为蓝色。
+
 ### 锚点
+
 我们可以使用HTML的锚点标签（`#`）来设置锚点：[回到目录](#index)
 但其实呢，每一个标题都是一个锚点，不需要用标签来指定，比如我们 [回到顶部](#TEST)
 不过不幸的是，由于对中文支持的不好，所以中文标题貌似是不能视作标签的。
 
-## <a name="pic"/>显示图片
+## <a name="pic" />显示图片
 ### 来源于网络的图片
 ![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")
-![](https://assets-cdn.github.com/images/modules/contact/goldstar.gif)
+![](https://picsum.photos/1920/1080?random)
 
 ### GitHub仓库中的图片
-![](https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif)
-### <a name="piclink">给图片加上超链接
+
+![GitHub仓库加载失败](https://picsum.photos/1920/1080?random "GitHub仓库中的图片")
+
+### <a name="piclink" />给图片加上超链接
 #### 第一种
 
-[![head]](http://blog.csdn.net/guodongxiaren/article/details/23690801)
-[head]:https://github.com/guodongxiaren/ImageCache/raw/master/Logo/jianxin.jpg "点击图片进入我的博客"
+[![head]](https://avatars3.githubusercontent.com/u/22829291)
+[head]:https://avatars3.githubusercontent.com/u/22829291 "点击图片进入我的博客"
 
 #### 第二种
 [![内容任意](http://www.baidu.com/img/bdlogo.gif "百度logo")](http://www.baidu.com)
@@ -149,7 +156,7 @@ ___斜粗体2___
 
 
 
-## <a name="dot"/>列表
+## <a name="dot" />列表
 ### 圆点列表
 * 昵称：果冻虾仁
 * 别名：隔壁老王
@@ -199,7 +206,7 @@ ___斜粗体2___
 - [ ] .NET
 
 您可以使用这个功能来标注某个项目各项任务的完成情况。
-## <a name="blockquotes"/>块引用
+## <a name="blockquotes" />块引用
 
 ### 常用于引用文本
 #### 文本摘自《深入理解计算机系统》P27
@@ -215,7 +222,7 @@ ___斜粗体2___
 >>>>平衡二叉树
 >>>>>满二叉树
 
-## <a name="code"/>代码高亮
+## <a name="code" />代码高亮
 ```Java
 public static void main(String[]args){} //Java
 ```
@@ -231,7 +238,7 @@ document.getElementById("myH1").innerHTML="Welcome to my Homepage"; //javascipt
 ```cpp
 string &operator+(const string& A,const string& B) //cpp
 ```
-## <a name="table"/>显示表格
+## <a name="table" />显示表格
 表头1  | 表头2
 ------------- | -------------
 Content Cell  | Content Cell
@@ -268,11 +275,11 @@ Content Cell  | Content Cell
 | ---- | ---- |
 ![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo") | baidu
 
-## <a name="emoji"/>添加表情
+## <a name="emoji" />添加表情
 Github的Markdown语法支持添加emoji表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情。
 
 比如`:blush:`，可以显示:blush:。
 
-具体每一个表情的符号码，可以查询GitHub的官方网页[http://www.emoji-cheat-sheet.com](http://www.emoji-cheat-sheet.com)。
+具体每一个表情的符号码，可以查询GitHub的官方网页 [http://www.emoji-cheat-sheet.com](http://www.emoji-cheat-sheet.com)。
 
-但是这个网页每次都打开**奇慢**。。所以我整理到了本repo中，大家可以直接在此查看[emoji](./emoji.md)。
+但是这个网页每次都打开**奇慢**。。所以我整理到了本repo中，大家可以直接在此查看 [emoji](../emoji)。

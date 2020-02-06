@@ -16,10 +16,13 @@
 	- [vsCode](./editor/vsCode)
 	- [vim](./editor/vim)
 
-* [C++ 学习笔记](./learn-c++)
+* [javaScript 学习笔记](./js)
+	- [js 设计模式](./js/design-patterns)
 * [nodejs 学习笔记](./learn-nodejs)
+* [C++ 学习笔记](./learn-c++)
 
+* [git 使用心得](./git-bash-make)
+* [vuepress 笔记](./vp)
 * [表情](./emoji)
-* [git使用心得](./git-bash-make)
-* [windows定时命令](./winAutoTask)
+* [windows 定时命令](./winAutoTask)
 * [收集的一些安装包](./Installation_package)

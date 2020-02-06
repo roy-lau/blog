@@ -5,7 +5,7 @@
 ### 创建集合
 
 语法：
-```mongodb
+```sql
 db.createCollection(name, options)
 ```
 
@@ -27,7 +27,7 @@ _在插入文档时，`MongoDB` 首先检查固定集合的 `size` 字段，然�
 实例:
 
 在 test_tbl 数据库中创建 user 集合：
-```mongodb
+```sql
 > use test_tbl
 switched to db test
 > db.createCollection("user")
@@ -36,7 +36,7 @@ switched to db test
 ```
 
 查看已有集合
-```mongodb
+```sql
 > show collections
 user
 >
@@ -45,7 +45,7 @@ user
 createCollection() 关键参数的用法：
 创建固定集合 mycol，整个集合空间大小 6142800 KB, 文档最大个数为 10000 个。
 
-```mongodb
+```sql
 > db.createCollection("mycol",{capped:true,autoIndexId:true,size:6142800,max:10000})
 {
         "note" : "the autoIndexId option is deprecated and will be removed in a future release",
@@ -55,7 +55,7 @@ createCollection() 关键参数的用法：
 ```
 在 MongoDB 中，你不需要创建集合。当你插入一些文档时，MongoDB 会自动创建集合。
 
-```mongodb
+```sql
 > db.mycol2.insert({name:"资源共享"})
 WriteResult({ "nInserted" : 1 })
 > show collections
@@ -68,7 +68,7 @@ user
 
 语法：
 
-```mongodb
+```sql
 db.collection.drop()
 ```
 
@@ -79,7 +79,7 @@ db.collection.drop()
 实例：
 
 在数据库 `test_tbl` 中， 可以先通过 `show collections` 命令查看已存在的集合。
-```mongodb
+```sql
 > use test_tbl
 switched to db test_tbl
 > show collections
@@ -88,12 +88,12 @@ mycol2
 user
 ```
 删除集合
-```mongodb
+```sql
 > db.mycol2.drop()
 true
 ```
 通过 `show collections` 再次查看数据库`test_tbl`集合
-```mongodb
+```sql
 > show collections
 mycol
 user

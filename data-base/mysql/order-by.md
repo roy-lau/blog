@@ -8,7 +8,7 @@
 
 语法
 
-```mysql
+```sql
 SELECT field1, field2,...fieldN table_name1, table_name2...
 ORDER BY field1, [field2...] [ASC [DESC]]
 ```
@@ -21,7 +21,7 @@ ORDER BY field1, [field2...] [ASC [DESC]]
 * 你可以添加 `WHERE...LIKE` 子句来设置条件。
 实例
 
-```mysql
+```sql
 mysql> use test;
 Database changed
 mysql> SELECT * from test_tbl ORDER BY submission_date ASC; 		# 日期正序

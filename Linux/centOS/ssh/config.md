@@ -13,8 +13,8 @@
 
 * 配置文件
 
-```config
-Host tencent-cloud 
+```json
+Host tencent-cloud
 	HostName 139.199.99.154
 	Port 22
 	User root
@@ -39,7 +39,7 @@ Host aliyun
 ### 配置服务端(linux服务器)
 
 ```bash
-cd ~/.ssh 
+cd ~/.ssh
 scp -p ~/.ssh/id_rsa.pub root@[IP地址]:/root/.ssh/authorized_keys
 ```
 

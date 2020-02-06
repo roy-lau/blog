@@ -6,7 +6,7 @@
 
 MySQL 中提供了`LOAD DATA INFILE`语句来插入数据。 以下实例中将从当前目录中读取文件 `dump.txt` ，将该文件中的数据插入到当前数据库的 `mytbl` 表中。
 
-```mysql
+```sql
 mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
 ```
 
@@ -18,7 +18,7 @@ mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
 
 如果用户指定一个 `FIELDS` 子句，它的子句 `（TERMINATED BY、[OPTIONALLY] ENCLOSED BY 和 ESCAPED BY)`也是可选的，不过，用户必须至少指定它们中的一个。
 
-```mysql
+```sql
 mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl
   -> FIELDS TERMINATED BY ':'
   -> LINES TERMINATED BY '\r\n';
@@ -27,7 +27,7 @@ mysql> LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl
 `LOAD DATA` 默认情况下是按照数据文件中列的顺序插入数据的，如果数据文件中的列与插入表中的列不一致，则需要指定列的顺序。
 如，在数据文件中的列顺序是 `a,b,c，` 但在插入表的列顺序为`b,c,a，`则数据导入语法如下：
 
-```mysql
+```sql
 mysql> LOAD DATA LOCAL INFILE 'dump.txt'
     -> INTO TABLE mytbl (b, c, a);
 ```

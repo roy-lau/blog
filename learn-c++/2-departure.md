@@ -8,7 +8,7 @@
 
 > 基本数据类型的引用
 
-```C++
+```cpp
 #include <iostream>
 using namespace std;
 int main(void){
@@ -23,7 +23,7 @@ int main(void){
 
 结构体类型的引用
 
-```C++
+```cpp
 typedef struct{
 	int x;
 	int y;
@@ -45,7 +45,7 @@ int main(void){
 
 `类型 *&指针引用名 = 指针;`
 
-```C++
+```cpp
 #include <iostream>
 using namespace std;
 int main(void){
@@ -60,7 +60,7 @@ int main(void){
 
 引用做为函数参数
 
-```C++
+```cpp
 // 正常情况下的写法
 void fun(int *a,int *b){
 	int c = 0;
@@ -83,7 +83,7 @@ fun(x, y)
 ```
 
 代码示例
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -139,13 +139,13 @@ int main(void){
 
 `const`与基本数据类型
 
-```C++
+```cpp
 const int x = 3; // 常量（不可改变）
 ```
 
 `const`与指针类型
 
-```C++
+```cpp
 // 这两种是等价的
 const int *p = NULL;
 int const *p = NULL;
@@ -173,7 +173,7 @@ p = &y; // 错误
 
 `const`与引用
 
-```C++
+```cpp
 int x = 3;
 const int &y = x;
 x = 10; // 正确
@@ -207,7 +207,7 @@ const int *y = &x; // 正确
 ```
 
 代码实例
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -230,14 +230,14 @@ int main(void){
 
 > 有默认参数值的参数必须在参数表的最右端
 
-```C++
+```cpp
 void fun(int i, int j=5, int k = 10);
 
 void fun(int i, int j=5, int k); // 这种写法是错误的
 ```
 > 无实参则用默认值，否则实参覆盖默认值
 
-```C++
+```cpp
 void fun(int i, int j=5, int k=10);
 
 void fun(int i, int j, int k){
@@ -259,7 +259,7 @@ int main(){
 
 3、 **参数个数**和**参数类型**不同
 
-```C++
+```cpp
 int getMax(int x,int y,int z){
 	// to do
 }
@@ -280,7 +280,7 @@ getMax_double_double_double
 
 内联函数关键字： `inline`
 
-```C++
+```cpp
 inline int max(int a,int b, int c);
 int main(){
 	int i = 10, j = 20, k = 30, m;
@@ -289,7 +289,7 @@ int main(){
 	return 0;
 }
 ```
-```C++
+```cpp
 // 上遍代码的展开式
 int main(){
 	int i = 10, j = 20, k = 30, m;
@@ -319,7 +319,7 @@ int main(){
 
 代码实例：
 
-```C++
+```cpp
 #include <stdlib.h>
 using namespace std;
 
@@ -345,7 +345,7 @@ void fun(double i, double j){
 }
 ```
 
-```C++
+```cpp
 // 1. 求两个数的最大值
 // 2. 求数组的最大值
 #include <iostream>
@@ -410,7 +410,7 @@ _申请/规划内存资源就是内存管理_
 
 >申请和释放块内存：
 
-```C++
+```cpp
 int *arr = new int[10]; // 申请块内存
 delete []arr; 			// 释放块内存
 ```
@@ -421,13 +421,13 @@ C语言
 void *malloc(size_t size); // 申请内存
 void free(void *memblock); // 释放内存
 ```
-```C++
+```cpp
 new
 delete
 ```
 
 >注意事项：
-```C++
+```cpp
 // 申请内存
 int *p = new int[1000];
 if(NULL == p){
@@ -460,7 +460,7 @@ p = NULL;
 
 `new`与`delete`配套使用（有申请也要有释放）
 
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -477,7 +477,7 @@ int main(void){
 	return 0;
 }
 ```
-```C++
+```cpp
 // 块内存
 #include <iostream>
 #include <stdlib.h>

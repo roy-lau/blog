@@ -16,7 +16,7 @@
 
 步骤一：
 获取数据表的完整结构。
-```mysql
+```sql
 mysql> SHOW CREATE TABLE test_tbl \G;
 *************************** 1. row ***************************
        Table: test_tbl
@@ -36,7 +36,7 @@ No query specified
 
 步骤二：
 修改SQL语句的数据表名，并执行SQL语句。
-```mysql
+```sql
 mysql> CREATE TABLE `clone_tbl` (
   	`test_id` int(11) NOT NULL auto_increment,
   	`test_title` varchar(100) NOT NULL default '',
@@ -51,7 +51,7 @@ Query OK, 0 rows affected (1.80 sec)
 步骤三：
 
 执行完第二步骤后，你将在数据库中创建新的克隆表 `clone_tbl`。 如果你想拷贝数据表的数据你可以使用 `INSERT INTO... SELECT` 语句来实现。
-```mysql
+```sql
 mysql> INSERT INTO clone_tbl (test_id,
     	                       test_title,
     	                       test_author,
@@ -67,27 +67,27 @@ Records: 3  Duplicates: 0  Warnings: 0
 笔记：
 
 另一种完整复制表的方法:
-```mysql
+```sql
 CREATE TABLE targetTable LIKE sourceTable;
 INSERT INTO targetTable SELECT * FROM sourceTable;
 ```
 其他:
 可以拷贝一个表中其中的一些字段:
-```mysql
+```sql
 CREATE TABLE newadmin AS
 (
     SELECT username, password FROM admin
 )
 ```
 可以将新建的表的字段改名:
-```mysql
+```sql
 CREATE TABLE newadmin AS
 (
     SELECT id, username AS uname, password AS pass FROM admin
 )
 ```
 可以拷贝一部分数据:
-```mysql
+```sql
 CREATE TABLE newadmin AS
 (
     SELECT * FROM admin WHERE LEFT(username,1) = 's'
@@ -108,15 +108,15 @@ AS
 区分mysql复制表的两种方式。
 
 第一、只复制表结构到新表
-```mysql
+```sql
 create table 新表 select * from 旧表 where 1=2
 ```
 或者
-```mysql
+```sql
 create table 新表 like 旧表
 ```
 第二、复制表结构及数据到新表
-```mysql
+```sql
 create table新表 select * from 旧表
 ```
 

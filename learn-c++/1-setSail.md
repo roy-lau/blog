@@ -4,7 +4,9 @@
 
 <details>
   <summary>C++ 诞生地</summary>
-  <img src="imgs/C++birthplace.png" alt="C++ 诞生地" />
+
+![C++ 诞生地](./imgs/C++birthplace.png "C++ 诞生地")
+
 </details>
 <details>
   <summary>C++ 之父</summary>
@@ -14,7 +16,7 @@
 
 C++ 初体验
 
-```c++
+```cpp
 #include<iostream>
 using namespace std;    //关于这里，且听下回分解
 int main()
@@ -50,7 +52,7 @@ if(flag == 1){
 	// to do
 }
 ```
-```C++
+```cpp
 // C++ 语言
 int flag = 0;
 if(flag){
@@ -90,7 +92,7 @@ int main()
 	return 0;
 }
 ```
-```C++
+```cpp
 // C++ 语言
 int main()
 {
@@ -121,14 +123,14 @@ int main()
 **C++ 的I/O方式**
 
 `cout输出` 语法形式：
-```C++
+```cpp
 cout << C << endl;
 cout <<"x + y ="<< x + y << endl;
 // endl`代表回车(\n)
 ```
 
 `cin输入` 语法形式：
-```C++
+```cpp
 cin >> x;
 cin >> x >> y;
 ```
@@ -141,7 +143,7 @@ cin >> x >> y;
 
 **C++ 输入输出特性演示**
 
-```C++
+```cpp
 #include <iostream>
 #include <stdlib.h> // 这里存着 system() 函数
 using namespace std;
@@ -172,7 +174,7 @@ int main(){
 
 命名空间关键字： `namespace`
 
-```C++
+```cpp
 #include <stdlib.h>
 #include <iostream>
 using namespace std; // 调用 std 命名空间
@@ -208,7 +210,7 @@ int main(void){
 
 #### 综合题
 
-```C++
+```cpp
 /********************************************************/
 /* 知识点：bool类型，命名空间，输入输出                 */
 /* 题目要求：                                           */

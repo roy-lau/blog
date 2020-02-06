@@ -7,7 +7,7 @@
 
 语法
 
-```mysql
+```sql
 SELECT field1, field2,...fieldN FROM table_name1, table_name2...
 [WHERE condition1 [AND [OR]] condition2.....;
 ```
@@ -33,7 +33,7 @@ __下表中实例假定 A 为 10, B 为 20__
 
 实例
 
-```mysql
+```sql
 SELECT * from runoob_tbl WHERE runoob_author='菜鸟教程';
 +---------+--------------+--------------+-----------------+
 | test_id | test_title   | test_author  | submission_date |
@@ -46,7 +46,7 @@ SELECT * from runoob_tbl WHERE runoob_author='菜鸟教程';
 
 __BINARY 关键字__
 
-```mysql
+```sql
 mysql> select * from test_tbl where binary test_title="学习 php";		# 小写，查不到数据
 Empty set (0.00 sec)
 
@@ -65,7 +65,7 @@ mysql> select * from test_tbl where binary test_title="学习 PHP";		# 大写，
 
 语法
 
-```mysql
+```sql
 UPDATE table_name SET field1=new-value1, field2=new-value2
 [WHERE Clause]
 ```
@@ -76,7 +76,7 @@ UPDATE table_name SET field1=new-value1, field2=new-value2
 
 实例
 
-```mysql
+```sql
 mysql> update test_tbl set test_title="学习 C++" where test_id=2;	# 修改test_title=2行的test_title="学习 C++"
 Query OK, 1 row affected (0.02 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
@@ -95,7 +95,7 @@ mysql> select * from test_tbl where test_id=2;				# 查询test_title=2行的数�
 
 语法
 
-```mysql
+```sql
 DELETE FROM table_name [WHERE Clause]
 ```
 
@@ -104,7 +104,7 @@ DELETE FROM table_name [WHERE Clause]
 * 您可以在单个表中一次性删除记录。
 
 实例
-```mysql
+```sql
 mysql> use test;
 Database changed
 mysql> DELETE FROM test_tbl WHERE test_id=3;
@@ -112,7 +112,7 @@ Query OK, 1 row affected (0.23 sec)
 ```
 
 笔记
-```mysql
+```sql
 # delete 语句用于删除表中的数据, 基本用法为:
 delete from 表名称 where 删除条件;
 
@@ -133,7 +133,7 @@ delete from students;
 
 语法
 
-```mysql
+```sql
 SELECT field1, field2,...fieldN
 FROM table_name
 WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue'
@@ -148,7 +148,7 @@ WHERE field1 LIKE condition1 [AND [OR]] filed2 = 'somevalue'
 
 实例
 
-```mysql
+```sql
 mysql> select * from test_tbl where test_title like '学习%';
 +---------+------------------+--------------+-----------------+
 | test_id | test_title       | test_author  | submission_date |

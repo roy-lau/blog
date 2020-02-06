@@ -19,7 +19,7 @@ _关于 NULL 的条件比较运算是比较特殊的。你不能使用 `= NULL` 
 
 假设数据库 test 中的表 test_list_tbl 含有两列 test_author 和 test_count, test_count 中设置插入NULL值。
 
-```mysql
+```sql
 root@host# mysql -u root -p password;
 Enter password:*******
 mysql> use test;
@@ -50,14 +50,14 @@ mysql> SELECT * from test_list_tbl;		# 查询数据
 4 rows in set (0.01 sec)
 ```
 以下实例中你可以看到 = 和 != 运算符是不起作用的：
-```mysql
+```sql
 mysql> select * from test_list_tbl where test_count=NULL;		# 查询test_list_tbl表中test_count=NULL的数据
 Empty set (0.00 sec)
 mysql> select * from test_list_tbl where test_count!=NULL;		# 查询test_list_tbl表中test_count!=NULL的数据
 Empty set (0.00 sec)
 ```
 查找数据表中 `test_list_tbl` 列是否为 `NULL`，必须使用 `IS NULL` 和 `IS NOT NULL`，如下实例：
-```mysql
+```sql
 mysql> select * from test_list_tbl where test_count is null;	# 查询test_list_tbl表中test_count值是null的数据
 +-------------+------------+
 | test_author | test_count |

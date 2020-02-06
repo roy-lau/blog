@@ -10,7 +10,7 @@
 
 标准 URI 连接语法：
 
-```mongodb
+```
 mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
 ```
 * ***mongodb***:// 这是固定的格式，必须要指定。
@@ -42,18 +42,18 @@ mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][
 实例
 
 使用默认端口来连接 MongoDB 的服务。
-```mongodb
+```sh
 mongodb://localhost
 ```
 通过 shell 连接 MongoDB 服务：
-```mongodb
+```sh
 $ ./mongo
 MongoDB shell version: 3.0.6
 connecting to: test
 ...
 ```
 这时候你返回查看运行 `./mongod `命令的窗口，可以看到是从哪里连接到`MongoDB`的服务器，您可以看到如下信息：
-```mongodb
+```sh
 ……省略信息……
 2015-09-25T17:22:27.336+0800 I CONTROL  [initandlisten] allocator: tcmalloc
 2015-09-25T17:22:27.336+0800 I CONTROL  [initandlisten] options: { storage: { dbPath: "/data/db" } }
@@ -67,58 +67,58 @@ connecting to: test
 使用用户名和密码连接到 `MongoDB` 服务器，你必须使用 `'username:password@hostname/dbname'` 格式，`'username'`为用户名，`'password'` 为密码。
 
 使用用户名和密码连接登陆到默认数据库：
-```mongodb
+```sh
 $ ./mongo
 MongoDB shell version: 3.0.6
 connecting to: test
 ```
 使用用户 `admin` 使用密码 `123456` 连接到本地的 `MongoDB` 服务上。输出结果如下所示：
-```mongodb
+```sh
 > mongodb://admin:123456@localhost/
 ...
 ```
 使用用户名和密码连接登陆到指定数据库，格式如下：
-```mongodb
+```sh
 mongodb://admin:123456@localhost/test
 ```
 更多连接实例
 
 连接本地数据库服务器，端口是默认的。
-```mongodb
+```sh
 mongodb://localhost
 ```
 使用用户名`fred，`密码`foobar`登录`localhost`的`admin`数据库。
-```mongodb
+```sh
 mongodb://fred:foobar@localhost
 ```
 使用用户名`fred，`密码`foobar`登录`localhost`的`baz`数据库。
-```mongodb
+```sh
 mongodb://fred:foobar@localhost/baz
 ```
 连接 `replica pair`, 服务器`1`为`example1.com`服务器`2`为`example2`。
-```mongodb
+```sh
 mongodb://example1.com:27017,example2.com:27017
 ```
 连接 `replica set` 三台服务器 (端口 `27017, 27018, 和27019`):
-```mongodb
+```sh
 mongodb://localhost,localhost:27018,localhost:27019
 ```
 连接 `replica set` 三台服务器, 写入操作应用在主服务器 并且分布查询到从服务器。
-```mongodb
+```sh
 mongodb://host1,host2,host3/?slaveOk=true
 ```
 直接连接第一个服务器，无论是`replica set`一部分或者主服务器或者从服务器。
-```mongodb
+```sh
 mongodb://host1,host2,host3/?connect=direct;slaveOk=true
 ```
 当你的连接服务器有优先级，还需要列出所有服务器，你可以使用上述连接方式。
 安全模式连接到localhost:
-```mongodb
+```sh
 mongodb://localhost/?safe=true
 ```
 
 以安全模式连接到`replica set`，并且等待至少两个复制服务器成功写入，超时时间设置为`2秒`。
-```mongodb
+```sh
 mongodb://host1,host2,host3/?safe=true;w=2;wtimeoutMS=2000
 ```
 

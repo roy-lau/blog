@@ -66,14 +66,14 @@ mongod --port 27017 --dbpath "D:\set up\mongodb\data" --replSet rs0
 
 语法
 `rs.add()` 命令基本语法格式如下：
-```mongodb
+```sh
 >rs.add(HOST_NAME:PORT)
 ```
 
 实例
 
 假设你已经启动了一个名为`mongod1.net`，端口号为`27017`的`Mongo`服务。 在客户端命令窗口使用`rs.add()` 命令将其添加到副本集中，命令如下所示：
-```mongodb
+```sh
 >rs.add("mongod1.net:27017")
 ```
 `MongoDB`中你只能通过主节点将`Mongo`服务添加到副本集中， 判断当前运行的`Mongo`服务是否为主节点可以使用命令`db.isMaster()` 。

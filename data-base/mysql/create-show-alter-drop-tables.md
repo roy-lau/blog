@@ -12,13 +12,13 @@
 
 语法
 
-```mysql
+```sql
 CREATE TABLE table_name (column_name column_type);
 ```
 
 以下例子中我们将在 test 数据库中创建数据表`test_tbl`：
 
-```mysql
+```sql
 root@host# mysql -u root -p
 Enter password:*******
 
@@ -55,13 +55,13 @@ mysql> SHOW TABLES; 						# 查询数据表
 
 语法
 
-```mysql
+```sql
 ALTER TABEL table_name rename table_new_name;
 ```
 
 实例
 
-```mysql
+```sql
 root@host# mysql -u root -p
 Enter password:*******
 
@@ -77,13 +77,13 @@ Database changed
 
 语法
 
-```mysql
+```sql
 DROP TABLE table_name;
 ```
 
 实例
 
-```mysql
+```sql
 root@host# mysql -u root -p
 Enter password:*******
 
@@ -100,7 +100,7 @@ Empty set (0.00 sec)
 
 
 笔记：
-```mysql
+```sql
 # 删除表内数据，用 delete。格式为：
 delete from 表名 where 删除条件;
 # 实例：删除学生表内姓名为张三的记录。

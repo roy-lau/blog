@@ -10,7 +10,7 @@
 
 实例
 
-```mysql
+```sql
 mysql> CREATE TEMPORARY TABLE SalesSummary (
      product_name VARCHAR(50) NOT NULL
      , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00
@@ -40,7 +40,7 @@ mysql> SELECT * FROM SalesSummary;
 默认情况下，当你断开与数据库的连接后，临时表就会自动被销毁。当然你也可以在当前MySQL会话使用 `DROP TABLE` 命令来手动删除临时表。
 
 以下是手动删除临时表的实例：
-```mysql
+```sql
 mysql> CREATE TEMPORARY TABLE SalesSummary (
      product_name VARCHAR(50) NOT NULL
      , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00

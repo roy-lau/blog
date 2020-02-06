@@ -14,7 +14,7 @@ MongoDB 的可执行文件位于 bin 目录下，所以可以将其添加到 PAT
 ```bash
 export PATH=<mongodb-install-directory>/bin:$PATH
 ```
-__<mongodb-install-directory>__  为你 MongoDB 的安装路径。如本文的 /usr/local/mongodb 。
+__`<mongodb-install-directory>`__  为你 MongoDB 的安装路径。如本文的 `/usr/local/mongodb`。
 
 
 #### 创建数据库目录
@@ -32,9 +32,9 @@ mkdir -p /data/db
 
 可以再命令行中执行`mongo`安装目录中的`bin`目录执行`mongod`命令来启动`mongdb`服务。
 
-_注意：如果你的数据库目录不是/data/db，可以通过 --dbpath 来指定。_
+_注意：如果你的数据库目录不是`/data/db`，可以通过 `--dbpath` 来指定。_
 
-```mongodb
+```sql
 $ ./mongod
 2015-09-25T16:39:50.549+0800 I JOURNAL  [initandlisten] journal dir=/data/db/journal
 2015-09-25T16:39:50.550+0800 I JOURNAL  [initandlisten] recover : no journal files present, no recovery needed
@@ -59,7 +59,9 @@ connecting to: test
 Welcome to the MongoDB shell.
 ……
 ```
+
 由于它是一个`JavaScript shell`，您可以运行一些简单的算术运算:
+
 ```bash
 > 2+2
 4
@@ -67,7 +69,8 @@ Welcome to the MongoDB shell.
 9
 ```
 现在让我们插入一些简单的数据，并对插入的数据进行检索：
-```mongodb
+
+```sql
 > db.test.insert({x:10})
 WriteResult({ "nInserted" : 1 })
 > db.test.find()

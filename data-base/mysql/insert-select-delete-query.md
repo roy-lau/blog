@@ -6,7 +6,7 @@
 
 语法
 
-```mysql
+```sql
 INSERT INTO table_name ( field1, field2,...fieldN )
                        VALUES
                        ( value1, value2,...valueN );
@@ -14,7 +14,7 @@ INSERT INTO table_name ( field1, field2,...fieldN )
 
 实例
 
-```mysql
+```sql
 root@host# mysql -u root -p password;
 Enter password:*******
 
@@ -52,7 +52,7 @@ Query OK, 1 rows affected (0.00 sec)
 
 语法（INSERT 插入多条数据）
 
-```mysql
+```sql
 INSERT INTO table_name  (field1, field2,...fieldN)  VALUES  (valueA1,valueA2,...valueAN),(valueB1,valueB2,...valueBN),(valueC1,valueC2,...valueCN)......;
 ```
 
@@ -61,7 +61,7 @@ INSERT INTO table_name  (field1, field2,...fieldN)  VALUES  (valueA1,valueA2,...
 
 语法
 
-```mysql
+```sql
 SELECT column_name,column_name
 FROM table_name
 [WHERE Clause]
@@ -77,7 +77,7 @@ FROM table_name
 
 实例
 
-```mysql
+```sql
 mysql> select * from test_tbl; 		# 查询数据
 +---------+--------------+--------------+-----------------+
 | test_id | test_title   | test_author  | submission_date |
@@ -91,7 +91,7 @@ mysql> select * from test_tbl; 		# 查询数据
 
 ### mysql 删除数据
 
-```mysql
+```sql
 # 删除表内数据，用 delete。格式为：
 delete from 表名 where 删除条件;
 # 实例：删除学生表内姓名为张三的记录。
@@ -100,13 +100,13 @@ delete from  student where  T_name = "张三";
 
 语法
 
-```mysql
+```sql
 mysql> DELETE FROM table_name WHERE column_name="cell_nanme";
 ```
 
 实例
 
-```mysql
+```sql
 mysql> DELETE FROM test_tbl WHERE test_title="JAVA 教程";
 Query OK, 1 row affected (0.05 sec)
 

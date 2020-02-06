@@ -47,7 +47,7 @@ MYSQL 事务处理主要有两种方法：
 
 事务示例：
 
-```mysql
+```sql
 mysql> use test;
 Database changed
 mysql> CREATE TABLE test_transaction( id int(5)) engine=innodb		# 创建数据表

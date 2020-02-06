@@ -7,20 +7,20 @@
 __使用 SELECT ... INTO OUTFILE 语句导出数据__
 
 以下实例中我们将数据表 test_tbl 数据导出到 /tmp/tutorials.txt 文件中:
-```mysql
+```sql
 mysql> SELECT * FROM test_tbl
     INTO OUTFILE '/tmp/tutorials.txt';
 ```
 
 也可以通过命令选项来设置数据输出的指定格式，以下实例为导出 CSV 格式：
-```mysql
+```sql
 mysql> SELECT * FROM passwd INTO OUTFILE '/tmp/tutorials.txt'
     FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     LINES TERMINATED BY '\r\n';
 ```
 
 下面的例子中，生成一个文件，各值用逗号隔开。这种格式可以被许多程序使用。
-```mysql
+```sql
 SELECT a,b,a+b INTO OUTFILE '/tmp/result.text'
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
@@ -55,7 +55,7 @@ password ******
 ```
 
 以上命令创建的文件内容如下：
-```mysql
+```sql
 -- MySQL dump 8.23
 --
 -- Host: localhost    Database: test
@@ -132,7 +132,7 @@ __笔记：__
 在源主机上执行以下命令，将数据备份到 `dump.txt` 文件中：
 
 请确保两台服务器是相通的：
-```mysql
+```sql
 mysqldump -h other-host.com -P port -u root -p database_name > dump.txt
 password ****
 ```

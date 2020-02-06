@@ -39,7 +39,7 @@ mysql> SHOW DATABASES;							# 查看数据库
 ```
 
 使用root登录后，可以使用
-```mysql
+```sql
 CREATE DATABASE IF NOT EXISTS TEST DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 ```
 创建数据库，该命令的作用：

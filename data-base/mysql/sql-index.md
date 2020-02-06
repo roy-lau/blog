@@ -22,7 +22,7 @@
 __创建索引__
 
 这是最基本的索引，它没有任何限制。它有以下几种创建方式：
-```mysql
+```sql
 CREATE INDEX indexName ON mytable(username(length));
 ```
 如果是`CHAR`，`VARCHAR`类型，`length`可以小于字段实际长度；如果是`BLOB`和`TEXT`类型，必须指定 `length`。
@@ -30,13 +30,13 @@ CREATE INDEX indexName ON mytable(username(length));
 
 __修改表结构(添加索引)__
 
-```mysql
+```sql
 ALTER table tableName ADD INDEX indexName(columnName)
 ```
 
 __创建表的时候直接指定__
 
-```mysql
+```sql
 CREATE TABLE mytable(
 	ID INT NOT NULL,
 	username VARCHAR(16) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE mytable(
 
 __删除索引的语法__
 
-```mysql
+```sql
 DROP INDEX [indexName] ON mytable;
 ```
 
@@ -56,15 +56,15 @@ DROP INDEX [indexName] ON mytable;
 
 __创建索引__
 
-```mysql
+```sql
 CREATE UNIQUE INDEX indexName ON mytable(username(length))
 ```
 __修改表结构__
-```mysql
+```sql
 ALTER table mytable ADD UNIQUE [indexName] (username(length))
 ```
 创建表的时候直接指定
-```mysql
+```sql
 CREATE TABLE mytable(
 	ID INT NOT NULL,
 	username VARCHAR(16) NOT NULL,
@@ -82,24 +82,24 @@ __使用ALTER 命令添加和删除索引__
 * **ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):** 该语句指定了索引为 `FULLTEXT` ，用于全文索引。
 
 以下实例为在表中添加索引。
-```mysql
+```sql
 mysql> ALTER TABLE testalter_tbl ADD INDEX (c);
 ```
 你还可以在 `ALTER` 命令中使用 `DROP` 子句来删除索引。尝试以下实例删除索引:
-```mysql
+```sql
 mysql> ALTER TABLE testalter_tbl DROP INDEX c;
 ```
 
 #### 使用 ALTER 命令添加和删除主键
 
 主键只能作用于一个列上，添加主键索引时，你需要确保该主键默认不为空`（NOT NULL）`。实例如下：
-```mysql
+```sql
 mysql> ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;
 mysql> ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);
 ```
 
 你也可以使用 `ALTER` 命令删除主键：
-```mysql
+```sql
 mysql> ALTER TABLE testalter_tbl DROP PRIMARY KEY;
 ```
 
@@ -110,7 +110,7 @@ mysql> ALTER TABLE testalter_tbl DROP PRIMARY KEY;
 你可以使用 `SHOW INDEX` 命令来列出表中的相关的索引信息。可以通过添加 `\G` 来格式化输出信息。
 
 尝试以下实例:
-```mysql
+```sql
 mysql> SHOW INDEX FROM table_name; \G
 ........
 ```

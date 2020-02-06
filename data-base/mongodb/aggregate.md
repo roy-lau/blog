@@ -7,14 +7,14 @@
 #### aggregate() 方法
 
 语法
-```mongodb
+```sql
 >db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
 ```
 
 实例
 
 集合中的数据如下：
-```mongodb
+```sql
 {
    _id: ObjectId(7df78ad8902c)
    title: 'MongoDB Overview',
@@ -45,7 +45,7 @@
 ```
 
 通过以上集合计算每个作者所写的文章数，使用aggregate()计算结果如下：
-```mongodb
+```sql
 > db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : 1}}}])
 {
    "result" : [
@@ -100,7 +100,7 @@
 __管道操作符实例__
 
 1、`$project`实例
-```mongodb
+```sql
 db.article.aggregate(
     { $project : {
         title : 1 ,
@@ -109,7 +109,7 @@ db.article.aggregate(
  );
 ```
 这样的话结果中就只还有`_id`,`tilte`和`author`三个字段了，默认情况下`_id`字段是被包含的，如果要想不包含`_id`话可以这样:
-```mongdb
+```sql
 db.article.aggregate(
     { $project : {
         _id : 0 ,
@@ -118,7 +118,7 @@ db.article.aggregate(
     }});
 ```
 2、`$match`实例
-```mongodb
+```sql
 db.articles.aggregate( [
                         { $match : { score : { $gt : 70, $lte : 90 } } },
                         { $group: { _id: null, count: { $sum: 1 } } }
@@ -127,21 +127,21 @@ db.articles.aggregate( [
 `$match`用于获取分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段`$group`管道操作符进行处理。
 
 3、`$skip`实例
-```mongodb
+```sql
 db.article.aggregate({ $skip : 5 });
 ```
 经过`$skip`管道操作符处理后，前五个文档被"过滤"掉。
 
 
 __笔记：__
-```mongodb
+```sql
 db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : 1}}}])
 ```
 以上实例类似sql语句：
-```mysql
+```sql
 select by_user as _id, count(*) as num_tutorial from mycol group by by_user
 ```
-```mongodb
+```sql
 db.articles.aggregate({
     $project : {
         title: 2,
@@ -152,7 +152,7 @@ db.articles.aggregate({
 这样子也是可行的。也就是说非0也可以进行表示显示该字段,负数也可以表示显示该字段。
 
 按日、按月、按年、按周、按小时、按分钟聚合操作如下：
-```mongodb
+```sql
 db.getCollection('m_msg_tb').aggregate(
 [
     {$match:{m_id:10001,mark_time:{$gt:new Date(2017,8,0)}}},

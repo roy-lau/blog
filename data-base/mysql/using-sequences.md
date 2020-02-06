@@ -12,7 +12,7 @@ __实例__
 
 以下实例中创建了数据表`insect`, `insect`中`id`无需指定值可实现自动增长。
 
-```mysql
+```sql
 mysql> CREATE TABLE insect(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id),
@@ -64,7 +64,7 @@ $seq = mysql_insert_id ($conn_id);
 ### 重置序列
 
 如果你删除了数据表中的多条记录，并希望对剩下数据的AUTO_INCREMENT列进行重新排列，那么你可以通过删除自增的列，然后重新添加来实现。 不过该操作要非常小心，如果在删除的同时又有新记录添加，有可能会出现数据混乱。操作如下所示：
-```mysql
+```sql
 mysql> ALTER TABLE insect DROP id;
 Query OK, 3 rows affected (0.01 sec)
 Records: 3  Duplicates: 0  Warnings: 0
@@ -79,7 +79,7 @@ Records: 3  Duplicates: 0  Warnings: 0
 ### 设置序列的开始值
 
 一般情况下序列的开始值为`1`，但如果你需要指定一个开始值`100`，那我们可以通过以下语句来实现：
-```mysql
+```sql
 mysql> CREATE TABLE insect(
      id INT UNSIGNED NOT NULL AUTO_INCREMENT,
      PRIMARY KEY (id),
@@ -90,7 +90,7 @@ mysql> CREATE TABLE insect(
 ```
 
 或者你也可以在表创建成功后，通过以下语句来实现：
-```mysql
+```sql
 mysql> ALTER TABLE t AUTO_INCREMENT = 100;
 ```
 

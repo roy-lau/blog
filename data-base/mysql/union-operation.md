@@ -8,7 +8,7 @@
 
 语法
 
-```mysql
+```sql
 SELECT expression1, expression2, ... expression_n
 FROM tables
 [WHERE conditions]
@@ -29,7 +29,7 @@ FROM tables
 
 __创建演示数据库__
 
-```mysql
+```sql
 # 创建 Website 表
 mysql> CREATE TABLE IF NOT EXISTS `Websites`(
    `Websites_id` INT UNSIGNED AUTO_INCREMENT,
@@ -97,7 +97,7 @@ __mysql UNION 实例__
 
 > 下面的 SQL 语句从 "Websites" 和 "apps" 表中选取所有不同的country（只有不同的值）：
 
-```mysql
+```sql
 SELECT apps_country FROM Websites
 UNION
 SELECT apps_country FROM apps
@@ -117,7 +117,7 @@ __mysql UNION ALL 实例__
 
 > 下面的 `SQL` 语句使用 `UNION ALL` 从 `"Websites"` 和 `"apps"` 表中选取所有的`apps_country`（也有重复的值）：
 
-```mysql
+```sql
 SELECT apps_country FROM Websites
 UNION ALL
 SELECT apps_country FROM apps
@@ -141,7 +141,7 @@ __带有 WHERE 的 SQL UNION ALL 实例__
 
 > 下面的 `SQL` 语句使用 `UNION ALL` 从 `"Websites"` 和 `"apps"` 表中选取所有的中国(CN)的数据（也有重复的值）：
 
-```mysql
+```sql
 SELECT country, name FROM Websites
 WHERE country='CN'
 UNION ALL

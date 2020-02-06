@@ -96,7 +96,7 @@ nohup mongod --port 27021 --dbpath=/data/db2 --logpath=/data/log/rs0-2.log --log
 ```
 1.1 复制集rs0配置
 
-```mongodb
+```sql
 # mongo localhost:27020
 > rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27020'}, {_id: 1, host: 'localhost:27021'}]})
 > rs.isMaster() 		# 查看主从关系
@@ -109,20 +109,20 @@ mkdir /data/db4
 nohup mongod --port 27031 --dbpath=/data/db4 --logpath=/data/log/rs1-2.log --logappend --fork --shardsvr --replSet=rs1 &
 ```
 2.1 复制集rs1配置
-```mongodb
+```sql
 # mongo localhost:27030
 > rs.initiate({_id: 'rs1', members: [{_id: 0, host: 'localhost:27030'}, {_id: 1, host: 'localhost:27031'}]})
 > rs.isMaster() 		# 查看主从关系
 ```
 3. 创建Config复制集 conf
-```mongodb
+```sql
 mkdir /data/conf1
 nohup mongod --port 27100 --dbpath=/data/conf1 --logpath=/data/log/conf-1.log --logappend --fork --configsvr --replSet=conf &
 mkdir /data/conf2
 nohup mongod --port 27101 --dbpath=/data/conf2 --logpath=/data/log/conf-2.log --logappend --fork --configsvr --replSet=conf &
 ```
 3.1 复制集conf配置
-```mongob
+```sql
 # mongo localhost:27100
 > rs.initiate({_id: 'conf', members: [{_id: 0, host: 'localhost:27100'}, {_id: 1, host: 'localhost:27101'}]})
 > rs.isMaster() 		# 查看主从关系
@@ -132,7 +132,7 @@ nohup mongod --port 27101 --dbpath=/data/conf2 --logpath=/data/log/conf-2.log --
 nohup mongos --port 40000 --configdb conf/localhost:27100,localhost:27101 --fork --logpath=/data/log/route.log --logappend &
 ```
 4.1 设置分片
-```mongodb
+```sql
 # mongo localhost:40000
 > use admin
 > db.runCommand({ addshard: 'rs0/localhost:27020,localhost:27021'})

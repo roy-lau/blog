@@ -11,7 +11,7 @@ __mongostat 命令__
 `mongostat`是`mongodb`自带的状态检测工具，在命令行下使用。它会间隔固定时间获取`mongodb`的当前运行状态，并输出。如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用`mongostat`来查看`mongo`的状态。
 
 启动你的`Mongod`服务，进入到你安装的`MongoDB`目录下的`bin`目录， 然后输入`mongostat`命令，如下所示：
-```cmd
+```sh
 D:\set up\mongodb\bin>mongostat
 ```
 以上命令输出结果如下：
@@ -23,7 +23,7 @@ __mongotop 命令__
 `mongotop`也是`mongodb`下的一个内置工具，`mongotop`提供了一个方法，用来跟踪一个`MongoDB`的实例，查看哪些大量的时间花费在读取和写入数据。 `mongotop`提供每个集合的水平的统计数据。默认情况下，`mongotop`返回值的每一秒。
 
 启动你的`Mongod`服务，进入到你安装的`MongoDB`目录下的`bin`目录， 然后输入`mongotop`命令，如下所示：
-```cmd
+```sh
 D:\set up\mongodb\bin>mongotop
 ```
 以上命令执行输出结果如下：
@@ -31,14 +31,14 @@ D:\set up\mongodb\bin>mongotop
 <img src="imgs/mongotop.png" alt="mongotop输出结果图" />
 
 带参数实例
-```cmd
+```sh
 E:\mongodb-win32-x86_64-2.2.1\bin>mongotop 10
 ```
 
 <img src="imgs/mongotop-10.gif" alt="mongotop 10 输出结果图" />
 
 后面的`10`是`<sleeptime>`参数 ，可以不使用，等待的时间长度，以秒为单位，`mongotop`等待调用之间。通过的默认`mongotop`返回数据的每一秒。
-```cmd
+```sh
 E:\mongodb-win32-x86_64-2.2.1\bin>mongotop --locks
 ```
 

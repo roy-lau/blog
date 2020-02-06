@@ -9,19 +9,19 @@
 语法
 
 `limit()`方法基本语法如下所示：
-```mongodb
+```sql
 >db.COLLECTION_NAME.find().limit(NUMBER)
 ```
 实例
 
 集合 `col` 中的数据如下：
-```mongodb
+```sql
 { "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
 { "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
 { "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
 ```
 以上实例为显示查询文档中的两条记录：
-```mongodb
+```sql
 > db.col.find({},{"title":1,_id:0}).limit(2)
 { "title" : "PHP 教程" }
 { "title" : "Java 教程" }
@@ -35,13 +35,13 @@ _注：如果你们没有指定`limit()`方法中的参数则显示集合中的�
 语法
 
 `skip()` 方法脚本语法格式如下：
-```mongodb
+```sql
 >db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
 ```
 实例
 
 以下实例只会显示第二条文档数据
-```mongodb
+```sql
 >db.col.find({},{"title":1,_id:0}).limit(1).skip(1)
 { "title" : "Java 教程" }
 >
