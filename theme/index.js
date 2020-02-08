@@ -3,19 +3,23 @@ const { path, logger } = require('@vuepress/shared-utils'),
 
 moment.locale('zh-cn')
 
-// Theme API.
+/**
+ * Theme API.
+ *
+ * @param  {Object} options .vuepress/config.js -> themeConfig
+ * @param  {Object} ctx     https://vuepress.vuejs.org/zh/plugin/context-api.html#ctx-isprod
+ * @return {Object}         [description]
+ */
 module.exports = (options, ctx) => {
     const { themeConfig, siteConfig } = ctx
-    // resolve algolia
-    const isAlgoliaSearch = (
-        themeConfig.algolia ||
-        Object.keys(siteConfig.locales && themeConfig.locales || {})
-        .some(base => themeConfig.locales[base].algolia)
-    )
-
     return {
-        // 设置别名
         alias() {
+            // resolve algolia
+            const isAlgoliaSearch = (
+                themeConfig.algolia ||
+                Object.keys(siteConfig.locales && themeConfig.locales || {})
+                .some(base => themeConfig.locales[base].algolia)
+            )
             return {
                 '@AlgoliaSearchBox': isAlgoliaSearch ?
                     path.resolve(__dirname, 'components/AlgoliaSearchBox.vue') : path.resolve(__dirname, 'noopModule.js')
@@ -58,7 +62,7 @@ module.exports = (options, ctx) => {
             // '@vuepress/last-updated',
             [
                 '@vuepress/last-updated',
-                { transformer: (timestamp, lang) => moment(timestamp).format("YYYY MMMM Do, a h:mm:ss") }
+                { transformer: (timestamp, lang) => { return moment(timestamp).format("YYYY MMMM Do, a h:mm:ss") } }
             ],
             // path.resolve(__dirname, 'plugins/pagination/index.js'),
             ['container', { type: 'tip' }],
@@ -108,14 +112,15 @@ module.exports = (options, ctx) => {
         },
         ready() {
             // const { themeConfig, siteConfig, pages } = ctx
+            // console.log(pages)
         },
-        // chainMarkdown(config) {
-        //     config
-        //         // reference: https://www.npmjs.com/package/markdown-it-checkbox
-        //         .plugin('checkbox')
-        //         .use(require('markdown-it-checkbox'))
-        //         // Move up one level, like .end() in jQuery.
-        //         .end()
-        // },
+        chainMarkdown(config) {
+            // config
+            //     // reference: https://www.npmjs.com/package/markdown-it-checkbox
+            //     .plugin('checkbox')
+            //     .use(require('markdown-it-checkbox'))
+            //     // Move up one level, like .end() in jQuery.
+            //     .end()
+        }
     }
 }
