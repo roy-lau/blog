@@ -12,17 +12,13 @@ moment.locale('zh-cn')
  */
 module.exports = (options, ctx) => {
     const { themeConfig, siteConfig } = ctx
+
+    const enableSmoothScroll = themeConfig.smoothScroll === true
     return {
         alias() {
             // resolve algolia
-            const isAlgoliaSearch = (
-                themeConfig.algolia ||
-                Object.keys(siteConfig.locales && themeConfig.locales || {})
-                .some(base => themeConfig.locales[base].algolia)
-            )
             return {
-                '@AlgoliaSearchBox': isAlgoliaSearch ?
-                    path.resolve(__dirname, 'components/AlgoliaSearchBox.vue') : path.resolve(__dirname, 'noopModule.js')
+                '@SearchBox': path.resolve(__dirname, 'components/SearchBox/index.vue')
             }
         },
         // 增加一个纯粹的路由
@@ -57,7 +53,8 @@ module.exports = (options, ctx) => {
         }],
         // 使用到的插件
         plugins: [
-            '@vuepress/search',
+            '@vuepress/active-header-links',
+            // '@vuepress/search',
             '@vuepress/plugin-nprogress',
             // '@vuepress/last-updated',
             [
@@ -73,6 +70,7 @@ module.exports = (options, ctx) => {
                 before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
                 after: () => '</details>\n'
             }],
+            ['smooth-scroll', enableSmoothScroll],
         ],
         // 修改 $page 对象。每个页面都会执行一次
         extendPageData($page) {

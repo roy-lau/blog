@@ -4,8 +4,8 @@
   "description": "vuepress 开发 blog",
   "main": "theme/index.js",
   "scripts": {
-    "build": "vuepress build src --dest docs-dist",
-    "dev": "vuepress dev src --no-cache --temp .temp",
+    "build": "vuepress build src --dest docs-dist --no-cache ",
+    "dev": "vuepress dev src --cache .cache --temp .temp",
     "getsrc": "git clone git@github.com:roy-lau/blog.git -b src --depth=1 src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
