@@ -98,7 +98,7 @@ npm run build
 下面这段代码没能正常渲染
 :::
 
-``` mysql
+```sql
 SELECT * FROM USER;
 ```
 
@@ -108,7 +108,7 @@ SELECT * FROM USER;
 
 ### 表格示例
 
-> github 的表格有 左对齐 右对齐 居中对齐，但很少会使用到不同的对齐方式。所有只做了下列一种方式
+> `github` 的表格有 左对齐 右对齐 居中对齐，但很少会使用到不同的对齐方式。所有只做了下列一种方式
 
 
 | Tables        | Are           | Cool  |

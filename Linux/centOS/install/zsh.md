@@ -78,18 +78,25 @@ _如果出現`SSL connect error`,请升级网络安全服务 `yum update nss`_
 
 还可以自己下载插件
 
-安装`zsh-syntax-highlighting`插件
+* 安装`zsh-syntax-highlighting`插件
+
 同样地，我们要先下载它的源码，但在这里，我们可以利用一下oh-my-zsh的插件管理功能：
 
-    cd ~/.oh-my-zsh/custom/plugins
-    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+```sh
+cd ~/.oh-my-zsh/custom/plugins
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git --depth=1
+```
 
+* 安装 `zsh-autosuggestions` 自动补全插件
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions --depth=1
+```
 然后，我们打开 `~/.zshrc` 文件，找到以下段落；
-
-    # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-    # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-    # Example format: plugins=(rails git textmate ruby lighthouse)
-    # Add wisely, as too many plugins slow down shell startup.
-    plugins=(git)
-
-按照注释中的提示改成 `plugins=(git zsh-syntax-highlighting)` 即可。
+```
+	# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+	# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+	# Example format: plugins=(rails git textmate ruby lighthouse)
+	# Add wisely, as too many plugins slow down shell startup.
+	plugins=(git)
+```
+按照注释中的提示改成 `plugins=(git zsh-autosuggestions zsh-syntax-highlighting)` 即可。
