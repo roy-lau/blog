@@ -60,7 +60,12 @@ module.exports = (options, ctx) => ({
         // path.resolve(__dirname, 'plugins/pagination/index.js'),
         ['container', { type: 'tip' }],
         ['container', { type: 'warning' }],
-        ['container', { type: 'danger' }]
+        ['container', { type: 'danger' }],
+        ['container', {
+            type: 'details',
+            before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
+            after: () => '</details>\n'
+        }],
     ],
     // 修改 $page 对象。每个页面都会执行一次
     extendPageData($page) {

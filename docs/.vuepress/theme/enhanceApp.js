@@ -1,8 +1,7 @@
 /**
  * 扩展 VuePress 应用
  */
-import Vue from 'vue'
-import Vuetify from 'vuetify'
+ßimport Vuetify from 'vuetify'
 
 
 // 图标组件 icon
@@ -13,13 +12,17 @@ import 'vuetify/dist/vuetify.min.css'
 import '@theme/styles/index.styl'
 
 
+const opts = {}
+const vuetify = new Vuetify(opts)
+
 export default ({
     Vue, // VuePress 正在使用的 Vue 构造函数
     options, // 附加到根实例的一些选项
     router, // 当前应用的路由实例
+    vuetify,
     siteData // 站点元数据
 }) => {
     // ...做一些其他的应用级别的优化
-    Vue.use(Vuetify)
+   Vue.use(Vuetify)
 
 }
