@@ -1,6 +1,7 @@
 <template>
     <div class="theme-container">
         <Header />
+
         <transition-drop>
             <div v-show="transitonStatus">
                 <details>
@@ -37,9 +38,11 @@
                 </details>
             </div>
         </transition-drop>
+
         <transition-drop delay="0.04">
             <Content v-show="transitonStatus" />
         </transition-drop>
+
         <transition name="fade">
         	<!-- start loading 页面 -->
             <LoadingPage v-show="firstLoad" class="loading-wrapper" />

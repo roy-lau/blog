@@ -1,11 +1,29 @@
 <template>
-  <div id="loader-wrapper">
-    <div class="loader-main">
-      <img :src="$withBase('/loadings/loading-bars.svg')" alt="loading……" class="loading-svg" />
+    <div id="loader-wrapper">
+        <div class="loader-main">
+
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" alt="loading……">
+          <path transform="translate(2)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline"  />
+          </path>
+          <path transform="translate(8)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.2" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline"  />
+          </path>
+          <path transform="translate(14)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.4" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline" />
+          </path>
+          <path transform="translate(20)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.6" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline" />
+          </path>
+          <path transform="translate(26)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.8" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline" />
+          </path>
+        </svg>
+
+        </div>
+        <h3 class="title">{{ $page.title}}</h3>
+        <p class="description">{{$site.description || $localeConfig.description}}</p>
     </div>
-    <h3 class="title" v-if="$frontmatter.home">{{$site.title || $localeConfig.title}}</h3>
-    <p class="description" v-if="$frontmatter.home">{{$site.description || $localeConfig.description}}</p>
-  </div>
 </template>
 
 <style lang="stylus" scoped>
@@ -22,16 +40,14 @@
     left 50%
     z-index 555
     transform translate(-50%,0)
-    .loading-svg
-      width 100px
-      height 100px
+    svg
+      fill $accentColor
 
   .title
     margin 8rem auto 2rem
     text-align center
     color $textColor
-    color var(--text-color)
-    font-size 30px
+    font-size 28px
     box-sizing border-box
     padding 0 10px
     text-shadow 0 2px 10px rgba(0,0,0,0.2)
@@ -39,8 +55,7 @@
     margin auto
     text-align center
     color $textColor
-    color var(--text-color)
-    font-size 22px
+    font-size 20px
     box-sizing border-box
     padding 0 10px
     text-shadow 0 2px 10px rgba(0,0,0,0.2)
