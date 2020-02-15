@@ -1,9 +1,12 @@
 .DS_Store
 node_modules
+<<<<<<< HEAD
 
 # local env files
 .env.local
 .env.*.local
+=======
+>>>>>>> 30a2bf87833a9cb5dfdeb08f49dbd3db002d4a0b
 
 # Log files
 npm-debug.log*

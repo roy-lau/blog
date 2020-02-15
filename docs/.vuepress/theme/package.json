@@ -1,7 +1,0 @@
-{
-  "name": "vuepress-theme-material",
-  "main": "index.js",
-  "devDependencies": {
-    "vuepress": "^1.0.0"
-  }
-}
