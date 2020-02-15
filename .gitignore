@@ -1,12 +1,18 @@
 .DS_Store
 node_modules
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # local env files
 .env.local
 .env.*.local
 =======
 >>>>>>> 30a2bf87833a9cb5dfdeb08f49dbd3db002d4a0b
+=======
+.cache
+.temp
+src
+>>>>>>> 32b4a5830e5440a3b24ed94a14508f1ce62cb69d
 
 # Log files
 npm-debug.log*

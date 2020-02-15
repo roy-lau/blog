@@ -1,0 +1,26 @@
+{
+  "name": "blog-dev",
+  "version": "1.0.0",
+  "description": "vuepress 开发 blog",
+  "main": "theme/index.js",
+  "scripts": {
+    "build": "vuepress build src --dest docs-dist --no-cache ",
+    "dev": "vuepress dev src --cache .cache --temp .temp",
+    "getsrc": "git clone git@github.com:roy-lau/blog.git -b src --depth=1 src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roy-lau/blog.git"
+  },
+  "author": "RoyLau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roy-lau/blog/issues"
+  },
+  "homepage": "https://github.com/roy-lau/blog#readme",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "vuepress": "^1.3.0"
+  }
+}

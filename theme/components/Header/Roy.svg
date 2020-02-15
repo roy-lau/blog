@@ -1,0 +1,20 @@
+<svg width="42px" height="36px" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <text x="50%" y="50%" font-size="1.2rem" dominant-baseline="middle" text-anchor="middle" text-transform="uppercase" text-shadow="0 0 1px #3498db" fill="none" stroke="#3498db" stroke-width="1px" stroke-dasharray="90 310">
+            Roy
+            <animate attributeName="stroke-dashoffset" begin="-1.5s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+        </text>
+        <text x="50%" y="50%" font-size="1.2rem" dominant-baseline="middle" text-anchor="middle" text-transform="uppercase" text-shadow="0 0 1px #f39c12" fill="none" stroke="#f39c12" stroke-width="1px" stroke-dasharray="90 310">
+            Roy
+            <animate attributeName="stroke-dashoffset" begin="-3s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+        </text>
+        <text x="50%" y="50%" font-size="1.2rem" dominant-baseline="middle" text-anchor="middle" text-transform="uppercase" text-shadow="0 0 1px #e74c3c" fill="none" stroke="#e74c3c" stroke-width="1px" stroke-dasharray="90 310">
+            Roy
+            <animate attributeName="stroke-dashoffset" begin="-4.5s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+        </text>
+        <text x="50%" y="50%" font-size="1.2rem" dominant-baseline="middle" text-anchor="middle" text-transform="uppercase" text-shadow="0 0 1px #9b59b6" fill="none" stroke="#9b59b6" stroke-width="1px" stroke-dasharray="90 310">
+            Roy
+            <animate attributeName="stroke-dashoffset" begin="-6s" dur="6s" from="0" to="-400" repeatCount="indefinite"></animate>
+        </text>
+    </g>
+</svg>
