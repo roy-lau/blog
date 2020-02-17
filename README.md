@@ -8,11 +8,13 @@
 
 ```sh
 # 下载
-git clone git@github.com:roy-lau/blog.git --b dev blog-dev --depth=1
+git clone git@github.com:roy-lau/blog.git -b dev-vp blog-vp --depth=1
 
 # 进入目录
-cd blog-dev
+cd blog-vp
 
+# 下载 blog 原文件
+git clone git@github.com:roy-lau/blog.git -b src src --depth=1
 # 安装依赖
 npm i
 
