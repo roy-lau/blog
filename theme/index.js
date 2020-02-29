@@ -84,12 +84,16 @@ module.exports = (options, ctx) => {
                 frontmatter, // 页面的 frontmatter 对象
                 regularPath, // 当前页面遵循文件层次结构的默认链接
                 path, // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
+                title
             } = $page
             // logger.info($page)
             // 设置 type ，用来过滤文章
             frontmatter.type === 'page' ? null : $page.type = 'post'
             // 设置 type ，用来过滤文章
             $page.frontmatter.date = frontmatter.date && moment(frontmatter.date).format("YYYY MMMM Do, a h:mm:ss")
+            
+            // title ? $page.title == "无标题": $page.title
+
             /**
              * Generate summary. 生成摘要信息
              */

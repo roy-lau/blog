@@ -12,7 +12,7 @@ export default ({
 }) => {
     // ...做一些其他的应用级别的优化
     // Vue.use(Blog)
-	Vue.component('LoadingPage', LoadingPage)
-	// console.log(options)
-	// console.log(siteData)
+    Vue.component('LoadingPage', LoadingPage)
+    // console.log(options)
+    // console.log(siteData)
 }
