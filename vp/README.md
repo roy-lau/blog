@@ -1,10 +1,21 @@
-
+---
+title: vuepress
+date: 2020-01-01
+description: vuepress 主题博客，这篇文章展示了 vuepress 的书写规范
+tags: 
+  - vue 
+  - markdown 
+  - vuepress  
+categorys:
+  - 前端 
+  - 博客  
+---
 
 > 本博客使用 [vuepress](https://v1.vuepress.vuejs.org/zh/) 为主搭建，另外使用了 [vuetifyjs](https://vuetifyjs.com/zh-Hans) `UI` 组件
->>树
->>>二叉树
->>>>平衡二叉树
->>>>>满二叉树
+>> 树
+>>> 二叉树
+>>>> 平衡二叉树
+>>>>> 满二叉树
 <!-- more -->
 
 
