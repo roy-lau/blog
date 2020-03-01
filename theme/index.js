@@ -21,36 +21,6 @@ module.exports = (options, ctx) => {
                 '@SearchBox': path.resolve(__dirname, 'components/SearchBox/index.vue')
             }
         },
-        // 增加一个纯粹的路由
-        additionalPages: [{
-            title: '主页',
-            path: '/home/',
-            frontmatter: {
-                type: 'page',
-                layout: 'Home'
-            }
-        }, {
-            title: '归档',
-            path: '/files/',
-            frontmatter: {
-                type: 'page',
-                layout: 'Files'
-            }
-        }, {
-            title: '标签',
-            path: '/tags/',
-            frontmatter: {
-                type: 'page',
-                layout: 'Tags'
-            }
-        }, {
-            title: '示例',
-            path: '/demo/',
-            frontmatter: {
-                type: 'page',
-                layout: 'Demo'
-            }
-        }],
         // 使用到的插件
         plugins: [
             '@vuepress/active-header-links',
@@ -87,13 +57,10 @@ module.exports = (options, ctx) => {
                 title
             } = $page
             // logger.info($page)
-            // 设置 type ，用来过滤文章
-            frontmatter.type === 'page' ? null : $page.type = 'post'
-            // 设置 type ，用来过滤文章
+            
+            // 格式化文章 date
             $page.frontmatter.date = frontmatter.date && moment(frontmatter.date).format("YYYY MMMM Do, a h:mm:ss")
             
-            // title ? $page.title == "无标题": $page.title
-
             /**
              * Generate summary. 生成摘要信息
              */
