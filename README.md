@@ -31,4 +31,4 @@ npm run build
 * [vuepress](https://vuepress.vuejs.org/zh/)
 * [参考仓库](https://github.com/vuepress-reco/vuepress-theme-reco)
 
-[git actions deploy](https://github.com/marketplace/actions/deploy-to-vuepress)
+[git actions deploy](https://github.com/peaceiris/actions-gh-pages)

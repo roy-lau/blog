@@ -3,18 +3,32 @@ on:
   push:	
     branches:	
       - dev-vp
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: Build and Deploy
-      uses: grasilife/github-pages-deploy-action@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BASE_BRANCH: dev-vp # 原分支
-        BRANCH: gh-pages # 目标分支
-        FOLDER: docs-dist # 原分支的静态文件路径
-        BUILD_SCRIPT: npm install && npm run-script getsrc && npm run-script build # deploy 脚本
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: npm install 
+      run: npm run-script getsrc 
+      run: npm run-script build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACCESS_TOKEN }}
+        publish_dir: ./docs-dist # 发布目录
+        publish_branch: gh-pages # 发布分支
