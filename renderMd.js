@@ -54,7 +54,6 @@ function gYml(filePath) {
   return ymlObj
   // console.log(filePath,'--->',tags)
 }
-
 /**
  * 处理文件内容
  * 
@@ -87,7 +86,7 @@ function handleCont(filePath) {
 function saveHandled(filePath){
   const cont = handleCont(filePath)
 
-  // fs.writeFileSync(filePath,cont)
+  fs.writeFileSync(filePath,cont)
   
 }
 readFileList('./src/', '.md');
