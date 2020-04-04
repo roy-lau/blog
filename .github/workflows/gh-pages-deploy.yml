@@ -22,7 +22,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - run: npm install 
-    - run: npm run getsrc 
+    - run: git clone https://github.com/roy-lau/blog.git -b src --depth=1 src
     - run: npm run build
 
     - name: Deploy
