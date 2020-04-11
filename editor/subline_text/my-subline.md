@@ -1,4 +1,4 @@
-### ====================== My subline setting =======================
+###  My subline setting
 
 ```json
  {

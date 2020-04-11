@@ -1,7 +1,7 @@
 #   js 中文转拼音
 
 <details>
-  <summary><b>通过js(浏览器环境) 将中文转为拼音</summary>
+  <summary><b>通过js(浏览器环境) 将中文转为拼音</b></summary>
 
 ```js
 /**
