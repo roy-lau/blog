@@ -1,41 +1,59 @@
 // 参考 https://github.com/cnguu/vuepress-theme-yur/blob/master/yur/plugins/Blog/index.js
-export default function blog (Vue) {
-  Vue.mixin({
-    created () {
-      const { post: { cover } } = this.$themeConfig
-      if (!this.$posts) {
-        const today = new Date().toLocaleDateString()
-        const { pages } = this.$site
-        let posts = {}
-        if (pages && pages.length) {
-          posts = pages.filter(page => {
-            const { frontmatter: { created } } = page
-            return !(created === undefined)
-          })
-          for (const post of posts) {
-            const { frontmatter: { created, updated }, path } = post
 
-            if (created) {
-              post.frontmatter.created = new Date(created).toLocaleDateString()
-            } else {
-              post.frontmatter.created = today
-            }
-            if (updated) {
-              post.frontmatter.updated = new Date(updated).toLocaleDateString()
-            } else {
-              post.frontmatter.updated = today
-            }
-            if (path) {
-              post.category = getCurrentPage(path)
-              post.categoryText = getCategoryText(this.$config.navs, post.category)
-            }
-          }
-          posts.sort((a, b) => {
-            return new Date(b.frontmatter.updated).getTime() - new Date(a.frontmatter.updated).getTime()
-          })
+export default function blog(Vue, siteData) {
+  Vue.mixin({
+    created() {
+      console.count("几次？")
+
+      const { pages } = siteData
+      let post = pages[this._uid]
+
+      if (post) {
+        // console.log(post)
+        /**
+         * set tags
+         */
+        post.tags = post.relativePath.match(/README|sql-serve|Linux|centOS|docker|Installation-package|install|git|java|mongodb|mysql|nodejs|js|javascript|python|zsh|bash|shell|ssh|config|yum|other|ubunto|nginx|data-base|vsCode|editor|emoji|english-song|git-bash-make|c\+\+|win/ig)
+        if (!this.$tags) {
+          this.$tags = this.$page.tags
         }
-        Vue.prototype.$posts = posts
       }
+      console.log(this.$page)
+
+      // const { post: { cover } } = this.$themeConfig
+      // if (!this.$posts) {
+      //   const today = new Date().toLocaleDateString()
+      //   const { pages } = this.$site
+      //   let posts = {}
+      //   if (pages && pages.length) {
+      //     posts = pages.filter(page => {
+      //       const { frontmatter: { created } } = page
+      //       return !(created === undefined)
+      //     })
+      //     for (const post of posts) {
+      //       const { frontmatter: { created, updated }, path } = post
+
+      //       if (created) {
+      //         post.frontmatter.created = new Date(created).toLocaleDateString()
+      //       } else {
+      //         post.frontmatter.created = today
+      //       }
+      //       if (updated) {
+      //         post.frontmatter.updated = new Date(updated).toLocaleDateString()
+      //       } else {
+      //         post.frontmatter.updated = today
+      //       }
+      //       if (path) {
+      //         post.category = getCurrentPage(path)
+      //         post.categoryText = getCategoryText(this.$config.navs, post.category)
+      //       }
+      //     }
+      //     posts.sort((a, b) => {
+      //       return new Date(b.frontmatter.updated).getTime() - new Date(a.frontmatter.updated).getTime()
+      //     })
+      //   }
+      //   Vue.prototype.$posts = posts
+      // }
 
       // if (!this.$categories) {
       //   const { navs } = this.$config
@@ -59,23 +77,7 @@ export default function blog (Vue) {
       //   Vue.prototype.$categories = categories
       // }
 
-      // if (!this.$tags) {
-      //   const _tags = {}
-      //   if (this.$posts.length) {
-      //     for (const post of this.$posts) {
-      //       const { tags } = post.frontmatter
-      //       if (tags && tags.length) {
-      //         for (const tag of tags) {
-      //           if (!hasOwn(_tags, tag)) {
-      //             _tags[tag] = []
-      //           }
-      //           _tags[tag].push(post)
-      //         }
-      //       }
-      //     }
-      //   }
-      //   Vue.prototype.$tags = _tags
-      // }
+
 
       // if (!this.$timeline) {
       //   const timeline = []

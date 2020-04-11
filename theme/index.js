@@ -76,8 +76,6 @@ module.exports = (options, ctx) => {
                 ) + ' ...'
             }
 
-            logger.info($page.title)
-            logger.info(_filePath)
         },
         ready() {
             // const { themeConfig, siteConfig, pages } = ctx

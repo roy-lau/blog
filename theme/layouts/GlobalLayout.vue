@@ -13,6 +13,10 @@
           <pre>{{$page}}</pre>
         </details>
         <details>
+          <summary>$tags</summary>
+          <pre>{{$tags}}</pre>
+        </details>
+        <details>
           <summary>$frontmatter</summary>
           <pre>{{$frontmatter}}</pre>
         </details>

@@ -1,7 +1,7 @@
 
 import LoadingPage from './components/LoadingPage.vue'
 
-// import Blog from './plugins/Blog/index.js'
+import Blog from './plugins/Blog/index.js'
 
 export default ({
     Vue, 			// VuePress 正在使用的 Vue 构造函数
@@ -11,7 +11,7 @@ export default ({
     isServer 		// 当前应用配置是处于 服务端渲染 或 客户端
 }) => {
     // ...做一些其他的应用级别的优化
-    // Vue.use(Blog)
+    Vue.use(Blog,siteData)
     Vue.component('LoadingPage', LoadingPage)
     // console.log(options)
     // console.log(siteData)
