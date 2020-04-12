@@ -13,10 +13,6 @@
           <pre>{{$page}}</pre>
         </details>
         <details>
-          <summary>$tags</summary>
-          <pre>{{$tags}}</pre>
-        </details>
-        <details>
           <summary>$frontmatter</summary>
           <pre>{{$frontmatter}}</pre>
         </details>
@@ -87,7 +83,7 @@ export default {
       for (let index = 0; index < nav.length; index++) {
         const list = nav[index];
         if(list.link){
-          if(list.link.toUpperCase() == path.toUpperCase()){
+          if(list.link.split('/')[1].toUpperCase() == path.split('/')[1].toUpperCase()){
             return true
           }
         }else{
@@ -105,7 +101,6 @@ export default {
         const list = pages[index];
         if(list.path){
           if(list.path === path){
-          console.log( list.path , path)
             return true
           }
         }else{

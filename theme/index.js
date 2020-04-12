@@ -26,7 +26,6 @@ module.exports = (options, ctx) => {
             '@vuepress/active-header-links',
             // '@vuepress/search',
             '@vuepress/plugin-nprogress',
-            // '@vuepress/last-updated',
             [
                 '@vuepress/last-updated',
                 { transformer: (timestamp, lang) => { return moment(timestamp).format("YYYY MMMM Do, a h:mm:ss") } }

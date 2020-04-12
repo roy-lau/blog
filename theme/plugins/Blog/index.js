@@ -3,10 +3,9 @@
 export default function blog(Vue, siteData) {
   Vue.mixin({
     created() {
-      console.count("几次？")
-
+      // console.count("几次？")
       const { pages } = siteData
-      let post = pages[this._uid]
+      let post = pages[this._uid-1]
 
       if (post) {
         // console.log(post)
@@ -14,11 +13,8 @@ export default function blog(Vue, siteData) {
          * set tags
          */
         post.tags = post.relativePath.match(/README|sql-serve|Linux|centOS|docker|Installation-package|install|git|java|mongodb|mysql|nodejs|js|javascript|python|zsh|bash|shell|ssh|config|yum|other|ubunto|nginx|data-base|vsCode|editor|emoji|english-song|git-bash-make|c\+\+|win/ig)
-        if (!this.$tags) {
-          this.$tags = this.$page.tags
-        }
       }
-      console.log(this.$page)
+      // console.log(this.$page)
 
       // const { post: { cover } } = this.$themeConfig
       // if (!this.$posts) {
