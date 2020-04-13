@@ -9,5 +9,4 @@
 <style lang="stylus" scoped>
 @require '../../styles/content.styl'
 
-
 </style>

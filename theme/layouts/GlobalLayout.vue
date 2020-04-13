@@ -41,7 +41,9 @@
 
     <transition-drop delay="0.04">
       <ClientOnly>
+        <!-- start 根据 layout 展示不同的组件 -->
         <component :is="layout"  v-show="transitonStatus" />
+        <!-- end 根据 layout 展示不同的组件 -->
       </ClientOnly>
     </transition-drop>
 
