@@ -15,7 +15,7 @@
           v-text="tag"
           class="tag"
         />
-        <p v-text="list.excerpt"></p>
+        <p v-html="list.excerpt"></p>
       </li>
     </ul>
   </div>

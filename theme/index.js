@@ -1,4 +1,5 @@
 const { path, logger } = require('@vuepress/shared-utils'),
+md = require('markdown-it')(),
     moment = require('moment');
 
 moment.locale('zh-cn')
@@ -67,7 +68,7 @@ module.exports = (options, ctx) => {
                 return
             } else {
                 const excerptLength = 200
-                $page.excerpt = (
+                $page.excerpt = md.render(
                     _strippedContent
                     .trim()
                     .replace(/^#+\s+(.*)/, '')
