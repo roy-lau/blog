@@ -1,5 +1,8 @@
 const { path, logger } = require('@vuepress/shared-utils'),
-md = require('markdown-it')(),
+md = require('markdown-it')({
+    html:         true,        // Enable HTML tags in source
+    linkify:      true,        // Autoconvert URL-like text to links
+}),
     moment = require('moment');
 
 moment.locale('zh-cn')
@@ -73,7 +76,7 @@ module.exports = (options, ctx) => {
                     .trim()
                     .replace(/^#+\s+(.*)/, '')
                     .slice(0, excerptLength)
-                ) + ' ...'
+                )+ ' ...'
             }
 
         },

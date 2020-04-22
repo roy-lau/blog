@@ -15,7 +15,7 @@
           v-text="tag"
           class="tag"
         />
-        <p v-html="list.excerpt"></p>
+        <summary v-html="list.excerpt"></summary>
       </li>
     </ul>
   </div>
@@ -25,4 +25,8 @@ export default {
   created() {}
 };
 </script>
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+summary
+  overflow hidden
+  text-overflow ellipsis
+</style>
