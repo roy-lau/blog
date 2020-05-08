@@ -1,21 +1,14 @@
 .DS_Store
 node_modules
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
 # local env files
 .env.local
 .env.*.local
-=======
->>>>>>> 30a2bf87833a9cb5dfdeb08f49dbd3db002d4a0b
-=======
 .cache
 .temp
 src
->>>>>>> 32b4a5830e5440a3b24ed94a14508f1ce62cb69d
-=======
->>>>>>> 9ce289c1b3703f7d51b23445c5289049fafe7fa6
+
 
 # Log files
 npm-debug.log*
@@ -25,10 +18,7 @@ yarn-error.log*
 # Editor directories and files
 .idea
 .vscode
-<<<<<<< HEAD
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-=======
->>>>>>> 9ce289c1b3703f7d51b23445c5289049fafe7fa6
