@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> <%= userInfo.name %> | 个人信息页面</title>
+</head>
+
+<body>
+  <img src="<%= userInfo.avatar_url %>">
+  <ul>
+    <li> ID : <%= userInfo.id %> </li>
+    <li> 姓名 : <%= userInfo.name %> </li>
+    <li> 简介 : <%= userInfo.description %> </li>
+    <li> 创建日期 : <%= userInfo.created_at %> </li>
+    <li> 更新日期 : <%= userInfo.updated_at %> </li>
+  </ul>
+</body>
+
+</html>
