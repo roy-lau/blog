@@ -1,8 +1,6 @@
 <template>
   <div id="Home">
-    <h1>this is home page , are you show ?</h1>
-
-    <ul class="wrapper">
+    <ol class="wrapper">
       <li v-for="list in $site.pages" :key="list.key">
         <h3>
           <router-link :to="list.path" v-text="list.title || '无标题'" class="text--link" />
@@ -15,9 +13,9 @@
           v-text="tag"
           class="tag"
         />
-        <summary v-html="list.excerpt"></summary>
+        <!-- <summary v-html="list.excerpt"></summary> -->
       </li>
-    </ul>
+    </ol>
   </div>
 </template>
 <script>

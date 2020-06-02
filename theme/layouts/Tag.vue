@@ -1,8 +1,7 @@
 <template>
   <div id="Tag">
-    <h1>this is 标签页 , are you show ?</h1>
 
-    <ul class="wrapper">
+    <ol class="wrapper">
       <li v-for="list in filterTagPages" :key="list.key">
         <h3>
           <router-link :to="list.path" v-text="list.title || '无标题'" class="text--link" />
@@ -15,9 +14,9 @@
           v-text="tag"
           class="tag"
         />
-        <p v-text="list.excerpt"></p>
+        <!-- <p v-text="list.excerpt"></p> -->
       </li>
-    </ul>
+    </ol>
   </div>
 </template>
 <script>

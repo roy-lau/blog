@@ -1,7 +1,7 @@
 <template>
   <div class="theme-container">
     <Header />
-
+<!-- 
     <transition-drop>
       <div v-show="transitonStatus">
         <details>
@@ -37,7 +37,7 @@
           <pre>{{$themeConfig}}</pre>
         </details>
       </div>
-    </transition-drop>
+    </transition-drop> -->
 
     <transition-drop delay="0.04">
       <ClientOnly>
@@ -153,6 +153,7 @@ export default {
   mounted() {
     this.handleLoading();
     console.log('comput layout: ' , this.layout);
+    console.table(this.$page)
   }
 };
 </script>

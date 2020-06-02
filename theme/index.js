@@ -28,7 +28,12 @@ module.exports = (options, ctx) => {
         // 使用到的插件
         plugins: [
             '@vuepress/active-header-links',
-            // '@vuepress/search',
+            '@vuepress/search',
+            // ['vuepress-plugin-yuque', {
+            //     html:true,
+            //     authToken: 'A4of6TlXsYRw6oOZm0iwTc1CN4XDOqqd81qxzwBR',
+            //     repoUrl: 'https://www.yuque.com/roylau/blog',
+            //   }],
             '@vuepress/plugin-nprogress',
             [
                 '@vuepress/last-updated',
