@@ -1,8 +1,8 @@
 <template>
   <div class="theme-container">
     <Header />
-<!-- 
-    <transition-drop>
+
+    <!-- <transition-drop>
       <div v-show="transitonStatus">
         <details>
           <summary>$site</summary>

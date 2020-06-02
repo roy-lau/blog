@@ -13,7 +13,7 @@
           v-text="tag"
           class="tag"
         />
-        <!-- <summary v-html="list.excerpt"></summary> -->
+        <summary v-html="list.excerpt"></summary>
       </li>
     </ol>
   </div>

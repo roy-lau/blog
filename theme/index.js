@@ -68,21 +68,6 @@ module.exports = (options, ctx) => {
             
             // 格式化文章 date
             $page.frontmatter.date = frontmatter.date && moment(frontmatter.date).format("YYYY MMMM Do, a h:mm:ss")
-            
-            /**
-             * Generate summary. 生成摘要信息
-             */
-            if (!_strippedContent || $page.excerpt) {
-                return
-            } else {
-                const excerptLength = 200
-                $page.excerpt = md.render(
-                    _strippedContent
-                    .trim()
-                    .replace(/^#+\s+(.*)/, '')
-                    .slice(0, excerptLength)
-                )+ ' ...'
-            }
 
         },
         ready() {
