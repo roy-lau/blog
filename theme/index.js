@@ -1,8 +1,4 @@
 const { path, logger } = require('@vuepress/shared-utils'),
-md = require('markdown-it')({
-    html:         true,        // Enable HTML tags in source
-    linkify:      true,        // Autoconvert URL-like text to links
-}),
     moment = require('moment');
 
 moment.locale('zh-cn')
@@ -17,7 +13,6 @@ moment.locale('zh-cn')
 module.exports = (options, ctx) => {
     const { themeConfig, siteConfig } = ctx
 
-    const enableSmoothScroll = themeConfig.smoothScroll === true
     return {
         alias() {
             // resolve algolia
@@ -48,7 +43,6 @@ module.exports = (options, ctx) => {
                 before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
                 after: () => '</details>\n'
             }],
-            ['smooth-scroll', enableSmoothScroll],
         ],
         // 修改 $page 对象。每个页面都会执行一次
         extendPageData($page) {
