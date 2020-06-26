@@ -59,7 +59,7 @@ module.exports = (options, ctx) => {
                 title
             } = $page
             // logger.info($page)
-            
+
             // 格式化文章 date
             $page.frontmatter.date = frontmatter.date && moment(frontmatter.date).format("YYYY MMMM Do, a h:mm:ss")
 
