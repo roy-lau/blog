@@ -1,147 +1,148 @@
-	1. because of you(因为你)
+1. because of you(因为你)
 
-	　　这首歌第1次听的时候震撼特别大,高潮过后突然安静的那一会真的太爽了.而且这首歌还很有气势,真正的百听不厌
+	这首歌第1次听的时候震撼特别大,高潮过后突然安静的那一会真的太爽了.而且这首歌还很有气势,真正的百听不厌
 
-　　2.never had a dream come true(从来没有梦想成真)
+2. never had a dream come true(从来没有梦想成真)
 
 	电影《阳光情人》1999,电影《太阳浩劫》2007
 
 	一直在找一个人,从未梦想成真
 
-　　个人最喜欢的一首...旋律肯定熟悉，但是不知道歌名，现在知道了吧
+	个人最喜欢的一首...旋律肯定熟悉，但是不知道歌名，现在知道了吧
 
-　　3.anyone of us(我们中的任何人)
+3. anyone of us(我们中的任何人)
 
-　　这首歌可能不是所有人第1次听就喜欢,但我第1次听它就很感冒,gareth gates的声音的确非常好听,节奏和旋律真的没有他的歌声霸道
+	这首歌可能不是所有人第1次听就喜欢,但我第1次听它就很感冒,gareth gates的声音的确非常好听,节奏和旋律真的没有他的歌声霸道
 
-　　4.she(她)
+4. she(她)
 
-　　这是在我mp3里呆的最久的一首歌.可能有半年了吧,相当好听,不管是节奏,歌词，还是groove coverage的唱功都着实了得 !经常玩劲舞团的对这首歌应该不陌生吧
+	这是在我mp3里呆的最久的一首歌.可能有半年了吧,相当好听,不管是节奏,歌词，还是groove coverage的唱功都着实了得 !经常玩劲舞团的对这首歌应该不陌生吧
 
-　　5.i want it that way(我想要那样)
+5. i want it that way(我想要那样)
 
 	后街男孩的;我想要那样;我要用那种方法得到它;我想要这种方式
 
-　　这首歌是我认为的后街最好听的一首歌
+	这首歌是我认为的后街最好听的一首歌
 
-　　6.hero-mariah carey(英雄玛利亚凯莉)
-	乔丹退役时 英雄玛利亚凯莉 献唱的歌曲《Hero》
-	[
-		Hero 英雄
+6. hero-mariah carey(英雄玛利亚凯莉)
+> 乔丹退役时 英雄玛利亚凯莉 献唱的歌曲《Hero》
 
-		There's a hero
-		有一位英雄
-		If you look inside your heart
-		如果你往你的内心深处寻觅
-		You don't have to be afraid
-		你无需恐惧
-		Of what you are
-		自己是什么
-		There's an answer
-		会有一个答案
-		If you reach into your soul
-		如果你往你的灵魂深处探索
-		And the sorrow that you know
-		你会了解悲伤
-		Will melt away
-		将会消散
-		And then a hero comes along
-		然后一位英雄孤独的走来
-		With the strength to carry on
-		伴随着力量前进
-		And you cast your fears aside
-		把你的恐惧甩到一旁
-		And you know you can survive
-		你明白你能活下来
-		So when you feel like hope is gone
-		所以当你感觉希望破灭之时
-		Look inside you and be strong
-		正视自己要坚强
-		And you'll finally see the truth
-		最后你终将发现这个事实
-		That a hero lies in you
-		你是一位英雄
+	Hero 英雄
 
-		It's a long road
-		这是一条漫长的路
-		When you face the world alone
-		当你孤独的面对这个世界
-		No one reaches out a hand
-		没有人伸手
-		For you to hold
-		将你紧握
-		You can find love
-		你能够发现爱
-		If you search within yourself
-		如果你往自身寻找
-		And the emptiness you felt
-		你感觉到的空虚
-		Will disappear
-		将会消散
-		And then a hero comes along
-		然后有一位英雄孤独走来
-		With the strength to carry on
-		伴随着力量前进
-		And you cast your fears aside
-		把你的恐惧甩到一旁
-		And you know you can survive
-		你明白你能活下来
-		So when you feel like hope is gone
-		所以当你感觉希望破灭之时
-		Look inside you and be strong
-		正视自己要坚强
-		And you'll finally see the truth
-		最后你终将发现这个事实
-		That a hero lies in you
-		你是一位英雄
+	There's a hero
+	有一位英雄
+	If you look inside your heart
+	如果你往你的内心深处寻觅
+	You don't have to be afraid
+	你无需恐惧
+	Of what you are
+	自己是什么
+	There's an answer
+	会有一个答案
+	If you reach into your soul
+	如果你往你的灵魂深处探索
+	And the sorrow that you know
+	你会了解悲伤
+	Will melt away
+	将会消散
+	And then a hero comes along
+	然后一位英雄孤独的走来
+	With the strength to carry on
+	伴随着力量前进
+	And you cast your fears aside
+	把你的恐惧甩到一旁
+	And you know you can survive
+	你明白你能活下来
+	So when you feel like hope is gone
+	所以当你感觉希望破灭之时
+	Look inside you and be strong
+	正视自己要坚强
+	And you'll finally see the truth
+	最后你终将发现这个事实
+	That a hero lies in you
+	你是一位英雄
 
-		Lord knows
-		上帝知道
-		Dreams are hard to follow
-		梦想总是很难跟随
-		But don't let anyone
-		但是不要让任何人
-		Tear them away, hey yeah
-		将梦想打碎
-		Hold on
-		紧握住
-		There will be tomorrow
-		明天即将来临
-		In time You'll find the way
-		你终将找到路
+	It's a long road
+	这是一条漫长的路
+	When you face the world alone
+	当你孤独的面对这个世界
+	No one reaches out a hand
+	没有人伸手
+	For you to hold
+	将你紧握
+	You can find love
+	你能够发现爱
+	If you search within yourself
+	如果你往自身寻找
+	And the emptiness you felt
+	你感觉到的空虚
+	Will disappear
+	将会消散
+	And then a hero comes along
+	然后有一位英雄孤独走来
+	With the strength to carry on
+	伴随着力量前进
+	And you cast your fears aside
+	把你的恐惧甩到一旁
+	And you know you can survive
+	你明白你能活下来
+	So when you feel like hope is gone
+	所以当你感觉希望破灭之时
+	Look inside you and be strong
+	正视自己要坚强
+	And you'll finally see the truth
+	最后你终将发现这个事实
+	That a hero lies in you
+	你是一位英雄
 
-		And then a hero comes along
-		然后有一位英雄孤独走来
-		With the strength to carry on
-		伴随着力量前进
-		And you cast your fears aside
-		把你的恐惧甩到一旁
-		And you know you can survive
-		你明白你能活下来
-		So when you feel like hope is gone
-		所以当你感觉希望破灭之时
-		Look inside you and be strong
-		正视自己要坚强
-		And you'll finally see the truth
-		最后你终将发现这个事实
-		That a hero lies in you
-		你是一位英雄
-	]
-　　这首歌不象其他歌一样搞的很大声,但它依然很有气势。我真的有点佩服mariah carey,可以把一首并不快的歌唱成这样,可以说,这首歌很有气质,值得一听
+	Lord knows
+	上帝知道
+	Dreams are hard to follow
+	梦想总是很难跟随
+	But don't let anyone
+	但是不要让任何人
+	Tear them away, hey yeah
+	将梦想打碎
+	Hold on
+	紧握住
+	There will be tomorrow
+	明天即将来临
+	In time You'll find the way
+	你终将找到路
 
-　　7.my happy ending（我的快乐结局）
+	And then a hero comes along
+	然后有一位英雄孤独走来
+	With the strength to carry on
+	伴随着力量前进
+	And you cast your fears aside
+	把你的恐惧甩到一旁
+	And you know you can survive
+	你明白你能活下来
+	So when you feel like hope is gone
+	所以当你感觉希望破灭之时
+	Look inside you and be strong
+	正视自己要坚强
+	And you'll finally see the truth
+	最后你终将发现这个事实
+	That a hero lies in you
+	你是一位英雄
 
-　　不懂avril lavigne(艾薇儿经典歌曲)清纯的外表下怎么会有如此的爆发力?!这是一首需要挑战耳膜强度的歌哦,特别是晚上.如果都开很大声,嘿嘿,有你爽的哈
+	这首歌不象其他歌一样搞的很大声,但它依然很有气势。我真的有点佩服mariah carey,可以把一首并不快的歌唱成这样,可以说,这首歌很有气质,值得一听
 
-　　8.fighter(战士)
+7. my happy ending（我的快乐结局）
 
-　　这是nba季后赛的主题曲.这首歌带给我的气势和激情就是代表nba的一种精神.
+	不懂avril lavigne(艾薇儿经典歌曲)清纯的外表下怎么会有如此的爆发力?!这是一首需要挑战耳膜强度的歌哦,特别是晚上.如果都开很大声,嘿嘿,有你爽的哈
 
-　　像个勇士一样,永不放弃
+8. fighter(战士)
 
-　　这就是nba的魅力,也是这首歌的魅力。
+	这是nba季后赛的主题曲.这首歌带给我的气势和激情就是代表nba的一种精神.
 
-	8.1 lonely (孤独)
+	像个勇士一样,永不放弃
+
+	这就是nba的魅力,也是这首歌的魅力。
+
+8. 1 lonely (孤独)
+
 	I am lonely lonely lonely 我是这么孤独，
 	I am lonely lonely in my life 我的生命是这样孤独，
 	I am lonely lonely lonely 我是这么孤独，
@@ -252,178 +253,176 @@
 	I am so lonely lonely 我是这么孤独，
 	I am so lonely lonely lonely in my life我的生命是这样孤独。
 
-　　9.it’s my life(这是我的生活)
+9. it’s my life(这是我的生活)
 
-　　cs mv的主题曲，钢琴版的听着超爽，如果你想去感叹人生的话听这首歌是个很好的方法
+	cs mv的主题曲，钢琴版的听着超爽，如果你想去感叹人生的话听这首歌是个很好的方法
 
-　　10.yesterday once more(昨日重现)
+10. yesterday once more(昨日重现)
 
-　　舒缓的节奏和干净的声音听起来实在舒服，这首歌很老，但就象酒，越老越香
+	舒缓的节奏和干净的声音听起来实在舒服，这首歌很老，但就象酒，越老越香
 
-　　它太经典了。
+	它太经典了。
 
-　　很多人想
+	很多人想
 
-　　但真的永远不会
+	但真的永远不会
 
-　　昨日重现
+	昨日重现
 
-　　11. big big world(大世界)
+11. big big world(大世界)
 
-　　这首歌是初中时全班都唱过的
+	这首歌是初中时全班都唱过的
 
-　　现在好怀念初中的时光
+	现在好怀念初中的时光
 
-　　时间真的过的好快啊
+	时间真的过的好快啊
 
-　　这首歌依然经典
+	这首歌依然经典
 
-　　但我真的都长大了，不一样了
+	但我真的都长大了，不一样了
 
-　　12. right here waiting(在这里等着)
+12. right here waiting(在这里等着)
 
-　　这首歌从一开始经典到结尾，还是喜欢他唱的那句i’ll be right here waiting for you(我会在这里等你)
+	这首歌从一开始经典到结尾，还是喜欢他唱的那句i’ll be right here waiting for you(我会在这里等你)
 
-　　有时生命需要等待，也需要忍耐
+	有时生命需要等待，也需要忍耐
 
-　　13.forever young(永远年轻|天荒情未了:电影)
+13. forever young(永远年轻|天荒情未了:电影)
 
-　　真的希望能永远年轻啊，但这是不可能的。人总是要长大的。歌词真的太经典了，喜欢的请支持我，让大家听着的时候方便点
+	真的希望能永远年轻啊，但这是不可能的。人总是要长大的。歌词真的太经典了，喜欢的请支持我，让大家听着的时候方便点
 
-　　14.my love(我的爱:同名电影)
+14. my love(我的爱:同名电影)
 
-　　最最流行的英文歌，歌词简单，我第一次听英文歌就是听的这首歌啊。下面有连接，没听过的赶快听啊，听过的再回味一下哈
+	最最流行的英文歌，歌词简单，我第一次听英文歌就是听的这首歌啊。下面有连接，没听过的赶快听啊，听过的再回味一下哈
 
-　　15.the day you went away(第一次爱的人:同名中文歌)
+15. the day you went away(第一次爱的人:同名中文歌)
 
-　　这首歌大家都应该听过的
+	这首歌大家都应该听过的
 
-　　没听过英文的都应该听过中文的
+	没听过英文的都应该听过中文的
 
-　　有时无话可说是不是好事
+	有时无话可说是不是好事
 
-　　16.as long as you love me(只要你爱我)
+16. as long as you love me(只要你爱我)
 
-　　这首歌听来相当轻快，而且旋律很很好听
+	这首歌听来相当轻快，而且旋律很很好听
 
-　　不管who you are? where you from?（你是谁？你从哪来？）
+	不管who you are? where you from?（你是谁？你从哪来？）
 
-　　都觉得后街的歌经典啊
+	都觉得后街的歌经典啊
 
-　　真的没说的
+	真的没说的
 
-　　17.baby one more time(宝贝再来一次)
+17. baby one more time(宝贝再来一次)
 
-　　小甜甜也有很多好听的歌的。这首很有节奏感的情歌感觉她真的是一个能快能慢，唱什么歌都好听的歌手啊，觉得好听就one more time
+	小甜甜也有很多好听的歌的。这首很有节奏感的情歌感觉她真的是一个能快能慢，唱什么歌都好听的歌手啊，觉得好听就one more time
 
-　　18.tomorrow( 明天 )
+18. tomorrow( 明天 )
 
-　　这是avril lavigne，最经典的一首歌。我认为的哈
+	这是avril lavigne，最经典的一首歌。我认为的哈
 
-　　吉他的伴奏和她略带伤感的声音可以让你的心立刻安静下来。听完后是回味，而不是去想tomorrow
+	吉他的伴奏和她略带伤感的声音可以让你的心立刻安静下来。听完后是回味，而不是去想tomorrow
 
-　　19.just one last (最后一曲)dance-sarah connor
+19. just one last (最后一曲)dance-sarah connor
 
-　　既然是just one last dance,当然很适合在晚上听撒,因为晚上是一天的last哈
+	既然是just one last dance,当然很适合在晚上听撒,因为晚上是一天的last哈
 
-　　开始时sarah connor亲唱just one last dance 在晚上四周超安静的时候听起真的超爽，而后面劲爆的一段简直把夜晚推向高潮
+	开始时sarah connor亲唱just one last dance 在晚上四周超安静的时候听起真的超爽，而后面劲爆的一段简直把夜晚推向高潮
 
-　　20.you are not alone(你并不孤单:同名电影)
+20. you are not alone(你并不孤单:同名电影)
 
-　　迈克尔杰克逊还有这样的歌，真的是挺不错的啊
+	迈克尔杰克逊还有这样的歌，真的是挺不错的啊
 
-　　感觉他的歌都挺劲爆的
+	感觉他的歌都挺劲爆的
 
-　　偶尔来一首安静点，慢点的
+	偶尔来一首安静点，慢点的
 
-　　慢节奏的听起真的不错啊
+	慢节奏的听起真的不错啊
 
-　　觉得这首歌好听的一定要在后面顶啊
+	觉得这首歌好听的一定要在后面顶啊
 
-　　21.thank you(谢谢你)	歌手-dido微笑
+21. thank you(谢谢你)	歌手-dido微笑
 
-　　这首歌可能第一次不会觉得很好听，特别是高潮部分。
+	这首歌可能第一次不会觉得很好听，特别是高潮部分。
 
-　　但安静的时候听还可以，还有那些伴奏，很有特色
+	但安静的时候听还可以，还有那些伴奏，很有特色
 
-　　想安静下来就听听这首歌
+	想安静下来就听听这首歌
 
-　　22.pretty boy(漂亮的男孩)
+22. pretty boy(漂亮的男孩)
 
-　　m2m的声音真的象天使,听起真的好舒服
+	m2m的声音真的象天使,听起真的好舒服
 
-　　而且很干净很有磁性的声音让我第1次听完就去问朋友这首歌是谁唱的
+	而且很干净很有磁性的声音让我第1次听完就去问朋友这首歌是谁唱的
 
-　　23.may it be(但愿如此) -enya恩雅
+23. may it be(但愿如此) -enya恩雅
 
-　　魔戒的主题曲，超空灵的歌曲
+	魔戒的主题曲，超空灵的歌曲
 
-　　也是enya的成名曲和代表作
+	也是enya的成名曲和代表作
 
 	歌曲大意：
 	May It Be may it be an evening star 但愿有一颗暮色之星 shines down upon you 佛照着你 may it be when darkness falls 即使黑暗降临 your heart will be true 你将揣着颗真诚的心 you walk a lonely road 孤独地上路 oh, how far you are from home 噢，离家的路途有多远 mornie utúli?? (darkness has come) mornie utúli?? （黑暗已经降临） believe and you will find your way 相信，而且你会找到路径 mornie alanti?? (darkness has fallen) mornie utúli?? （黑暗已经降临） a promise lives within you now 如今希望在你心中不泯 may it be shadows call 但愿阴影的笼罩 will fly away 将消逝 may it be your journey on 但愿你足下的旅途 to light the day 走向光明的天日 when the night is overcome 当黑夜逝去时 you may rise to find the sun 愿你起身迎接朝阳 mornie utúli?? (darkness has come) mornie utúli?? （黑暗已经来临） believe and you will find your way 相信你会找到路径 mornie alanti?? (darkness has fallen) mornie utúli?? （黑暗已经来临） a promise lives within you now 如今希望在你心中不泯 a promise lives within you now 如今希望在你心中不泯
 
-　　25.amarantine(永恒之约)-enya恩雅
+25. amarantine(永恒之约)-enya恩雅
 
-　　enya唱歌让人产生联想
+	enya唱歌让人产生联想
 
-　　实在奇怪啊
+	实在奇怪啊
 
-　　听她的歌怀疑世界是不是真实的
+	听她的歌怀疑世界是不是真实的
 
-　　不是特别好听但当你想写科幻小说的时候一定要听听啊 !
+	不是特别好听但当你想写科幻小说的时候一定要听听啊 !
 
-　　27.if you come back(回到我身边)-blue
+27. if you come back(回到我身边)-blue
 
-　　blue的声音真是爽啊，简直是天籁之音
+	blue的声音真是爽啊，简直是天籁之音
 
-　　特别是假声那段
+	特别是假声那段
 
-　　没听过的赶快来听啊
+	没听过的赶快来听啊
 
-　　28.scarborough fiar（斯卡堡集市|电影：《毕业生》的插曲）
+28. scarborough fiar（斯卡堡集市|电影：《毕业生》的插曲）
 
-　　第1次听把fiar看成了fire,后来我就认为它是fire了,我想我们现在都在燃烧青春哈,希望各位把火搞大点,这样前途也更光明点
+	第1次听把fiar看成了fire,后来我就认为它是fire了,我想我们现在都在燃烧青春哈,希望各位把火搞大点,这样前途也更光明点
 
-　　月光女神啊...必须顶，这首也是我钟爱的一首歌，适合安静的时候听，真正的天籁，没得说的。
+	月光女神啊...必须顶，这首也是我钟爱的一首歌，适合安静的时候听，真正的天籁，没得说的。
 
-　　29.one love(唯一的爱)
+29. one love(唯一的爱)
 
-　　这首blue的歌让我想起了很多朋友,我们一起听着这歌度过了高中
+	这首blue的歌让我想起了很多朋友,我们一起听着这歌度过了高中,我想朋友真的是一生中相当宝贵的财富,特别象我们这些独生子女
 
-　　,我想朋友真的是一生中相当宝贵的财富,特别象我们这些独生子女
+30. toxic(中毒)
 
-　　30.toxic(中毒)
+	这首小甜甜的歌很有节奏感而且很好听,还有听起很容易上瘾,就象它翻译过来的名字样,中你的毒.不过中毒还不是要听啊
 
-　　这首小甜甜的歌很有节奏感而且很好听,还有听起很容易上瘾,就象它翻译过来的名字样,中你的毒.不过中毒还不是要听啊
+31. always come back to your love（ 总是回到你的爱）-samantha mumba莎曼珊曼芭
 
-　　31.always come back to your love（ 总是回到你的爱）-samantha mumba莎曼珊曼芭
+	节奏重要还是歌声重要.这首歌如果没那么好多节奏, samantha mumba会唱的索然无味.如果没有samantha mumba的尽情演唱,可能节奏也会变的空洞.这首歌是节奏歌声的完美结合。
 
-　　节奏重要还是歌声重要.这首歌如果没那么好多节奏, samantha mumba会唱的索然无味.如果没有samantha mumba的尽情演唱,可能节奏也会变的空洞.这首歌是节奏歌声的完美结合。
+32. zombie(僵尸)
 
-　　32.zombie(僵尸)
+	经典歌曲　《zombie》.超级女生李宇春翻唱过这首歌曲.不过她太垃圾了.这样的歌曲她不配唱.来听听我们的cranberries的歌，这样的歌曲你一个人在寂寞的时候听心里会流血的!朋友，我希望你能听完这首歌曲.你真的会喜欢它的!
 
-　　经典歌曲　《zombie》.超级女生李宇春翻唱过这首歌曲.不过她太垃圾了.这样的歌曲她不配唱.来听听我们的cranberries的歌，这样的歌曲你一个人在寂寞的时候听心里会流血的!朋友，我希望你能听完这首歌曲.你真的会喜欢它的!
+33. classicriver(灰色空间)
 
-　　33.classicriver(灰色空间)
+	第一次听这曲子的时候是在初秋的深夜,偶然听到了它,刹时间时间和空间好象都凝固了一样!听着它,感觉深藏心底的那份无尽地孤独被慢慢地勾起, 曾经的回忆, 失去的快乐，刻骨的伤心，和短暂拥有，都在那一刻漂浮了起来,占据了身边的所有的空间. 它让我感觉到了这世间最珍贵的是亲情，爱情.金钱算得了什么呢
 
-　　第一次听这曲子的时候是在初秋的深夜,偶然听到了它,刹时间时间和空间好象都凝固了一样!听着它,感觉深藏心底的那份无尽地孤独被慢慢地勾起, 曾经的回忆, 失去的快乐，刻骨的伤心，和短暂拥有，都在那一刻漂浮了起来,占据了身边的所有的空间. 它让我感觉到了这世间最珍贵的是亲情，爱情.金钱算得了什么呢
+34. Show Me The Meaning Of Being Lonely(告诉我我的意义)
 
-　　34.Show Me The Meaning Of Being Lonely(告诉我我的意义)
+	以前学校里经常听到有人放他们的as long as you love me(只要你爱我)，似乎那群呆子只知道后街的这一首歌。没错这首歌的确是经典，但是听多了真的烦了，有的干脆连谁唱的都不知道，一提到后街都一副恍然大悟的样子：“哦。。原来是他们。。”
 
-　　以前学校里经常听到有人放他们的as long as you love me(只要你爱我)，似乎那群呆子只知道后街的这一首歌。没错这首歌的确是经典，但是听多了真的烦了，有的干脆连谁唱的都不知道，一提到后街都一副恍然大悟的样子：“哦。。原来是他们。。”
+35. take me to your heart(吻别)
 
-　　35.take me to your heart(吻别)
+	这首歌来自丹麦4人组合(现在3人)michael learns to rock 的第6张大碟take me to your heart。大家对michael learns to rock一定不会陌生，他们的成名曲that's why (you go away)一直在到处传唱。虽然乐队的名字中有rock，但是他们一直坚持的却是抒情歌曲的路线，不断感动着各位歌迷。比较符合亚洲人喜好的曲风使他们在亚洲远比他们在西方要受欢迎。这张XX年的全新专辑包括10首旋律优美、琅琅上口的，充满mltr抒情风格的作品，我们完全可以感受到他们对音乐的执着和诚意。特别值得推荐的是专辑同名主打歌曲take me to your heart，大家听了肯定会感到十分亲切，因为这首歌是mltr专为感谢中国歌迷一直以来对他们的喜爱和支持而特别翻唱香港天王张学友的名曲《吻别》，同时也进行了一些改编，使之更符合mltr的风格。我们可以听到，mltr的版本中少了一份哀怨，多了几分深情，编排清新动听，歌词浅显易懂!
 
-　　这首歌来自丹麦4人组合(现在3人)michael learns to rock 的第6张大碟take me to your heart。大家对michael learns to rock一定不会陌生，他们的成名曲that's why (you go away)一直在到处传唱。虽然乐队的名字中有rock，但是他们一直坚持的却是抒情歌曲的路线，不断感动着各位歌迷。比较符合亚洲人喜好的曲风使他们在亚洲远比他们在西方要受欢迎。这张XX年的全新专辑包括10首旋律优美、琅琅上口的，充满mltr抒情风格的作品，我们完全可以感受到他们对音乐的执着和诚意。特别值得推荐的是专辑同名主打歌曲take me to your heart，大家听了肯定会感到十分亲切，因为这首歌是mltr专为感谢中国歌迷一直以来对他们的喜爱和支持而特别翻唱香港天王张学友的名曲《吻别》，同时也进行了一些改编，使之更符合mltr的风格。我们可以听到，mltr的版本中少了一份哀怨，多了几分深情，编排清新动听，歌词浅显易懂!
+36. cry on my shoulder(靠在我的肩膀哭泣)
 
-　　36.cry on my shoulder(靠在我的肩膀哭泣)
+	这首算是比较抒情但又是又很有节奏，反正很赞
 
-　　这首算是比较抒情但又是又很有节奏，反正很赞
+37. the mass【无数的视频和ppt，喜欢用这首歌做背景音乐】电影：四平青年
 
-　　37.the mass【无数的视频和ppt，喜欢用这首歌做背景音乐】电影：四平青年
-
-	　　“the mass"这首歌是由一个叫“era”的现代乐团所唱的。《the mass》传承了eric levi自首张专辑《era》起便汲汲经营的音乐特色，匠心独具的融合流行、摇滚及古典乐，经过截枝去叶后而产生简洁有力的音乐风格。为了超越经典，eric levi更撷取德国知名音乐家carl orff/卡尔·奥福最受盛赞的作品《carmina burana/布兰诗歌》，为首发同名单曲“the mass”的主体。
+	“the mass"这首歌是由一个叫“era”的现代乐团所唱的。《the mass》传承了eric levi自首张专辑《era》起便汲汲经营的音乐特色，匠心独具的融合流行、摇滚及古典乐，经过截枝去叶后而产生简洁有力的音乐风格。为了超越经典，eric levi更撷取德国知名音乐家carl orff/卡尔·奥福最受盛赞的作品《carmina burana/布兰诗歌》，为首发同名单曲“the mass”的主体。
 
 	听到的所谓《SS闪电部队在前进》其实并不是法国Era 乐队的《The Mass》，懂拉丁文的朋友可以看看，只能说是以讹传讹，要说两个有啥联系，就是它们都借鉴了中世纪的法国宗教歌曲。《The Mass》与德国武装党卫军第一装甲师的军歌《SS闪电部队在前进》并没有直接联系，这是怎么回事呢？
 	《The Mass》
@@ -459,20 +458,20 @@
 	如果子弹结束了我们的生命，如果我们在劫难逃，
 	那至少我们忠实的坦克，会给我们一个金属的坟墓。
 
-　　38.burning(燃烧)电视剧：美女伤心 主题曲
+38. burning(燃烧)电视剧：美女伤心 主题曲
 
-　　burning，挪威歌手maria arredondo (玛丽亚·亚瑞唐多)的专辑名、同名歌曲，一首相当好听的英文女声歌曲，有一种令人如痴如醉的浪漫气氛，更带着些许哀伤之感
+	burning，挪威歌手maria arredondo (玛丽亚·亚瑞唐多)的专辑名、同名歌曲，一首相当好听的英文女声歌曲，有一种令人如痴如醉的浪漫气氛，更带着些许哀伤之感
 
-　　39.she is my sin(她是我的罪)
+39. she is my sin(她是我的罪)
 
-　　对cser们来说，nightwish的歌曲早已深入人心，众所皆知，世界不少顶级战队的宣传片都采用的是他们的歌曲，night wish的歌曲大都是重金属音乐，很多翻译版本的1.6进入界面就会响起这首歌，当你在游戏前更改各种按键设置的时候，这首歌仿佛预示着大战马上爆发，催促着你赶快进入cs，等着你的是各种激动人心的画面。在she is my sin出名后，因为其震撼的歌声，成为许多视频或集锦的音乐。就好像the dawn被传成是亡灵序曲一个道理。此歌后来被世界电子竞技大赛(wcg)定为比赛歌曲.
+	对cser们来说，nightwish的歌曲早已深入人心，众所皆知，世界不少顶级战队的宣传片都采用的是他们的歌曲，night wish的歌曲大都是重金属音乐，很多翻译版本的1.6进入界面就会响起这首歌，当你在游戏前更改各种按键设置的时候，这首歌仿佛预示着大战马上爆发，催促着你赶快进入cs，等着你的是各种激动人心的画面。在she is my sin出名后，因为其震撼的歌声，成为许多视频或集锦的音乐。就好像the dawn被传成是亡灵序曲一个道理。此歌后来被世界电子竞技大赛(wcg)定为比赛歌曲.
 
-但是这首she is my sin不是1.6版cs的主题曲在正版的cs中没有任何背景音乐,音乐是网上流传的破解版盗版中后加入的。
+	但是这首she is my sin不是1.6版cs的主题曲在正版的cs中没有任何背景音乐,音乐是网上流传的破解版盗版中后加入的。
 
-　　40.love to be loved by you(喜欢被你所爱)
+40. love to be loved by you(喜欢被你所爱)
 
-　　《love to be loved by you》是一首旋律优美的英文歌曲，演唱者是美国流行歌手马克·特伦茨(marc terenzi)。XX年，marc与德国歌手莎拉·寇娜(sarah connor)结婚时，将这首歌作为爱的礼物献给妻子。marc凭借此曲迅速在德国以及欧美走红，单曲强势占领XX德国排行榜亚军，抢攻欧洲流行单曲榜top 10
+	《love to be loved by you》是一首旋律优美的英文歌曲，演唱者是美国流行歌手马克·特伦茨(marc terenzi)。XX年，marc与德国歌手莎拉·寇娜(sarah connor)结婚时，将这首歌作为爱的礼物献给妻子。marc凭借此曲迅速在德国以及欧美走红，单曲强势占领XX德国排行榜亚军，抢攻欧洲流行单曲榜top 10
 
-　　41.she's gone(她走了)
+41. she's gone(她走了)
 
-　　当时第一次听的时候，刚好失恋，听到它的时候那感觉别提多心酸了。
+	当时第一次听的时候，刚好失恋，听到它的时候那感觉别提多心酸了。
