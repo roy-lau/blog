@@ -14,7 +14,7 @@ module.exports = (options, ctx) => {
     const { themeConfig, siteConfig } = ctx
 
     return {
-        alias() {
+        alias () {
             // resolve algolia
             return {
                 '@SearchBox': path.resolve(__dirname, 'components/SearchBox/index.vue')
@@ -25,10 +25,10 @@ module.exports = (options, ctx) => {
             '@vuepress/active-header-links',
             '@vuepress/search',
             // ['vuepress-plugin-yuque', {
-            //     html:true,
+            //     html: true,
             //     authToken: 'A4of6TlXsYRw6oOZm0iwTc1CN4XDOqqd81qxzwBR',
             //     repoUrl: 'https://www.yuque.com/roylau/blog',
-            //   }],
+            // }],
             '@vuepress/plugin-nprogress',
             [
                 '@vuepress/last-updated',
@@ -45,7 +45,7 @@ module.exports = (options, ctx) => {
             }],
         ],
         // 修改 $page 对象。每个页面都会执行一次
-        extendPageData($page) {
+        extendPageData ($page) {
             const {
                 _filePath, // 源文件的绝对路径
                 _computed, // 在构建期访问全局的计算属性，如：_computed.$localePath.
@@ -64,11 +64,11 @@ module.exports = (options, ctx) => {
             $page.frontmatter.date = frontmatter.date && moment(frontmatter.date).format("YYYY MMMM Do, a h:mm:ss")
 
         },
-        ready() {
+        ready () {
             // const { themeConfig, siteConfig, pages } = ctx
             // console.log(pages)
         },
-        chainMarkdown(config) {
+        chainMarkdown (config) {
             // config
             //     // reference: https://www.npmjs.com/package/markdown-it-checkbox
             //     .plugin('checkbox')
